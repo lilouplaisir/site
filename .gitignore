@@ -13,6 +13,9 @@
 !/app/i18n/Mageplaza/**/*
 !/fr/**/*
 /update/
+# 2020-12-05 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+# "How to fix product images in Magento 2.3.5 in Windows?": https://mage2.pro/t/6210
+!/vendor/magento/framework/Image/Adapter/Gd2.php
 # 2020-12-04 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 # How to fix the «Invalid template file» / «require_js.phtml» failure of Magento 2.3.x in Windows?
 # https://mage2.pro/t/5774
