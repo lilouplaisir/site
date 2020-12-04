@@ -1,0 +1,262 @@
+/* 1ere partie : construction de la page */
+
+body
+{
+margin:0px;
+padding:0px;
+background-color:#FFFFFF;
+}
+
+#global
+{
+margin:0px auto;
+padding:0px;
+}
+
+#haut
+{
+display:block;
+background:url(images/haut-lilouplaisir.jpg) center no-repeat #FFFFFF;
+width:100%;
+height:101px;
+margin:0px;
+}
+
+#fond
+{
+display:block;
+background:url(images/ombre.jpg) top left repeat-x #FFFFFF;
+width:100%;
+height:101px;
+margin:0px;
+}
+
+#centrehaut
+{
+margin-left:auto;
+margin-right:auto;
+display:block;
+width:908px;
+height:36px;
+}
+
+#centre
+{
+margin-left:auto;
+margin-right:auto;
+display:block;
+background:url(images/centrefond-lilouplaisir.jpg) top left repeat-y #FFFFFF;
+width:908px;
+}
+
+#centrehaut2
+{
+margin-left:auto;
+height:20px;
+margin-right:auto;
+display:block;
+background:url(images/centrehaut-lilouplaisir.jpg) top left no-repeat #FFFFFF;
+width:908px;
+}
+
+#centrebas
+{
+margin-left:auto;
+height:20px;
+margin-right:auto;
+display:block;
+background:url(images/centrebas-lilouplaisir.jpg) top left no-repeat #FFFFFF;
+width:908px;
+}
+
+#menudiv
+{
+display:block;
+position:relative;
+float:left;
+left:15px;
+width:190px;
+}
+
+#contenu
+{
+display:block;
+float:left;
+margin-left:40px;
+width:645px;
+}
+
+.hache-ere
+{
+clear: both;
+height: 1px;
+visibility: hidden;
+margin: 0;
+padding: 0
+}
+
+.imgmenu
+{
+margin-bottom:3px;
+margin-top:3px;
+}
+
+/* 2eme partie : mise en forme du contenu */
+
+body
+{
+font-family:Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+margin-top:0px;
+margin-bottom:0px;
+color:#FFACD8;
+}
+
+h2
+{
+margin-top:0px;
+margin-bottom:0px;
+color:#FFACD8;
+font-size:12px;
+}
+
+h3
+{
+margin-top:0px;
+margin-bottom:0px;
+color:#666666;
+font-size:14px;
+}
+
+#asterix
+{
+margin-top:0px;
+margin-bottom:0px;
+font-size:10px;
+color:#666;
+}
+
+p
+{
+margin-top:0px;
+margin-bottom:0px;
+font-size:12px;
+color:#666;
+}
+
+p a
+{
+font-size:11px;
+color:#888;
+font-weight:bold;
+}
+
+p a:hover
+{
+text-decoration:none;
+}
+
+ol
+{
+margin-top:0px;
+margin-bottom:0px;
+font-size:12px;
+color:#666;
+}
+
+ol a
+{
+font-size:11px;
+color:#888;
+font-weight:bold;
+}
+
+ol a:hover
+{
+text-decoration:none;
+}
+
+a img
+{
+border:none;
+}
+
+#retour
+{
+font-weight:bold;
+color:#777;
+margin-left:2px;
+text-decoration:none;
+}
+
+#retour:hover
+{
+text-decoration:underline;
+}
+
+.amodifier
+{
+color:#FF0000;
+}
+
+.imgcl1
+{
+margin-left:10px;
+margin-right:10px;
+}
+
+ol
+{
+margin-top:5px;
+margin-bottom:5px;
+font-size:12px;
+color:#666;
+}
+
+
+/* 3eme partie : menu déroulant */
+
+dl, dt, dd, ul, li {
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#engagement li, #commande li, #livraison li, #avantages li, #paiement li, #sav li
+{
+font-size:12px;
+padding-left:10px;
+margin-top:3px;
+margin-bottom:3px;
+color:#999;
+font-weight:bold;
+}
+
+#engagement li a, #commande li a, #livraison li a, #avantages li a, #paiement li a, #sav li a
+{
+color: #000;
+text-decoration: none;
+display: block;
+border: 0 none;
+height: 100%;
+}
+
+#engagement li a, #commande li a, #livraison li a, #avantages li a, #paiement li a, #sav li a
+{
+color:#666;
+font-weight:normal;
+font-size:12px;
+}
+
+.listedecalage
+{
+margin-left:16px;
+}
+
+#engagement li a span:hover, #commande li a span:hover, #livraison li a span:hover, #avantages li a span:hover, #paiement li a span:hover, #sav li a span:hover
+{
+text-decoration:underline;
+}

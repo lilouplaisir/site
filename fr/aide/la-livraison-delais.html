@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>La livraison LilouPlaisir.com : Les délais</title>
+<META NAME="Description" CONTENT="Pour plus d'informations sur les coût, les délais, les transports Lilou Plaisir, n'hésitez pas à consulter notre rubrique d'aide ou nous contacter par téléphone...">
+<META NAME="Keywords" CONTENT="lilouplaisir, lilou plaisir, conseil, telephone, livraison, contact, cout, delai, transport">
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="fr", "en">
+<meta name="Author" content="Lilou Plaisir">
+<meta nameE="Copyright" content="lilouplaisir.com">
+<meta name="Language" content="fr", "en">
+<meta name="Identifier-URL" content="www.lilouplaisir.com">
+<meta name="Publisher" content="Lilou Plaisir">
+<meta name="Robots" content="all">
+<meta name="GOOGLEBOT" content="NOARCHIVE"> 
+<meta http-equiv="Pragma" content="no-cache">
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+	function affiche_menu(valeur)
+	{
+		var node = valeur;
+		
+		while (node.nodeName != "UL") 
+		{
+			node = node.nextSibling;
+        }
+		
+		if (node.style.display == 'block')
+		{
+			node.style.display = 'none';
+			valeur.src = valeur.src.replace('_1','_2');
+		}
+		else
+		{
+			node.style.display = 'block';
+			valeur.src = valeur.src.replace('_2','_1');
+		}
+	}
+
+	function init_menu(valeur)
+	{
+		var test = document.getElementById('racine').getElementsByTagName('ul');
+
+		for (var i = 0; i<test.length; i++)
+		{
+			if (test[i].id == valeur)
+			{
+				test[i].style.display='block';
+				document.getElementById('img_'+valeur).src=document.getElementById('img_'+valeur).src.replace('_2','_1');
+			}
+			else
+			{
+				if (test[i].className != 'restevisible')
+					test[i].style.display='none';
+			}
+		}
+	}
+
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+
+<body>
+
+<div id="global">
+
+	<a href="index.html"><div id="haut"></div></a>
+	
+		<div id="fond">
+		
+		<div id="centrehaut">
+		</div>
+		
+			<div id="centre">
+			
+			<div id="centrehaut2">
+			</div>
+				
+			<div id="menudiv">
+					
+			<ul id="racine">
+					<li>
+						<a href="index.html" target="_parent"><img src="images/faq-lilouplaisir_.jpg" alt=""></a>					</li>
+					
+<li>
+						<img src="images/engagement_2.jpg" alt="" name="img_engagement" id="img_engagement" style="cursor:pointer;" onclick="affiche_menu(this);">
+<ul style="display:none;" id="engagement">
+							<li><a href="notre-engagement-qualite.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Qualit&eacute;</span></a></li>
+						  <li><a href="notre-engagement-securite.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>S&eacute;curit&eacute;</span></a></li>
+						  <li><a href="notre-engagement-confidentialite.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Confidentialit&eacute;</span></a></li>
+							<li><a href="notre-engagement-discretion.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Discr&eacute;tion</span></a></li>
+						  <li><a href="notre-engagement-rapidite.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Rapidit&eacute;</span></a></li>
+						  <li><a href="notre-engagement-satisfaction.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Satisfaction</span></a></li>
+		    </ul>
+					</li>
+	  <li>
+						<img src="images/commande_2.jpg" alt="" style="cursor:pointer;" onclick="affiche_menu(this);" id="img_commande">
+						<ul style="display:none;" id="commande">
+							<li><a href="ma-commande-premier-achat.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Premier achat</span></a></li>
+                            <li><a href="ma-commande-date-reception.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Quand vais-je recevoir ma commande ?</span></a></li>
+						  
+						  <li><a href="ma-commande-panier.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Mon panier</span></a></li>
+                          <li><a href="ma-commande-email.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Etat de ma commande</span></a></li>
+                          <li><a href="ma-commande-numero.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Où touver mon num&eacute;ro de commande</span></a></li>
+		    </ul>
+					<li>
+						<img src="images/livraison_2.jpg" alt="" style="cursor:pointer;" onclick="affiche_menu(this);" id="img_livraison">
+						<ul style="display:none;" id="livraison">
+							<li><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;&nbsp;Informations sur la livraison : </li>
+							<li class="listedecalage"><a href="la-livraison-cout-pays-livrables.html" target="_parent"><img src="images/rond.jpg"/>&nbsp;<span>Les co&ucirc;ts et pays livrables</span></a></li>
+                            <li class="listedecalage"><a href="la-livraison-delais.html" target="_parent"><img src="images/rond.jpg"/>&nbsp;<span>Les d&eacute;lais</span></a></li>
+                            <li class="listedecalage"><a href="la-livraison-transport.html" target="_parent"><img src="images/rond.jpg"/>&nbsp;<span>Le transport</span></a></li>
+						  <li class="listedecalage"><a href="la-livraison-gratuite.html" target="_parent"><img src="images/rond.jpg"/>&nbsp;<span>La livraison gratuite</span></a></li>
+                          <li class="listedecalage"><a href="la-livraison-colissimo.html" target="_parent"><img src="images/rond.jpg"/>&nbsp;<span>Suivre mon colis</span></a></li>
+						  <li><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;&nbsp;Options de livraison : </li>
+							<!--<li class="listedecalage"><a href="../la-livraison-achat-ligne-retrait-magasin.html"><img src="../images/rond.jpg"/>&nbsp;<span>Achat en ligne et retrait en magasin</span></a></li>
+						  <li class="listedecalage"><a href="../la-livraison-achat-etranger.html" target="_parent"><img src="../images/rond.jpg"/>&nbsp;<span>Livraison à l'étranger</span></a></li>!-->
+						  <li class="listedecalage"><a href="la-livraison-envoi-cadeau.html" target="_parent"><img src="images/rond.jpg"/>&nbsp;<span>Envoi d'un cadeau</span></a></li>
+					  </ul>
+					</li>
+					<li>
+						<img src="images/avantages_2.jpg" alt="" style="cursor:pointer;" onclick="affiche_menu(this);" id="img_avantages">
+						<ul style="display:none;" id="avantages">
+							<li><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;&nbsp;Services : </li>
+							<!--<li class="listedecalage"><a href="../avantages-lilou-plaisir-disponible-rapide.html" target="_parent"><img src="../images/rond.jpg"/><span>Disponibilité et rapidité</span></a></li>
+						  <li class="listedecalage"><a href="../avantages-lilou-plaisir-qualite-securite.html" target="_parent"><img src="../images/rond.jpg"/><span>Qualité et sécurité</span></a></li>!-->
+						  <li class="listedecalage"><a href="avantages-lilou-plaisir-promotion-cadeau.html" target="_parent"><img src="images/rond.jpg"/><span>Promotions et cadeaux</span></a></li>
+						  <li class="listedecalage"><a href="avantages-lilou-plaisir-garantie-meilleur-prix.html" target="_parent"><img src="images/rond.jpg"/><span>Nos prix</span></a></li>
+						  <li class="listedecalage"><a href="avantages-lilou-plaisir-la-boutique.html" target="_parent"><img src="images/rond.jpg"/><span>La boutique Lilou Plaisir</span></a></li>
+						  <li><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;&nbsp;Pratique : </li>
+							<li class="listedecalage"><a href="avantages-lilou-plaisir-faire-cadeau.html" target="_parent"><img src="images/rond.jpg"/><span>Faire un cadeau</span></a></li>
+						  <li class="listedecalage"><a href="avantages-lilou-plaisir-newsletter.html" target="_parent"><img src="images/rond.jpg"/><span>Newsletter Lilou Plaisir</span></a></li>
+						  <!--<li class="listedecalage"><a href="../avantages-lilou-plaisir-reserver-nouveaute.html" target="_parent"><img src="../images/rond.jpg"/><span>Réserver une nouveauté</span></a></li>!-->
+						  <li class="listedecalage"><a href="avantages-lilou-plaisir-conseil-telephone.html" target="_parent"><img src="images/rond.jpg"/><span>Conseils  par téléphone</span></a></li>
+					  </ul>
+					</li>
+					<li>
+						<img src="images/paiement_2.jpg" alt="" style="cursor:pointer;" onclick="affiche_menu(this);" id="img_paiement">
+						<ul style="display:none;" id="paiement">
+							<li><a href="le-paiement.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Le paiement</span></a></li>
+						  <li><a href="le-paiement-cheque-cadeau.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Chèques cadeaux</span></a></li>
+						  <li><a href="le-paiement-code-reduction.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Code de réduction</span></a></li>
+						  <li><a href="le-paiement-facturation.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>La facturation</span></a></li>
+					  </ul>
+					</li>
+					<li>
+						<img src="images/sav_2.jpg" alt="" style="cursor:pointer;" onclick="affiche_menu(this);" id="img_sav">
+						<ul style="display:none;" id="sav">
+							<li><a href="sav-garanties-contact.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Contacter le SAV</span></a></li>
+                            <li><a href="sav-garanties-commande-non-recue.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Commande non reçue</span></a></li>
+						  <li><a href="sav-garanties-remboursement-echange-produit.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Remboursement ou échange d'un produit</span></a></li>
+						  <li><a href="sav-garanties-produits-defectueux.html" target="_parent"><img src="images/etoile-lilouplaisir.jpg"/>&nbsp;<span>Produits d&eacute;fectueux ou non conformes</span></a></li>
+					  </ul>
+					</li>
+                    <li>
+                        <a href="cgv.html" target="_parent"><img src="images/faq-cgv-lilou-plaisir.jpg" alt=""></a>										</li>
+                    <li>
+                        <a href="mentions-legales.html" target="_parent"><img src="images/faq-mentions-legales-lilouplaisir.jpg" alt=""></a>										</li>
+					<li>
+						<a href="contactez-lilou-plaisir.html" target="_parent"><img src="images/contact-lilou-plaisir_.jpg" alt=""></a>					</li>
+		
+<div align="center">
+  <p><a href="http://www.lilouplaisir.com" target="_parent"><img src="images/retour-lilou-plaisir.jpg" width="160" height="96" /></a>  </p>
+  <table width="200" border="0">
+    <tr>
+      <td><a href="doc/Mentions-l&eacute;gales-LilouPlaisir.pdf"><img src="images/pdf-logo.jpg" width="30" height="30" /></a></td>
+      <td><p><a href="doc/Mentions-legales-LilouPlaisir.pdf">Mentions L&eacute;gales</a></p></td>
+    </tr>
+
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+			</ul>					
+			
+			</div>
+								
+			<div id="contenu">
+			<!-- InstanceBeginEditable name="EditRegion1" -->
+			<h1>L'engagement LilouPlaisir.com </h1>
+            <h2>La livraison &gt; Les d&eacute;lais</h2>
+            <br />
+            <p align="justify">Nous essayons de tenir des d&eacute;lais de pr&eacute;paration et de livraison les plus rapides possibles. Le processus de commande et d'envoi, vous est d&eacute;crit ci-dessous avec  les d&eacute;lais associ&eacute;s.</p>
+            <p>&nbsp;</p>
+        
+            <ol>
+              <h3>1er cas : Commande valid&eacute;e et paiement accept&eacute; avant 13h</h3><br />
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- La pr&eacute;paration de la commande est faite le jour m&ecirc;me.</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- L'exp&eacute;dition de votre commande est faite le jour m&ecirc;me.</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- Vous recevez un mail quelques heures apr&egrave;s l'exp&eacute;dition avec le num&eacute;ro de suivi de votre commande.</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- Votre colis arrive en moyenne en 48h, mais cela peut &ecirc;tre 72h.</li>
+              <br />
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Soit 48h en moyenne entre le moment o&ugrave; vous passez votre commande et le moment o&ugrave; vous la recevez.</strong></li>
+              <p align="center"><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/livraison-24h-lilouplaisir.jpg" alt="cas1" title="1er cas" /> <br />
+              </p>
+              <p>&nbsp;</p>
+              <p><br />
+              </p>
+              <h3>2eme cas : Commande valid&eacute;e et  paiement accept&eacute; apr&egrave;s 13h</h3><br />
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- La pr&eacute;paration de la commande est faite le lendemain matin.</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- L'exp&eacute;dition de votre commande est faite le lendemain apr&egrave;s midi.</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- Vous recevez un mail quelques heures apr&egrave;s l'exp&eacute;dition avec le num&eacute;ro de suivi de votre commande.</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;- Votre colis arrive en moyenne en 72h, mais cela peut &ecirc;tre 96h.</li>
+              <br />
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Soit 72h en moyenne entre le moment o&ugrave; vous passez votre commande et le moment o&ugrave; vous la recevez.</strong></li>
+              
+            </ol>
+            <br />
+            <p align="justify">Attention, si votre commande est effectu&eacute;e un samedi, un dimanche ou un jour f&eacute;ri&eacute;, un jour de d&eacute;lai suppl&eacute;mentaire sera n&eacute;cessaire.<br />
+                <br />
+              De mani&egrave;re g&eacute;n&eacute;rale, toutes les commandes respectent ces d&eacute;lais. Cependant, il se peut dans de tr&egrave;s rares cas que les d&eacute;lais soient plus long (en cas par exemple de probl&egrave;me de transport ou de gr&egrave;ve &agrave; La Poste). S'ils d&eacute;passent une semaine, nous vous invitons &agrave; <a href="sav-garanties-contact.html" target="_parent">entrer en contact avec nous</a> afin que nous r&eacute;glions cette situation. </p><br />
+            <div id="asterix"><strong>NB</strong> : Nos colis sont envoy&eacute;s en colissimo suivi sans accus&eacute; de r&eacute;ception, donc sans signature.</div>
+			<!-- InstanceEndEditable -->
+			<p>&nbsp;</p>
+			</div>
+			
+			<hr class="hache-ere"/>
+			<br/>
+			
+			</div>
+		
+		<div id="centrebas"><br/><br/>
+		</div>
+		
+		</div>
+	
+</div>
+
+<!-- InstanceBeginEditable name="EditRegion4" -->
+<script type="text/javascript">
+	init_menu('livraison');
+</script>
+<!-- InstanceEndEditable -->
+</body>
+
+<!-- InstanceEnd --></html>
