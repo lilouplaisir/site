@@ -10,6 +10,7 @@
 !/readme.md
 !/app/code/**/*
 !/app/design/frontend/Mgs/**/*
+!/app/i18n/Mageplaza/**/*
 /update/
 # 2020-12-04 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 # How to fix the «Invalid template file» / «require_js.phtml» failure of Magento 2.3.x in Windows?
