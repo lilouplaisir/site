@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<?php $mgsHelper = $this->helper('MGS\Mpanel\Helper\Data'); 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$conf = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue("web/unsecure/base_url");
+?>
+<div class="breadcrumbs">
+	<div class="<?php if($mgsHelper->getStoreConfig('mpanel/breadcrumbs/fullwidth')): ?>container-fluid<?php else: ?>container<?php endif ?>">
+		<ul class="items">
+			<?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+				<li <?php /* @escapeNotVerified */ echo $crumbName ?> class="item <?php /* @escapeNotVerified */ echo $crumbName ?>">
+				<?php if ($crumbInfo['link']) : ?>
+					<a href="<?php if($crumbName =='home'){echo $conf ;} else { echo $crumbInfo['link']; } ?>" title="<?php echo $block->escapeHtml($crumbInfo['title']) ?>">
+						<?php echo $block->escapeHtml($crumbInfo['label']) ?>
+					</a>
+				<?php elseif ($crumbInfo['last']) : ?>
+					<strong><?php echo $block->escapeHtml($crumbInfo['label']) ?></strong>
+				<?php else: ?>
+					<?php echo $block->escapeHtml($crumbInfo['label']) ?>
+				<?php endif; ?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<?php if($mgsHelper->getStoreConfig('mpanel/share_config/share_product_detail')): ?>
+			<?php echo $block->getChildHtml('product.catalog.sharethis') ?>
+		<?php endif ?>
+	</div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if($this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mpanel/newsletter_popup/captcha')): ?>
+    <?php $key = $this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mpanel/newsletter_popup/captcha_key');?>
+	 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript">
+        require(
+        [
+            'jquery'
+        ],
+        function( $, modal ) {
+            $('#newsletter-popup-validate-detail').submit(function(e) {
+                if (grecaptcha.getResponse() == '') {
+                    $('.g-recaptcha').css('border', '1px solid #ff0000');
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+    <?php
+        if (isset($_POST['submit'])) {
+            if (!isset($_POST['g-recaptcha-response'])) {
+                echo 'Please choose reCAPTCHA';
+            }
+        }
+    ?>
+<?php endif;?>
+
+<?php $footer_content = $this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mpanel/newsletter_popup/footer_text'); ?>
+<div class="block newsletter">
+    <div class="content">
+        <form class="form subscribe"
+            novalidate
+            action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+            method="post"
+            data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+            id="newsletter-popup-validate-detail">
+            <div class="field form-group newsletter">
+                <div class="control">
+                    <input name="email" type="email" id="newsletter-popup-email"
+                                placeholder="<?php /* @escapeNotVerified */ echo __('Enter your email address') ?>"
+                                data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="actions">
+                <?php if($this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mpanel/newsletter_popup/captcha')): ?>
+                    <div class="g-recaptcha" data-sitekey="<?php echo $key; ?>"></div>
+                <?php endif;?>
+				
+                <button class="action subscribe btn btn-secondary btn-full" title="<?php /* @escapeNotVerified */ echo __('Subscribe') ?>" type="submit">
+                    <span><?php /* @escapeNotVerified */ echo __('Subscribe') ?></span>
+                </button>
+            </div>
+			<?php if($footer_content): ?>
+				<div class="pop-sletter-footer">
+					<?php echo __($footer_content); ?>                
+				</div>
+			<?php endif ?>
+			<div class="checkbox">
+				<label for="dont_show">
+					<input id="dont_show" onclick="dontShowPopup('dont_show')" type="checkbox">
+					<?php echo __("Don't show this popup again");  ?>
+				</label>
+			</div>
+        </form>
+    </div>
+</div>

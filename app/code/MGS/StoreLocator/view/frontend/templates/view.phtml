@@ -1,0 +1,105 @@
+<?php $themeHelper = $this->helper('MGS\StoreLocator\Helper\Data'); ?>
+<?php if($themeHelper->getStoreConfig('locator/general/store_api_key')){
+	$apikey = $themeHelper->getStoreConfig('locator/general/store_api_key');
+}else{
+	$apikey = 'AIzaSyD11c9ZFjYyFvKmbp2eKkpRuiqkjkAUIG0';
+}
+?>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?php echo $apikey ?>&libraries=places&sensor=false"></script>
+<?php $_storeView = $this->getStoreView(); ?>
+
+    <div class="storelocator-details">
+		<div class="row">
+			<div class="col-md-5 col-sm-12 col-xs-12">
+				<div class="box-store">
+					<div class="block-title"><h3 class="title"><span><?php echo __('Store Information') ?></span></h3></div>
+					<div class="box-store-content">
+						<?php if ($imageUrl = $_storeView->getImageUrl()): ?>
+							<div class="store-image">
+								<img src="<?php echo $imageUrl ?>" alt="<?php echo $_storeView->getName() ?>" title="<?php echo $_storeView->getName() ?>" class="img-responsive"/>
+							</div>
+						<?php endif ?>
+						<div class="table-responsive">
+							<table class="table portfolio-table table-hover">
+								<tbody>
+									<tr>
+										<td><?php echo __('Address:') ?></td>
+										<td><?php echo $_storeView->getStreetAddress().' '.ucfirst($_storeView->getCity()).' '.ucfirst($_storeView->getState()).' '.$_storeView->getZipcode().' '.$_storeView->getCountry() ?></td>
+									</tr>
+									<?php if($_storeView->getEmail()): ?>
+										<tr>
+											<td><?php echo __('Email:') ?></td>
+											<td><a href="mailto:<?php echo $this->escapeHtml($_storeView->getEmail()) ?>"><?php echo $this->escapeHtml($_storeView->getEmail()) ?></a></td>
+										</tr>
+									<?php endif ?>
+									<?php if($_storeView->getFax()): ?>
+										<tr>
+											<td><?php echo __('Fax:') ?></td>
+											<td><?php echo $this->escapeHtml($_storeView->getFax()) ?></td>
+										</tr>
+									<?php endif ?>
+									<?php if($_storeView->getPhoneNumber()): ?>
+										<tr>
+											<td><?php echo __('Phone:') ?></td>
+											<td><a href="tel:<?php echo $this->escapeHtml($_storeView->getPhoneNumber()) ?>"><?php echo $this->escapeHtml($_storeView->getPhoneNumber()) ?></a></td>
+										</tr>
+									<?php endif ?>
+									<?php if($_storeView->getWebsite()): ?>
+										<tr>
+											<td><?php echo __('Website:') ?></td>
+											<td><a target="_blank" href="<?php echo $_storeView->getWebsite() ?>"><?php echo $_storeView->getWebsite() ?></a></td>
+										</tr>
+									<?php endif ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<?php if($_storeView->getDescription()): ?>
+					<div class="box-store margin-top40">
+						<div class="block-title"><h3 class="title"><span><?php echo __('Store Overview') ?></span></h3></div>
+						<div class="box-store-content">
+							<?php echo $this->getDescription(); ?>
+						</div>
+					</div>
+				<?php endif ?>
+				<?php if($_storeView->getTradingHours()): ?>
+					<div class="box-store margin-top40">
+						<div class="block-title"><h3 class="title"><span><?php echo __('Opening Hours') ?></span></h3></div>
+						<div class="box-store-content">
+							<?php echo $this->getTradingHours(); ?>
+						</div>
+					</div>
+				<?php endif ?>
+			</div>
+			<div class="col-md-7 col-sm-12 col-xs-12">
+				<div id="map-detail"></div>
+				<div class="back padding-top15">
+					<button onclick="window.location= '<?php echo $block->getUrl('locator/') ?>';" class="btn btn-primary btn-lg action" title="<?php echo __('Back') ?>" type="button">
+						<span><?php echo __('Back') ?></span>
+					</button>
+				</div>
+			</div>
+		</div>
+    </div>
+<?php
+//Get store google map related information
+$storeName = $_storeView->getName();
+$storeLat = $_storeView->getLat();
+$storeLong = $_storeView->getLng();
+$storeRadius = $this->getRadius($_storeView);
+?>
+<?php if($storeLat && $storeLong): ?>
+    <script>
+        require(['jquery', 'MGS_StoreLocator/js/storelocator'], function($) {
+            $(window).load(function() {
+                var storeLat = <?php echo $storeLat ;?>;
+                var storeLong = <?php echo $storeLong ;?>;
+                var storeRadius = <?php echo $storeRadius ;?>;
+                var storeInfoText = '<div class="map-short-info"><h3><?php echo $storeName ; ?></h3><p><?php echo $_storeView->getStreetAddress() ?> <?php echo $_storeView->getCity() ?> <?php echo $_storeView->getState() ?> <?php echo $_storeView->getZipcode() ?> <?php echo $_storeView->getCountry() ?></p>';
+                var googleMapDivId = 'map-detail';
+                google.maps.event.addDomListener(window, 'load', initializeMap(storeLat, storeLong, storeRadius, storeInfoText, googleMapDivId));
+            });
+        });
+    </script>
+<?php endif ?>

@@ -1,0 +1,108 @@
+<?php
+$lpcUrlLoadRelaysList = $block->lpcAjaxUrlLoadRelaysList();
+$lpcAjaxSetInformationRelayUrl = $block->getAjaxSetInformationRelayUrl();
+$lpcGoogleMapsUrl = $block->getGoogleMapsUrl();
+$lpcAveragePreparationDelay = $block->lpcGetAveragePreparationDelay();
+$lpcPrView = $block->lpcPrView();
+$lpcAddressTextColor = $block->lpcGetAddressTextColor();
+$lpcListTextColor = $block->lpcGetListTextColor();
+$lpcWidgetFont = $block->lpcGetFontWidgetPr();
+$lpcCustomizeWidget = $block->lpcGetCustomizeWidget();
+
+if ($lpcPrView == "webservice") {
+    if (empty($lpcGoogleMapsUrl)) {
+        $block->colissimoLogger->error("Error : no Google Maps API Key defined");
+    } else { ?>
+        <script src="<?php echo $lpcGoogleMapsUrl; ?>"></script>
+    <?php } ?>
+
+    <script type="text/javascript">
+        require(['jquery', 'lpc'], function($, lpc){
+            if(typeof google !== 'undefined'){
+                lpc.lpcLoadMap();
+            }else{
+                console.error('Google is not defined. Please check if an API key is set in the configuration (Stores->Configuration->Sales->La Poste Colissimo Advanced Setup)');
+            }
+
+            lpc.lpcSetAjaxSetRelayInformationUrl('<?php echo $lpcAjaxSetInformationRelayUrl; ?>');
+            $('#lpc_layer_button_search').on('click', function(){
+                lpc.lpcLoadRelaysList('<?php echo $lpcUrlLoadRelaysList ?>');
+            });
+        });
+    </script>
+    <div id="lpc_layer_relays" style="display:none;">
+        <div class="content">
+            <div>
+                <label>
+                    <?php echo __('Address') ?>
+                    <input type="text" id="lpc_modal_relays_search_address" class="lpc_modal_relays_search_input">
+                </label>
+                <label>
+                    <?php echo __('Zipcode') ?>
+                    <input type="text" id="lpc_modal_relays_search_zipcode" class="lpc_modal_relays_search_input">
+                </label>
+                <label>
+                    <?php echo __('City') ?>
+                    <input type="text" id="lpc_modal_relays_search_city" class="lpc_modal_relays_search_input">
+                </label>
+                <button id="lpc_layer_button_search" type="button"><?php echo __('Search') ?></button>
+                <img id="lpc_layer_relays_loader" src="<?php echo $this->getViewFileUrl('LaPoste_Colissimo::images/loading.gif'); ?>" alt="Loading..." style="display: none">
+            </div>
+            <div id="lpc_left">
+                <div id="lpc_map"></div>
+            </div>
+            <div id="lpc_right">
+                <div id="lpc_layer_list_relays"></div>
+            </div>
+        </div>
+        <div id="lpc_layer_error_message" style="display: none"></div>
+    </div>
+
+    <?php
+} else {
+    $lpcWidgetUrl = $block->lpcWidgetUrl();
+    $lpcToken = $block->lpcGetAuthenticationToken();
+    $lpcWidgetCountry = $block->getWidgetListCountry();
+    if ($lpcToken !== false) {
+        ?>
+        <script type="text/javascript">
+            require(['jquery', 'lpc'], function($, lpc){
+                window.lpcCallBackFrame = lpc.lpcCallBackFrame;
+                lpc.lpcSetAjaxSetRelayInformationUrl('<?php echo $lpcAjaxSetInformationRelayUrl; ?>');
+                lpc.lpcSetWidgetRelayCountries('<?php echo $lpcWidgetCountry; ?>');
+                
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = "<?php echo $lpcWidgetUrl ?>";
+                $("body").append(script);
+            });
+        </script>
+        <?php if ($lpcCustomizeWidget) { ?>
+
+            <style type="text/css">
+                #lpc_layer_widget div#colissimo-container .couleur1 {
+                    color: <?php echo $lpcAddressTextColor; ?>;
+                }
+
+                #lpc_layer_widget div#colissimo-container .couleur2 {
+                    color: <?php echo $lpcListTextColor ?>
+                }
+
+                #lpc_layer_widget div#colissimo-container .police {
+                    font-family: <?php echo $lpcWidgetFont ?>
+                }
+
+            </style>
+        <?php } ?>
+
+        <div id="lpc_layer_widget" style="display: none">
+            <div id="lpc_widget_container"></div>
+        </div>
+        <input type="hidden" id="lpc_token_widget" value="<?php echo $lpcToken ?>">
+        <input type="hidden" id="lpc_average_preparation_delay" value="<?php echo $lpcAveragePreparationDelay ?>">
+    <?php } else { ?>
+        <div id="lpc_error_pr" style="display: none">
+            <p id="lpc_error_message_pr"><?php echo __('The window to choose your pickup point is currently unavailable. Please refresh the page and try again. If the problem persists, please contact the website administrator.') ?></p>
+        </div>
+    <?php }
+} ?>

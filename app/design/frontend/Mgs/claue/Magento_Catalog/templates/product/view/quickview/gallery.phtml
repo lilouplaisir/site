@@ -1,0 +1,75 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $galleryImages = $block->getGalleryImages() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+<?php $imgBase = $_imagehelper->init($_product, 'category_page_list')->getUrl(); ?>
+
+<div class="product-image-base">
+	<div class="product-galley-image-carousel owl-carousel">
+        <?php if(count($galleryImages)): ?>
+            <?php foreach($galleryImages as $image): ?>
+                <?php if($image->getIsBaseImage()): ?>
+                    <div class="item first">
+                        <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt=""/>
+                        <?php if($image->getMediaType() == 'external-video'): ?>
+                            <div class="product-video-button">
+                                <a href="<?php echo $image->getVideoUrl(); ?>"><i class="pe-7s-play pr"></i><?php echo __('View Video'); ?></a>		
+                            </div>
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+            <?php foreach($galleryImages as $image): ?>
+                <?php if(!$image->getIsBaseImage()): ?>
+                    <div class="item">
+                        <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt=""/>
+                        <?php if($image->getMediaType() == 'external-video'): ?>
+                            <div class="product-video-button">
+                                <a href="<?php echo $image->getVideoUrl(); ?>"><i class="pe-7s-play pr"></i><?php echo __('View Video'); ?></a>		
+                            </div>
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+        <?php else: ?>
+            <img class="img-responsive" src="<?php echo $imgBase; ?>" alt=""/>
+        <?php endif ?>
+	</div>
+</div>
+<script type="text/javascript">
+	require([
+		'jquery',
+		'zoom-images',
+		'YouTubePopUp',
+		'mgs/owlcarousel'
+	], function ($) {
+		$('.product-galley-image-carousel').owlCarousel({
+			items: 1,
+			autoplay: false,
+			autoplayHoverPause: false,
+			nav: true,
+			dots: false,
+			navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"]
+		});
+		$(document).ready(function() {
+			zoomElement(".product-galley-image-carousel .item");
+			$(".product-video-button a").YouTubePopUp();
+			var heightImg = $(".product.media").height();
+			$(".product-detail-infomation.col-xs-12").height(heightImg);
+		});
+	});
+</script>

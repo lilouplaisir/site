@@ -1,0 +1,75 @@
+<?php $_storeView = $this->getStoreView(); ?>
+
+<div class="storelocator-details">
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="box-store margin-bottom40">
+				<div class="block-title"><h3 class="title"><span><?php echo __('Store Information') ?></span></h3></div>
+				<div class="box-store-content">
+					<?php if ($imageUrl = $_storeView->getImageUrl()): ?>
+						<div class="store-image">
+							<img src="<?php echo $imageUrl ?>" alt="<?php echo $_storeView->getName() ?>" title="<?php echo $_storeView->getName() ?>" class="img-responsive"/>
+						</div>
+					<?php endif ?>
+					<table class="table portfolio-table table-hover">
+						<tbody>
+							<tr>
+								<td><?php echo __('Address:') ?></td>
+								<td><?php echo $_storeView->getStreetAddress().' '.ucfirst($_storeView->getCity()).' '.ucfirst($_storeView->getState()).' '.$_storeView->getZipcode().' '.$_storeView->getCountry() ?></td>
+							</tr>
+							<?php if($_storeView->getEmail()): ?>
+								<tr>
+									<td><?php echo __('Email:') ?></td>
+									<td><a href="mailto:<?php echo $this->escapeHtml($_storeView->getEmail()) ?>"><?php echo $this->escapeHtml($_storeView->getEmail()) ?></a></td>
+								</tr>
+							<?php endif ?>
+							<?php if($_storeView->getFax()): ?>
+								<tr>
+									<td><?php echo __('Fax:') ?></td>
+									<td><?php echo $this->escapeHtml($_storeView->getFax()) ?></td>
+								</tr>
+							<?php endif ?>
+							<?php if($_storeView->getPhoneNumber()): ?>
+								<tr>
+									<td><?php echo __('Phone:') ?></td>
+									<td><a href="tel:<?php echo $this->escapeHtml($_storeView->getPhoneNumber()) ?>"><?php echo $this->escapeHtml($_storeView->getPhoneNumber()) ?></a></td>
+								</tr>
+							<?php endif ?>
+							<?php if($_storeView->getWebsite()): ?>
+								<tr>
+									<td><?php echo __('Website:') ?></td>
+									<td><a target="_blank" href="<?php echo $_storeView->getWebsite() ?>"><?php echo $_storeView->getWebsite() ?></a></td>
+								</tr>
+							<?php endif ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<?php if($_storeView->getDescription() || $_storeView->getTradingHours()): ?>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<?php if($_storeView->getDescription()): ?>
+					<div class="box-store margin-bottom40">
+						<div class="block-title"><h3 class="title"><span><?php echo __('Store Overview') ?></span></h3></div>
+						<div class="box-store-content">
+							<?php echo $this->getDescription(); ?>
+						</div>
+					</div>
+				<?php endif ?>
+				<?php if($_storeView->getTradingHours()): ?>
+					<div class="box-store margin-bottom40">
+						<div class="block-title"><h3 class="title"><span><?php echo __('Opening Hours') ?></span></h3></div>
+						<div class="box-store-content">
+							<?php echo $this->getTradingHours(); ?>
+						</div>
+					</div>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+	</div>
+	<div class="text-center margin-bottom40">
+		<button onclick="window.location= '<?php echo $block->getUrl('locator/') ?>';" class="btn btn-primary btn-lg action" title="<?php echo __('View All Store') ?>" type="button">
+				<span><?php echo __('View All Store') ?></span>
+			</button>
+	</div>
+</div>

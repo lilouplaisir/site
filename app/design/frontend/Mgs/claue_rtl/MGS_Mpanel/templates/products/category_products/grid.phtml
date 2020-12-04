@@ -1,0 +1,131 @@
+<?php $_productCollection = $this->getCategoryProductByIds($this->getCategoryIds()) ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<div class="content-block category-product-cat-block products-grid">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+	<?php if (count($_productCollection)>0): ?>
+		<?php 
+			$blockId = rand() . time();
+			$_helper = $this->helper('Magento\Catalog\Helper\Output');
+			$useSlider = $this->getUseSlider();
+			$perRow = $this->getPerrow();
+			if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1){
+				$columnCount = $perRow * $this->getNumberRow();
+			}
+			$image = 'category_page_grid';
+			$themeSettings = $themeHelper->getThemeSettings();
+			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+			$col = $themeHelper->convertPerRowtoCol($perRow);
+			$autoPlay = $this->getAutoplay() ? 'true' : 'false';
+			$stopAuto = $this->getStopAuto() ? 'true' : 'false';
+			$nav = $this->getNavigation() ? 'true' : 'false';
+			$dot = $this->getPagination() ? 'true' : 'false';
+		?>
+		
+		<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+			<?php $slideMultiRow = true; ?>
+			<?php $columnCount = $perRow * $this->getNumberRow(); ?>
+		<?php else: ?>
+			<?php $slideMultiRow = false; ?>
+		<?php endif ?>
+		
+		<div class="block widget mgs-products category-products-grid products-grid <?php if($useSlider): ?>row<?php if(!$slideMultiRow): ?> slider-1-row<?php endif ?><?php endif ?>">
+			<div class="items<?php if($useSlider): ?> owl-carousel<?php else: ?> row <?php echo $themeHelper->convertColClass($col, 'row') ?><?php endif ?>" id="category-products<?php echo $blockId; ?>">
+			
+				<?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+				
+				<?php $i=0; $j=0; foreach ($_productCollection as $_product): $i++; ?>
+					<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+						<?php if ($j++ % $columnCount == 0): ?>
+							<div class="item">
+						<?php endif ?>
+					<?php endif ?>
+					
+					<div class="product product-item <?php if($slideMultiRow || !$this->hasData('number_row')): ?><?php echo $themeHelper->getClearClass($perRow, $i) ?> <?php echo $themeHelper->convertColClass($col, 'col') ?><?php endif ?>">
+					
+						<?php echo $this->getLayout()
+										->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+										->setProductId($_product->getId())
+										->setThemeHelper($themeHelper)
+										->setImageHelper($_imagehelper)
+										->setRatio($this->getRatio())
+										->setCatalogHelperOutput($_helper)
+										->setUseSlider($useSlider)
+										->setTemplate('MGS_Mpanel::products/grid_items.phtml')
+										->toHtml(); ?>
+										
+					</div>
+				<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+					<?php if ($j % $columnCount == 0 || $j == count($_productCollection)): ?>
+						</div>
+					<?php endif ?>
+				<?php endif ?>
+				<?php endforeach; ?>
+			</div>
+			
+			<?php if($useSlider): ?>
+				<?php if($this->hasData('number_row') && $this->getNumberRow()>1):?>
+					<?php $perRow = 1; ?>
+				<?php endif ?>
+				<script type="text/javascript">
+					require([
+						'jquery',
+						'mgs/owlcarousel'
+					], function ($) {
+						var owlnewcattab<?php echo $blockId ?> = $('#category-products<?php echo $blockId ?>').owlCarousel({
+							items: <?php echo $perRow; ?>,
+							autoplay: <?php echo $autoPlay ?>,
+							autoplayHoverPause: <?php echo $stopAuto ?>,
+							nav: <?php echo $nav ?>,
+							dots: <?php echo $dot ?>,
+							rtl: true,
+							<?php if($lazyLoad): ?>lazyLoad: true,<?php endif ?>
+							navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+							<?php if(!$this->hasData('number_row') || $this->getNumberRow()==1):?>
+								responsive:{
+									0:{
+										items:1,
+										nav: false,
+										dots: true
+									},
+									480:{
+										items:2,
+										nav: false,
+										dots: true
+									},
+									768:{
+										items:<?php echo $perRow; ?>
+									}
+								}
+							<?php endif ?>
+						});
+					});
+				</script>
+			<?php else: ?>
+				<?php if (count($_productCollection)>0): ?>
+					<?php if(($this->hasData('loadmore') && $this->getData('loadmore')=='1') && ((!$this->getData('limit')) || (count($_productCollection) == $this->getData('limit')))): ?>
+						<div class="text-center">
+							<a class="btn-loadmore" href="<?php echo $this->getUrl('mpanel/index/loadmore', ['type'=>'category-products-category', 'category'=>$this->getCategoryIds(), 'perrow'=>$perRow, 'limit'=>$this->getLimit(), 'ratio'=>$this->getRatio(), 'col'=>$col, 'block_id'=>$blockId, 'tabs'=>0, 'p'=>2]) ?>">
+								<span class="icon"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+								<span class="text"><?php echo __('View More Products') ?></span>
+							</a>
+						</div>
+					<?php endif ?>
+				<?php endif ?>
+			<?php endif ?>
+		</div>
+		
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no products matching the selection.') ?></div>
+	<?php endif ?>
+</div>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <body>
+        <referenceContainer name="sidebar.main">
+			<referenceBlock name="customer_account_navigation">
+				<action method="unsetChild" ifconfig="mpanel/customer/account_dashboard">
+					<argument name="block" xsi:type="string">customer-account-navigation-account-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/account_information">
+					<argument name="block" xsi:type="string">customer-account-navigation-account-edit-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/address_book">
+					<argument name="block" xsi:type="string">customer-account-navigation-address-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/downloadable">
+					<argument name="block" xsi:type="string">customer-account-navigation-downloadable-products-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/orders">
+					<argument name="block" xsi:type="string">customer-account-navigation-orders-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/newsletter">
+					<argument name="block" xsi:type="string">customer-account-navigation-newsletter-subscriptions-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/billing_agreements">
+					<argument name="block" xsi:type="string">customer-account-navigation-billing-agreements-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/reviews">
+					<argument name="block" xsi:type="string">customer-account-navigation-product-reviews-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/wishlist">
+					<argument name="block" xsi:type="string">customer-account-navigation-wish-list-link</argument>
+				</action>
+				<action method="unsetChild" ifconfig="mpanel/customer/creditcart">
+					<argument name="block" xsi:type="string">customer-account-navigation-my-credit-cards-link</argument>
+				</action>
+			</referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

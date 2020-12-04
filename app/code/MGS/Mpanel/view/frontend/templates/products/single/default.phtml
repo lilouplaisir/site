@@ -1,0 +1,132 @@
+<?php $_product = $this->getProduct() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<div class="content-block single-product">
+	<?php if($this->hasData('mgs_panel_title') || $this->hasData('mgs_panel_note')): ?>
+		<?php if($this->getData('mgs_panel_title') != null || $this->getData('mgs_panel_note') != null): ?>
+			<div class="content-heading">
+				<?php if($this->hasData('mgs_panel_title') && $this->getData('mgs_panel_title') != null): ?>
+					<h2 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h2>
+				<?php endif ?>
+				<?php if($this->hasData('mgs_panel_note') && $this->getData('mgs_panel_note') != null): ?>
+					<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+	<?php endif ?>
+	
+	<?php if ($_product && $_product->getId()): ?>
+		<?php 
+			$_helper = $this->helper('Magento\Catalog\Helper\Output');
+			$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+			$image = 'category_page_grid';
+			$image_hover = 'product_base_image';
+			$themeSettings = $themeHelper->getThemeSettings();
+			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+		?>
+		
+		<div class="block widget mgs-product products-grid">
+			<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+			<div class="product-item-info" data-container="product-grid">
+				<?php
+					$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+					$size = $themeHelper->getImageSize($this->getRatio());
+					$productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl();
+					$productImageHover = $_imagehelper->init($_product, $image_hover)->resize($size['width'], $size['height'])->getUrl();
+				?>
+				<div class="product-top">
+					<?php // Product Image ?>
+					<a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+						<img src="<?php echo $productImage; ?>" data-small="<?php echo $productImage ?>" data-base="<?php echo $productImageHover ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail"/>
+					</a>
+					<?php echo $themeHelper->getProductLabel($_product) ?>
+					<ul class="actions-link">
+						<li class="hidden-sm hidden-xs">
+							<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+							<?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?>
+						</li>
+						<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$themeSettings['catalog']['wishlist_button']): ?>
+							<li>
+								<button class="action towishlist"
+								   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+								   data-title="<?php echo __('Add to Wish List') ?>"
+								   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+								   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+								   data-action="add-to-wishlist"
+								   role="button">
+									<i class="fa fa-heart"></i>
+								</button>
+							</li>
+						<?php endif; ?>
+						<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+						<?php if(!$themeSettings['catalog']['compare_button']): ?>
+							<li>
+								<button class="action tocompare"
+								   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+								   data-title="<?php echo __('Add to Compare') ?>"
+								   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+								   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+								   role="button">
+									<i class="fa fa-retweet"></i>
+								</button>
+							</li>
+						<?php endif ?>
+						
+						<?php if($this->getProductAddcart() && $_product->isSaleable()): ?>
+							<li>
+								<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+								<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+									<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+									<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+									<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+									<button class="action tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+										<span class="fa fa-shopping-cart"></span>
+									</button>
+								</form>
+							</li>
+						<?php endif ?>
+					</ul>
+				</div>
+				
+				<div class="product details product-item-details">
+					<?php if($this->getProductName()): ?>
+						<h5 class="product name product-item-name">
+							<a class="product-item-link"
+							   href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+								<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+							</a>
+						</h5>
+					<?php endif ?>
+					
+					<!-- Show Product Price -->
+					<?php if($this->hasData('product_price') && $this->getData('product_price')): ?>
+						<?php echo $block->getProductPrice($_product) ?>
+					<?php endif ?>
+					
+					<?php if($this->getProductRating()): ?>
+						<?php $product = $this->getLoadProduct($_product->getId()) ?>
+						<?php echo $block->getReviewsSummaryHtml($product, $templateType, true); ?>
+					<?php endif ?>
+					
+					<!-- Show Categories link -->
+					<?php if($this->hasData('product_categories') && $this->getData('product_categories')): ?>
+						<div class="categories-link"><span class="title"><?php echo __('Categories: '); ?></span><?php echo $this->getCategoriesLink($_product) ?></div>
+					<?php endif ?>
+					
+					<!-- Show Short Description -->
+					<?php if($this->hasData('product_description') && $this->getData('product_description')): ?>
+						<?php if($this->hasData('characters_count') && ($this->getData('characters_count')!='') && ($this->getData('characters_count')>0)): ?>
+							<?php $description = $themeHelper->truncate($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'), $this->getData('characters_count'))?>
+						<?php else: ?>
+							<?php $description = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')?>
+						<?php endif ?>
+						<div class="product description"><?php echo $description ?></div>
+					<?php endif ?>
+					
+				</div>
+			</div>
+		</div>
+		
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no product matching the selection.') ?></div>
+	<?php endif ?>
+</div>

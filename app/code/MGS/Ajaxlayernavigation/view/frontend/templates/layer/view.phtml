@@ -1,0 +1,75 @@
+<?php $_helper = $this->helper('MGS\Ajaxlayernavigation\Helper\Config');?>
+<?php if ($block->canShowBlock()): ?>
+    <div class="block filter mgs-filter" id="layered-filter-block">
+        <div class="block-title filter-title">
+            <strong><?php /* @escapeNotVerified */ echo __('Shop By') ?></strong>
+        </div>
+
+        <div class="block-content filter-content">
+			<div class="block-filter-content">
+				<?php echo $block->getChildHtml('state') ?>
+
+				<?php //if ($block->getLayer()->getState()->getFilters()): ?>
+				<?php if (false): ?>
+					<div class="block-actions filter-actions">
+						<a href="<?php /* @escapeNotVerified */ echo $block->getClearUrl() ?>" class="action clear filter-clear"><span><?php /* @escapeNotVerified */ echo __('Clear All') ?></span></a>
+					</div>
+				<?php endif; ?>
+				<?php $wrapOptions = false; ?>
+				<?php foreach ($block->getFilters() as $filter): ?>
+					
+					<?php if (!$wrapOptions): ?>
+						
+							<dl class="filter-options" id="narrow-by-list">
+							<?php $wrapOptions = true; endif; ?>
+						<?php if ($filter->getItemsCount()): ?>
+							<?php
+								if ($filter->getFilterItemsCount()) {
+									$itemIds = $filter->getFilterItemsCount();
+									$attributteId = $filter->getAttributeModel()->getAttributeId();
+									$itemProductIds[$attributteId] = $itemIds[$attributteId];
+								}
+								
+							?>
+							<div class="filter-options-item">
+								<dt role="heading" aria-level="3" class="active">
+									<div class="filter-options-title"><?php echo __($_helper->getFilterByText(), $block->escapeHtml(__($filter->getName()))) ?></div></dt>
+								<dd class="filter-options-content active"> 
+									<?php 
+									$isPrice = false;
+									if($_helper->usePriceSlide()){ 
+										$maxPrice = 0;
+										$minPrice = 0;
+
+										if ($filter->hasAttributeModel()) {
+											$attributeModel = $filter->getAttributeModel();
+											if ($attributeModel->getAttributeCode() == 'price') { 
+												$isPrice = true;
+												$minPrice = $filter->getMinPrice();
+												$maxPrice = $filter->getMaxPrice();
+											}
+										}
+									}
+									
+									
+								?>
+								<?php if ($isPrice) : ?>
+									<div>
+										<input type="text" id="price-range-slider" data-from="<?php echo $minPrice ?>" data-to="<?php echo $maxPrice ?>" name="price-range-slider" />
+									</div>
+								<?php else : ?>
+									<?php /* @escapeNotVerified */ echo $block->getChildBlock('renderer')->render($filter); ?>
+								<?php endif; ?> 
+								</dd>
+							</div>
+						<?php endif; ?>
+				<?php endforeach; ?>
+				<?php if ($wrapOptions): ?>
+					</dl>
+					
+				<?php endif; ?>
+				
+			</div>
+        </div>
+    </div>
+<?php endif; ?>

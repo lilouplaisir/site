@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php 
+	$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+	$canUsePanel = $themeHelper->acceptToUsePanel();
+?>
+<div class="contact-form-content">
+	<div class="row">
+		<div class="col-sm-6 col-xs-12 margin-bottom60">
+			<h3 class="text-uppercase margin-bottom15"><?php echo __('Send us a message'); ?></h3>
+			<form class="form contact" action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>" id="contact-form" method="post" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+				<div class="form-group name required">
+					<label for="name"><?php echo __('Name'); ?></label>
+					<input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text form-control" type="text" data-validate="{required:true}"/>
+				</div>
+				<div class="form-group email required">
+					<label for="email"><?php echo __('Email'); ?></label>
+					<input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text form-control" type="email" data-validate="{required:true, 'validate-email':true}"/>
+				</div>
+				<div class="form-group telephone">
+					<label for="telephone"><?php echo __('Phone'); ?></label>
+					<input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone') ?>" value="" class="input-text form-control" type="text" />
+				</div>
+				<div class="form-group comment required">
+					<label for="comment"><?php echo __('Content'); ?></label>
+					<textarea name="comment" id="comment" title="<?php /* @escapeNotVerified */ echo __('Content') ?>" class="input-text form-control" cols="5" rows="7" data-validate="{required:true}"></textarea>
+				</div>
+				<?= $block->getChildHtml('form.additional.info') ?>
+				<div class="actions-toolbar">
+					<input type="hidden" name="hideit" id="hideit" value="" />
+					<button type="submit" title="<?php /* @escapeNotVerified */ echo __('Send Messages') ?>" class="action submit btn btn-primary">
+						<span><?php /* @escapeNotVerified */ echo __('Send Messages') ?></span>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6 col-xs-12 margin-bottom60">
+			<!-- Static block contact_page_custom_block -->
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact_page_custom_block')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+		</div>
+	</div>
+	
+</div>

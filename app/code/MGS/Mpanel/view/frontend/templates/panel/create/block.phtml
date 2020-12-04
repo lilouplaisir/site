@@ -1,0 +1,135 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getRequest()->getParams() ?>
+<div class="edit-static-form">
+	
+	<div class="row">
+		<div class="col-md-12 builder-title">
+			<h2><?php echo __('Select Block') ?></h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="bs-glyphicons">
+				<ul class="bs-glyphicons-list" id="list-item">
+					<li id="static-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'static']) ?>')">
+						<span class="glyphicon glyphicon-text-width"></span>
+						<span class="glyphicon-class"><?php echo __('Text content & Images') ?></span>
+					</li>
+					
+					<li id="owl-banner-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'owl_banner']) ?>')">
+						<span class="glyphicon glyphicon-picture"></span>
+						<span class="glyphicon-class"><?php echo __('OWL Carousel Slider') ?></span>
+					</li>
+
+					<li id="new-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'new_products']) ?>')">
+						<span class="glyphicon glyphicon-fire"></span>
+						<span class="glyphicon-class"><?php echo __('New Products') ?></span>
+					</li>
+					
+					<li id="attribute-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'attribute_products']) ?>')">
+						<span class="glyphicon glyphicon-flag"></span>
+						<span class="glyphicon-class"><?php echo __('Products by Attribute') ?></span>
+					</li>
+					
+					<li id="sale-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'sale']) ?>')">
+						<span class="glyphicon glyphicon-certificate"></span>
+						<span class="glyphicon-class"><?php echo __('Sale Products') ?></span>
+					</li>
+					
+					<li id="rate-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'rate']) ?>')">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon-class"><?php echo __('Top Rate Products') ?></span>
+					</li>
+					
+					<li id="category-product" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'category_products']) ?>')">
+						<span class="glyphicon glyphicon-align-center"></span>
+						<span class="glyphicon-class"><?php echo __('Category Products') ?></span>
+					</li>
+					
+					<li id="deals-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'deals']) ?>')">
+						<span class="glyphicon glyphicon-tag"></span>
+						<span class="glyphicon-class"><?php echo __('Deals') ?></span>
+					</li>
+					
+					<li id="tabs-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'tabs']) ?>')">
+						<span class="glyphicon glyphicon-tasks"></span>
+						<span class="glyphicon-class"><?php echo __('Product Tabs') ?></span>
+					</li>
+					
+					<li id="special_product" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'special_product']) ?>')">
+						<span class="glyphicon glyphicon-qrcode"></span>
+						<span class="glyphicon-class"><?php echo __('Single Product') ?></span>
+					</li>
+
+					<li id="recent_view_products" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'recent_view_products']) ?>')">
+						<span class="glyphicon glyphicon-time"></span>
+						<span class="glyphicon-class"><?php echo __('Recent View Products') ?></span>
+					</li>
+					
+					<li id="brands-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'brands']) ?>')">
+						<span class="glyphicon glyphicon-th"></span>
+						<span class="glyphicon-class"><?php echo __('Featured Brands') ?></span>
+					</li>
+					
+					<li id="megamenu-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'megamenu']) ?>')">
+						<span class="glyphicon glyphicon-align-justify"></span>
+						<span class="glyphicon-class"><?php echo __('Megamenu') ?></span>
+					</li>
+					
+					<li id="banner-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'promo_banner']) ?>')">
+						<span class="glyphicon glyphicon-gift"></span>
+						<span class="glyphicon-class"><?php echo __('Promo Banner') ?></span>
+					</li>
+					
+					<li id="post-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'latest_posts']) ?>')">
+						<span class="glyphicon glyphicon-comment"></span>
+						<span class="glyphicon-class"><?php echo __('Latest Post') ?></span>
+					</li>
+					
+					<li id="testimonial-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'testimonial']) ?>')">
+						<span class="fa fa-quote-left"></span>&nbsp;&nbsp;&nbsp;<span class="fa fa-quote-right"></span>
+						<span class="glyphicon-class"><?php echo __('Testimonial') ?></span>
+					</li>
+					
+					
+					
+					<li id="portfolio" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'portfolio']) ?>')">
+						<span class="glyphicon glyphicon-folder-open"></span>
+						<span class="glyphicon-class"><?php echo __('Portfolio') ?></span>
+					</li>
+					
+					<li id="facebook-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'facebook']) ?>')">
+						<span class="fa fa-facebook-square" style="font-size:30px"></span>
+						<span class="glyphicon-class"><?php echo __('Facebook Like Box') ?></span>
+					</li>
+					
+					<li id="twitter-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'twitter']) ?>')">
+						<span class="fa fa-twitter-square" style="font-size:30px"></span>
+						<span class="glyphicon-class"><?php echo __('Twitter Feed') ?></span>
+					</li>
+					
+					<li id="instagram-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'instagram']) ?>')">
+						<span class="glyphicon glyphicon-camera" style="font-size:30px"></span>
+						<span class="glyphicon-class"><?php echo __('Instagram') ?></span>
+					</li>
+					
+					<li id="lookbook-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'lookbook']) ?>')">
+						<span class="glyphicon glyphicon-remove-circle" style="transform: rotate(45deg); -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg);"></span>
+						<span class="glyphicon-class"><?php echo __('Lookbook') ?></span>
+					</li>
+					
+					<li id="lookbook-slider-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'lookbook_slider']) ?>')">
+						<span class="glyphicon glyphicon-picture"></span>
+						<span class="glyphicon-class"><?php echo __('Lookbook Slider') ?></span>
+					</li>
+					
+					<li id="snapppt-item" onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'snapppt']) ?>')">
+						<span class="fa fa-instagram" style="font-size:30px"></span>
+						<span class="glyphicon-class"><?php echo __('Snapppt Shop') ?></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

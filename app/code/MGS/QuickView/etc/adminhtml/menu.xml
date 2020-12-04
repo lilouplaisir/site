@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>        
+        <add id="MGS_QuickView::QuickView" title="Quick View" module="MGS_QuickView" sortOrder="80" parent="Magento_Backend::mgs" resource="MGS_QuickView::QuickView"/>
+        <add id="MGS_QuickView::configuration" title="Configuration" module="MGS_QuickView" sortOrder="20" parent="MGS_QuickView::QuickView" action="adminhtml/system_config/edit/section/mgs_quickview" resource="MGS_QuickView::configuration"/>
+    </menu>
+</config>

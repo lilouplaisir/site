@@ -1,0 +1,13 @@
+<?php $helper = $this->helper('MGS\Amp\Helper\Config') ?>
+<?php $staticBlock1 = $helper->getStoreConfig('mgs_amp/header/static_block1') ?>
+<?php $staticBlock2 = $helper->getStoreConfig('mgs_amp/header/static_block2') ?>
+<?php if($staticBlock1!='' || $staticBlock2!=''): ?>
+	<div class="container-fluid">
+		<?php echo $helper->convertHtmlForAmp($this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($staticBlock1)->toHtml()) ?>
+		<?php if($staticBlock2!=''): ?>
+			<div class="top-middle-header">
+				<?php echo $helper->convertHtmlForAmp($this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($staticBlock2)->toHtml()) ?>
+			</div>
+		<?php endif ?>
+	</div>
+<?php endif ?>

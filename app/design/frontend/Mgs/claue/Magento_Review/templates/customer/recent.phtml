@@ -1,0 +1,51 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php
+/** @var $block \Magento\Review\Block\Customer\Recent */
+?>
+
+<?php if ($block->getReviews() && count($block->getReviews())): ?>
+<div class="block block-reviews-dashboard" style="margin-top: 40px;">
+	<div class="block-title--myac">
+		<h3><?php /* @escapeNotVerified */ echo __('My Recent Reviews') ?></h3>
+	</div>
+    <div class="block-content">
+		<table class="table-reviews-dashboard table">
+			<thead>
+				<tr>
+					<th><?php /* @escapeNotVerified */ echo __('Product') ?></th>
+					<th><?php /* @escapeNotVerified */ echo __('Rating') ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($block->getReviews() as $_review): ?>
+					<tr>
+						<td><a href="<?php /* @escapeNotVerified */ echo $block->getReviewUrl($_review->getReviewId()) ?>"><?php echo $block->escapeHtml($_review->getName()) ?></a></td>
+						<td>
+							<?php if ($_review->getSum()): ?>
+								<?php $rating = $_review->getSum() / $_review->getCount() ?>
+								<div class="rating-summary">
+									<div class="rating-result" title="<?php /* @escapeNotVerified */ echo $rating; ?>%">
+										<span style="width:<?php /* @escapeNotVerified */ echo $rating; ?>%"><span><?php /* @escapeNotVerified */ echo $rating; ?>%</span></span>
+									</div>
+								</div>
+							<?php endif; ?>
+						 </td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<div>
+			<a class="action btn btn-secondary btn-xs view" href="<?php /* @escapeNotVerified */ echo $block->getAllReviewsUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('View All') ?></span></a>
+		</div>
+    </div>
+</div>
+<?php endif; ?>

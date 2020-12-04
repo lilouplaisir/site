@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mgs_amp>
+			<header>
+				<static_block1>header_1_top_left_link</static_block1>
+				<static_block2>header_1_top_middle_block</static_block2>
+			</header>
+			<footer>
+				<static_block1>footer_contact_us</static_block1>
+				<static_block2>footer_block_categories</static_block2>
+				<static_block3>footer_block_infomation</static_block3>
+				<static_block4>footer_block_quick_link</static_block4>
+				<newsletter>1</newsletter>
+				<newsletter_text>Subscribe to our newsletter and get 10% off your first purchase</newsletter_text>
+			</footer>
+			<catalog>
+				<product_image_width>190</product_image_width>
+				<product_image_height>253</product_image_height>
+				<details_image_width>450</details_image_width>
+				<details_image_height>600</details_image_height>
+				<minicart_image_width>90</minicart_image_width>
+				<minicart_image_height>120</minicart_image_height>
+			</catalog>
+		</mgs_amp>
+    </default>
+</config>
+

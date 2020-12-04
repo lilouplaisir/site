@@ -1,0 +1,32 @@
+<?php $bannerId = $this->getBannerId() ?>
+<?php $banner = $this->getBannerById($bannerId) ?>
+<?php $bannerImageUrl = $this->getBannerImageUrl($banner) ?>
+
+<?php if($banner): ?>
+
+	<?php 
+		$width = $height = 0;
+		try{
+			list($width, $height, $type, $attr) = getimagesize(str_replace('https://','http://',$bannerImageUrl));
+		}catch(Exception $e){}
+	?>
+	<div class="promobanner<?php echo $this->getCustomClass($banner) ?>">
+		<a<?php if($banner->getUrl()!=''): ?> href="<?php echo $banner->getUrl() ?>"<?php endif ?>>
+			<amp-img width="<?= $width ?>" height="<?= $height ?>" layout="responsive" alt="" src="<?= $bannerImageUrl ?>"></amp-img>
+		</a>
+		<?php if(($banner->getContent() != '') || ($banner->getButton() != '')): ?>
+			<div class="text<?php if($banner->getTextAlign()!=''): ?> <?php echo $banner->getTextAlign() ?><?php endif ?>">
+				<?php if($banner->getContent() != ''): ?>
+					<div class="banner-text"><?php echo $banner->getContent() ?></div>
+				<?php endif ?>
+				<?php if($banner->getButton() != ''): ?>
+					<span class="banner-button">
+						<a<?php if($banner->getUrl()!=''): ?> href="<?php echo $banner->getUrl() ?>"<?php endif ?> class="btn btn-default btn-promo-banner"><?php echo $banner->getButton() ?></a>
+					</span>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+	</div>
+<?php else: ?>
+	<div role="alert" class="alert alert-warning"> <?php echo __('We can\'t find banners matching the selection.') ?> </div>
+<?php endif ?>

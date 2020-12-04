@@ -1,0 +1,12 @@
+<div class="megamenu_action mobile">
+	<button class="megamenu_action_mb" on="tap:site_menu.open,AMP.setState({activeSidebar: true})" type="button">
+		<amp-img src="<?php echo $this->getViewFileUrl('images/hamburger-black.svg') ?>" alt="<?php echo __('Menu') ?>" width="30px" height="16px"></amp-img>
+	</button>
+</div>
+<div class="logo">
+	<?= $block->getChildHtml('amp.logo') ?>
+</div>
+<div class="mobile-item-col">
+	<?= $block->getChildHtml('amp.minicart') ?>
+	<?= $block->getChildHtml('amp.top.search') ?>
+</div>

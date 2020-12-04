@@ -1,0 +1,26 @@
+<?php $helper = $this->helper('MGS\Social\Helper\Data'); ?>
+<?php
+	$user_name = $helper->getConfig('instagram_setting/user_name');
+	$client_id = $helper->getConfig('instagram_setting/client_id');
+	$number = $helper->getConfig('instagram_setting/number');
+	if($helper->getConfig('instagram_setting/width')){
+		$width = $helper->getConfig('instagram_setting/width');
+	}else {
+		$width = 100;
+	}
+	if($helper->getConfig('instagram_setting/height')){
+		$height = $helper->getConfig('instagram_setting/height');
+	}else {
+		$height = 100;
+	}
+	$access_token = $helper->getConfig('instagram_setting/access_token');
+?>
+<?php if($helper->getConfig('instagram_setting/enable_instagram') && $user_name && $client_id && $number): ?>
+
+<div class="block-content">
+    <?php $block->getInstagramData($access_token,$user_name, $client_id, $number, $width, $height); ?>
+</div>
+
+<?php else: ?>
+	<p><?php echo __('The instagram extension had disabled or no "User Name" or no "Client ID" or no "Number of Images want to show" ') ?></p>
+<?php endif; ?>

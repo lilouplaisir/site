@@ -1,0 +1,358 @@
+<home>
+	<section>
+		<name><![CDATA[block41]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[0]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block42]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[3,3,3,3]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["","","",""]]]></block_class>
+		<class><![CDATA[padding-left30 padding-right30]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block43]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[50]]></padding_top>
+		<padding_bottom><![CDATA[84]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block44]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block45]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[3,3,3,3]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30","margin-bottom30","margin-bottom30"]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[45]]></padding_top>
+		<padding_bottom><![CDATA[2]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block46]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[3,6,3]]></block_cols>
+		<tablet_cols><![CDATA[["12","12","12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["","",""]]]></block_class>
+		<class><![CDATA[padding-left30 padding-right30]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[65]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block47]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,3,3]]></block_cols>
+		<tablet_cols><![CDATA[["12","6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["","",""]]]></block_class>
+		<class><![CDATA[padding-left30 padding-right30]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block43-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"LATEST FROM BLOG","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","post_category":["1","2","3","4","5"],"number_of_posts":"3","items":"3","template":"default.phtml","show_thumbnail":"1","show_short_content":"1","limit_characters_short_content":"120","view_as":"1","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="LATEST FROM BLOG" post_category="1,2,3,4,5" number_of_posts="3" items="3" show_thumbnail="1" mgs_panel_note="The freshest and most exciting news" template="widget/default.phtml" show_short_content="1" limit_characters_short_content="120" view_as="owl_carousel" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block45-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-car">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">FREE SHIPPING</h6>
+<p class="no-margin">Free shipping on all US order or order above $200</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block45-1]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-help2">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">SUPPORT 24/7</h6>
+<p class="no-margin">Contact us 24 hours a day, 7 days a week</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block45-2]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-refresh">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">30 DAYS RETURN</h6>
+<p class="no-margin">Simply return it within 30 days for an exchange.</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block45-3]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-door-lock">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">100% PAYMENT SECURE</h6>
+<p class="no-margin">We ensure secure payment with PEV</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block46-0]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Analogue Resin Strap Watch","product_id":"17","ratio":"0","prd_template":"1","product_name":"1","product_price":"1","product_rating":"1","product_addcart":"1","product_description":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="17" ratio="0" product_name="1" product_price="1" product_rating="1" product_description="1"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block46-0]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"ASOS Ridley High Waist","product_id":"10","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="10" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block46-2]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Roshe One Casual","product_id":"11","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="11" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block46-2]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Denim Shell Top with Ruffle Front","product_id":"12","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="12" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block46-1]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Raw Denim Black","product_id":"19","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[big-item col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="19" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block42-0]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Lion king black","product_id":"27","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="27" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block42-1]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Hot fire brown","product_id":"20","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="20" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block42-2]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Super Man","product_id":"28","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="28" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block42-3]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Dream Landia Shoes","product_id":"13","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="13" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block47-1]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Nanamica Knit Cap","product_id":"21","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="21" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block47-2]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Swan Crop V-Neck Tee","product_id":"29","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="29" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block47-1]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Contour Skinny G-star","product_id":"14","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="14" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block47-2]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Strapless Digi Sequined Dress","product_id":"22","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="22" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block47-0]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Medium Wash","product_id":"23","ratio":"4","prd_template":"1","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[big-item col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="23" ratio="4" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="1" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block44-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div>{{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="optimize_image_instagram"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block41-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","","","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"\" style=\"background-image:url(pub\/media\/wysiwyg\/slider\/slider-zara.jpg)\"><img class=\"img-responsive\" src=\"pub\/media\/wysiwyg\/slider\/slider-zara.jpg\" alt=\"\"><\/a><div class=\"slide-text middle\"><div class=\"inner-text middle\"><div class=\"text-center text-colour-white\">\r\n<h5 class=\"sub-title text-colour-white\">Spring - Summer 2019<\/h5>\r\n<h2 class=\"text-colour-white big-text\">BEST OF COLLECTION<\/h2>\r\n<a href=\"#\" class=\"btn btn-default\">Shop now<\/a>\r\n<\/div><\/div><\/div><\/div><div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"\" style=\"background-image:url(pub\/media\/wysiwyg\/slider\/slider-men.jpg)\"><img class=\"img-responsive\" src=\"pub\/media\/wysiwyg\/slider\/slider-men.jpg\" alt=\"\"><\/a><div class=\"slide-text middle\"><div class=\"inner-text middle\"><div class=\"text-center text-colour-white\">\r\n<h5 class=\"sub-title text-colour-white\">Spring - Summer 2019<\/h5>\r\n<h2 class=\"text-colour-white big-text\">BEST OF COLLECTION<\/h2>\r\n<a href=\"#\" class=\"btn btn-default\">Shop now<\/a>\r\n<\/div><\/div><\/div><\/div>","fullheight":"1","offset":"","effect":"1","speed":"","navtemple":"1","fullscreen":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"loop":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[no-padding]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="0" autoplay="0" stop_auto="0" navigation="0" offset="" fullheight="1" pagination="0" loop="0" speed="" html_slider="&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(pub/media/wysiwyg/slider/slider-zara.jpg)&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;pub/media/wysiwyg/slider/slider-zara.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text middle&quot;&gt;&lt;div class=&quot;text-center text-colour-white&quot;&gt;
+&lt;h5 class=&quot;sub-title text-colour-white&quot;&gt;Spring - Summer 2019&lt;/h5&gt;
+&lt;h2 class=&quot;text-colour-white big-text&quot;&gt;BEST OF COLLECTION&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot;&gt;Shop now&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(pub/media/wysiwyg/slider/slider-men.jpg)&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;pub/media/wysiwyg/slider/slider-men.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text middle&quot;&gt;&lt;div class=&quot;text-center text-colour-white&quot;&gt;
+&lt;h5 class=&quot;sub-title text-colour-white&quot;&gt;Spring - Summer 2019&lt;/h5&gt;
+&lt;h2 class=&quot;text-colour-white big-text&quot;&gt;BEST OF COLLECTION&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot;&gt;Shop now&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="1" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<theme_setting>
+		<general>
+			<footer>footer_3</footer>
+			<header>header_5</header>
+			<layout>wide</layout>
+		</general>
+		<custom_style><style></style></custom_style>
+	</theme_setting>
+
+</home>

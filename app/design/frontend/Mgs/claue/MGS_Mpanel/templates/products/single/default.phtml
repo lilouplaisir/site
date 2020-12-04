@@ -1,0 +1,147 @@
+<?php $_product = $this->getProduct() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $baseImageHover = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+<?php $baseImageHover = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+
+<div class="content-block single-product">
+	<?php if($this->hasData('mgs_panel_title') || $this->hasData('mgs_panel_note')): ?>
+		<?php if($this->getData('mgs_panel_title') != null || $this->getData('mgs_panel_note') != null): ?>
+			<div class="content-heading">
+				<?php if($this->hasData('mgs_panel_title') && $this->getData('mgs_panel_title') != null): ?>
+					<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+				<?php endif ?>
+				<?php if($this->hasData('mgs_panel_note') && $this->getData('mgs_panel_note') != null): ?>
+					<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+	<?php endif ?>
+	
+	<?php if ($_product && $_product->getId()): ?>
+		<?php 
+			$_helper = $this->helper('Magento\Catalog\Helper\Output');
+			$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+			$image = 'category_page_grid';
+			$_image = 'product_thumbnail_image';
+			$themeSettings = $themeHelper->getThemeSettings();
+			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+		?>
+		
+		<div class="block widget mgs-product products-grid">
+			<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+			<div class="product-item-info<?php if($this->getData('prd_template') == 1): ?> metro_template<?php endif ?>" data-container="product-grid">
+				<?php
+					$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+					$size = $themeHelper->getImageSize($this->getRatio());
+					$padding = $themeHelper->getImagePadding($this->getRatio());
+					$productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl();
+					$productImageHover = $_imagehelper->init($_product, $_image)->resize($size['width'], $size['height'])->getUrl();
+				?>
+				<?php if(!$lazyLoad): ?>
+					<?php $baseImage = $productImage ?>
+					<?php $baseImageHover = $productImageHover ?>
+				<?php endif ?>
+				<div class="product-top">
+					<?php // Product Image ?>
+					<a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" style="padding-top: <?php echo $padding; ?>" class="product photo product-item-photo" tabindex="-1">
+						<img src="<?php echo $baseImage ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail<?php if($lazyLoad): ?> lazy<?php endif ?>" data-src="<?php echo $productImage ?>"/>
+						<?php if(basename($_product->getData('thumbnail')) !=  'no_selection'): ?>
+							<?php if(basename($_product->getData('thumbnail')) != basename($_product->getData('small_image'))): ?>
+								<img src="<?php echo $baseImageHover ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive img-hover-show<?php if($lazyLoad): ?> lazy<?php endif ?>"  data-src="<?php echo $productImageHover ?>"/>
+							<?php endif ?>
+						<?php endif ?>
+						<div class="product-image-photo"></div>
+					</a>
+					<?php echo $themeHelper->getProductLabel($_product) ?>
+					<ul class="actions-link">
+						<li class="hidden-sm hidden-xs">
+							<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+							<?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?>
+						</li>
+						<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$themeSettings['catalog']['wishlist_button']): ?>
+							<li>
+								<button class="action towishlist"
+								   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+								   data-title="<?php echo __('Add to Wish List') ?>"
+								   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+								   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+								   data-action="add-to-wishlist"
+								   role="button">
+									<i class="pe-7s-like"></i>
+								</button>
+							</li>
+						<?php endif; ?>
+						<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+						<?php if(!$themeSettings['catalog']['compare_button']): ?>
+							<li>
+								<button class="action tocompare"
+								   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+								   data-title="<?php echo __('Add to Compare') ?>"
+								   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+								   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+								   role="button">
+									<i class="pe-7s-graph3"></i>
+								</button>
+							</li>
+						<?php endif ?>
+					</ul>
+					
+					<?php if($this->getProductAddcart() && $_product->isSaleable()): ?>
+						<div>
+							<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+							<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data']['uenc'], 'product'=>$postParams['data']['product']]); ?>" method="post">
+								<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+								<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+								<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+								<button class="action tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+									<span class="icon pe-7s-shopbag"></span>
+									<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+								</button>
+							</form>
+						</div>
+					<?php endif ?>
+				</div>
+				
+				<div class="product details product-item-details">
+					<?php if($this->getProductName()): ?>
+						<h5 class="product name product-item-name">
+							<a class="product-item-link"
+							   href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+								<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+							</a>
+						</h5>
+					<?php endif ?>
+					
+					<!-- Show Product Price -->
+					<?php if($this->hasData('product_price') && $this->getData('product_price')): ?>
+						<?php echo $block->getProductPrice($_product) ?>
+					<?php endif ?>
+					
+					<?php // Swatches Product ?>
+					<?php echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($_product)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml() ?>
+					
+					<?php if($this->getProductRating()): ?>
+						<?php $product = $this->getLoadProduct($_product->getId()) ?>
+						<?php echo $block->getReviewsSummaryHtml($product, $templateType, true); ?>
+					<?php endif ?>
+					
+					<!-- Show Short Description -->
+					<?php if($this->hasData('product_description') && $this->getData('product_description')): ?>
+						<?php if($this->hasData('characters_count') && ($this->getData('characters_count')!='') && ($this->getData('characters_count')>0)): ?>
+							<?php $description = $themeHelper->truncate($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'), $this->getData('characters_count'))?>
+						<?php else: ?>
+							<?php $description = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')?>
+						<?php endif ?>
+						<div class="product description"><?php echo $description ?></div>
+					<?php endif ?>
+					
+				</div>
+			</div>
+		</div>
+		
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no product matching the selection.') ?></div>
+	<?php endif ?>
+</div>

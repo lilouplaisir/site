@@ -1,0 +1,181 @@
+<?php $themeHelper = $this->getThemeHelper(); ?>
+<?php $themeSettings = $themeHelper->getThemeSettings(); ?>
+<?php $_imagehelper = $this->getImageHelper(); ?>
+<?php $_helper = $this->getCatalogHelperOutput(); ?>
+<?php $image = 'category_page_grid'; ?>
+<?php $_image = 'product_thumbnail_image'; ?>
+
+<?php $_product = $this->getLoadProduct($this->getProductId()); ?>
+
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+<?php $baseImageHover = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+<?php $useSlider = $this->getUseSlider(); ?>
+<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+
+<?php 
+	/** Add code */
+		$_aHelper = $this->helper('MGS\AjaxCart\Helper\Data');
+		$animationType = $_aHelper->getConfig('ajaxcart/additional/animation_type');
+	/**End add code */
+?>
+
+<div class="product-item-info <?php if ($themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect')== 1): ?> <?php echo "disable_hover_effect" ?>
+						<?php endif ?>" data-container="product-grid">
+	
+	<?php // Product Top ?>
+	<div class="product-top">
+	
+		<?php // Product Image ?>
+		<?php $size = $themeHelper->getImageSize($this->getRatio()); ?>
+		<?php $padding = $themeHelper->getImagePadding($this->getRatio()); ?>
+		
+		<?php 
+			$productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl();
+			$productImageHover = $_imagehelper->init($_product, $_image)->resize($size['width'], $size['height'])->getUrl();
+			if(!$lazyLoad){
+				$baseImage = $productImage;
+				$baseImageHover = $productImageHover;
+			}
+		?>
+		<a href="<?php  echo $_product->getProductUrl() ?>" class="product photo product-item-photo" style="padding-bottom: <?php echo $padding ?>;"  tabindex="-1">
+			
+			<img src="<?php echo $baseImage ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail<?php if($lazyLoad): ?> <?php if($useSlider): ?> owl-lazy<?php else: ?> lazy<?php endif ?><?php endif ?>"  data-src="<?php echo $productImage ?>"/>
+			
+			<?php if(basename($_product->getData('thumbnail')) !=  'no_selection'): ?>
+				<?php if(basename($_product->getData('thumbnail')) != basename($_product->getData('small_image'))): ?>
+					<img src="<?php echo $baseImageHover ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive img-hover-show<?php if($lazyLoad): ?> <?php if($useSlider): ?> owl-lazy<?php else: ?> lazy<?php endif ?><?php endif ?>"  data-src="<?php echo $productImageHover ?>"/>
+				<?php endif ?>
+			<?php endif ?>
+			
+			<div class="product-image-photo"></div>
+		</a>
+		
+		<?php // Product Label ?>
+		<?php echo $themeHelper->getProductLabel($_product) ?>
+		
+		<?php // Product Action ?>
+		<ul class="actions-link">
+		
+			<?php // QuickView  ?>
+			<li class="hidden-sm hidden-xs">
+				<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+				<?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?>
+			</li>
+			
+			<?php // Wishlist  ?>
+			<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$themeSettings['catalog']['wishlist_button']): ?>
+				<li>
+					<button class="action towishlist"
+					   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+					   data-title="<?php echo __('Add to Wish List') ?>"
+					   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+					   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+					   data-action="add-to-wishlist"
+					   role="button">
+						<i class="pe-7s-like"></i>
+					</button>
+				</li>
+			<?php endif; ?>
+			
+			<?php // Compare  ?>
+			<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+			<?php if(!$themeSettings['catalog']['compare_button']): ?>
+				<li>
+					<button class="action tocompare"
+					   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+					   data-title="<?php echo __('Add to Compare') ?>"
+					   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+					   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+					   role="button">
+						<i class="pe-7s-graph3"></i>
+					</button>
+				</li>
+			<?php endif ?>
+		</ul>
+		
+		<?php // Add to cart ?>
+		<?php if ($themeHelper->getStoreConfig('mpanel/catalog/disable_add_to_cart')== 0 && $themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect') == 0): ?>
+			<?php if ($_product->isSaleable()): ?>
+				<div>
+					<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+					<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data']['uenc'], 'product'=>$postParams['data']['product']]); ?>" method="post">
+						<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+						<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+						<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+						<?php 
+							$has_option = 0;
+							if($_product->getTypeId() == 'simple'){
+								$data = $_product->getData();
+								$has_option = ( isset($data['has_options']) && $data['has_options'] == 1) ? 1 : 0;
+							}
+						?>
+						
+						<?php if($animationType == 'cartshow' && ($_product->getTypeId() == 'configurable' || $_product->getTypeId() == 'bundle' || $_product->getTypeId() == 'grouped' || ($_product->getTypeId() == 'simple' && $has_option == 1) )): ?>
+							<button class="action tocart btn-cart" type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>" onclick="window.location.href = '<?php echo $_product->getProductUrl() ?>'">
+								<span class="icon pe-7s-shopbag"></span>
+								<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+							</button>
+						<?php else: ?>
+							<button class="action tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+								<span class="icon pe-7s-shopbag"></span>
+								<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+							</button>
+						<?php endif; ?>
+					</form>
+				</div>
+			<?php endif ?>
+		<?php endif ?>
+	</div>
+	
+	<?php // Product Detail ?>
+	<div class="product details product-item-details">
+	
+		<?php // Product Name ?>
+		<h5 class="product name product-item-name">
+			<a class="product-item-link"
+			   href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+                <?php /* @escapeNotVerified */ echo $_product->getName(); ?>
+			</a>
+		</h5>
+		
+		<?php if(!$themeHelper->getStoreConfig('mpanel/catalog/review')): ?>
+			<?php $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW; ?>
+			<?php echo $block->getReviewsSummaryHtml($_product, $templateType,true); ?>
+		<?php endif ?>
+		
+		<?php // Price ?>
+		<?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
+		<?php if ($themeHelper->getStoreConfig('mpanel/catalog/disable_add_to_cart') == 0 && $themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect') == 1): ?>
+			<?php if ($_product->isSaleable()): ?>
+				<div>
+					<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+					<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data']['uenc'], 'product'=>$postParams['data']['product']]); ?>" method="post">
+						<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+						<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+						<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+						<?php 
+							$has_option = 0;
+							if($_product->getTypeId() == 'simple'){
+								$data = $_product->getData();
+								$has_option = ( isset($data['has_options']) && $data['has_options'] == 1) ? 1 : 0;
+							}
+						?>
+
+						<?php if($animationType == 'cartshow' && ($_product->getTypeId() == 'configurable' || $_product->getTypeId() == 'bundle' || $_product->getTypeId() == 'grouped' || ($_product->getTypeId() == 'simple' && $has_option == 1) )): ?>
+							<button class="action tocart btn-cart hover_effect" type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>" onclick="window.location.href = '<?php echo $_product->getProductUrl() ?>'">
+								<span class="icon pe-7s-shopbag"></span>
+								<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+							</button>
+						<?php else: ?>
+							<button class="action tocart btn-cart hover_effect" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+								<span class="icon pe-7s-shopbag"></span>
+								<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+							</button>
+						<?php endif; ?>
+					</form>
+				</div>
+			<?php endif ?>
+		<?php endif ?>
+	</div>
+</div>

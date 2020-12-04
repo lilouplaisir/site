@@ -1,0 +1,522 @@
+<home>
+	<section>
+		<name><![CDATA[block102]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block103]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["",""]]]></block_class>
+		<class><![CDATA[padding-left30 padding-right30]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[30]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block104]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[4,4,4]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30 pull-right",""]]]></block_class>
+		<class><![CDATA[padding-left30 padding-right30]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block105]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[48]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block106]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block107]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[48]]></padding_top>
+		<padding_bottom><![CDATA[30]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block108]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[34]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block109]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[21]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[8]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block110]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[3,3,3,3]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30","margin-bottom30 first-sm-item","margin-bottom30"]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[#f6f6f8]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[35]]></padding_top>
+		<padding_bottom><![CDATA[2]]></padding_bottom>
+		<block_position><![CDATA[9]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block103-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_office"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_office" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block103-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_living_room"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_living_room" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block103-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_bedroom"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_bedroom" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block103-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_dining_room"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_dining_room" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block104-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_lamp"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_lamp" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block104-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_lookbook"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_lookbook" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block105-0]]></block_name>
+		<type><![CDATA[attribute_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"TRENDING PRODUCTS","additional_content":"Top view in the week","animation":"","animation_delay":"","attribute":"trending","limit":"8","perrow":"4","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","use_slider":"1","number_row":"1","navigation":"1","category_id":["47"],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Attributes" mgs_panel_title="TRENDING PRODUCTS" mgs_panel_note="Top view in the week" limit="8" ratio="4" category_ids="47" attribute="trending" use_slider="1" loadmore="0" template="products/attribute/grid.phtml" perrow="4" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block106-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_lookbook2"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_lookbook2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block106-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_furniture_banner_summer_sale"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_furniture_banner_summer_sale" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block107-0]]></block_name>
+		<type><![CDATA[tabs]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"HOT PRODUCTS","additional_content":"Top view in the week","animation":"","animation_delay":"","tabs":{"mgs_new_products_tabs":{"value":"mgs_new_products_tabs","label":"New Arrivals","position":"2"},"mgs_sale_products_tabs":{"value":"mgs_sale_products_tabs","label":"On Sale","position":"3"},"5244":{"value":"best_seller","label":"Best Seller","position":"1"}},"tab_template":"1","limit":"8","perrow":"4","ratio":"4","number_row":"1","category_id":["47"],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Tabs" mgs_panel_title="HOT PRODUCTS" mgs_panel_note="Top view in the week" limit="8" perrow="4" category_ids="47" use_slider="0" loadmore="0" ratio="4" tabs="best_seller,mgs_new_products_tabs,mgs_sale_products_tabs" template="products/tabs/grid.phtml" tab_template="1"labels="Best Seller,New Arrivals,On Sale"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block108-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"LATEST FROM BLOG","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","post_category":["1","2","3","4","5"],"number_of_posts":"3","items":"3","template":"default.phtml","show_thumbnail":"1","show_short_content":"1","limit_characters_short_content":"120","view_as":"1","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="LATEST FROM BLOG" post_category="1,2,3,4,5" number_of_posts="3" items="3" show_thumbnail="1" mgs_panel_note="The freshest and most exciting news" template="widget/default.phtml" show_short_content="1" limit_characters_short_content="120" view_as="owl_carousel" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block110-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-car">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">FREE SHIPPING</h6>
+<p class="no-margin">Free shipping on all US order or order above $200</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block110-1]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-help2">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">SUPPORT 24/7</h6>
+<p class="no-margin">Contact us 24 hours a day, 7 days a week</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block110-2]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-refresh">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">30 DAYS RETURN</h6>
+<p class="no-margin">Simply return it within 30 days for an exchange.</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block110-3]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-door-lock">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">100% PAYMENT SECURE</h6>
+<p class="no-margin">We ensure secure payment with PEV</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block104-2]]></block_name>
+		<type><![CDATA[deals]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"1","perrow":"1","template":"grid.phtml","ratio":"4","number_row":"1","category_id":["48"],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Deals" mgs_panel_title="" mgs_panel_note="" limit="1" perrow="1" ratio="4" category_ids="48" use_slider="0" loadmore="0" template="products/deals/grid.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block109-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div>{{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="optimize_instagram_funiture"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block102-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","","","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"\" style=\"background-image:url(pub\/media\/wysiwyg\/slider\/slider_furniture1.jpg)\"><img class=\"img-responsive\" src=\"pub\/media\/wysiwyg\/slider\/slider_furniture1.jpg\" alt=\"\"><\/a><div class=\"slide-text middle\"><div class=\"inner-text middle\"><div class=\"text-center text-colour-white\">\r\n<h5 class=\"sub-title text-colour-white\">Spring - Summer 2020<\/h5>\r\n<h2 class=\"text-colour-white big-text\">BEST OF COLLECTION<\/h2>\r\n<p>Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore \r\neu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident<\/p>\r\n<a href=\"#\" class=\"btn btn-default\">Shop now<\/a>\r\n<\/div><\/div><\/div><\/div><div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a style=\"background-image:url(pub\/media\/wysiwyg\/slider\/slider_furniture2.jpg)\" class=\"item-image\" href=\"\"><img class=\"img-responsive\" src=\"pub\/media\/wysiwyg\/slider\/slider_furniture2.jpg\" alt=\"\"><\/a><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"text-center text-colour-white\">\r\n<h5 class=\"sub-title text-colour-white\">Spring - Summer 2020<\/h5>\r\n<h2 class=\"text-colour-white big-text\">BEST OF COLLECTION<\/h2>\r\n<p>Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore \r\neu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident<\/p>\r\n<a href=\"#\" class=\"btn btn-default\">Shop now<\/a>\r\n<\/div><\/div><\/div><\/div>","fullheight":"1","offset":"","effect":"1","speed":"","navtemple":"1","fullscreen":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"loop":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[no-padding]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="0" autoplay="0" stop_auto="0" navigation="0" offset="" fullheight="1" pagination="0" loop="0" speed="" html_slider="&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(pub/media/wysiwyg/slider/slider_furniture1.jpg)&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;pub/media/wysiwyg/slider/slider_furniture1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text middle&quot;&gt;&lt;div class=&quot;text-center text-colour-white&quot;&gt;
+&lt;h5 class=&quot;sub-title text-colour-white&quot;&gt;Spring - Summer 2020&lt;/h5&gt;
+&lt;h2 class=&quot;text-colour-white big-text&quot;&gt;BEST OF COLLECTION&lt;/h2&gt;
+&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore 
+eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident&lt;/p&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot;&gt;Shop now&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a style=&quot;background-image:url(pub/media/wysiwyg/slider/slider_furniture2.jpg)&quot; class=&quot;item-image&quot; href=&quot;&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;pub/media/wysiwyg/slider/slider_furniture2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-center text-colour-white&quot;&gt;
+&lt;h5 class=&quot;sub-title text-colour-white&quot;&gt;Spring - Summer 2020&lt;/h5&gt;
+&lt;h2 class=&quot;text-colour-white big-text&quot;&gt;BEST OF COLLECTION&lt;/h2&gt;
+&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore 
+eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident&lt;/p&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot;&gt;Shop now&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="1" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Office]]></title>
+			<filename><![CDATA[/o/f/office_banner.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom40">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Office</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_office]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Living Room]]></title>
+			<filename><![CDATA[/l/i/living_banner.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom40">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Living Room</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_living_room]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Bedroom]]></title>
+			<filename><![CDATA[/b/e/bedroom_banner.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom40">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Bedroom</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_bedroom]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Dining Room]]></title>
+			<filename><![CDATA[/d/i/dining_banner.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom40">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Dining Room</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_dining_room]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Lamp]]></title>
+			<filename><![CDATA[/b/a/banner_sale_fnt.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[middle-center]]></text_align>
+			<content><![CDATA[<div class="text-center"><h3 class="fwm margin-bottom10 ls__1 lh__1" style="font-size:18px; color:#222222;">LAMP COLLECTIONS</h3>
+<h4 class="margin-bottom10 nowrap" style="font-size:50px; line-height:50px; color:#222222;">UP TO 70%</h4>
+<div><button class="btn btn-default" onclick="setLocation('http://m3.magesolution.com/claue/women.html')" style="font-size:14px;">Shop Now</button></div></div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_lamp]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Lookbook]]></title>
+			<filename><![CDATA[/b/a/banner_lookbook_fnt.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="padding-left15 padding-bottom30"><h3 class="fwm margin-bottom10 ls__1 lh__1" style="font-size:14px; color:#222222;">GET UP TO 50% OFF</h3>
+<h4 class="margin-bottom10" style="font-size:35px; line-height:36px; color:#222222;">LOOKBOOK 2016</h4>
+<p>your world of fashion in numbers</p></div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_lookbook]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Lookbook2]]></title>
+			<filename><![CDATA[/b/a/banner_sale_fnt_2_1.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[middle-center]]></text_align>
+			<content><![CDATA[<div class="text-center"><h3 style="font-size:24px; line-height:24px; color:#ffffff;">LOOKBOOK 2016</h3>
+<div class="sub-title" style="font-size:14px; line-height:24px; color:#ffffff;"><em>Make love this look</em></div></div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_lookbook2]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Furniture Banner Summer Sale]]></title>
+			<filename><![CDATA[/b/a/banner_lookbook_fnt_2.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[middle-center]]></text_align>
+			<content><![CDATA[<div class="text-center"><h3 style="font-size:18px; line-height:24px; color:#ffffff;">SUMMER SALE</h3>
+<h4 class="nowrap" style="font-size:50px; line-height:50px; color:#ffffff;">UP TO 70%</h4></div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_furniture_banner_summer_sale]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+		<general>
+			<header>header_2</header>
+			<layout>wide</layout>
+		</general>
+		<custom_style>
+			<style>.use-header2 .page-wrapper {position: relative;}.header.header2 {background-color: rgba(0,0,0,0.7);border: none;}.header.header2 .top-header-content {border-bottom: 1px solid rgba(255,255,255,0.1);}@media(min-width: 992px){.cms-index-index .header.header2:not(.active-sticky) {position: absolute;left: 0;top: 0;right: 0;z-index: 99;}}@media (max-width: 1199px){.header.header2 #mainMenu .level0 > a.level0 {color: #575757 !important;}.header.header2 .action.nav-toggle img {filter: brightness(0) invert(1);-webkit-filter: brightness(0) invert(1);}
+.mgs-quickview-catalog-product-view .product-detail-infomation.col-xs-12 {
+    height: auto !important;
+}
+.header .logo-left-header .logo {
+    display: block;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 5px 0;
+    height: 51px;
+}
+.slide-text .big-text,.slide-text h2 {
+    font-size: 50px;
+    font-weight: 700;
+}</style>
+		</custom_style>
+	</theme_setting>
+	<color_setting>
+		<header>
+			<background_color>transparent</background_color>
+			<cart_icon>#ffffff</cart_icon>
+			<cart_icon_hover>#56cfe1</cart_icon_hover>
+			<cart_number>#000000</cart_number>
+			<cart_number_background>#ffffff</cart_number_background>
+			<drd_link_color>#8e8e8e</drd_link_color>
+			<drd_link_hover_color>#56cfe1</drd_link_hover_color>
+			<header_custom>1</header_custom>
+			<link_color>#ffffff</link_color>
+			<link_hover_color>#56cfe1</link_hover_color>
+			<lv1_color>#ffffff</lv1_color>
+			<lv1_color_hover>#56cfe1</lv1_color_hover>
+			<text_color>#ffffff</text_color>
+		</header>
+	</color_setting>
+
+</home>

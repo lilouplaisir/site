@@ -1,0 +1,296 @@
+<home>
+	<section>
+		<name><![CDATA[block149]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[0]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block150]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[78]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block151]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["",""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block152]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[47]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block153]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[#f6f6f8]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[56]]></padding_top>
+		<padding_bottom><![CDATA[80]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block154]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[78]]></padding_top>
+		<padding_bottom><![CDATA[33]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block155]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block150-0]]></block_name>
+		<type><![CDATA[attribute_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"HANDPICKED FOR YOU","additional_content":"Top seller in the week","animation":"","animation_delay":"","attribute":"best_seller","limit":"8","perrow":"4","numbercol":"1","percol":"","template":"grid.phtml","ratio":"1","number_row":"1","category_id":["61"],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Attributes" mgs_panel_title="HANDPICKED FOR YOU" mgs_panel_note="Top seller in the week" limit="8" ratio="1" category_ids="61" attribute="best_seller" use_slider="0" loadmore="0" template="products/attribute/grid.phtml" perrow="4"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block152-0]]></block_name>
+		<type><![CDATA[portfolio]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"OUR PORTFOLIO","additional_content":"We make with passion","animation":"","animation_delay":"","categories":["4"],"limit":"6","perrow":"4","template":"grid.phtml","use_slider":"1","number_row":"1","navigation":"1","show_categories":0,"show_thumbnail":0,"autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Portfolio\Block\Widget" mgs_panel_title="OUR PORTFOLIO" mgs_panel_note="We make with passion" category_ids="4" limit="6" perrow="4" show_categories="0" show_thumbnail="0" use_slider="1" template="widget/grid.phtml" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block153-0]]></block_name>
+		<type><![CDATA[testimonial]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"3","perrow":"2","template":"default_template","show_avatar":"1","use_slider":"1","number_row":"1","pagination":"1","autoplay":0,"stop_auto":0,"navigation":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Testimonial\Block\Testimonial" mgs_panel_title="" mgs_panel_note="" testimonials_count="3" perrow="2" show_avatar="1" use_slider="1" template_mode="default_template" template="grid.phtml" autoplay="0" stop_auto="0" navigation="0" pagination="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block154-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"LATEST FROM BLOG","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","post_category":["1","2","3","4","5"],"number_of_posts":"3","items":"3","template":"default.phtml","show_thumbnail":"1","show_short_content":"1","limit_characters_short_content":"123","view_as":"1","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="LATEST FROM BLOG" post_category="1,2,3,4,5" number_of_posts="3" items="3" show_thumbnail="1" mgs_panel_note="The freshest and most exciting news" template="widget/default.phtml" show_short_content="1" limit_characters_short_content="123" view_as="owl_carousel" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block151-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_handmade_banner_1"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_handmade_banner_1" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block151-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_handmade_banner_2"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_handmade_banner_2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block151-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_handmade_banner_3"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_handmade_banner_3" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block151-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_handmade_banner_4"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_handmade_banner_4" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block155-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div>{{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="optimize_image_instagram"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block149-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","","","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle\" data-text-animate=\"zoomOut\" class=\"item zoomOut\"><a style=\"background-image:url(pub\/media\/wysiwyg\/slider\/slider_handmade_1__1.jpg)\" class=\"item-image\" href=\"\"><img class=\"img-responsive\" src=\"pub\/media\/wysiwyg\/slider\/slider_handmade_1__1.jpg\" alt=\"\"><\/a><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"text-center text-colour-white\">\r\n<h5 class=\"sub-title text-colour-white\">Spring - Summer 2020<\/h5>\r\n<h2 class=\"text-colour-white big-text\">BEST OF COLLECTION<\/h2>\r\n<p>Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore \r\neu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident<\/p>\r\n<a href=\"#\" class=\"btn btn-default\">Shop now<\/a>\r\n<\/div><\/div><\/div><\/div><div data-text-position=\"middle\" data-text-animate=\"zoomOut\" class=\"item zoomOut\"><a style=\"background-image:url(pub\/media\/wysiwyg\/slider\/slider_handmade_2__1.jpg)\" class=\"item-image\" href=\"\"><img class=\"img-responsive\" src=\"pub\/media\/wysiwyg\/slider\/slider_handmade_2__1.jpg\" alt=\"\"><\/a><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"text-center text-colour-white\">\r\n<h5 class=\"sub-title text-colour-white\">Spring - Summer 2020<\/h5>\r\n<h2 class=\"text-colour-white big-text\">BEST OF COLLECTION<\/h2>\r\n<p>Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore \r\neu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident<\/p>\r\n<a href=\"#\" class=\"btn btn-default\">Shop now<\/a>\r\n<\/div><\/div><\/div><\/div>","fullheight":"1","offset":"","effect":"1","speed":"","navtemple":"1","loop":"1","fullscreen":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[no-padding]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="0" autoplay="0" stop_auto="0" navigation="0" offset="" fullheight="1" pagination="0" loop="1" speed="" html_slider="&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomOut&quot; class=&quot;item zoomOut&quot;&gt;&lt;a style=&quot;background-image:url(pub/media/wysiwyg/slider/slider_handmade_1__1.jpg)&quot; class=&quot;item-image&quot; href=&quot;&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;pub/media/wysiwyg/slider/slider_handmade_1__1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-center text-colour-white&quot;&gt;
+&lt;h5 class=&quot;sub-title text-colour-white&quot;&gt;Spring - Summer 2020&lt;/h5&gt;
+&lt;h2 class=&quot;text-colour-white big-text&quot;&gt;BEST OF COLLECTION&lt;/h2&gt;
+&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore 
+eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident&lt;/p&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot;&gt;Shop now&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomOut&quot; class=&quot;item zoomOut&quot;&gt;&lt;a style=&quot;background-image:url(pub/media/wysiwyg/slider/slider_handmade_2__1.jpg)&quot; class=&quot;item-image&quot; href=&quot;&quot;&gt;&lt;img class=&quot;img-responsive&quot; src=&quot;pub/media/wysiwyg/slider/slider_handmade_2__1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-center text-colour-white&quot;&gt;
+&lt;h5 class=&quot;sub-title text-colour-white&quot;&gt;Spring - Summer 2020&lt;/h5&gt;
+&lt;h2 class=&quot;text-colour-white big-text&quot;&gt;BEST OF COLLECTION&lt;/h2&gt;
+&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore 
+eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident&lt;/p&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot;&gt;Shop now&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="1" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Claue Handmade Banner 1]]></title>
+			<filename><![CDATA[/h/a/handmade_banner_1.jpg]]></filename>
+			<url><![CDATA[http://claue.magesolution.com/m2/decor.html]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Home Decor</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_handmade_banner_1]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Handmade Banner 2]]></title>
+			<filename><![CDATA[/h/a/handmade_banner_4.jpg]]></filename>
+			<url><![CDATA[http://claue.magesolution.com/m2/handmade.html]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Accessories</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_handmade_banner_2]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Handmade Banner 3]]></title>
+			<filename><![CDATA[/h/a/handmade_banner_2.jpg]]></filename>
+			<url><![CDATA[http://claue.magesolution.com/m2/decor.html]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Souvenirs</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_handmade_banner_3]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Handmade Banner 4]]></title>
+			<filename><![CDATA[/h/a/handmade_banner_3.jpg]]></filename>
+			<url><![CDATA[http://claue.magesolution.com/m2/handmade.html]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Kids & Baby</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_handmade_banner_4]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+		<general>
+			<layout>wide</layout>
+			<header>header_6</header>
+		</general>
+		<custom_style><style></style></custom_style>
+	</theme_setting>
+
+</home>

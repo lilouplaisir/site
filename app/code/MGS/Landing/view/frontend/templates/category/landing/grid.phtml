@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \MGS\Landing\Block\Landing
+ */
+?>
+
+<?php $_categories = $block->getChildCategory(); ?>
+
+<?php //Block Config ?>
+<?php $per_row = $block->getConfig('mgs_landing/general/per_row'); ?>
+<?php $shortdes = $block->getConfig('mgs_landing/general/show_shortdes'); ?>
+<?php $character = $block->getConfig('mgs_landing/general/character'); ?>
+
+<?php // Block Content ?>
+<div class="landing-categories--grid">
+    <div class="row">
+        <?php $i =0; foreach ($_categories as $_category): ?>
+            <?php if ($_category->getIsActive()): ?>
+                <?php $i++; ?>
+                <div class="<?php echo $block->getColClass($i,'grid'); ?>">
+                    <div class="landing-categories--item">
+                        <div class="landing-categories--thumb">
+                            <a href="<?php echo $block->getCategoryUrl($_category) ?>" title="<?php echo $block->escapeHtml($_category->getName()) ?>">
+                                <img src="<?php echo $block->getImageUrl($_category->getId()); ?>" alt="<?php echo $block->escapeHtml($_category->getName()) ?>" class="img-responsive" />
+                            </a>
+                            <div class="landing-categories--count">
+                                <?php echo $_category->getProductCount() ?>&nbsp;<?php echo __('product(s)'); ?>
+                            </div>
+                        </div>
+                        <div class="landing-categories-detail">
+                            <h2><a href="<?php echo $block->getCategoryUrl($_category) ?>" title="<?php echo $block->escapeHtml($_category->getName()) ?>"><?php echo $block->escapeHtml($_category->getName()) ?></a></h2>
+                            <?php if($shortdes): ?>
+                                <?php $_description = $block->getCateDescription($_category->getId()); ?>
+                                <?php if ($_description): ?>
+                                    <div class="landing-categories--shortdes">
+                                        <div class="category-description">
+                                            <?php echo $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($_category, $_description, 'description') ?>
+                                        </div>
+                                    </div>
+                                <?php endif ?>
+                            <?php endif ?>
+                            <a class="btn btn-primary margin-top10" href="<?php echo $block->getCategoryUrl($_category) ?>"><?php echo __('Shop Now'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach ?>
+    </div>
+</div>

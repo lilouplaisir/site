@@ -1,0 +1,367 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Aheadworks\Autorelated\Block\Related */
+?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $perRow = $themeHelper->getStoreConfig('mpanel/product_details/product_per_row_list'); ?>
+<?php $size = $themeHelper->getImageSize(); ?>
+<?php $padding = $themeHelper->getImagePadding(); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+<?php $baseImageHover = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+<?php $showWishlist = $themeHelper->getStoreConfig('mpanel/product_details/wishlist_button'); ?>
+<?php $showCompare = $themeHelper->getStoreConfig('mpanel/product_details/compare_button'); ?>
+<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+
+<?php if($productId = $this->getRequest()->getParam('id')): ?>
+	<?php $_product = $block->getProductById($productId) ?>
+	<?php $pageLayout = $themeHelper->getProductLayout($_product);?>
+<?php endif ?>
+<?php if ($arpBlocks = $block->getBlocks()) : ?>
+    <?php foreach ($arpBlocks as $arpBlock) : ?>
+		<?php $position = $arpBlock->getRule()->getPosition() ?>
+		<?php $blockType = $arpBlock->getRule()->getTemplateId() ?>
+		
+		<?php $products = $arpBlock->getProductIds()?>
+		<?php $_collectionSize = count($products); ?>
+        <div
+                data-aw-arp-block-rule-id="<?php /* @noEscape */ echo $block->getRuleIdForBlock($arpBlock) ?>"
+                data-mage-init='<?php /* @noEscape */ echo $block->getDataMageInitForBlock($arpBlock) ?>'
+                class="<?php if(($position == 6 || $position == 7) && $productId && ($pageLayout!='1column')): ?>block list-products list-products_relared<?php else: ?>block related-product-main navigation-top<?php endif ?> related <?php /* @noEscape */ echo $block->getAdditionalCssClassesForBlock($arpBlock) ?>"
+                style="visibility: hidden; margin-bottom:30px"
+        >
+		
+		<?php  $blockId = rand() . time(); ?>
+		<?php if(($position == 6 || $position == 7) && $productId && ($pageLayout!='1column')): ?>
+			<div class="block-title">
+				<strong class="title" id="block-related-heading" role="heading" aria-level="2"><?php echo $block->escapeHtml($arpBlock->getRule()->getTitle()) ?></strong>
+			</div>
+			
+			<div <?php if($blockType==2): ?>class="row"<?php endif ?>>
+				<div class="<?php if($blockType==2): ?>owl-carousel mgs-carousel-<?php echo $blockId; ?><?php endif ?> list-products">
+					
+					<?php $i=0; foreach ($products as $productId) : ?>
+						<?php if (is_null($productModel = $block->getProductById($productId))) : ?>
+							<?php continue; ?>
+						<?php endif ?>
+						<?php $productUrl = $block->getProductUrl($productModel) ?>
+						
+						<?php if ($i++ % $perRow == 0): ?>
+						<div class="item">
+						<?php endif ?>
+							<div class="new-products-content list-content">
+								<div class="product-item-info <?php if ($themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect')== 1): ?> <?php echo "disable_hover_effect" ?> <?php endif ?>">
+									<div class="product-image">
+										<?php
+											$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+											$productImage = $_imagehelper->init($productModel, 'related_products_list')->resize($size['width'], $size['height'])->getUrl();
+										?>
+										<?php if(!$lazyLoad): ?>
+											<?php $baseImage = $productImage ?>
+										<?php endif ?>
+										<a href="<?php echo $productUrl ?>" style="padding-bottom: <?php echo $padding ?>;" class="product photo product-item-photo" tabindex="-1">
+											<img src="<?php echo $baseImage; ?>" alt="<?php echo $block->escapeHtml($productModel->getName()) ?>" class="img-responsive product-image-photo img-thumbnail<?php if($lazyLoad): ?> <?php if($blockType==2): ?> owl-<?php endif ?>lazy<?php endif ?>" data-src="<?php echo $productImage ?>"/>
+										</a>
+										
+										
+										<ul class="actions-link">
+											<?php // QuickView  ?>
+											<li class="hidden-sm hidden-xs">
+												<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+												<?php echo $quickViewHelper->aroundQuickViewHtml($productModel); ?>
+											</li>
+											
+											<?php // Wishlist  ?>
+											<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$showWishlist): ?>
+												<?php $wishlistHelper = $this->helper('Magento\Wishlist\Helper\Data'); ?>
+												<li>
+													<button class="action towishlist"
+													   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+													   data-title="<?php echo __('Add to Wish List') ?>"
+													   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+													   data-post='<?php echo $wishlistHelper->getAddParams($productModel); ?>'
+													   data-action="add-to-wishlist"
+													   role="button">
+														<i class="pe-7s-like"></i>
+													</button>
+												</li>
+											<?php endif; ?>
+											
+											<?php // Compare  ?>
+											<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+											<?php if(!$showCompare): ?>
+												<li>
+													<button class="action tocompare"
+													   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+													   data-title="<?php echo __('Add to Compare') ?>"
+													   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+													   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($productModel); ?>'
+													   role="button">
+														<i class="pe-7s-graph3"></i>
+													</button>
+												</li>
+											<?php endif ?>
+										</ul>
+									</div>
+									<div class="product details product-item-details">
+										<h5 class="product name product-item-name">
+											<a class="product-item-link" href="<?php echo $productUrl ?>">
+												<?php echo $block->escapeHtml($productModel->getName()) ?>
+											</a>
+										</h5>
+										
+										<div class="price-box">
+											<?php /* @noEscape */ echo $block->getProductPrice($productModel) ?>
+										</div>
+										
+										<?php echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($productModel)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml() ?>
+										
+										<?php if ($arpBlock->getRule()->getIsDisplayAddToCart()) : ?>
+
+                                            <?php if ($productModel->isSaleable()): ?>
+                                                <?php $addToCartUrl = $block->getAddToCartUrl($productModel, ['awarp_rule' => $arpBlock->getRule()->getId()]); ?>
+                                                <form data-role="tocart-form"
+                                                      action="<?php /* @noEscape */ echo $addToCartUrl; ?>"
+                                                      method="post">
+                                                    <?php /* @noEscape */ echo $block->getFormKeyHtml() ?>
+                                                    <input type="hidden" name="product" value="<?php /* @noEscape */ echo $productModel->getEntityId(); ?>">
+                                                    <input type="hidden" name="<?php /* @noEscape */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @noEscape */ echo $block->encodeUrl($addToCartUrl); ?>">
+                                                    <button class="action btn tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+														<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+													</button>
+                                                </form>
+                                            <?php endif; ?>
+
+										<?php endif ?>
+									</div>
+								</div>
+							</div>
+						<?php if ($i % $perRow == 0 || $i == $_collectionSize): ?>
+							</div>
+						<?php endif ?>
+					<?php endforeach ?>
+				</div>
+			</div>
+			
+			<?php if($blockType==2): ?>
+				<script type="text/javascript">
+					require([
+						'jquery',
+						'mgs/owlcarousel'
+					], function ($) {
+						$('.mgs-carousel-<?php echo $blockId ?>').owlCarousel({
+							items: 1,
+							autoplay: false,
+							nav: false,
+							<?php if($lazyLoad): ?>lazyLoad: true,<?php endif ?>
+							dots: true,
+							autoHeight: true,
+							responsive:{
+								0:{
+									items: 1
+								},
+								768:{
+									items: 2
+								},
+								992:{
+									items: 1
+								}
+							}
+						});
+					});
+				</script>
+			<?php endif ?>
+			
+		<?php else: ?>
+			<?php $col = $themeHelper->convertPerRowtoCol($perRow); ?>
+
+			<div class="content-heading">
+				<h3 class="title text-uppercase"><span id="block-related-heading" role="heading" aria-level="2"><?php echo $block->escapeHtml($arpBlock->getRule()->getTitle()) ?></span></h3>
+			</div>
+			
+			<div class="block-content content" aria-labelledby="block-related-heading">
+				<div class="products wrapper grid products-grid slider-1-row<?php if($blockType==2): ?> row<?php endif ?> products-related">
+					<div id="product-carousel-related-<?php echo $blockId ?>" class="products list product-items items<?php if($blockType==2): ?> owl-carousel<?php endif ?>">
+						<?php $i=0; $j=0; foreach ($products as $productId): $i++; ?>
+						<?php if (is_null($productModel = $block->getProductById($productId))) : ?>
+							<?php continue; ?>
+						<?php endif ?>
+						<?php $productUrl = $block->getProductUrl($productModel) ?>
+						
+						<?php if($blockType!=2): ?>
+							<?php if ($j++ % $perRow == 0): ?>
+							<div class="row">
+							<?php endif ?>
+						<?php else: ?>
+							<div class="item">
+						<?php endif ?>
+						
+							<div class="item product product-item <?php if($blockType!=2): ?><?php echo $themeHelper->convertColClass($col, 'col') ?><?php endif ?>">
+								<div class="product-item-info">
+									<?php
+										$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+										$productImage = $_imagehelper->init($productModel, 'related_products_list')->resize($size['width'], $size['height'])->getUrl();
+										$productImageHover = $_imagehelper->init($productModel, 'product_thumbnail_image')->resize($size['width'], $size['height'])->getUrl();
+									?>
+									<?php if(!$lazyLoad): ?>
+										<?php $baseImage = $productImage ?>
+										<?php $baseImageHover = $productImageHover; ?>
+									<?php endif ?>
+									<div class="product-top">										
+										<?php // Product Image ?>
+										<a href="<?php echo $productUrl ?>" style="padding-bottom: <?php echo $padding ?>;" class="product photo product-item-photo" tabindex="-1">
+											<img src="<?php echo $baseImage; ?>" alt="<?php echo $block->escapeHtml($productModel->getName()) ?>" class="img-responsive product-image-photo img-thumbnail<?php if($lazyLoad): ?> <?php if($blockType==2): ?> owl-<?php endif ?>lazy<?php endif ?>" data-src="<?php echo $productImage ?>"/>
+											
+											<?php if(basename($productModel->getData('thumbnail')) !=  'no_selection'): ?>
+												<?php if(basename($productModel->getData('thumbnail')) != basename($productModel->getData('small_image'))): ?>
+													<img src="<?php echo $baseImageHover ?>" alt="" class="img-responsive img-hover-show<?php if($lazyLoad): ?> <?php if($blockType==2): ?> owl-lazy<?php else: ?> lazy<?php endif ?><?php endif ?>"  data-src="<?php echo $productImageHover ?>"/>
+												<?php endif ?>
+											<?php endif ?>
+										</a>
+										<?php echo $themeHelper->getProductLabel($productModel) ?>
+										<ul class="actions-link">
+											<li class="hidden-sm hidden-xs">
+												<?php echo $quickViewHelper->aroundQuickViewHtml($productModel); ?>
+											</li>
+											<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$showWishlist): ?>
+												<?php $wishlistHelper = $this->helper('Magento\Wishlist\Helper\Data'); ?>
+												<li>
+													<button class="action towishlist"
+													   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+													   data-title="<?php echo __('Add to Wish List') ?>"
+													   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+													   data-post='<?php echo $wishlistHelper->getAddParams($productModel); ?>'
+													   data-action="add-to-wishlist"
+													   role="button">
+														<i class="pe-7s-like"></i>
+													</button>
+												</li>
+											<?php endif; ?>
+											
+											<?php // Compare  ?>
+											<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+											<?php if(!$showCompare): ?>
+												<li>
+													<button class="action tocompare"
+													   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+													   data-title="<?php echo __('Add to Compare') ?>"
+													   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+													   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($productModel); ?>'
+													   role="button">
+														<i class="pe-7s-graph3"></i>
+													</button>
+												</li>
+											<?php endif ?>
+										</ul>
+										
+										
+										<?php if ($arpBlock->getRule()->getIsDisplayAddToCart()) : ?>
+
+                                            <?php if ($productModel->isSaleable()): ?>
+												<?php if ($themeHelper->getStoreConfig('mgstheme/general/disable_add_to_cart')== 0 && $themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect') == 0): ?>
+													<?php $addToCartUrl = $block->getAddToCartUrl($productModel, ['awarp_rule' => $arpBlock->getRule()->getId()]); ?>
+													<form data-role="tocart-form"
+														  action="<?php /* @noEscape */ echo $addToCartUrl; ?>"
+														  method="post">
+														<?php /* @noEscape */ echo $block->getFormKeyHtml() ?>
+														<input type="hidden" name="product" value="<?php /* @noEscape */ echo $productModel->getEntityId(); ?>">
+														<input type="hidden" name="<?php /* @noEscape */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @noEscape */ echo $block->encodeUrl($addToCartUrl); ?>">
+														<button class="action btn tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+															<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+														</button>
+													</form>
+												<?php endif ?>
+                                            <?php endif; ?>
+
+										<?php endif ?>
+									</div>
+									<div class="product details product-item-details">
+										<h5 class="product name product-item-name">
+											<a class="product-item-link"
+											   href="<?php echo $productUrl ?>">
+												<?php echo $block->escapeHtml($productModel->getName()) ?>
+											</a>
+										</h5>
+										
+										<?php echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($productModel)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml() ?>
+										
+										<div class="price-box">
+											<?php /* @noEscape */ echo $block->getProductPrice($productModel) ?>
+										</div>
+										
+										<?php if ($arpBlock->getRule()->getIsDisplayAddToCart()) : ?>
+											<?php if ($themeHelper->getStoreConfig('mgstheme/general/disable_add_to_cart') == 0 && $themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect') == 1): ?>
+												<?php if ($_product->isSaleable()): ?>
+													<div>
+														<?php $addToCartUrl = $block->getAddToCartUrl($productModel, ['awarp_rule' => $arpBlock->getRule()->getId()]); ?>
+														<form data-role="tocart-form"
+															  action="<?php /* @noEscape */ echo $addToCartUrl; ?>"
+															  method="post">
+															<?php /* @noEscape */ echo $block->getFormKeyHtml() ?>
+															<input type="hidden" name="product" value="<?php /* @noEscape */ echo $productModel->getEntityId(); ?>">
+															<input type="hidden" name="<?php /* @noEscape */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @noEscape */ echo $block->encodeUrl($addToCartUrl); ?>">
+															<button class="action btn tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+																<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+															</button>
+														</form>
+													</div>
+												<?php endif ?>
+											<?php endif ?>
+										<?php endif ?>
+									</div>
+								</div>
+							</div>
+						
+						<?php if($blockType!=2): ?>
+							<?php if ($j % $perRow == 0 || $j == $_collectionSize): ?>
+							</div>
+							<?php endif ?>
+						<?php else: ?>
+							</div>
+						<?php endif ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</div>
+			
+			<?php if($blockType==2): ?>
+				<script type="text/javascript">
+					require([
+						'jquery',
+						'mgs/owlcarousel'
+					], function ($) {
+						var relatedowlcarousell<?php echo $blockId; ?> = $('#product-carousel-related-<?php echo $blockId ?>').owlCarousel({
+							items: <?php echo $perRow; ?>,
+							autoplay: false,
+							autoplayHoverPause: false,
+							nav: true,
+							<?php if($lazyLoad): ?>lazyLoad: true,<?php endif ?>
+							dots: false,
+							slideBy: <?php echo $perRow; ?>,
+							navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+							responsive:{
+								0:{
+									items:2
+								},
+								992:{
+									items:<?php echo $perRow; ?>
+								}
+							}
+						});
+					});
+				</script>
+		<?php endif ?>
+	<?php endif ?>
+		
+	</div>
+    <?php endforeach ?>
+<?php endif; ?>

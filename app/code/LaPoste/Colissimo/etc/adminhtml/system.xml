@@ -1,0 +1,552 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <tab>sales</tab>
+            <resource>LaPoste_Colissimo::colissimo_config</resource>
+            <group id="lpc_group" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
+                <label>La Poste Colissimo</label>
+                <field id="advanced_config" translate="label" type="button" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>La Poste Colissimo</label>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\LaposteConfigButton</frontend_model>
+                </field>
+                <field id="domiciless_enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Domicile without signature</label>
+                    <comment>Enable the Colissimo Domicile without signature mode</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="domiciless_label" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <depends>
+                        <field id="carriers/lpc_group/domiciless_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domiciless_free" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free shipping</label>
+                    <comment>Should the shipping method be free</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/domiciless_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domiciless_priceorweight" translate="label comment" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping fees based on</label>
+                    <comment>Do you want to base your shipping fees on cart weight (default) or on cart price?</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PriceOrWeight</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/domiciless_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domiciless_setup" translate="label comment" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Setup</label>
+                    <comment>Configure the shipment prices to apply for each destination and cart weight / price you want to enable</comment>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ArraySetupMethodPrice</frontend_model>
+                    <backend_model>LaPoste\Colissimo\Model\Config\Backend\Serialized\LpcShippingArraySerialized</backend_model>
+                    <depends>
+                        <field id="carriers/lpc_group/domiciless_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domiciless_maxweight" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum weight / price</label>
+                    <comment>Do you want to limit the weight or price you can ship with this method? Use 0 or leave empty to disable the check.</comment>
+                    <depends>
+                        <field id="carriers/lpc_group/domiciless_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domicileas_enable" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Domicile with signature</label>
+                    <comment>Enable the Colissimo Domicile with signature mode</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="domicileas_label" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <depends>
+                        <field id="carriers/lpc_group/domicileas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domicileas_free" translate="label comment" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free shipping</label>
+                    <comment>Should the shipping method be free</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/domicileas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domicileas_priceorweight" translate="label comment" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping fees based on</label>
+                    <comment>Do you want to base your shipping fees on cart weight (default) or on cart price?</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PriceOrWeight</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/domicileas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domicileas_setup" translate="label comment" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Setup</label>
+                    <comment>Configure the shipment prices to apply for each destination and cart weight / price you want to enable</comment>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ArraySetupMethodPrice</frontend_model>
+                    <backend_model>LaPoste\Colissimo\Model\Config\Backend\Serialized\LpcShippingArraySerialized</backend_model>
+                    <depends>
+                        <field id="carriers/lpc_group/domicileas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="domicileas_maxweight" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum weight / price</label>
+                    <comment>Do you want to limit the weight or price you can ship with this method? Use 0 or leave empty to disable the check.</comment>
+                    <depends>
+                        <field id="carriers/lpc_group/domicileas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="pr_enable" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Point Retrait</label>
+                    <comment>Enable the Colissimo Point Retrait mode</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pr_label" translate="label" type="text" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <depends>
+                        <field id="carriers/lpc_group/pr_enable">1</field>
+                    </depends>
+                </field>
+                <field id="pr_free" translate="label comment" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free shipping</label>
+                    <comment>Should the shipping method be free</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/pr_enable">1</field>
+                    </depends>
+                </field>
+                <field id="pr_priceorweight" translate="label comment" type="select" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping fees based on</label>
+                    <comment>Do you want to base your shipping fees on cart weight (default) or on cart price?</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PriceOrWeight</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/pr_enable">1</field>
+                    </depends>
+                </field>
+                <field id="pr_setup" translate="label comment" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Setup</label>
+                    <comment>Configure the shipment prices to apply for each destination and cart weight / price you want to enable</comment>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ArraySetupMethodPrice</frontend_model>
+                    <backend_model>LaPoste\Colissimo\Model\Config\Backend\Serialized\LpcShippingArraySerialized</backend_model>
+                    <depends>
+                        <field id="carriers/lpc_group/pr_enable">1</field>
+                    </depends>
+                </field>
+                <field id="pr_maxweight" translate="label comment" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum weight / price</label>
+                    <comment>Do you want to limit the weight or price you can ship with this method? Use 0 or leave empty to disable the check.</comment>
+                    <depends>
+                        <field id="carriers/lpc_group/pr_enable">1</field>
+                    </depends>
+                </field>
+                <field id="expert_enable" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Expert</label>
+                    <comment>Enable the Colissimo Expert mode</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="expert_label" translate="label" type="text" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <depends>
+                        <field id="carriers/lpc_group/expert_enable">1</field>
+                    </depends>
+                </field>
+                <field id="expert_free" translate="label comment" type="select" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free shipping</label>
+                    <comment>Should the shipping method be free</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/expert_enable">1</field>
+                    </depends>
+                </field>
+                <field id="expert_priceorweight" translate="label comment" type="select" sortOrder="43" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping fees based on</label>
+                    <comment>Do you want to base your shipping fees on cart weight (default) or on cart price?</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PriceOrWeight</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/expert_enable">1</field>
+                    </depends>
+                </field>
+                <field id="expert_setup" translate="label comment" sortOrder="44" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Setup</label>
+                    <comment>Configure the shipment prices to apply for each destination and cart weight / price you want to enable</comment>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ArraySetupMethodPrice</frontend_model>
+                    <backend_model>LaPoste\Colissimo\Model\Config\Backend\Serialized\LpcShippingArraySerialized</backend_model>
+                    <depends>
+                        <field id="carriers/lpc_group/expert_enable">1</field>
+                    </depends>
+                </field>
+                <field id="expert_maxweight" translate="label comment" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum weight / price</label>
+                    <comment>Do you want to limit the weight or price you can ship with this method? Use 0 or leave empty to disable the check.</comment>
+                    <depends>
+                        <field id="carriers/lpc_group/expert_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flash_maxHour" translate="label comment" type="select" sortOrder="49" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Flash Maximum hour</label>
+                    <comment>The Colissimo Flash method (J+1) will not be available past this hour.</comment>
+                    <source_model>\LaPoste\Colissimo\Model\Config\Source\FlashHours</source_model>
+                </field>
+                <field id="flashss_enable" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Flash without signature</label>
+                    <comment>Enable the Colissimo Flash without signature mode</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="flashss_label" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <depends>
+                        <field id="carriers/lpc_group/flashss_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashss_free" translate="label comment" type="select" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free shipping</label>
+                    <comment>Should the shipping method be free</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/flashss_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashss_priceorweight" translate="label comment" type="select" sortOrder="53" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping fees based on</label>
+                    <comment>Do you want to base your shipping fees on cart weight (default) or on cart price?</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PriceOrWeight</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/flashss_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashss_setup" translate="label comment" sortOrder="54" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Setup</label>
+                    <comment>Configure the shipment prices to apply for each destination and cart weight / price you want to enable</comment>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ArraySetupMethodPrice</frontend_model>
+                    <backend_model>LaPoste\Colissimo\Model\Config\Backend\Serialized\LpcShippingArraySerialized</backend_model>
+                    <depends>
+                        <field id="carriers/lpc_group/flashss_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashss_maxweight" translate="label comment" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum weight / price</label>
+                    <comment>Do you want to limit the weight or price you can ship with this method? Use 0 or leave empty to disable the check.</comment>
+                    <depends>
+                        <field id="carriers/lpc_group/flashss_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashas_enable" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colissimo Flash with signature</label>
+                    <comment>Enable the Colissimo Flash with signature mode</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="flashas_label" translate="label" type="text" sortOrder="61" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name</label>
+                    <depends>
+                        <field id="carriers/lpc_group/flashas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashas_free" translate="label comment" type="select" sortOrder="62" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Free shipping</label>
+                    <comment>Should the shipping method be free</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/flashas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashas_priceorweight" translate="label comment" type="select" sortOrder="63" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping fees based on</label>
+                    <comment>Do you want to base your shipping fees on cart weight (default) or on cart price?</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PriceOrWeight</source_model>
+                    <depends>
+                        <field id="carriers/lpc_group/flashas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashas_setup" translate="label comment" sortOrder="64" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Setup</label>
+                    <comment>Configure the shipment prices to apply for each destination and cart weight / price you want to enable</comment>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ArraySetupMethodPrice</frontend_model>
+                    <backend_model>LaPoste\Colissimo\Model\Config\Backend\Serialized\LpcShippingArraySerialized</backend_model>
+                    <depends>
+                        <field id="carriers/lpc_group/flashas_enable">1</field>
+                    </depends>
+                </field>
+                <field id="flashas_maxweight" translate="label comment" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum weight / price</label>
+                    <comment>Do you want to limit the weight or price you can ship with this method? Use 0 or leave empty to disable the check.</comment>
+                    <depends>
+                        <field id="carriers/lpc_group/flashas_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+        <section id="lpc_advanced" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="800" translate="label">
+            <label>La Poste Colissimo Advanced Setup</label>
+            <tab>sales</tab>
+            <resource>LaPoste_Colissimo::colissimo_config</resource>
+            <group id="lpc_general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label">
+                <label>General configuration</label>
+                <field id="id_webservices" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label comment" type="text">
+                    <label>ID</label>
+                    <comment>ID of your account for La Poste webservices</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="pwd_webservices" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label comment" type="password">
+                    <label>Password</label>
+                    <comment>Password to connect to La Poste webservices and use the module</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <!--<field id="idCheck" translate="label comment" type="button" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\IdCheck</frontend_model>
+                    <label>ID validation</label>
+                    <comment>Check that IDs are valid.</comment>
+                </field>-->
+                <field id="coliship_link" translate="label comment" type="label" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label></label>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ColishipLink</frontend_model>
+                </field>
+            </group>
+            <group id="lpc_labels" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label">
+                <label>Labels</label>
+                <field id="isUsingColiShip" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label comment" type="select">
+                    <label>Delegates label generation to ColiShip?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, this module will not automatically generate label for each Colissimo shipment.</comment>
+                </field>
+                <field id="fmtFileExample" translate="label comment" type="button" showInDefault="1" sortOrder="1.5" showInWebsite="0" showInStore="0">
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\Field\FmtFileExample</frontend_model>
+                    <label>Retrieve an example of Colissimo FMT file.</label>
+                    <depends>
+                        <field id="lpc_advanced/lpc_labels/isUsingColiShip">1</field>
+                    </depends>
+                </field>
+                <field id="outwardPrintFormat" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outward label print format</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PrintFormats</source_model>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>
+                <field id="orderStatusForGeneration" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="3" translate="label comment" type="multiselect">
+                    <label>Order status to generate label</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\OrderStatusWithoutNew</source_model>
+                    <comment>Order status where a label can be generated.</comment>
+                </field>
+                <field id="orderStatusAfterGeneration" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="4" translate="label comment" type="select">
+                    <label>Order status after label generation</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\OrderStatus</source_model>
+                    <comment>Order status to apply after successful label generation.</comment>
+                </field>
+                <!--
+                <field id="orderStatusAfterCarrierSend" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="5" translate="label comment" type="select">
+                    <label>Order status after giving parcel to carrier</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\OrderStatus</source_model>
+                    <comment>Order status to apply when the parcel has been delivered to the carrier.</comment>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>-->
+                <field id="sendTrackingEmail" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="6" translate="label comment" type="select">
+                    <label>Send tracking email</label>
+                    <comment>Send the tracking link in an email to customer on label generation.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="isUsingColiship">0</field>
+                    </depends>
+                </field>
+                <field id="isUsingCashOnDelivery" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="7" translate="label comment" type="select">
+                    <label>Use cash on delivery?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, each label generation will use cash on delivery feature by default.</comment>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>
+                <field id="isUsingInsurance" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="8" translate="label comment" type="select">
+                    <label>Use Colissimo Insurance?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, each label generation will use Colissimo Insurance feature by default.</comment>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>
+                <field id="averagePreparationDelay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="9" translate="label comment" type="text">
+                    <label>Average preparation delay</label>
+                    <comment>Your average delay for preparation of a shipment, in days.</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>
+                <field id="registeredMailLevel" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label comment" type="select">
+                    <label>Registered mail level</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\RegisteredMailLevel</source_model>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>
+                <field id="isUsingCustomsDeclarations" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="11" translate="label comment" type="select">
+                    <label>Use Customs Declarations?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, each label generation will ask Colissimo to generate and handle the Customs Declarations by default.</comment>
+                    <depends>
+                        <field id="isUsingColiShip">0</field>
+                    </depends>
+                </field>
+                <field id="defaultHsCode" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="12" translate="label comment" type="text">
+                    <label>Default HS code</label>
+                    <comment>You can define specific HS code per product in the product attribute 'Product HS Code'. If not, the default code will be used.</comment>
+                    <depends>
+                        <field id="isUsingCustomsDeclarations">1</field>
+                    </depends>
+                </field>
+                <field id="defaultCustomsCategory" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="13" translate="label comment" type="select">
+                    <label>Default customs Category</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\CustomsCategory</source_model>
+                    <comment>Define the nature of the shipment</comment>
+                    <depends>
+                        <field id="isUsingCustomsDeclarations">1</field>
+                    </depends>
+                </field>
+                <field id="isFtd" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="12" translate="label comment" type="select">
+                    <label>Are parcels free of taxes and fees?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>For french overseas destinations only (except St-Pierre-et-Miquelon)</comment>
+                    <depends>
+                        <field id="isUsingCustomsDeclarations">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="lpc_return_labels" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="3" translate="label">
+                <label>Return labels</label>
+                <field id="returnLabelPrintFormat" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Return label print format</label>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PrintFormats</source_model>
+                </field>
+                <field id="createReturnLabelWithOutward" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Automatically create return label at the same time as the outward label</label>
+                    <comment>If you don't activate this option, you can still manually create return labels on order shipping page</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="showServiceInformation" translate="label comment" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show service information on return label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="serviceInformation" translate="label" type="text" sortOrder="4" showInStore="1" showInWebsite="1" showInDefault="1">
+                    <label>Service information</label>
+                    <depends>
+                        <field id="showServiceInformation">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="showOrderRef" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show order reference on return label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="nbDaysForPurge" translate="label comment" type="text" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Number of days to consider a return label for purging (days)</label>
+                    <comment>Delay before deleting return label BLOB from database. Use 0 or leave empty to disable this purge.</comment>
+                </field>
+                <field id="availableToCustomer" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label creation is available to client</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sendReturnLabelEmail" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="8" translate="label comment" type="select">
+                    <label>Send return label email</label>
+                    <comment>Send label in an email to customer on return label generation.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="lpc_pr_front" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="4" translate="label">
+                <label>Point retrait</label>
+                <field id="choosePRDisplayMode" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display mode</label>
+                    <comment>Choose between the standard display mode from Colissimo (Widget) and the customizable one (Webservice)</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PRDisplayMode</source_model>
+                </field>
+                <field id="prCustomizeWidget" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customize widget</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, you can customize font and font color of the Colissimo widget</comment>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">widget</field>
+                    </depends>
+                </field>
+                <field id="prAddressTextColor" translate="label" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Address fields text color</label>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ColorPicker</frontend_model>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/prCustomizeWidget">1</field>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">widget</field>
+                    </depends>
+                </field>
+                <field id="prListTextColor" translate="label" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pickup point list text color</label>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\ColorPicker</frontend_model>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/prCustomizeWidget">1</field>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">widget</field>
+                    </depends>
+                </field>
+                <field id="prDisplayFont" translate="label comment" sortOrder="50" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font</label>
+                    <comment>Font for texts inside the widget</comment>
+                    <source_model>LaPoste\Colissimo\Model\Config\Source\PRDisplayFont</source_model>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/prCustomizeWidget">1</field>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">widget</field>
+                    </depends>
+                </field>
+                <field id="prWidgetUrl" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Widget URL</label>
+                    <comment>URL used to call the widget displaying pick-up points selection. Don't change it unsless asked from Colissimo support. Default value : https://ws.colissimo.fr/widget-point-retrait/resources/js/jquery.plugin.colissimo.min.js</comment>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">widget</field>
+                    </depends>
+                </field>
+                <field id="prWidgetUrlCheck" translate="label comment" type="button" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\Field\PrWidgetUrlCheck</frontend_model>
+                    <label>Check widget URL</label>
+                    <comment>Check the widget URL is valid and working</comment>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">widget</field>
+                    </depends>
+                </field>
+                <field id="showInternational" translate="label" sortOrder="70" showInWebsite="1" showInStore="1" showInDefault="1" type="select">
+                    <label>Show internationals Relay Points</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">webservice</field>
+                    </depends>
+                </field>
+                <field id="lpc_google_maps_api_key" translate="label comment" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+                    <label>Google Maps API Key</label>
+                    <comment>This key is needed to display the selection map</comment>
+                    <depends>
+                        <field id="lpc_advanced/lpc_pr_front/choosePRDisplayMode">webservice</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="lpc_bal" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="7" translate="label">
+                <label>MailBox pick-up</label>
+                <field id="allowMailBoxPickUp" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Allow MailBox Pickup</label>
+                    <comment>When activated, customers will be allowed to automatically create return labels and use them to return the parcel from their MailBox.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="lpc_debug" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="900" translate="label">
+                <label>Debug and Development</label>
+                <field id="debugMode" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Debug Mode</label>
+                    <comment>This option should only be activated shortly to debug this module.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="keepDaysOfLog" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log information lifetime (days)</label>
+                    <comment>Delay before deleting log information. Use 0 or leave empty to disable.</comment>
+                </field>
+                <field id="seeLogs" translate="label" type="button" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>See last logs</label>
+                    <frontend_model>LaPoste\Colissimo\Block\System\Config\Field\SeeLastLogsButton</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

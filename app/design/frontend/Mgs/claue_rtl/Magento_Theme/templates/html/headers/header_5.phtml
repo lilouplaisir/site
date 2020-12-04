@@ -1,0 +1,122 @@
+<?php $block = $this->getBlock() ?>
+
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+
+<?php $bottomHeaderBlock = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_1_social_block')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+
+<?php if($bottomHeaderBlock): ?>
+	<div class="top-header-content hidden-lg">
+		<!-- Static block: header_1_social_block -->
+		<?php echo $bottomHeaderBlock; ?>
+	</div>
+<?php endif ?>
+
+<div class="middle-header-content">
+	<div class="container">
+		<div class="middle-content">
+			<div class="action-menu-responsive hidden-lg">
+				<button class="action nav-toggle">
+					<img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt="<?php echo __('Toogle Menu') ?>">
+				</button>
+			</div>
+			
+			<?php echo $block->getChildHtml('logo') ?>
+			
+			<div class="table-icon-menu">
+				<?php echo $block->getChildHtml('top.search') ?>
+				
+				<div class="dropdown dropdown-toplinks">
+					<button class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="pe-7s-user"></i></button>
+					<div class="dropdown-menu">
+						<?php echo $block->getChildHtml('top.links') ?>
+					</div>
+				</div>
+				
+				<?php if($this->helper('Magento\Wishlist\Helper\Data')->isAllow()): ?>
+					<div class="header-wl" data-bind="scope: 'wishlist'">
+						<a href="<?php /* @escapeNotVerified */ echo $this->helper('Magento\Wishlist\Helper\Data')->getListUrl() ?>">
+							<i class="pe-7s-like"></i>
+							<?php if($this->helper('Magento\Wishlist\Helper\Data')->getItemCount() > 0): ?>
+								<span class="count-wl"><?php echo $this->helper('Magento\Wishlist\Helper\Data')->getItemCount(); ?></span>
+							<?php endif ?>
+						</a>
+					</div>
+				<?php endif ?>
+				
+				<?php echo $block->getChildHtml('minicart') ?>
+			</div>
+			
+			<div class="megamenu-content<?php if($block->getChildHtml('store.settings') == ""): ?> no-menu-settings<?php endif ?>">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#main-Menucontent"><?php echo __('Menu'); ?></a></li>
+					<li class="hidden-lg"><a data-toggle="tab" href="#main-Accountcontent"><?php echo __('Account'); ?></a></li>
+					<li class="hidden-lg settings-menu-tab"><a data-toggle="tab" href="#main-Settingcontent"><?php echo __('Setting'); ?></a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="main-Menucontent" class="tab-pane active">
+						<?php if($block->getChildHtml('megamenu')!=''): ?>
+							<?php echo $block->getChildHtml('megamenu') ?>
+						<?php else: ?>
+							<?php echo $block->getChildHtml('catalog.topnav') ?>
+						<?php endif ?>
+					</div>
+					<div id="main-Accountcontent" class="tab-pane">
+						<div class="top-links">
+							<?php echo $block->getChildHtml('top.links') ?>
+						</div>
+					</div>
+					<div id="main-Settingcontent" class="tab-pane">
+						<?php echo $block->getChildHtml('store.settings') ?>
+					</div>
+					
+				</div>
+			</div>
+			
+			<?php if($bottomHeaderBlock): ?>
+				<div class="bottom-header-custom-block visible-lg">
+					<!-- Static block: header_1_social_block -->
+					<?php echo $bottomHeaderBlock; ?>
+				</div>
+			<?php endif ?>
+		</div>
+	</div>
+</div>
+
+<button class="action close-nav-button"><span class="pe-7s-close" aria-hidden="true"></span></button>
+
+<script type="text/javascript">
+require([
+	"jquery"
+], function($){
+	$(document).ready(function(){
+		$(".header.header5 .navigation .nav-main-menu > li.mega-menu-fullwidth:not(.menu-2columns)").hover(function() {
+			if($(window).width() > 1199){
+				var widthMenu = $(window).width() - 360;
+				$(this).find("> .dropdown-menu").width(widthMenu);
+			}
+		});
+		$(".header.header5 .navigation .nav-main-menu > li.mega-menu-fullwidth.menu-2columns").hover(function() {
+			if($(window).width() > 1199){
+				$(this).find("> .dropdown-menu").width(500);
+			}
+		});
+	});
+	
+    $(window).scroll(function () {
+        var headerLeftHeight = $(".header.header5").innerHeight();
+        var window_height = $(this).height();
+
+        if (headerLeftHeight - window_height < $(this).scrollTop()) {
+            if (!$(".header.header5").hasClass("fixed-bottom")) {
+                $(".header.header5").addClass("fixed-bottom");
+            }
+        }
+        if (headerLeftHeight - window_height >= $(this).scrollTop()) {
+            if ($(".header.header5").hasClass("fixed-bottom")) {
+                $(".header.header5").removeClass("fixed-bottom");
+            }
+        }
+    });
+});
+</script>

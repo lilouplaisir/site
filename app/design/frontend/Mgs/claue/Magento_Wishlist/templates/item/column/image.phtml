@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$image = 'category_page_grid';
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$size = $themeHelper->getImageSize();
+$productImage = $_imagehelper->init($product, $image)->resize($size['width'], $size['height'])->getUrl();
+$_productNameStripped = $block->stripTags($product->getName(), null, true);
+?>
+<a class="product-item-photo" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($item) ?>" title="<?php echo $block->escapeHtml($product->getName()) ?>">
+	<img src="<?php echo $productImage; ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo"/>
+</a>

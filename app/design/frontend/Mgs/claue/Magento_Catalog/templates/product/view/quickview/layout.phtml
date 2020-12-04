@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
+
+<?php $_product = $block->getProduct(); ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $templateLayout = 'quickview'; ?>
+<?php $stickyMenu = $themeHelper->getStoreConfig('mgstheme/general/sticky_menu'); ?>
+<?php $cr_header = $themeHelper->getStoreConfig('mgstheme/general/header'); ?>
+<?php $class = "product media"; ?>
+<input id="mgs_template_layout" type="hidden" name="mgs_template_layout" value="<?php echo $templateLayout; ?>">
+<div class="row">
+	<div class="col-sm-6 col-xs-12">
+		<div class="<?php echo $class; ?>">
+			<?php echo $block->getChildHtml('product.info.media.image') ?>
+		</div>
+	</div>
+	<div class="col-sm-6 col-xs-12 product-detail-infomation">
+		<div class="product-detail-infomation-content">
+            
+            <?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+            <h1 class="product-name"><a target="_parent" id="view-detail" href="<?php echo $_product->getProductUrl() ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h1>
+			<?php echo $block->getChildHtml('alert_urls') ?>
+			<div class="product-info-main">
+				<?php echo $block->getChildHtml('product.info.price') ?>
+				<?php echo $block->getChildHtml('product.price.tier') ?>
+				<?php echo $block->getChildHtml('product.info.deals.count'); ?>
+				<?php echo $block->getChildHtml('product.info.overview') ?>
+				
+				<?php echo $block->getChildHtml('bundle.options.container') ?>
+				<?php echo $block->getChildHtml('product.info') ?>
+				
+				<div class="product-sub-infomation">
+					<div class="product-info-stock-sku">
+						<?php echo $block->getChildHtml('product.info.type') ?>
+					</div>
+					<?php echo $block->getChildHtml('product.info.sku') ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

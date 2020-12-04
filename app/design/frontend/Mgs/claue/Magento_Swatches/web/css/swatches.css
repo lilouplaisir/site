@@ -1,0 +1,287 @@
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.swatch-attribute-label {
+    font-weight: bold;
+    position: relative;
+}
+
+.swatch-attribute-label.required {
+    padding-right: 10px;
+}
+
+.swatch-attribute-label[data-required="1"]:after {
+    content: '*';
+    color: red;
+    position: absolute;
+    right: -11px;
+    top: -2px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.swatch-attribute-selected-option {
+    color: #646464;
+    padding-left: 17px;
+}
+
+.swatch-option {
+    min-width: 22px;
+    height: 22px;
+    float: left;
+    margin: 5px 6px 0 0;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+	font-size: 13px;
+    text-overflow: ellipsis;
+	border-radius: 50%;
+	transition: all 300ms;
+}
+.swatch-option:hover,
+.swatch-option.selected {
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15)
+}
+.swatch-option.text {
+	border: 1px solid #ddd;
+	white-space: nowrap;
+    background: #fff;
+    color: #ddd;
+    font-size: 12px;
+	height: 22px;
+	border-radius: 20px;
+	padding: 0 10px;
+    font-weight: 600;
+}
+
+.swatch-option.text.selected,
+.swatch-option.text:hover {
+    color: #222;
+}
+.product-info-main .swatch-option {
+	height: 28px;
+	min-width: 28px;
+	margin: 5px;
+}
+.product-info-main .swatch-option:first-child {
+	margin-left: 0;
+}
+.product-info-main .swatch-option.text {
+	height: 28px;
+	line-height: 28px;
+	padding: 0 20px;
+}
+
+.clearfix:after {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.swatch-option:not(.disabled):hover {
+    color: #333;
+}
+
+.swatch-option.disabled {
+    cursor: default;
+	pointer-events: none;
+}
+
+.swatch-option.disabled:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    background: -moz-linear-gradient(to left top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 42%, rgba(255,255,255,1) 43%, rgba(255,255,255,1) 46%, rgba(255,82,22,1) 47%, rgba(255,82,22,1) 53%, rgba(255,255,255,1) 54%, rgba(255,255,255,1) 57%, rgba(255,255,255,0) 58%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(42%,rgba(255,255,255,0)), color-stop(43%,rgba(255,255,255,1)), color-stop(46%,rgba(255,255,255,1)), color-stop(47%,rgba(255,82,22,1)), color-stop(53%,rgba(255,82,22,1)), color-stop(54%,rgba(255,255,255,1)), color-stop(57%,rgba(255,255,255,1)), color-stop(58%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(to left top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42%,rgba(255,255,255,1) 43%,rgba(255,255,255,1) 46%,rgba(255,82,22,1) 47%,rgba(255,82,22,1) 53%,rgba(255,255,255,1) 54%,rgba(255,255,255,1) 57%,rgba(255,255,255,0) 58%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(to left top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42%,rgba(255,255,255,1) 43%,rgba(255,255,255,1) 46%,rgba(255,82,22,1) 47%,rgba(255,82,22,1) 53%,rgba(255,255,255,1) 54%,rgba(255,255,255,1) 57%,rgba(255,255,255,0) 58%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(to left top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42%,rgba(255,255,255,1) 43%,rgba(255,255,255,1) 46%,rgba(255,82,22,1) 47%,rgba(255,82,22,1) 53%,rgba(255,255,255,1) 54%,rgba(255,255,255,1) 57%,rgba(255,255,255,0) 58%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to left top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42%,rgba(255,255,255,1) 43%,rgba(255,255,255,1) 46%,rgba(255,82,22,1) 47%,rgba(255,82,22,1) 53%,rgba(255,255,255,1) 54%,rgba(255,255,255,1) 57%,rgba(255,255,255,0) 58%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
+}
+
+.swatch-option-tooltip {
+    max-width: 140px;
+	right: auto;
+    max-height: 100%;
+    min-height: 20px;
+    min-width: 30px;
+    position: absolute;
+    background: #fff;
+    color: rgb(148, 148, 148);
+    border: 1px solid #adadad;
+    display: none;
+    z-index: 999;
+	padding-bottom: 0;
+    text-align: center;
+	border-radius: 4px;
+}
+.swatch-option-tooltip .corner,
+.swatch-option-tooltip-layered .corner {
+	left: auto !important;;
+	right: auto !important;
+    height: 8px;
+	position: relative;
+}
+.swatch-option-tooltip .corner:after,
+.swatch-option-tooltip-layered .corner:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	left: 50% !important;
+	transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	top: 100%;
+	border-top: 8px solid #adadad;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
+.swatch-option-tooltip .corner:before,
+.swatch-option-tooltip-layered .corner:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	left: 50% !important;
+	transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	top: 100%;
+	border-top: 7px solid #fff;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	z-index: 1;
+}
+.swatch-option-tooltip .image,
+.swatch-option-tooltip-layered .image {
+    display: block;
+    height: 130px;
+    width: 130px;
+    margin: 0 auto;
+}
+
+.swatch-option-tooltip .title {
+    max-width: 140px;
+    min-height: 20px;
+    max-height: 200px;
+    color: rgb(40, 40, 40);
+    text-align: center;
+    display: block;
+    overflow: hidden;
+	padding-top: 4px;
+}
+
+.swatch-opt {
+    margin: 20px 0;
+}
+
+.swatch-more {
+    display: inline-block;
+    margin: 2px 0;
+    text-decoration: none !important;
+    position: static;
+    z-index: 1;
+}
+
+/* Layered Features */
+.swatch-option-link-layered {
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.swatch-option-tooltip-layered {
+    width: 140px;
+    position: absolute;
+    background: #fff;
+    color: rgb(148, 148, 148);
+    border: 1px solid #adadad;
+    display: none;
+    z-index: 999;
+    left: -47px;
+}
+
+.swatch-visual-tooltip-layered {
+    height: 160px;
+    top: -170px;
+}
+
+.swatch-textual-tooltip-layered {
+    height: 30px;
+    top: -40px;
+}
+
+.swatch-option-link-layered:hover > .swatch-option-tooltip-layered {
+    display: block;
+}
+
+.swatch-attribute-options .swatch-option-tooltip-layered .title {
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    color: rgb(40, 40, 40);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.swatch-option-disabled:after {
+    content: '';
+    position: absolute;
+    width: 42px;
+    height: 2px;
+    background: red;
+    transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    z-index: 995;
+    left: -4px;
+    top: 10px;
+}
+
+.swatch-option-disabled {
+    outline: none !important;
+    cursor: default;
+    border: 0;
+}
+
+/* Bugfix for Add To Cart button */
+div[class^="swatch-opt-"] .swatch-attribute {
+	margin-bottom: 10px;
+}
+.swatch-option-loading {
+    content: url("../images/loader-2.gif");
+}
+.products-grid .product-item-info.metro_template .swatch-option:hover, 
+.products-grid .product-item-info.metro_template .swatch-option.selected {
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
+}
+
+.products-grid .product-item-info.metro_template .swatch-option.text {
+	border-color: #fff;
+	background-color: transparent;
+	color: #fff;
+}
+.products-grid .product-item-info.metro_template .swatch-option.selected.text,
+.products-grid .product-item-info.metro_template .swatch-option.text:hover {
+	background-color: #fff;
+	color: #222;
+}
+.product-item form .swatch-input, .product-options-wrapper .swatch-attribute .swatch-input{display:none}

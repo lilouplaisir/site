@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+		<css src="css/bootstrap.min.css"/>
+		<css src="css/font-awesome.css"/>
+		<css src="css/pe-icon-7-stroke.css"/>
+		<css src="css/menu.css"/>
+		<css src="css/theme_default.css"/>
+		<css src="css/theme.css"/>
+		<css src="css/responsive.css"/>
+		<css src="MGS_Mpanel::css/color.css"/>
+		<script src="js/bootstrap.js"/>
+		<script src="js/custom.js"/>
+    </head>
+    <body>
+        <referenceContainer name="header.container">
+			<block class="Magento\Theme\Block\Html\Header" name="header" as="header" after="-">
+				<arguments>
+					<argument name="show_part" xsi:type="string">welcome</argument>
+				</arguments>
+				<block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="switch/languages.phtml"/>
+				<block class="Magento\Directory\Block\Currency" name="currency" before="store_language" template="currency.phtml"/>
+				<block class="Magento\Framework\View\Element\Html\Links" name="top.links">
+					<arguments>
+                            <argument name="css_class" xsi:type="string">links</argument>
+                        </arguments>
+				</block>
+				<block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                    <arguments>
+                        <argument name="logo_img_width" xsi:type="number">189</argument>
+                        <argument name="logo_img_height" xsi:type="number">64</argument>
+                    </arguments>
+                </block>
+				
+				
+				<block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+				
+				<block class="MGS\Mmegamenu\Block\Mmegamenu" name="megamenu" template="MGS_Mmegamenu::navigation.phtml"/>
+				
+				<block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="html/topmenu.phtml" ttl="3600" before="-"/>
+				
+				<block class="Magento\Catalog\Block\Navigation" name="sub.categories" before="-" template="Magento_Catalog::navigation/top.phtml"/>
+				
+			</block>
+        </referenceContainer>
+		
+		<move element="top.search" destination="header"/>
+		<move element="minicart" destination="header"/>
+		<move element="store.settings" destination="header"/>
+		<move element="page.main.title" destination="page.top" before="breadcrumbs"/>
+		
+		
+        <referenceBlock name="advanced-search-link" remove="true"/>
+        <referenceBlock name="skip_to_content" remove="true"/>
+        <!-- <referenceBlock name="authentication-popup" remove="true"/> -->
+        <referenceBlock name="navigation.sections" remove="true"/>
+		
+		<referenceContainer name="footer-container">
+            <block class="Magento\Theme\Block\Html\Footer" name="footer" template="Magento_Theme::html/footer.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

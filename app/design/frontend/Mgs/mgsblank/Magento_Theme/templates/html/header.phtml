@@ -1,0 +1,33 @@
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $header = $helper->getStoreConfig('mgstheme/general/header') ?>
+<?php if($header!=''): ?>
+	<?php echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Header')->setBlock($block)->setTemplate('Magento_Theme::html/headers/'.$header.'.phtml')->toHtml() ?>
+<?php else: ?>
+	<?php $welcomeMessage = $block->getWelcome(); ?>
+	<div class="top-header-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-sm-6 dol-xs-12">
+					<?php echo $block->getChildHtml('store_language') ?>
+					<?php echo $block->getChildHtml('currency') ?>
+				</div>
+				<div class="col-md-7 col-sm-6 dol-xs-12">
+					<div class="greet welcome" data-bind="scope: 'customer'">
+						<span data-bind="text: customer().fullname ? $t('Welcome, %1!').replace('%1', customer().fullname) : '<?php echo $block->escapeHtml($welcomeMessage) ?>'"><?php echo $block->escapeHtml($welcomeMessage) ?></span>
+					</div>
+					<?php echo $block->getChildHtml('top.links') ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="middle-header-content">
+		<div class="container">
+			<?php echo $block->getChildHtml('logo') ?>
+			<?php echo $block->getChildHtml('topSearch') ?>
+			<?php echo $block->getChildHtml('minicart') ?>
+		</div>
+	</div>
+	<div class="megamenu-content">
+		<?php echo $block->getChildHtml('megamenu') ?>
+	</div>
+<?php endif ?>

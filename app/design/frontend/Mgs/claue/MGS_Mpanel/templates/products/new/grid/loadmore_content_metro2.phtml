@@ -1,0 +1,66 @@
+<?php 
+	if($this->getTabs()){
+		$_productCollection = $this->getProductCollection($this->getAdditionalData());
+	}else{
+		$_productCollection = $this->getNewProductByCategories($this->getAdditionalData());
+	}
+	
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+	$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+	
+	$col = $this->getCol();
+	
+	$perRow = $this->getPerRow();
+	$limit = $this->getLimit();
+	$ratio = $this->getRatio();
+	$curPage = $this->getCurPage();
+	if($this->getPrevPage()){ $curPage = $curPage + 1; }
+	if($this->getNextPage()){ $curPage = $curPage - 1; }
+	$i = ($curPage - 1) * $limit;
+?>
+
+<?php foreach ($_productCollection as $_product): $i++; ?>
+	<?php if($i % 5 == 1): ?>
+		<div class="item clearfix">
+	<?php endif ?>
+		<?php if($i % 10 == 5 || $i % 6 == 0): ?> 
+			<div class="col-md-6 col-xs-12">
+				<div class="product product-item big-item">
+					<?php echo $this->getLayout()
+					->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+					->setProductId($_product->getId())
+					->setThemeHelper($themeHelper)
+					->setImageHelper($_imagehelper)
+					->setCatalogHelperOutput($_helper)
+					->setRatio($this->getRatio())
+					->setTemplate('MGS_Mpanel::products/metro_items.phtml')
+					->toHtml(); ?>
+				</div>
+			</div>
+		<?php else: ?>
+			<?php if($i % 10 == 1 || $i % 10 == 7): ?> 
+				<div class="col-md-6 col-xs-12"><div class="row">
+			<?php endif ?>
+					<div class="col-sm-6 col-xs-12">
+						<div class="product product-item">
+							<?php echo $this->getLayout()
+							->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+							->setProductId($_product->getId())
+							->setThemeHelper($themeHelper)
+							->setImageHelper($_imagehelper)
+							->setCatalogHelperOutput($_helper)
+							->setRatio($this->getRatio())
+							->setTemplate('MGS_Mpanel::products/metro_items.phtml')
+							->toHtml(); ?>
+						</div>
+					</div>
+			<?php if($i % 10 == 4 || $i % 10 == 0 || $i == count($_productCollection)): ?>
+				</div></div>
+			<?php endif ?>
+		<?php endif ?>
+	<?php if($i % 5 == 0 || $i == count($_productCollection)): ?>
+		</div>
+	<?php endif ?>
+
+<?php endforeach; ?>

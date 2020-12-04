@@ -1,0 +1,39 @@
+<?php if ($block->getConfig('general_settings/enabled') && $block->getConfig('product_page_settings/show_related_products_by_brand') && ($brand = $block->getBrand())): ?>
+    <?php 
+		$_productCollection = $block->getProductCollection();
+		$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	?>
+	<div class="items-block-related-brand product-block">
+		<h3><span class="items-block-heading heading-related-brand"><?php echo $block->getConfig('product_page_settings/title_related_products'); ?></span></h3>
+		
+		<amp-carousel class="product-carousel" height="280" width="330" layout="responsive" type="slides" autoplay delay="5000">
+			<?php $i=0; foreach ($_productCollection as $_item): $i++ ?>
+				<?php
+					$_productName = $block->stripTags($_item->getName(), null, true);
+					$_productUrl = $_item->getProductUrl();
+					$_productImage = $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setProduct($_item)->setTemplate('MGS_Amp::Magento_Catalog/product/image.phtml')->toHtml();
+				?>
+				<?php if($i % 2 == 1): ?>
+				<div class="products list product-items">
+				<?php endif ?>
+				<div class="product-item">
+					<div class="product-item-info">
+						<a class="product photo product-item-photo" href="<?= $_productUrl ?>" title="<?= $_productName ?>">
+						<?= $_productImage ?>
+						</a>
+						<div class="product details product-item-details">
+							<strong class="product name product-item-name">
+								<a class="product-item-link" href="<?= $_productUrl ?>"><?= $_productName ?></a>
+							</strong>
+							
+							<?= $block->getProductPrice($_item); ?>
+						</div>
+					</div>
+				</div>
+				<?php if($i % 2 == 0 || $i == count($_productCollection)): ?>
+				</div>
+				<?php endif ?>
+			<?php endforeach; ?>
+		</amp-carousel>
+	</div>
+<?php endif ?>

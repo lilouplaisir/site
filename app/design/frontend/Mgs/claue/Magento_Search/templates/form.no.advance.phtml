@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+/** @var $helper \Magento\Search\Helper\Data */
+$helper = $this->helper('Magento\Search\Helper\Data');
+?>
+<div class="top-search-mini">
+	<form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>" method="get">
+		<div class="form-search">
+			<div class="fs">
+				<div class="input-box">
+					<input id="search"
+					   data-mage-init='{"quickSearch":{
+							"formSelector":"#search_mini_form",
+							"url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest'); ?>",
+							"destinationSelector":"#search_autocomplete"}
+					   }'
+					   type="text"
+					   name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
+					   value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
+					   placeholder="<?php /* @escapeNotVerified */ echo __('Search...'); ?>"
+					   class="input-text form-control"
+					   maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
+					   role="combobox"
+					   aria-expanded="true"
+					   aria-haspopup="false"
+					   aria-autocomplete="both"
+					   autocomplete="off"/>
+				</div>
+				<div class="action">
+					<button type="submit" title="<?php echo $block->escapeHtml(__('Search')) ?>" class="btn-search h6">
+						<span class="fa fa-search"></span>
+					</button>	
+				</div>
+				<div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+				<?php echo $block->getChildHtml() ?>
+			</div>
+		</div>
+	</form>
+</div>

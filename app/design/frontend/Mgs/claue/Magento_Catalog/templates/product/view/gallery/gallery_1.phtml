@@ -1,0 +1,42 @@
+<?php $galleryImages = $this->getGalleryImages(); ?>
+<?php $zoom_image = $this->getEnableZoom(); ?>
+<?php $lbox_image = $this->getLbox(); ?>
+
+<div class="row">
+    <?php $i= 0; foreach($galleryImages as $image): $i++; ?>
+      <?php 
+        $dataArrayImg =  $image->toArray();
+         $productName = $this->getProduct()->getName();
+
+        $lbImage = (isset($dataArrayImg['label']) &&  $dataArrayImg['label'] != null) ? $dataArrayImg['label'] : $productName;
+      ?>
+        <div class="item col-xs-6">
+            <div class="product item-image imgzoom" data-zoom="<?php echo $image->getImageZoom(); ?>">
+                <?php if($lbox_image): ?>
+                    <?php if($image->getMediaType() != 'external-video'): ?>
+                        <a class="lb" href="<?php echo $image->getImageZoom(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                    <?php else: ?>
+                        <a class="lb video-link" href="<?php echo $image->getVideoUrl(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                    <?php endif ?>
+                <?php else: ?>
+                    <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+                    <?php if($image->getMediaType() == 'external-video'): ?>
+                        <a target="_blank" class="popup-youtube btn btn-primary" href="<?php echo $image->getVideoUrl(); ?>"><?php echo __('Watch Video'); ?></a>
+                    <?php endif ?>
+                <?php endif ?>
+            </div>
+        </div>
+        <?php if($i % 2 == 0): ?>
+            <div class="clearfix"></div>
+        <?php endif ?>
+    <?php endforeach ?>
+</div>
+<script type="text/javascript">
+    <?php if($zoom_image): ?>
+        require([ 'jquery', 'zoom-images' ],function($) { 
+            $(".imgzoom").each(function( index ) {
+                zoomElement(this);
+            });
+        });
+    <?php endif ?>
+</script>

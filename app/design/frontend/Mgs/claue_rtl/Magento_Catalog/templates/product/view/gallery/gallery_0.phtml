@@ -1,0 +1,93 @@
+<?php $galleryImages = $this->getGalleryImages(); ?>
+<?php $zoom_image = $this->getEnableZoom(); ?>
+<?php $lbox_image = $this->getLbox(); ?>
+<div id="owl-carousel-gallery" class="owl-carousel gallery-horizontal">
+    <?php foreach($galleryImages as $image): ?>
+        <?php $lbImage = $image->getLabel() ? $image->getLabel() : $image->getLabelDefault(); ?>
+        <div class="product item-image imgzoom" data-zoom="<?php echo $image->getImageZoom(); ?>">
+            <?php if($lbox_image): ?>
+                <?php if($image->getMediaType() != 'external-video'): ?>
+                    <a class="lb" href="<?php echo $image->getImageZoom(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                <?php else: ?>
+                    <a class="lb video-link" href="<?php echo $image->getVideoUrl(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                <?php endif ?>
+            <?php else: ?>
+                <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+                <?php if($image->getMediaType() == 'external-video'): ?>
+                    <a target="_blank" class="popup-youtube btn btn-primary" href="<?php echo $image->getVideoUrl(); ?>"><?php echo __('Watch Video'); ?></a>
+                <?php endif ?>
+            <?php endif ?>
+        </div>
+    <?php endforeach ?>
+</div>
+<div class="horizontal-thumbnail-row">
+    <div id="horizontal-thumbnail" class="owl-carousel horizontal-thumbnail">
+        <?php $i = 0; foreach($galleryImages as $image): ?>
+            <?php $lbImage = $image->getLabel() ? $image->getLabel() : $image->getLabelDefault(); ?>
+            <div class="item-thumb<?php if($i == 0): ?> active<?php endif ?>" data-owl="<?php echo $i ?>">
+                <img class="img-responsive" src="<?php echo $image->getSmallImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+                <?php if($image->getMediaType() == 'external-video'): ?>
+                    <a target="_blank" class="popup-youtube" href="<?php echo $image->getVideoUrl(); ?>"></a>
+                <?php endif ?>
+            </div>
+            <?php $i++; ?>
+        <?php endforeach ?>
+    </div>
+</div>
+<script type="text/javascript">
+    require([ 'jquery', 'mgs/owlcarousel' ], function ($) {
+        $('#horizontal-thumbnail').owlCarousel({
+            items: 4,
+            autoplay: false,
+            lazyLoad: false,
+            nav: true,
+            dots: false,
+            rtl: true,
+            navText: ["<span class='fa fa-angle-left'></span>","<span class='fa fa-angle-right'></span>"],
+            responsive:{
+                0:{
+                    items:2
+                },
+                480:{
+                    items:2
+                },
+                768:{
+                    items:3
+                },
+                992:{
+                    items:4
+                }
+            }
+        });                     
+        $('#owl-carousel-gallery').owlCarousel({
+            items: 1,
+            autoplay: false,
+            lazyLoad: false,
+            nav: true,
+            rtl: true,
+            dots: false,
+            navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"]
+        });
+        
+        $('#owl-carousel-gallery').on('changed.owl.carousel', function(event) {
+            var index = event.item.index;
+            $('#horizontal-thumbnail .item-thumb').removeClass('active');
+            $('#horizontal-thumbnail .item-thumb[data-owl='+index+']').addClass('active');
+            $('#horizontal-thumbnail').trigger('to.owl.carousel', index);
+        });
+        
+        $('#horizontal-thumbnail .item-thumb').click(function(){
+            $('#horizontal-thumbnail .item-thumb').removeClass('active');
+            var position = $(this).attr('data-owl');
+            $('#owl-carousel-gallery').trigger('to.owl.carousel', position);
+            $(this).addClass('active');
+        });
+    });
+    <?php if($zoom_image): ?>
+        require([ 'jquery', 'zoom-images' ],function($) { 
+            $(".imgzoom").each(function( index ) {
+                zoomElement(this);
+            });
+        });
+    <?php endif ?>
+</script>

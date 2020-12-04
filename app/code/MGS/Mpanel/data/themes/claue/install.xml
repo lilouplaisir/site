@@ -1,0 +1,715 @@
+<install>
+	<static_block>
+		<item>
+			<title>Footer 4 Contact Us</title>
+			<identifier>footer4_contact_us</identifier>
+			<content><![CDATA[<div class="margin-bottom25"><a href="{{store url=""}}"><img src="http://claue.magesolution.com/pub/media/logo/stores/12/claue_furniture.png" alt="Claue" width="96" height="27" /></a></div>
+<ul class="list-icon">
+<li><span class="icon pe-7s-map-marker">&nbsp;</span>184 Main Rd E, St Albans <br />VIC 3021, Australia</li>
+<li><span class="icon pe-7s-mail">&nbsp;</span><a href="mailto:contact@company.com">contact@company.com</a></li>
+<li><span class="icon pe-7s-call">&nbsp;</span> <a href="tel:+0012233456">+001 2233 456</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Footer Block Image Map</title>
+			<identifier>footer_block_image_map</identifier>
+			<content><![CDATA[<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpxmpFLGKh6Ad23IS_ZP1rpxdagVhZnjQ&amp;libraries=places&amp;sensor=false"></script><script type="text/javascript">
+		require([
+		'jquery'
+	], function(jQuery){
+		(function($) {
+			var address = '70 Cedar Street, New York';
+			var html = '<h4>Claue Store</h4><span>New York</span><br>NY, United States <br>+0123456789<p></p>';
+			var image = 'http://claue.magesolution.com/pub/media/map/default/claue_pin.png';
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: "http://maps.googleapis.com/maps/api/geocode/json",
+				data: {'address': address,'sensor':false},
+				success: function(data){
+					if(data.results.length){
+						latitude = data.results[0].geometry.location.lat;
+						longitude = data.results[0].geometry.location.lng;
+						
+						var locations = [
+					[html, latitude, longitude, 2]
+					];
+				
+					var map = new google.maps.Map(document.getElementById('footer-map'), {
+						zoom: 14,
+						scrollwheel: false,
+						navigationControl: true,
+						mapTypeControl: false,
+						scaleControl: false,
+						draggable: true,
+						center: new google.maps.LatLng(latitude, longitude),
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+				
+					var infowindow = new google.maps.InfoWindow();
+				
+					var marker, i;
+				
+					for (i = 0; i < locations.length; i++) {  
+				  
+						marker = new google.maps.Marker({ 
+						position: new google.maps.LatLng(locations[i][1], locations[i][2]), 
+						map: map ,
+						icon: image
+						});
+				
+				
+					  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+						return function() {
+						  infowindow.setContent(locations[i][0]);
+						  infowindow.open(map, marker);
+						}
+					  })(marker, i));
+					}
+					}
+				}
+			});
+		})(jQuery);
+	});
+	</script>]]></content>
+		</item>
+		<item>
+			<title>Claue Footer 3 Custom Menu</title>
+			<identifier>claue_footer3_custom_menu</identifier>
+			<content><![CDATA[<ul class="custom-menu text-uppercase">
+<li><a href="#">Shop</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Help &amp; Contact</a></li>
+<li><a href="#">Return Policy</a></li>
+<li><a href="#">Legal Notice</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Footer 3 Logo And Social</title>
+			<identifier>footer_logo_and_social</identifier>
+			<content><![CDATA[<div class="text-center"><img src="http://claue.magesolution.com/pub/media/logo/default/logo.png" alt="" /></div>
+<ul class="social-link margin-top25">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Claue Footer2 Block Newsletter</title>
+			<identifier>footer_block_newsletter_top</identifier>
+			<content><![CDATA[<div class="text-center">
+<h3 class="margin-bottom10">NEWSLETER SIGN UP</h3>
+<p>Subscribe our newsletter to get latest new about our new product and promo campaign.</p>
+</div>
+<div>{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe_footer.phtml"}}</div>]]></content>
+		</item>
+		<item>
+			<title>Footer 2 Instagram Block</title>
+			<identifier>footer_block_instagram</identifier>
+			<content><![CDATA[<h6 class="margin-bottom30">Instagram Feed</h6>
+<div>{{block class="MGS\Social\Block\Panel\Widget" mgs_panel_title="" mgs_panel_note="" limit="6" resolution="low_resolution" link="1" perrow="3" use_slider="0" like="0" comment="0" template="widget/instagram.phtml"}}</div>]]></content>
+		</item>
+		<item>
+			<title>Footer 1 Menu Bottom</title>
+			<identifier>footer_block_menu_bottom</identifier>
+			<content><![CDATA[<ul>
+<li><a href="#">Shop</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Contact</a></li>
+<li><a href="#">Blog</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Footer 1 Contact Us</title>
+			<identifier>footer_contact_us</identifier>
+			<content><![CDATA[<div class="margin-bottom25"><a href="{{store url=""}}"><img src="{{media url="wysiwyg/logo-2x.png"}}" alt="Claue" width="96" height="27" /></a></div>
+<ul class="list-icon">
+<li><span class="icon pe-7s-map-marker">&nbsp;</span>184 Main Rd E, St Albans <br />VIC 3021, Australia</li>
+<li><span class="icon pe-7s-mail">&nbsp;</span><a href="mailto:contact@company.com">contact@company.com</a></li>
+<li><span class="icon pe-7s-call">&nbsp;</span> <a href="tel:+0012233456">+001 2233 456</a></li>
+</ul>
+<ul class="social-link margin-top15">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Footer 1 Categories Menu</title>
+			<identifier>footer_block_categories</identifier>
+			<content><![CDATA[<h6 class="margin-bottom30">Categories</h6>
+<ul class="menu">
+<li><a href="#">Men</a></li>
+<li><a href="#">Women</a></li>
+<li><a href="#">Accessories</a></li>
+<li><a href="#">Shoes</a></li>
+<li><a href="#">Denim</a></li>
+<li><a href="#">Dress</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Header 8 Contact Block</title>
+			<identifier>header_8_top_left_link</identifier>
+			<content><![CDATA[<ul>
+<li><a href="tel:+0123456789 "><span class="icon pe-7s-call">&nbsp;</span>+01 23456789</a></li>
+<li><a href="mailto:claue@domain.com"><span class="icon pe-7s-mail">&nbsp;</span>claue@domain.com</a></li>
+<li><a href="{{store url=""}}sales/order/history/"><span class="pe-7s-car">&nbsp;</span>Track Your Order</a></li>
+<li><a href="{{store url=""}}storelocator"><span class="pe-7s-map-marker">&nbsp;</span>Store Locator</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Claue Vertical Menu Header 8</title>
+			<identifier>claue_vertical_menu_header</identifier>
+			<content><![CDATA[<div>{{block class="MGS\Mmegamenu\Block\Vertical" menu_id="2" mgs_panel_title="DEPARTMENTS" mgs_panel_note="" template="panel/vertical.phtml"}}</div>]]></content>
+		</item>
+		<item>
+			<title>Footer 1 Quick Link</title>
+			<identifier>footer_block_quick_link</identifier>
+			<content><![CDATA[<h6 class="margin-bottom30">Quick Links</h6>
+<ul class="menu">
+<li><a href="#">Store Location</a></li>
+<li><a href="#">My Account</a></li>
+<li><a href="#">Accessories</a></li>
+<li><a href="#">Orders Tracking</a></li>
+<li><a href="#">Size Guide</a></li>
+<li><a href="#">FAQs</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Footer 1 Subscribe Block</title>
+			<identifier>footer_block_subscribe</identifier>
+			<content><![CDATA[<p>Subscribe to our newsletter and get 10% off your first purchase</p>
+<div>{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe_footer.phtml"}}</div>
+<p class="margin-top25"><img src="{{media url="wysiwyg/payment2.png"}}" alt="accept payment" width="197" height="20" /></p>]]></content>
+		</item>
+		<item>
+			<title>Footer 1 Information Menu</title>
+			<identifier>footer_block_infomation</identifier>
+			<content><![CDATA[<h6 class="margin-bottom30">Infomation</h6>
+<ul class="menu">
+<li><a href="#">About Us</a></li>
+<li><a href="#">Contact Us</a></li>
+<li><a href="#">Terms &amp; Conditions</a></li>
+<li><a href="#">Returns &amp; Exchanges</a></li>
+<li><a href="#">Shipping &amp; Delivery</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Header 1 Contact Block</title>
+			<identifier>header_1_top_left_link</identifier>
+			<content><![CDATA[<ul>
+<li><a href="tel:+0123456789 "><span class="icon pe-7s-call">&nbsp;</span>+01 23456789</a></li>
+<li><a href="mailto:claue@domain.com"><span class="icon pe-7s-mail">&nbsp;</span>claue@domain.com</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Header 1 Discount Text</title>
+			<identifier>header_1_top_middle_block</identifier>
+			<content><![CDATA[<div>Summer sale discount off <span style="color: #ec0101;">50%</span>! <a href="#">Shop Now</a></div>]]></content>
+		</item>
+		<item>
+			<title>Header 1 Social Block</title>
+			<identifier>header_1_social_block</identifier>
+			<content><![CDATA[<ul class="social-link">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Claue Contact Page Custom Block</title>
+			<identifier>contact_page_custom_block</identifier>
+			<content><![CDATA[<h3 class="margin-bottom15">GET OFFICE INFO</h3>
+<p class="sub-title margin-bottom30"><em>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan.</em></p>
+<ul class="list-icon">
+<li><span class="icon pe-7s-map-marker">&nbsp;</span>184 Main Rd E, St Albans <br />VIC 3021, Australia</li>
+<li><span class="icon pe-7s-mail">&nbsp;</span><a href="mailto:contact@company.com">contact@company.com</a><br /><a href="mailto:contact@claue.com">contact@claue.com</a></li>
+<li><span class="icon pe-7s-call">&nbsp;</span> <a href="tel:+0123456789">+01 23456789</a><br /><a href="tel:+0012233456">+001 2233 456</a></li>
+<li><span class="icon pe-7s-timer">&nbsp;</span>
+<p>Monday: 13:00-18:00 (shops open later than usual)</p>
+<p>Tuesday, Wednesday, Friday &amp; Saturday: 09:00-18:00</p>
+<p>Thursday: 09:00-21:00 (late-night shopping)</p>
+<p>Sunday: 12:00-17:00 (This primarily applies to the shops&nbsp;on and near&nbsp;the Nieuwendijk and Kalverstraat. In some of the other shopping streets, you may find that only a selection of the shops are open on Sundays).</p>
+</li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Mpanel Default Sidebar Block</title>
+			<identifier>mpanel_default_sidebar_block</identifier>
+			<content><![CDATA[<div class="block">
+<div class="block-title"><strong class="title">Sale Products</strong></div>
+<div>{{block class="MGS\Mpanel\Block\Products\Category" limit="3" ratio="4" category_ids="6" use_slider="0" loadmore="0" template="products/category_products/list.phtml" numbercol="1" percol="3"}}</div>
+</div>]]></content>
+		</item>
+		<item>
+			<title>Mpanel Product Detail Top Block</title>
+			<identifier>mpanel_product_detail_top_block</identifier>
+			<content><![CDATA[<div class="margin-top25 extra-link"><a href="javascript:void(0)" data-toggle="modal" data-target="#side_guilde_modal">Size Guilde</a> <a class="margin-left20" href="javascript:void(0)" data-toggle="modal" data-target="#delivery_return_modal">Delivery &amp; Return</a></div>
+<div id="side_guilde_modal" class="modal fade">
+<div class="modal-dialog">
+<div class="modal-content"><button class="close" type="button" data-dismiss="modal">x</button>
+<div class="modal-body"><img class="img-responsive" src="{{media url="wysiwyg/sizecharts.png"}}" alt="" /></div>
+</div>
+</div>
+</div>
+<div id="delivery_return_modal" class="modal fade">
+<div class="modal-dialog">
+<div class="modal-content"><button class="close" type="button" data-dismiss="modal">x</button>
+<div class="modal-body">
+<h6 class="margin-bottom10">Delivery</h6>
+<p>All orders shipped with UPS Express.</p>
+<p>Always free shipping for orders over US $250.</p>
+<p>All orders are shipped with a UPS tracking number.</p>
+<h6 class="margin-bottom10">Returns</h6>
+<p>Items returned within 14 days of their original shipment date in same as new condition will be eligible for a full refund or store credit.</p>
+<p>Refunds will be charged back to the original form of payment used for purchase.</p>
+<p>Customer is responsible for shipping charges when making returns and shipping/handling fees of original purchase is non-refundable.</p>
+<p>All sale items are final purchases.</p>
+<h6 class="margin-bottom10">Help</h6>
+<p>Give us a shout if you have any other questions and/or concerns.</p>
+<p>Email: <a href="mailto:contact@domain.com">contact@domain.com</a></p>
+<p>Phone: +1 (23) 456 789</p>
+</div>
+</div>
+</div>
+</div>]]></content>
+		</item>
+		<item>
+			<title>Mpanel Product Detail Bottom Block</title>
+			<identifier>mpanel_product_detail_bottom_block</identifier>
+			<content><![CDATA[<div class="margin-top60">
+<div class="content-heading">
+<h3 class="title">DELIVERY &amp; RETURNS</h3>
+<div class="block-note">Custom static block for product detail</div>
+</div>
+<section style="padding-top: 10px; padding-bottom: 2px;">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+<div class="row">
+<div class="panel-block-row col-md-12 col-xs-12">
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-car">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">FREE SHIPPING</h6>
+<p class="no-margin">Free shipping on all US order or order above $200</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+<div class="row">
+<div class="panel-block-row col-md-12 col-xs-12">
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-help2">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">SUPPORT 24/7</h6>
+<p class="no-margin">Contact us 24 hours a day, 7 days a week</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+<div class="row">
+<div class="panel-block-row col-md-12 col-xs-12">
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-refresh">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">30 DAYS RETURN</h6>
+<p class="no-margin">Simply return it within 30 days for an exchange.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+<div class="row">
+<div class="panel-block-row col-md-12 col-xs-12">
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-door-lock">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">100% PAYMENT SECURE</h6>
+<p class="no-margin">We ensure secure payment with PEV</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></div>]]></content>
+		</item>
+		<item>
+			<title>Static Block On Product Detail Tab</title>
+			<identifier>claue_product_detail_tab</identifier>
+			<content><![CDATA[<div class="text-center"><img src="{{media url="wysiwyg/care-icon.png"}}" alt="" />
+<p class="margin-top20">LT01: 70% wool, 15% polyester, 10% polyamide, 5% acrylic 900 Grms/mt</p>
+</div>]]></content>
+		</item>
+	</static_block>
+	
+	<cms_page>
+		<item>
+			<title>Claue 404 Not Found</title>
+			<identifier>claue-no-route</identifier>
+			<content_heading><![CDATA[404 Not Found]]></content_heading>
+			<page_layout>1column</page_layout>
+			<content><![CDATA[<div class="text-center">
+<h1>404</h1>
+<h5 class="text-uppercase margin-bottom15">Sorry! Page you are looking can&rsquo;t be found.</h5>
+<p>Go back to the <a href="{{store url=""}}">homepage</a></p>
+</div>]]></content>
+		</item>
+		<item>
+			<title>Claue Size Guide</title>
+			<identifier>claue-size-guide</identifier>
+			<content_heading><![CDATA[Size Guide]]></content_heading>
+			<page_layout>1column</page_layout>
+			<content><![CDATA[<h2 class="margin-bottom30">SIZES GUIDE</h2>
+<table class="table table-hover table-bordered">
+<tbody>
+<tr><th>US</th><th>Bust</th><th>Waist</th></tr>
+<tr>
+<td>XXXS &middot; 0</td>
+<td>31&frac34;</td>
+<td>23&frac12;</td>
+</tr>
+<tr>
+<td>XXS &middot; 2</td>
+<td>32&frac14;</td>
+<td>24&frac12;</td>
+</tr>
+<tr>
+<td>XS &middot; 4</td>
+<td>34</td>
+<td>26</td>
+</tr>
+<tr>
+<td>S &middot; 6</td>
+<td>36&frac14;</td>
+<td>28&frac14;</td>
+</tr>
+<tr>
+<td>M &middot; 8</td>
+<td>38&frac12;</td>
+<td>30&frac34;</td>
+</tr>
+<tr>
+<td>L &middot; 10</td>
+<td>41</td>
+<td>33&frac12;</td>
+</tr>
+<tr>
+<td>XL &middot; 12</td>
+<td>42&frac12;</td>
+<td>35&frac12;</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-hover table-bordered">
+<tbody>
+<tr><th>US</th><th>Bust</th><th>Waist</th></tr>
+<tr>
+<td>1</td>
+<td>31&frac12;</td>
+<td>23&frac12;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>32&frac14;</td>
+<td>24&frac12;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>34</td>
+<td>26</td>
+</tr>
+<tr>
+<td>6</td>
+<td>35&frac12;</td>
+<td>27&frac12;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>37</td>
+<td>30</td>
+</tr>
+<tr>
+<td>10</td>
+<td>38&frac12;</td>
+<td>30&frac34;</td>
+</tr>
+<tr>
+<td>12</td>
+<td>40&frac14;</td>
+<td>32&frac34;</td>
+</tr>
+<tr>
+<td>14</td>
+<td>41&frac34;</td>
+<td>34&frac12;</td>
+</tr>
+<tr>
+<td>16</td>
+<td>43&frac34;</td>
+<td>36&frac12;</td>
+</tr>
+</tbody>
+</table>
+<h2 class="margin-bottom30 margin-top30">EQUIVALENT SIZES TABLE</h2>
+<table class="table table-hover table-bordered">
+<tbody>
+<tr><th>US</th><th>EUR</th><th>UK</th><th>MEX</th></tr>
+<tr>
+<td>XXXS &middot; 0</td>
+<td>XXS</td>
+<td>4</td>
+<td>EECH</td>
+</tr>
+<tr>
+<td>XXS &middot; 2</td>
+<td>XS</td>
+<td>6</td>
+<td>ECH</td>
+</tr>
+<tr>
+<td>XS &middot; 4</td>
+<td>S</td>
+<td>8</td>
+<td>CH</td>
+</tr>
+<tr>
+<td>S &middot; 6</td>
+<td>M</td>
+<td>10</td>
+<td>M</td>
+</tr>
+<tr>
+<td>M&middot; 8</td>
+<td>L</td>
+<td>12</td>
+<td>G</td>
+</tr>
+<tr>
+<td>L &middot; 10</td>
+<td>XL</td>
+<td>14</td>
+<td>EG</td>
+</tr>
+<tr>
+<td>XL &middot; 12</td>
+<td>XXL</td>
+<td>16</td>
+<td>EEG</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-hover table-bordered">
+<tbody>
+<tr><th>US</th><th>EUR</th><th>UK</th><th>MEX</th><th>IT</th><th>RU</th></tr>
+<tr>
+<td>1</td>
+<td>32</td>
+<td>4</td>
+<td>0</td>
+<td>36</td>
+<td>38</td>
+</tr>
+<tr>
+<td>2</td>
+<td>34</td>
+<td>6</td>
+<td>1</td>
+<td>38</td>
+<td>40</td>
+</tr>
+<tr>
+<td>4</td>
+<td>36</td>
+<td>8</td>
+<td>3</td>
+<td>40</td>
+<td>42</td>
+</tr>
+<tr>
+<td>6</td>
+<td>38</td>
+<td>10</td>
+<td>5</td>
+<td>42</td>
+<td>44</td>
+</tr>
+<tr>
+<td>8</td>
+<td>40</td>
+<td>12</td>
+<td>7</td>
+<td>44</td>
+<td>46</td>
+</tr>
+<tr>
+<td>10</td>
+<td>42</td>
+<td>14</td>
+<td>9</td>
+<td>46</td>
+<td>48</td>
+</tr>
+<tr>
+<td>12</td>
+<td>44</td>
+<td>16</td>
+<td>11</td>
+<td>48</td>
+<td>50</td>
+</tr>
+<tr>
+<td>14</td>
+<td>46</td>
+<td>18</td>
+<td>13</td>
+<td>50</td>
+<td>52</td>
+</tr>
+<tr>
+<td>16</td>
+<td>48</td>
+<td>20</td>
+<td>15</td>
+<td>52</td>
+<td>54</td>
+</tr>
+</tbody>
+</table>
+<div>* The measurements in the guide are based on measurements taken directly from the body, not the garment. If your measurement is between two sizes, we recommend you select the larger size.</div>]]></content>
+		</item>
+		<item>
+			<title>Claue About Us</title>
+			<identifier>claue-about-us</identifier>
+			<content_heading><![CDATA[About Us]]></content_heading>
+			<page_layout>1column</page_layout>
+			<content><![CDATA[<div class="row">
+<div class="col-md-6 margin-bottom35">
+<h4>OUR MISSION</h4>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,<em> totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae </em>vitae dicta sunt explicabo nemo enim ipsam.</p>
+</div>
+<div class="col-md-6 margin-bottom35">
+<h4>OUR STORIES</h4>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div class="col-md-6 margin-bottom35">
+<h4>OUR APPROACH</h4>
+<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,<em> sed quia non numquam eius modi tempora incidunt ut labore et </em>dolore magnam aliquam quaerat voluptatem.</p>
+</div>
+<div class="col-md-6 margin-bottom35">
+<h4>OUR PHILOSOPHY</h4>
+<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Quis nostrum exercitationem ullam.</p>
+</div>
+</div>
+<div class="margin-bottom60">
+<blockquote>Until the Digital Age, typography was a specialized occupation. Digitization opened up <em>typography to new generations of previously unrelated designers and lay users</em>, and David Jury, head of graphic design at<strong> Colchester Institute in England</strong>, states that &ldquo;typography is now something everybody does. As the capability to create typography has become ubiquitous, the application of principles and best practices developed over generations of skilled workers and professionals has diminished. Ironically, at a time when scientific techniques.</blockquote>
+</div>
+<div class="content-heading">
+<h3 class="title">MEET OUR TEAM</h3>
+<div class="block-note">All the great people</div>
+</div>
+<div class="row">
+<div class="profile col-md-3 col-sm-6 col-xs-12 col-xs-half first-sm-item first-xs-item">
+<div class="profile-image"><a href="#"><img class="img-responsive" src="{{media url="wysiwyg/6_2.jpg"}}" alt="" /></a>
+<ul class="social-link">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>
+</div>
+<div class="profile-desc text-center"><a class="profile-name" href="#">Lisa John</a>
+<p><span>Fashion Design</span></p>
+</div>
+</div>
+<div class="profile col-md-3 col-sm-6 col-xs-12 col-xs-half">
+<div class="profile-image"><a href="#"><img class="img-responsive" src="{{media url="wysiwyg/7_2.jpg"}}" alt="" /></a>
+<ul class="social-link">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>
+</div>
+<div class="profile-desc text-center"><a class="profile-name" href="#">Cartherin Forres</a>
+<p><span>Fashion Design</span></p>
+</div>
+</div>
+<div class="profile col-md-3 col-sm-6 col-xs-12 col-xs-half first-sm-item first-xs-item">
+<div class="profile-image"><a href="#"><img class="img-responsive" src="{{media url="wysiwyg/9_2.jpg"}}" alt="" /></a>
+<ul class="social-link">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>
+</div>
+<div class="profile-desc text-center"><a class="profile-name" href="#">David Miller</a>
+<p><span>CEO</span></p>
+</div>
+</div>
+<div class="profile col-md-3 col-sm-6 col-xs-12 col-xs-half">
+<div class="profile-image"><a href="#"><img class="img-responsive" src="{{media url="wysiwyg/13_1.jpg"}}" alt="" /></a>
+<ul class="social-link">
+<li><a href="#">&nbsp;<span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-google-plus">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#">&nbsp;<span class="fa fa-pinterest-p">&nbsp;</span></a></li>
+</ul>
+</div>
+<div class="profile-desc text-center"><a class="profile-name" href="#">Jane Doe</a>
+<p><span>Director</span></p>
+</div>
+</div>
+</div>]]></content>
+		</item>
+		<item>
+			<title>Claue Sale Off</title>
+			<identifier>sale-off</identifier>
+			<content_heading><![CDATA[Sale Off]]></content_heading>
+			<page_layout>1column</page_layout>
+			<content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Saleoff" template="products/saleoff.phtml" limit="24" perrow="4"}}]]></content>
+		</item>
+	</cms_page>
+	<theme_setting>
+		<general>
+			<width>width1200</width>
+			<layout>wide</layout>
+			<header>header</header>
+			<footer>footer</footer>
+			<sticky_menu>1</sticky_menu>
+			<back_to_top>1</back_to_top>
+		</general>
+		<fonts>
+			<default_font><![CDATA[Poppins]]></default_font>
+			<h1><![CDATA[Poppins]]></h1>
+			<h2><![CDATA[Poppins]]></h2>
+			<h3><![CDATA[Poppins]]></h3>
+			<h4><![CDATA[Poppins]]></h4>
+			<h5><![CDATA[Poppins]]></h5>
+			<h6><![CDATA[Poppins]]></h6>
+			<price><![CDATA[Poppins]]></price>
+			<menu><![CDATA[Poppins]]></menu>
+			<btn><![CDATA[Poppins]]></btn>
+			<custom_fonts_element><![CDATA[blockquote,.sub-title, .content-heading .block-note]]></custom_fonts_element>
+			<custom_font_fml><![CDATA[Libre+Baskerville]]></custom_font_fml>
+		</fonts>
+	</theme_setting>
+</install>

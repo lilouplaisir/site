@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mpanel>
+            <catalog>
+				<layout>2columns-left</layout>
+                <product_per_row>4</product_per_row>
+                <change_product_per_row>0</change_product_per_row>
+                <picture_ratio>1</picture_ratio>
+                <max_width_image>400</max_width_image>
+                <max_width_image_detail>600</max_width_image_detail>
+                <new_label>New</new_label>
+                <sale_label>Sale</sale_label>
+            </catalog>
+			<catalogsearch>
+				<layout>2columns-left</layout>
+			</catalogsearch>
+			<product_details>
+				<product_layout>2columns-right</product_layout>
+				<product_ct_template>1</product_ct_template>
+                <sku>1</sku>
+                <disable_zoom_detail>0</disable_zoom_detail>
+                <zoom_magnify>1.5</zoom_magnify>
+                <reviews_summary>1</reviews_summary>
+                <product_per_row_list>4</product_per_row_list>
+                <wishlist>1</wishlist>
+                <compare>1</compare>
+				<detail_template>0</detail_template>
+                <short_description>1</short_description>
+                <upsell_products>1</upsell_products>
+            </product_details>
+			<customer>
+				<account_dashboard>0</account_dashboard>
+				<account_information>0</account_information>
+				<address_book>0</address_book>
+				<downloadable>0</downloadable>
+				<orders>0</orders>
+				<newsletter>0</newsletter>
+				<creditcart>0</creditcart>
+				<billing_agreements>0</billing_agreements>
+				<reviews>0</reviews>
+				<wishlist>0</wishlist>
+			</customer>
+			<newsletter_popup>
+                <enable_newsletter>1</enable_newsletter>
+				<title><![CDATA[Sign Up Newsletter]]></title>
+                <html><![CDATA[<h5>Sign up our newsletter and save 25% off for the next purchase!</h5><p> Subscribe to our newsletters and don’t miss new arrivals, the latest fashion updates and our promotions.</p>]]></html>
+				<footer_text><![CDATA[Your Information will never be shared with any third party.]]></footer_text>
+				<background_title>default/bg_title.jpg</background_title>
+                <popup_width>530</popup_width>
+            </newsletter_popup>
+			<sidebar_config>
+                <compare_sidebar>1</compare_sidebar>
+                <reorder_sidebar>1</reorder_sidebar>
+                <wishlist_sidebar>1</wishlist_sidebar>
+                <custom_block_sidebar>1</custom_block_sidebar>
+			</sidebar_config>
+			<breadcrumbs>
+                <fullwidth>1</fullwidth>
+			</breadcrumbs>
+        </mpanel>
+		<mgstheme>
+			<general>
+				<width>width1200</width>
+				<layout>wide</layout>
+				<back_to_top>1</back_to_top>
+				<lazy_load>1</lazy_load>
+				<catalog_ajax>1</catalog_ajax>
+				<header>header_1</header>
+				<footer>footer_1</footer>
+			</general>
+		</mgstheme>
+    </default>
+</config>

@@ -1,0 +1,25 @@
+<?php $helper = $this->getHelper() ?>
+<?php $product = $helper->getCurrentProduct() ?>
+<?php $pageLayout = $this->getPageLayoutConfig() ?>
+<?php $perrow = $this->getPerrowConfig() ?>
+<?php $ratios = $this->getRatioConfig() ?>
+<form action="<?php echo $this->getUrl('mpanel/product/save') ?>" method="POST">
+	<input type="hidden" name="id" value="<?php echo $product->getId() ?>"/>
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon"><?php echo __('Layout') ?></span> 
+				<select class="form-control input-sm" name="page_layout">
+					<?php foreach($pageLayout as $layout): ?>
+						<option value="<?php echo $layout['value'] ?>"<?php if($product->getPageLayout()==$layout['value']): ?> selected="selected"<?php endif ?>><?php echo $layout['label'] ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		<button class="btn btn-default submit-top-panel" type="submit"><?php echo __('Submit') ?></button>
+	</div>
+</form>

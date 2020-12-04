@@ -1,0 +1,11 @@
+<?php 
+$helper = $this->helper('MGS\Social\Helper\Data');
+?>
+<?php if ($helper->getConfig('twitter_settings/active')):?>
+<?php if($helper->getConfig('twitter_settings/client_token') && $helper->getConfig('twitter_settings/client_tokenSecret')&& $helper->getConfig('twitter_settings/client_id') && $helper->getConfig('twitter_settings/client_secret')): ?>
+<?php echo $block->getLastTwitter();
+	?>
+	<?php else: ?>
+		<div class="alert alert-warning"><?php echo __('Please update your twitter settings first.')?></div>
+	<?php endif;?>
+<?php endif;?>

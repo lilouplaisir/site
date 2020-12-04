@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \MGS\Landing\Block\Landing
+ */
+?>
+
+<?php $_categories = $block->getChildCategory(); ?>
+
+<?php //Block Config ?>
+<?php $per_row = $block->getConfig('mgs_landing/general/per_row'); ?>
+<?php $shortdes = $block->getConfig('mgs_landing/general/show_shortdes'); ?>
+<?php $character = $block->getConfig('mgs_landing/general/character'); ?>
+
+<?php // Block Content ?>
+<div class="landing-categories--parralax">
+    <div class="row">
+        <?php $i =0; foreach ($_categories as $_category): ?>
+            <?php if ($_category->getIsActive()): ?>
+                <?php $i++; ?>
+                <div class="landing-parralax--item" style="background-image: url('<?php echo $block->getImageUrl($_category->getId()); ?>');">
+                    <div class="landing-parralax-detail">
+                        <h2><a href="<?php echo $block->getCategoryUrl($_category) ?>" title="<?php echo $block->escapeHtml($_category->getName()) ?>"><?php echo $block->escapeHtml($_category->getName()) ?></a></h2>
+                        <div class="landing-parralax--count">
+                            <?php echo $_category->getProductCount() ?>&nbsp;<?php echo __('product(s)'); ?>
+                        </div>
+                        <?php if($shortdes): ?>
+                            <?php $_description = $block->getCateDescription($_category->getId()); ?>
+                            <?php if ($_description): ?>
+                                <div class="landing-parralax--shortdes">
+                                    <div class="category-description">
+                                        <?php echo $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($_category, $_description, 'description') ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                        <?php endif ?>
+                        <a class="btn btn-primary margin-top10" href="<?php echo $block->getCategoryUrl($_category) ?>"><?php echo __('Shop Now'); ?></a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach ?>
+    </div>
+</div>

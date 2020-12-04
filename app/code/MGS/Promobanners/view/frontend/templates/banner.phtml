@@ -1,0 +1,31 @@
+<?php $bannerId = $this->getBannerId() ?>
+<?php $banner = $this->getBannerById($bannerId) ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank.png'); ?>
+<?php if($banner): ?>
+	<?php 
+		if(!$lazyLoad){
+			$baseImage = $this->getBannerImageUrl($banner);
+		}
+	?>
+	<div class="promobanner<?php echo $this->getCustomClass($banner) ?>">
+		<a<?php if($banner->getUrl()!=''): ?> href="<?php echo $banner->getUrl() ?>"<?php endif ?>>
+			<img alt="" src="<?php echo $baseImage ?>" class="img-responsive lazy" data-src="<?php echo $this->getBannerImageUrl($banner) ?>"/>
+		</a>
+		<?php if(($banner->getContent() != '') || ($banner->getButton() != '')): ?>
+			<div class="text<?php if($banner->getTextAlign()!=''): ?> <?php echo $banner->getTextAlign() ?><?php endif ?>">
+				<?php if($banner->getContent() != ''): ?>
+					<div class="banner-text"><?php echo $banner->getContent() ?></div>
+				<?php endif ?>
+				<?php if($banner->getButton() != ''): ?>
+					<span class="banner-button">
+						<button <?php if($banner->getUrl()!=''): ?> onclick="setLocation('<?php echo $banner->getUrl() ?>');"<?php endif ?> class="btn btn-default btn-promo-banner"><?php echo $banner->getButton() ?></button>
+					</span>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+	</div>
+<?php else: ?>
+	<div role="alert" class="alert alert-warning"> <?php echo __('We can\'t find banners matching the selection.') ?> </div>
+<?php endif ?>

@@ -1,0 +1,28 @@
+<?php 
+	$configHelper = $this->helper('MGS\Amp\Helper\Config');
+	$html = $this->getHtmlSlider();
+	$html = html_entity_decode($html);
+?>
+<?php if($html != ""): ?>
+	<?php
+	$widthCarousel = $heightCarousel = 0;
+	$domd = new DOMDocument();
+	libxml_use_internal_errors(true);
+	$domd->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+	libxml_use_internal_errors(false);
+	$domx = new \DOMXPath($domd);
+	$itemsImg = $domx->query("//img[@src]");
+	foreach($itemsImg as $imgItem) {
+		list($width, $height, $type, $attr) = getimagesize(str_replace('https://', 'http://', $imgItem->getAttribute("src")));
+		$widthCarousel = $width;
+		$heightCarousel = $height;
+		break;
+	}
+	unset($domd);
+	?>
+    <amp-carousel class="slider_mgs_carousel"<?php if($this->getAutoPlay()=='true'): ?> autoplay delay="<?php echo $this->getAutoSpeed() ?>"<?php endif ?> width="<?php echo $widthCarousel ?>" height="<?php echo $heightCarousel ?>" layout="responsive" type="slides"<?php if($this->getLoop()=='true'): ?> loop<?php endif ?><?php if($this->getControlNav()=='true'): ?> controls<?php endif ?>>
+		<?= $configHelper->convertHtmlForAmp($html); ?>
+    </amp-carousel>
+<?php else: ?>
+	<div role="alert" class="alert alert-warning"><?= __('There are no sliders matching the selection.') ?></div>
+<?php endif ?>

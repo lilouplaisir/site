@@ -1,0 +1,62 @@
+<?php $galleryImages = $this->getGalleryImages(); ?>
+<?php $zoom_image = $this->getEnableZoom(); ?>
+<?php $lbox_image = $this->getLbox(); ?>
+<div id="owl-carousel-gallery" class="owl-carousel gallery-horizontal">
+    <?php foreach($galleryImages as $image): ?>
+         
+         <?php 
+            $dataArrayImg =  $image->toArray();
+            $productName = $this->getProduct()->getName();
+
+            $lbImage = (isset($dataArrayImg['label']) &&  $dataArrayImg['label'] != null) ? $dataArrayImg['label'] : $productName;
+        ?>
+        <div class="product item-image imgzoom" data-zoom="<?php echo $image->getImageZoom(); ?>">
+            <?php if($lbox_image): ?>
+                <?php if($image->getMediaType() != 'external-video'): ?>
+                    <a class="lb" href="<?php echo $image->getsImageZoom(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                <?php else: ?>
+                    <a class="lb video-link" href="<?php echo $image->getVideoUrl(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                <?php endif ?>
+            <?php else: ?>
+                <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+                <?php if($image->getMediaType() == 'external-video'): ?>
+                    <a target="_blank" class="popup-youtube btn btn-primary" href="<?php echo $image->getVideoUrl(); ?>"><?php echo __('Watch Video'); ?></a>
+                <?php endif ?>
+            <?php endif ?>
+        </div>
+    <?php endforeach ?>
+</div>
+<script type="text/javascript">
+    require([ 'jquery', 'mgs/owlcarousel' ], function ($) {
+        $('#owl-carousel-gallery').owlCarousel({
+            items: 4,
+            autoplay: false,
+            lazyLoad: false,
+            nav: true,
+            dots: false,
+            navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+            rtl: false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                768:{
+                    items:3
+                },
+                992:{
+                    items:3
+                },
+                1200:{
+                    items:4
+                }
+            }
+        });
+    });
+    <?php if($zoom_image): ?>
+        require([ 'jquery', 'zoom-images' ],function($) { 
+            $(".imgzoom").each(function( index ) {
+                zoomElement(this);
+            });
+        });
+    <?php endif ?>
+</script>

@@ -1,0 +1,176 @@
+/*
+Template Name : Ethan - Storelocator extension style
+
+-------- Table Of Contents ---------
+-------- 1-  CREATE VARIABLES
+-------- 2-  STORE LIST
+-------- 3-  DETAIL STORE
+-------- 4-  RESPONSIVE STORE LOCATOR
+
+-------- End Table Of Contents ----
+*/
+
+// CREATE VARIABLES
+.border-radius (@radius) {
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -o-border-radius: @radius;
+}
+
+// STORE LIST
+.store-list-container {
+	.search-form {
+		border: 1px solid #f0f0f0;
+		margin-bottom: 30px;
+		.border-radius(0px 0px 4px 4px);
+		padding: 16px 20px 20px;
+		.block-title .title {
+			font-weight: 500;
+			color: #222;
+			font-size: 20px;
+			margin-bottom: 13px;
+			border-bottom: 1px solid #ddd;
+		}
+		.btn {
+			min-width: 150px;
+		}
+	}
+	.store-list {
+		border: 1px solid #ddd;
+		margin-bottom: 30px;
+		.border-radius(0px 0px 4px 4px);
+		padding: 16px 20px 20px;
+		.block-title .title {
+			font-weight: 500;
+			color: #222;
+			font-size: 20px;
+			margin-bottom: 13px;
+			border-bottom: 1px solid #ddd;
+		}
+		> .items {
+			max-height: 600px;
+			overflow-y: auto;
+			overflow-x: hidden;
+			.stores li {
+				margin-bottom: 15px;
+				padding-bottom: 15px;
+				border-bottom: 1px solid #ddd;
+				.store-content {
+					&:after {
+						content: "";
+						display: table;
+						clear: both;
+					}
+					.store-logo {
+						display: block;
+						float: right;
+						width: 100px;
+						padding-top: 9px;
+					}
+					.description {
+						float: right;
+						padding-right: 15px;
+						width: calc(~'100% - 100px');
+						h4 a {
+							font-weight: 500;
+							color: #222;
+							font-size: 16px;
+							margin-bottom: 10px;
+							&:hover {
+								color: #56cfe1;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#store-list-map {
+    height: 700px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+// DETAIL STORE
+.locator-index-view .footer {
+	margin-top: 0;
+}
+.storelocator-details .box-store {
+    border: 1px solid #f0f0f0;
+	.border-radius(0px 0px 4px 4px);
+	padding: 16px 20px 20px;
+	.block-title .title {
+		font-weight: 500;
+		color: #222;
+		font-size: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #ddd;
+	}
+	.store-image {
+		margin-bottom: 30px;
+	}
+	table {
+		width: 100%;
+		margin-bottom: 0;
+		tr {
+			td, th {
+				border: 1px solid #eee;
+				padding: 10px;
+			}
+			td:first-child {
+				color: #2a2a2a;
+			}
+		}
+	}
+}
+
+#map-detail {
+    height: 450px;
+	border: 1px solid #f0f0f0;
+}
+
+.map-short-info {
+	padding: 3px 0 4px;
+	h3 {
+		font-weight: 500;
+		color: #222;
+		font-size: 20px;
+		margin-bottom: 13px;
+		border-bottom: 1px solid #ddd;
+	}
+}
+
+// RESPONSIVE STORE LOCATOR
+@media (max-width: 991px) {
+	#store-list-map {
+		margin-top: 40px;
+		height: 400px;
+	}
+}
+@media (max-width: 767px) {
+	.box-store-content .portfolio-table tr {
+		border: 1px solid #f0f0f0;
+		padding: 15px;
+		display: block;
+		+ tr {
+			border-top: none;
+		}
+		td {
+			display: block;
+			padding: 0 !important;
+			border: none !important;
+			background: none !important;
+		}
+	}
+	#show-all-store .btn {
+		width: 100%;
+	}
+}
+@media (max-width: 500px) {
+	.store-list-container .search-form .col-xs-6 {
+		width: 100%;
+	}
+}

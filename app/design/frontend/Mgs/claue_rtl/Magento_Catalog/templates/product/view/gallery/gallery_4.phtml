@@ -1,0 +1,137 @@
+<?php $galleryImages = $this->getGalleryImages(); ?>
+<?php $zoom_image = $this->getEnableZoom(); ?>
+<?php $lbox_image = $this->getLbox(); ?>
+<div class="vertical-gallery">
+    <div id="vertical-thumbnail-wrapper">
+        <div id="vertical-thumbnail" class="vertical-thumbnail">
+            <?php $i = 0; foreach($galleryImages as $image): ?>
+                <?php $lbImage = $image->getLabel() ? $image->getLabel() : $image->getLabelDefault(); ?>
+                <div class="item-thumb<?php if($i == 0): ?> active<?php endif ?>" data-owl="<?php echo $i ?>">
+                    <img class="img-responsive" src="<?php echo $image->getSmallImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+                    <?php if($image->getMediaType() == 'external-video'): ?>
+                        <a target="_blank" class="popup-youtube" href="<?php echo $image->getVideoUrl(); ?>"></a>
+                    <?php endif ?>
+                </div>
+                <?php $i++; ?>
+            <?php endforeach ?>
+        </div>
+    </div>
+    <div id="owl-carousel-gallery" class="owl-carousel gallery-vertical">
+        <?php foreach($galleryImages as $image): ?>
+            <?php $lbImage = $image->getLabel() ? $image->getLabel() : $image->getLabelDefault(); ?>
+            <div class="product item-image imgzoom" data-zoom="<?php echo $image->getImageZoom(); ?>">
+                <?php if($lbox_image): ?>
+                    <?php if($image->getMediaType() != 'external-video'): ?>
+                        <a class="lb" href="<?php echo $image->getImageZoom(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                    <?php else: ?>
+                        <a class="lb video-link" href="<?php echo $image->getVideoUrl(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                    <?php endif ?>
+                <?php else: ?>
+                    <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+                    <?php if($image->getMediaType() == 'external-video'): ?>
+                        <a target="_blank" class="popup-youtube btn btn-primary" href="<?php echo $image->getVideoUrl(); ?>"><?php echo __('Watch Video') ?></a>
+                    <?php endif ?>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
+<script type="text/javascript">
+    require([ 'jquery', 'mgs/slick', 'mgs/owlcarousel' ], function ($) {
+        
+        $('#owl-carousel-gallery').on('initialized.owl.carousel', function(event) {
+            var hs = $('#owl-carousel-gallery').height();
+            $('.product.media').height(hs);
+        });
+        
+        $('#owl-carousel-gallery').owlCarousel({
+            items: 1,
+            autoplay: false,
+            lazyLoad: false,
+            nav: true,
+            dots: false,
+            navText: ["<span class='fa fa-angle-left'></span>","<span class='fa fa-angle-right'></span>"],
+            rtl: RTL
+        });
+        
+        $('#vertical-thumbnail').slick({
+            dots: false,
+            arrows: true,
+            vertical: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            verticalSwiping: true,
+            centerMode: true,
+            prevArrow: '<span class="pe-7s-angle-up"></span>',
+            nextArrow: '<span class="pe-7s-angle-down"></span>',
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 360,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+        
+        $('#owl-carousel-gallery').on('changed.owl.carousel', function(event) {
+            var index = event.item.index;
+            $('#vertical-thumbnail .item-thumb').removeClass('active');
+            $('#vertical-thumbnail .item-thumb[data-owl='+index+']').addClass('active');
+            var wdw = $(window).width();
+            var ci = <?php echo count($galleryImages); ?>;
+            if(wdw >= 1199 && ci > 3) {
+                $('#vertical-thumbnail').slick('slickGoTo', index);
+            }else if(wdw < 1199 && wdw >= 768 && ci > 2){
+                $('#vertical-thumbnail').slick('slickGoTo', index);
+            }else if(wdw < 768 && wdw >= 600 && ci > 3){
+                $('#vertical-thumbnail').slick('slickGoTo', index);
+            }else if(wdw < 768 && wdw >= 600 && ci > 2){
+                $('#vertical-thumbnail').slick('slickGoTo', index);
+            }else if(wdw < 360){
+                $('#vertical-thumbnail').slick('slickGoTo', index);
+            }
+        });
+        
+        $('#owl-carousel-gallery').on('resized.owl.carousel', function(event) {
+            var hs = $('#owl-carousel-gallery').height();
+            $('.product.media').height(hs);
+        });
+        
+        $('#vertical-thumbnail .item-thumb').click(function(){
+            $('#vertical-thumbnail .item-thumb').removeClass('active');
+            var position = $(this).attr('data-owl');
+            $('#owl-carousel-gallery').trigger('to.owl.carousel', position);
+            $(this).addClass('active');
+        });
+    });
+    <?php if($zoom_image): ?>
+        require([ 'jquery', 'zoom-images' ],function($) { 
+            $(".imgzoom").each(function( index ) {
+                zoomElement(this);
+            });
+        });
+    <?php endif ?>
+</script>

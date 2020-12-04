@@ -1,0 +1,91 @@
+<?php
+$helper = $this->helper('MGS\Guestwishlist\Helper\Data');
+$items = $helper->getWishlistItemCollection();
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$settings = $themeHelper->getThemeSettings();
+$perrow = $settings['catalog']['per_row'];
+$colCheck = $themeHelper->convertPerRowtoCol($perrow);
+$colClass = $themeHelper->convertColClass($colCheck, 'col');
+$quickViewHelper = $this->helper('MGS\QuickView\Helper\Data');
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+
+$image = 'wishlist_thumbnail';
+$padding = $themeHelper->getImagePadding();
+$size = $themeHelper->getImageSize();
+?>
+
+<div class="products wrapper grid products-grid">
+    <?php $iterator = 1; ?>
+    <?php if (count($items)): ?>
+            <ol class="product-items row">
+                <?php $i=0; foreach ($items as $item): $i++ ?>
+                    <?php
+                    $_product = $item['product'];
+                    $productUrl = $_product->getUrlModel()->getUrl($_product, []);
+                    ?>
+                    <li class="product-wishlist-items item product product-item <?php echo $colClass ?> <?php echo $themeHelper->getClearClass($perrow, $i) ?>">
+						<div class="product-item-info" data-container="product-grid">
+							<div class="product-top">
+								<?php $productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl(); ?>
+								<a href="<?php echo $block->escapeUrl($productUrl) ?>" style="padding-bottom: <?php echo $padding; ?> !important;" class="product photo product-item-photo " tabindex="-1">
+									<img src="<?php echo $productImage ?>" alt="<?php echo $block->stripTags($_product->getName(), null, true); ?>" class="img-responsive product-image-photo img-thumbnail"/>
+									<span class="product-image-photo"></span>
+								</a>
+								<?php echo $themeHelper->getProductLabel($_product) ?>
+								
+								<ul class="actions-link">
+									<li>
+										<button class="action remove" href="javascript:void(0);" data-post='<?php echo $helper->getDeleteItemParams($item, $_product) ?>'><span class="fa fa-trash"></span></button>
+									</li>
+								</ul>
+								
+								
+								<?php if ($_product->isSaleable()): ?>
+									<div class="product-item-actions">
+                                        <div class="actions-primary">
+                                            <button type="button" data-role="tocart" data-post='<?php echo $item['data_post'] ?>' title="<?php echo __('Add to Cart') ?>" data-item-id="<?php echo $item['item_id'] ?>" class="action btn-cart primary">
+												<span class="icon pe-7s-shopbag"></span>
+                                                <span class="text"><?php echo $block->escapeHtml(__('Add to Cart')) ?></span>
+                                            </button>
+                                        </div>
+                                    </div>
+								<?php endif ?>
+							</div>
+							<div class="product details product-item-details">
+								<h5 class="product name product-item-name">
+									<a class="product-item-link" href="<?php echo $block->escapeUrl($productUrl) ?>"><?php echo $block->stripTags($_product->getName(), null, true); ?></a>
+								</h5>	
+								<div class="product-buy_info">
+									<div class="price-box price-configured_price">
+										<p class="price-as-configured">
+											<span class="price-container price-configured_price tax weee">
+												<span data-price-type="finalPrice" class="price-wrapper ">
+													<span class="price"><?php echo $helper->formatPrice($_product->getFinalPrice()) ?></span>
+												</span>
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+							<?php if (isset($item['wishlist_options'])): ?>
+								<div class="product-item-tooltip">
+									<?php echo $item['wishlist_options']; ?>
+								</div>
+							<?php endif; ?>
+						</div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+			<div class="actions-toolbar">
+				<div class="primary">
+					<button type="button" data-role="tocart" data-post='<?php echo $helper->getAddAllCartParams() ?>' title="<?php echo __('Add All to Cart') ?>" class="action btn btn-primary">
+						<span><?php echo __('Add All to Cart') ?></span>
+					</button>
+				</div>
+			</div>
+    <?php else: ?>
+        <div class="message info empty">
+            <span><?= $block->escapeHtml(__('This Wish List has no Items')) ?></span>
+        </div>
+    <?php endif; ?>
+</div>

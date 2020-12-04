@@ -1,0 +1,77 @@
+<?php $helper = $this->helper('MGS\Blog\Helper\Data'); ?>
+
+<?php if ($block->getConfig('general_settings/enabled')): ?>
+    <?php if ($block->getConfig('sidebar_settings/enabled')): ?>
+
+        <?php if ($block->getConfig('sidebar_settings/show_recent_posts')): ?>
+            <?php $collection = $block->getCollection(); ?>
+            <?php if ($collection->count()): ?>
+                <div class="block block-blog-posts">
+                    <div class="block-title">
+                        <span class="title"><?php echo __('Lastest Posts') ?></span>
+                    </div>
+                    <div class="block-content">
+                        <ul class="post-list">
+                            <?php foreach ($collection as $post): ?>
+                                <li class="item">
+									<div class="blog-content list-content">
+										<div class="short-detail">
+											<div class="title">
+												<a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?> </a>
+												<span class="date"><?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></span>
+											</div>
+										</div>
+									</div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+		
+		<?php if ($block->getConfig('sidebar_settings/show_categories')): ?>
+            <?php $categories = $block->getCategories(); ?>
+            <?php if (count($categories)): ?>
+                <div class="block block-blog-categories">
+                    <div class="block-title">
+                        <span class="title"><?php echo __('Categories') ?></span>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <?php foreach ($categories as $category): ?>
+                                <li>
+									<a title="<?php echo $category->getTitle(); ?>"
+									   href="<?php echo $category->getCategoryUrl(); ?>">
+										<?php echo $category->getTitle(); ?>
+									</a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+		
+        <?php if ($block->getConfig('sidebar_settings/show_tags')): ?>
+            <?php $tags = $block->getTags(); ?>
+            <?php if (count($tags)): ?>
+                <div class="block block-blog-tags">
+                    <div class="block-title">
+                        <span class="title"><?php echo __('Tags') ?></span>
+                    </div>
+                    <div class="block-content">
+						<ul class="tag-cloud">
+							<?php foreach ($tags as $tag => $count): ?>
+								<li>
+									<a title="<?php echo $tag; ?>" href="<?php echo $helper->getTagUrl($tag); ?>"><?php echo $tag; ?></a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+		
+    <?php endif; ?>
+<?php endif; ?>

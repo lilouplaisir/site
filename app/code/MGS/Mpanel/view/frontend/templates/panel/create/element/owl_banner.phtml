@@ -1,0 +1,829 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<div class="edit-static-form">
+	
+	<div class="row">
+		<div class="col-md-12 builder-title">
+			<h2><?php echo __('OWL Carousel Slider') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('mpanel/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="owl_banner">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Mpanel\Model\Childs')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		
+		<div class="form-horizontal">
+            <input id="block_html" type="hidden" name="setting[block_link]" value="<?php if($exist && isset($settings['block_html']) && $settings['block_html']): ?><?php echo $settings['block_html'] ?><?php endif ?>">
+			<div id="form_tabs" class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a data-toggle="tab" href="#general"><?php echo __('General') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="images-tab-nav" data-toggle="tab" href="#images"><?php echo __('Manage Images') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="slide-tab-nav" data-toggle="tab" href="#slide"><?php echo __('Manage Slide') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="slider-tab-nav" data-toggle="tab" href="#slider"><?php echo __('Slider Config') ?></a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="general" class="tab-pane active">
+						<div class="form-group">
+							<label for="col" class="col-sm-4 control-label"><?php echo __('Block col (12 to full)') ?></label>
+							<div class="col-sm-8">
+								<select id="col" class="required-entry input-text" name="col">
+									<?php for($i=12; $i>=1; $i--): ?>
+										<option value="<?php echo $i ?>"<?php if($exist && ($child->getCol()==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+									<?php endfor ?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="class" class="col-sm-4 control-label"><?php echo __('Custom Class') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="class" class="input-text" name="class"<?php if($exist): ?> value="<?php echo $child->getClass() ?>"<?php endif ?> />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation" class="col-sm-4 control-label"><?php echo __('Block Animation') ?></label>
+							<div class="col-sm-4">
+								<select onchange="changeAnimationClass(this.value)" id="animation" class="input-text" name="setting[animation]">
+									<option value=""><?php echo __('Choose Animation Effect') ?></option>
+									<?php foreach($helper->getAnimationEffect() as $animation=>$label): ?>
+										<option value="<?php echo $animation ?>"<?php if($exist && ($settings['animation']==$animation)): ?> selected="selected"<?php endif ?>><?php echo $label ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+							
+							<div class="col-sm-4 text-center animated<?php if($exist && ($settings['animation']!='')): ?> <?php echo $settings['animation'] ?><?php endif ?>" id="animation-test">Animation Preview</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation_delay" class="col-sm-4 control-label"><?php echo __('Animation Delay') ?></label>
+							<div class="col-sm-8">
+								<input type="text" placeholder="ms" id="animation_delay" class="input-text validate-number" name="setting[animation_delay]" <?php if($exist): ?> value="<?php echo $settings['animation_delay'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+					</div>
+					<div id="images" class="tab-pane">
+						<?php $images = $helper->getPanelUploadImages('slider') ?>
+                        <div id="list-images">
+                            <?php if(count($images)>0): ?>
+                                <?php $i = 0; ?>
+                                <?php foreach($images as $_image): $i++ ?>
+                                    <div class="image-item">
+                                        <img class="img-responsive" src="<?php echo $this->getPanelUploadSrc('slider',$_image) ?>" alt=""/>
+                                        <div class="remove-action">
+                                            <label for="check-remove-<?php echo $i ?>"></label>
+                                            <input class="check_remove" id="check-remove-<?php echo $i ?>" type="checkbox" name="remove[]" value="<?php echo $_image ?>"/>
+                                            <input class="remove_img" type="hidden" name="setting[removeimg][]" value="">
+                                        </div>
+                                    </div>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </div>
+						
+						<div id="upload-container">
+							<div id="list-upload"></div>
+							<button class="btn btn-default" onclick="newImageUpload()" type="button"><span class="fa fa-plus"></span> <?php echo __('Upload new Image') ?></button>
+						</div>
+					</div>
+					<div id="slide" class="tab-pane">
+                        <div id="slide_actions">
+                            <button class="btn btn-info" type="button" title="<?php echo __('Move Down'); ?>"><span class="fa fa-arrow-down"></span></button>
+                            <button class="btn btn-primary" type="button" title="<?php echo __('Edit'); ?>"><span class="fa fa-pencil"></span></button>
+                            <button class="btn btn-danger" type="button" title="<?php echo __('Remove'); ?>"><span class="fa fa-trash"></span></button>
+                        </div>
+                        <div class="new-slide-popup" id="new_slide_popup">
+                            <input type="hidden" class="form-control" id="slide_status" value="1" />
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <?php $images = $helper->getPanelUploadImages('slider') ?>
+                                    <label>Image:</label>
+                                    <?php if(count($images)>0): ?>
+                                        <div class="slide_images_wrapper">
+                                            <ul id="slide_images" class="slide-images">
+                                                <?php $i = 0; foreach($images as $_image): $i++ ?>
+                                                    <li><img src="<?php echo $helper->getPanelUploadSrc('slider',$_image) ?>" alt=""/></li>
+                                                <?php endforeach ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif ?>
+                                    <input type="hidden" class="form-control" id="slide_img_url" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="slide_link">Link:</label>
+                                    <input type="text" class="form-control" id="slide_link" value="" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-10">
+                                        <div class="form-group">
+                                            <label for="slide_link">Text (Html):</label>
+                                            <textarea class="form-control" id="slide_html" rows="4" cols="50"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div class="form-group">
+                                            <label for="slide_link">Text Position:</label>
+                                            <ul id="slide_html_position" class="slide-html-position">
+                                                <li data-position="top_left"></li>
+                                                <li data-position="top_center"></li>
+                                                <li data-position="top_right"></li>
+                                                <li data-position="middle_left"></li>
+                                                <li class="active" data-position="middle"></li>
+                                                <li data-position="middle_right"></li>
+                                                <li data-position="bottom_left"></li>
+                                                <li data-position="bottom_center"></li>
+                                                <li data-position="bottom_right"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="slide_link">Text Animation:</label>
+                                    <select id="slide_html_animation">
+                                        <option value="">No Effect</option>
+                                        <option value="slideInDown">Slide In Down</option>
+                                        <option value="slideInUp">Slide In Up</option>
+                                        <option value="slideInRight">Slide In Right</option>
+                                        <option value="slideInLeft">Slide In Left</option>
+                                        <option value="zoomIn">Zoom In</option>
+										<option value="zoomOut">Zoom Out</option>
+
+                                    </select> 
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <button class="btn btn-primary" style="width: 100%;" type="button" id="sliderOk" >Submit</button>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <button class="btn btn-default" style="width: 100%;" type="button" id="slideCancer" >Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-wrapper">
+                            <div id="carousel_slider_wrapper" class="carousel_slider_wrapper"><?php if($exist && isset($settings['html_slider'])): ?><?php echo html_entity_decode($settings['html_slider']) ?><?php endif ?></div>
+                            <textarea style="display: none;" name="setting[html_slider]" id="htmlSlider" maxlength="999999999999"><?php if($exist && isset($settings['html_slider'])): ?><?php echo html_entity_decode($settings['html_slider']) ?><?php endif ?></textarea>
+                        </div>
+                        <div class="slide-actions">
+                            <button type="button" class="btn btn-primary add-new-item"><?php echo __('Add New Slide') ?></button>
+                        </div>
+                    </div>
+					<div id="slider" class="tab-pane">
+						<div class="form-group">
+							<label for="fullscreen" class="col-sm-4 control-label"><?php echo __('Full Width') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['fullscreen']): ?> checked="checked"<?php endif ?> value="1" name="setting[fullscreen]" id="fullscreen" class="admin__actions-switch-checkbox">
+									<label for="fullscreen" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+                        
+						<div class="form-group">
+							<label for="fullheight" class="col-sm-4 control-label"><?php echo __('Full Height') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && isset($settings['fullheight']) && $settings['fullheight']): ?> checked="checked"<?php endif ?> value="1" name="setting[fullheight]" id="fullheight" class="admin__actions-switch-checkbox" onclick="setFullheight()">
+									<label for="fullheight" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group" id="offset-input">
+							<label for="offset" class="col-sm-4 control-label"><?php echo __('Offset Containers') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="offset" class="input-text" name="setting[offset]" <?php if($exist && isset($settings['offset'])): ?> value="<?php echo $settings['offset'] ?>"<?php endif ?>>
+                                <p>Example: #header or .header, .footer, #somecontainer | The height of fullscreen slider will be decreased with the height of these Containers to fit perfect in the screen</p>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="effect" class="col-sm-4 control-label"><?php echo __('Effect') ?></label>
+							<div class="col-sm-4">
+								<select id="effect" class="input-text" name="setting[effect]">
+                                    <option value="1"<?php if($exist && ($settings['effect']==1)): ?> selected="selected"<?php endif ?>><?php echo __('Fade') ?></option>
+                                    <option value="2"<?php if($exist && ($settings['effect']==2)): ?> selected="selected"<?php endif ?>><?php echo __('Vertical') ?></option>
+                                    <option value="3"<?php if($exist && ($settings['effect']==3)): ?> selected="selected"<?php endif ?>><?php echo __('In Down') ?></option>
+                                    <option value="4"<?php if($exist && ($settings['effect']==4)): ?> selected="selected"<?php endif ?>><?php echo __('Left Right') ?></option>
+                                </select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="autoplay" class="col-sm-4 control-label"><?php echo __('Auto play') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['autoplay']): ?> checked="checked"<?php endif ?> value="1" name="setting[autoplay]" id="autoplay" class="admin__actions-switch-checkbox" onclick="setAutoplay()">
+									<label for="autoplay" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group" id="speed-input">
+							<label for="speed" class="col-sm-4 control-label"><?php echo __('Auto play speed') ?></label>
+							<div class="col-sm-4">
+								<input type="text" placeholder="ms" id="speed" class="input-text validate-number" name="setting[speed]" <?php if($exist && isset($settings['speed'])): ?> value="<?php echo $settings['speed'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="stop_auto" class="col-sm-4 control-label"><?php echo __('Stop autoplay on mouse hover') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['stop_auto']): ?> checked="checked"<?php endif ?> value="1" name="setting[stop_auto]" id="stop_auto" class="admin__actions-switch-checkbox">
+									<label for="stop_auto" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="navigation" class="col-sm-4 control-label"><?php echo __('Display nav') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['navigation']): ?> checked="checked"<?php endif ?> value="1" name="setting[navigation]" id="navigation" class="admin__actions-switch-checkbox">
+									<label for="navigation" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="pagination" class="col-sm-4 control-label"><?php echo __('Display dots') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['pagination']): ?> checked="checked"<?php endif ?> value="1" name="setting[pagination]" id="pagination" class="admin__actions-switch-checkbox">
+									<label for="pagination" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="navtemple" class="col-sm-4 control-label"><?php echo __('Nav & Dots Template') ?></label>
+							<div class="col-sm-4">
+								<select id="navtemple" class="input-text" name="setting[navtemple]">
+                                    <option value="1"<?php if($exist && ($settings['navtemple']==1)): ?> selected="selected"<?php endif ?>><?php echo __('Teamplate 1') ?></option>
+                                    <option value="2"<?php if($exist && ($settings['navtemple']==2)): ?> selected="selected"<?php endif ?>><?php echo __('Teamplate 2') ?></option>
+                                    <option value="3"<?php if($exist && ($settings['navtemple']==3)): ?> selected="selected"<?php endif ?>><?php echo __('Teamplate 3') ?></option>
+                                    <option value="4"<?php if($exist && ($settings['navtemple']==4)): ?> selected="selected"<?php endif ?>><?php echo __('Teamplate 4') ?></option>
+                                </select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="loop" class="col-sm-4 control-label"><?php echo __('Loop') ?></label>
+							<div class="col-sm-4">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['loop']): ?> checked="checked"<?php endif ?> value="1" name="setting[loop]" id="loop" class="admin__actions-switch-checkbox">
+									<label for="loop" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12 builder-action">
+						<div class="buttons">
+							<?php if(!$exist): ?>
+								<button type="button" class="btn btn-back" onclick="history.go(-1)"><span><span><?php echo __('Back') ?></span></span></button>
+							<?php endif ?>
+							<input type="submit" value="<?php echo __('Submit') ?>" class="btn btn-primary"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+    var idx = <?php echo $i ?>;
+	require([
+		'jquery',
+	], function($){
+        $(document).ready(function(){
+            setAutoplay();
+            setFullheight();
+        });
+        $(document).on('change', ".setting_img_checkbox", function () {
+            var imgName = $(this).val();
+            if(this.checked) {
+                $(this).parent().find('.setting_imgname').val(imgName);
+            }else {
+                $(this).parent().find('.setting_imgname').val('');
+            }  
+        });
+        $(document).on('change', ".check_remove", function () {
+            var imgName = $(this).val();
+            if(this.checked) {
+                $(this).parent().find('.remove_img').val('remove');
+            }else {
+                $(this).parent().find('.remove_img').val('');
+            }  
+        });
+        
+        $('.slide-actions .add-new-item').click(function(){
+            $('#slide_images li.active').removeClass('active');
+            $('#slide_img_url').val('');
+            $('#slide_link').val('');
+            $('#slide_html').val('');
+            $('#slide_status').val('1');
+            $('#slide_html_animation').val('');
+            $('#slide .new-slide-popup').addClass('active');
+        });
+        
+        $('#slideCancer').click(function(){
+            $('#slide .new-slide-popup').removeClass('active');
+        });
+        
+        $('#slide_html_position li').click(function(){
+            $('#slide_html_position li.active').removeClass('active');
+            $(this).addClass('active');
+        });
+        
+        $(document).on("click","a.item-image",function( event ) {
+            event.preventDefault();
+        });
+        
+        $(document).on("click","#slide_images li",function() {
+            $('#slide_images li.active').removeClass('active');
+            $(this).addClass('active');
+            $('#slide_img_url').val($(this).find('img').attr('src'));
+        });
+        
+        $(document).on("click","#sliderOk",function() {
+            if($('#slide_img_url').val() != ""){
+                var $imgSlide = $('#slide_img_url').val();
+                var $html = $("#slide_html").val();
+                var $link = $("#slide_link").val();
+                var $textAnimation = $("#slide_html_animation").val();
+                var $position = $("#slide_html_position li.active").attr('data-position');
+                
+                var $newElement = '<div data-text-position="'+$position+'" data-text-animate="'+$textAnimation+'" class="item '+$textAnimation+'">' +
+                    '<a style="background-image:url('+$imgSlide+')" class="item-image" href="'+$link+'">' +
+                        '<img class="img-responsive" src="'+$imgSlide+'" alt="" />' +
+                    '</a>' +
+                    '<div class="container slide-text '+$position+'"><div class="inner-text">'+$html+'</div></div>' +
+                '</div>';
+                if($('#slide_status').val() == '1'){
+                    /* Create New Slide */
+                    $('#carousel_slider_wrapper').append($newElement);
+                    
+                    $('#carousel_slider_wrapper').find(".item").unbind('hover');
+                    $('#carousel_slider_wrapper').find(".item").hover(function (e) {
+                         var zoom = localStorage.zoom;
+                        if (zoom == 'normal') zoom = 1;
+                        if (zoom == undefined) zoom = 1;
+
+                        //IE fix
+                        zoom = zoom + ''; //Fix undefined
+                        if (zoom.indexOf('%') != -1) {
+                            zoom = zoom.replace('%', '') / 100;
+                        }
+                        if (zoom == 'NaN') {
+                            zoom = 1;
+                        }
+
+                        zoom = zoom*1;
+
+                        var _top; var _left;
+                        var scrolltop = $(window).scrollTop();
+                        var offsettop = $(this).offset().top;
+                        var offsetleft = $(this).offset().left;
+                        var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+                        var is_ie = detectIE();
+                        var browserok = true;
+                        if (is_firefox||is_ie) browserok = false;
+                        if(browserok){
+                            //Chrome 37, Opera 24
+                            _top = ((offsettop - 20) * zoom) + (scrolltop - scrolltop * zoom);
+                            _left = offsetleft * zoom;
+                        } else {
+                            if(is_ie){
+                                //IE 11 (Adjustment required)
+
+                                //Custom formula for adjustment in IE11
+                                var space = $(this).getPos().top;
+                                var adjy_val = (-space/1.1)*zoom + space/1.1;
+                                var space2 = $(this).getPos().left;
+                                var adjx_val = -space2*zoom + space2; 
+
+                                var p = $(this).getPos();
+                                _top = ((p.top - 20) * zoom) + adjy_val;
+                                _left = (p.left * zoom) + adjx_val;
+                            }  
+                            if(is_firefox) {
+                                //Firefox (No Adjustment required)
+                                _top = offsettop - 20;
+                                _left = offsetleft;
+                            }
+                        }
+                        $("#slide_actions").css("top", _top + "px");
+                        $("#slide_actions").css("left", _left + "px");
+
+
+                        $("#slide_actions").stop(true, true).css({ display: 'none' }).fadeIn(20);
+                        
+                        var $editSlide = $(this);
+                        
+                        $("#slide_actions .btn-danger").unbind('click');
+                        $("#slide_actions .btn-danger").bind('click', function (e) {
+                            if (window.confirm("<?php echo __('Are you sure?'); ?>")) {
+                                $editSlide.remove();
+                                $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+                            }
+                        });
+                        
+                        $("#slide_actions .btn-info").unbind('click');
+                        $("#slide_actions .btn-info").bind('click', function (e) {
+                            var index= $editSlide.index();
+                            $editSlide.insertAfter($editSlide.next());
+                            $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+                        });
+                        
+                        $("#slide_actions .btn-primary").unbind('click');
+                        $("#slide_actions .btn-primary").bind('click', function (e) {
+                            var $imgSl = $editSlide.find('img').attr('src');
+                            var $linkSl = $editSlide.find('.item-image').attr('href');
+                            var $textSl = $editSlide.find('.inner-text').html();
+                            var $positionSl = $editSlide.attr('data-text-position');
+                            var $aniSl = $editSlide.attr('data-text-animate');
+                            
+                            $('#slide_images').find('img[src$="'+$imgSl+'"]').parent().addClass('active');
+                            $('#slide_img_url').val($imgSl);
+                            $('#slide_link').val($linkSl);
+                            $('#slide_html').val($textSl);
+                            $('#slide_status').val('2');
+                            $('#slide_html_position li.active').removeClass('active');
+                            $('#slide_html_position').find('li[data-position="'+$positionSl+'"]').addClass('active');
+                            $('#slide_html_animation').val($aniSl);
+                            $('#slide .new-slide-popup').addClass('active');
+                            
+                            $("#sliderOk").unbind('click');
+                            $("#sliderOk").bind('click', function (e) {
+                                var $imgSlide = $('#slide_img_url').val();
+                                var $html = $("#slide_html").val();
+                                var $link = $("#slide_link").val();
+                                var $textAnimation = $("#slide_html_animation").val();
+                                var $position = $("#slide_html_position li.active").attr('data-position');
+                                var $oldAnimation = $editSlide.attr('data-text-animate');
+                                var $oldPosition = $editSlide.attr('data-text-position');
+                                
+                                $editSlide.removeClass($oldAnimation);
+                                $editSlide.addClass($textAnimation);
+                                $editSlide.attr({
+                                    'data-text-position' : $position,
+                                    'data-text-animate' : $textAnimation
+                                });
+                                $editSlide.find('.item-image').removeAttr('style');
+                                $editSlide.find('.item-image').attr('style', 'background-image:url('+$imgSlide+')');
+                                $editSlide.find('.item-image').attr('href', $link);
+                                $editSlide.find('img').attr('src', $imgSlide);
+                                $editSlide.find('.inner-text').html($html);
+                                $editSlide.find('.slide-text').removeClass($oldPosition);
+                                $editSlide.find('.slide-text').addClass($position);
+                                
+                                $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+                                $('#slide .new-slide-popup').removeClass('active');
+                            });
+                        });
+                        
+                        $("#slide_actions").hover(function (e) {
+                            $(this).stop(true, true).css("display", "block"); // Spy tdk flickr
+                        }, function () {
+                            $(this).stop(true, true).fadeOut(0);
+                        });
+                    }, function (e) {
+                        $("#slide_actions").stop(true, true).fadeOut(0);
+                    });
+                    $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+                }
+                $('#slide .new-slide-popup').removeClass('active');
+            }else {
+                alert('<?php echo __('Please select an image'); ?>');
+            }
+        });
+        
+        $('#carousel_slider_wrapper').find(".item").unbind('hover');
+        $('#carousel_slider_wrapper').find(".item").hover(function (e) {
+             var zoom = localStorage.zoom;
+            if (zoom == 'normal') zoom = 1;
+            if (zoom == undefined) zoom = 1;
+
+            //IE fix
+            zoom = zoom + ''; //Fix undefined
+            if (zoom.indexOf('%') != -1) {
+                zoom = zoom.replace('%', '') / 100;
+            }
+            if (zoom == 'NaN') {
+                zoom = 1;
+            }
+
+            zoom = zoom*1;
+
+            var _top; var _left;
+            var scrolltop = $(window).scrollTop();
+            var offsettop = $(this).offset().top;
+            var offsetleft = $(this).offset().left;
+            var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+            var is_ie = detectIE();
+            var browserok = true;
+            if (is_firefox||is_ie) browserok = false;
+            if(browserok){
+                //Chrome 37, Opera 24
+                _top = ((offsettop - 20) * zoom) + (scrolltop - scrolltop * zoom);
+                _left = offsetleft * zoom;
+            } else {
+                if(is_ie){
+                    //IE 11 (Adjustment required)
+
+                    //Custom formula for adjustment in IE11
+                    var space = $(this).getPos().top;
+                    var adjy_val = (-space/1.1)*zoom + space/1.1;
+                    var space2 = $(this).getPos().left;
+                    var adjx_val = -space2*zoom + space2; 
+
+                    var p = $(this).getPos();
+                    _top = ((p.top - 20) * zoom) + adjy_val;
+                    _left = (p.left * zoom) + adjx_val;
+                }  
+                if(is_firefox) {
+                    //Firefox (No Adjustment required)
+                    _top = offsettop - 20;
+                    _left = offsetleft;
+                }
+            }
+            $("#slide_actions").css("top", _top + "px");
+            $("#slide_actions").css("left", _left + "px");
+
+
+            $("#slide_actions").stop(true, true).css({ display: 'none' }).fadeIn(20);
+            
+            var $editSlide = $(this);
+            
+            $("#slide_actions .btn-danger").unbind('click');
+            $("#slide_actions .btn-danger").bind('click', function (e) {
+                if (window.confirm("<?php echo __('Are you sure?'); ?>")) {
+                    $editSlide.remove();
+                    $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+                }
+            });
+            
+            $("#slide_actions .btn-info").unbind('click');
+            $("#slide_actions .btn-info").bind('click', function (e) {
+                var index= $editSlide.index();
+                $editSlide.insertAfter($editSlide.next());
+                $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+            });
+            
+            $("#slide_actions .btn-primary").unbind('click');
+            $("#slide_actions .btn-primary").bind('click', function (e) {
+                var $imgSl = $editSlide.find('img').attr('src');
+                var $linkSl = $editSlide.find('.item-image').attr('href');
+                var $textSl = $editSlide.find('.inner-text').html();
+                var $positionSl = $editSlide.attr('data-text-position');
+                var $aniSl = $editSlide.attr('data-text-animate');
+                
+                $('#slide_images').find('img[src$="'+$imgSl+'"]').parent().addClass('active');
+                $('#slide_img_url').val($imgSl);
+                $('#slide_link').val($linkSl);
+                $('#slide_html').val($textSl);
+                $('#slide_status').val('2');
+                $('#slide_html_position li.active').removeClass('active');
+                $('#slide_html_position').find('li[data-position="'+$positionSl+'"]').addClass('active');
+                $('#slide_html_animation').val($aniSl);
+                $('#slide .new-slide-popup').addClass('active');
+                
+                $("#sliderOk").unbind('click');
+                $("#sliderOk").bind('click', function (e) {
+                    var $imgSlide = $('#slide_img_url').val();
+                    var $html = $("#slide_html").val();
+                    var $link = $("#slide_link").val();
+                    var $textAnimation = $("#slide_html_animation").val();
+                    var $position = $("#slide_html_position li.active").attr('data-position');
+                    var $oldAnimation = $editSlide.attr('data-text-animate');
+                    var $oldPosition = $editSlide.attr('data-text-position');
+                    
+                    $editSlide.removeClass($oldAnimation);
+                    $editSlide.addClass($textAnimation);
+                    $editSlide.attr({
+                        'data-text-position' : $position,
+                        'data-text-animate' : $textAnimation
+                    });
+                    $editSlide.find('.item-image').removeAttr('style');
+                    $editSlide.find('.item-image').attr('style', 'background-image:url('+$imgSlide+')');
+                    $editSlide.find('.item-image').attr('href', $link);
+                    $editSlide.find('img').attr('src', $imgSlide);
+                    $editSlide.find('.inner-text').html($html);
+                    $editSlide.find('.slide-text').removeClass($oldPosition);
+                    $editSlide.find('.slide-text').addClass($position);
+                    
+                    $('#htmlSlider').val($('#carousel_slider_wrapper').html());
+                    $('#slide .new-slide-popup').removeClass('active');
+                });
+            });
+            
+            $("#slide_actions").hover(function (e) {
+                $(this).stop(true, true).css("display", "block"); // Spy tdk flickr
+            }, function () {
+                $(this).stop(true, true).fadeOut(0);
+            });
+        }, function (e) {
+            $("#slide_actions").stop(true, true).fadeOut(0);
+        });
+        
+	});
+	
+    
+	function setFullheight(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#fullheight').prop("checked") == true){
+					$('#offset-input').show();
+				}else{
+					$('#offset-input').hide();
+				}
+			})(jQuery);
+		});
+	}
+    
+    function detectIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        var edge = ua.indexOf('Edge/');
+
+        if (msie > 0) {
+            // IE 10 or older => return version number
+            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+        }
+
+        if (edge > 0) {
+            // IE 10 or older => return version number
+            return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+        }
+
+        if (trident > 0) {
+            // IE 11 (or newer) => return version number
+            var rv = ua.indexOf('rv:');
+            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+        }
+
+        // other browser
+        return false;
+    }
+    
+	function setAutoplay(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#autoplay').prop("checked") == true){
+					$('#speed-input').show();
+				}else{
+					$('#speed-input').hide();
+				}
+			})(jQuery);
+		});
+	}
+
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+	function newImageUpload(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#file_upload').length){
+					if($('#upload_button').length){
+						alert('<?php echo __('Please upload selected image first.') ?>');
+					}else{
+						alert('<?php echo __('Please choose file to upload.') ?>');
+					}
+				}else{
+					html = '<div class="form-group"><div class="col-sm-4 choose-file-upload"><input id="file_upload" name="file_upload" type="file" onchange="chooseFileAction(this.id)"><span class="choose-label"><span class="fa fa-folder-o"> </span> &nbsp;<?php echo __('Choose File to Upload') ?></span></div><div class="col-sm-4" id="upload_action"></div></div>';
+					$('#list-upload').html(html);
+				}
+				
+			})(jQuery);
+		});
+	}
+	
+	function chooseFileAction(elId){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				fileName = $('#'+elId).val();
+				arrName = fileName.split(".");
+				extensionName = arrName[arrName.length - 1];
+				extensionName = extensionName.toLowerCase();
+				if((extensionName=='jpg') || (extensionName=='jpeg') || (extensionName=='png') || (extensionName=='gif')){
+					html = fileName + ' <button type="button" class="btn btn-default" id="upload_button" onclick="uploadImage()"><img src="<?php echo $this->getViewFileUrl('MGS_Mpanel::images/small-ajax-loader.gif') ?>" id="upload-loading" style="display:none"/> <span class="fa fa-upload" id="upload-icon"></span> <?php echo __('Upload') ?></button>';
+					$('#upload_action').html(html);
+				}
+			})(jQuery);
+		});
+	}
+	
+	function uploadImage(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+                idx++;
+				if($('.alert-image-success').length){
+					$('.alert-image-success').remove();
+				}
+				$('#upload-loading').show();
+				$('#upload-icon').hide();
+				var formData = new FormData();
+				formData.append('file', $('#file_upload')[0].files[0]);
+				$.ajax({
+					url: "<?php echo $this->getUrl('mpanel/post/upload', ['type'=>'slider']) ?>",
+					type: "POST",
+					data: formData,
+					contentType: false,
+					cache: false,
+					processData:false,
+					success: function(data){
+						var result = jQuery.parseJSON(data);
+						if(result.result=='success'){
+                            tbhtml = '<li><img src="<?php echo $this->getPanelUploadFolder('slider') ?>'+result.data+'" alt=""></li>';
+                            html =  '<div class="image-item">' +
+                                        '<img class="img-responsive" src="<?php echo $this->getPanelUploadFolder('slider') ?>'+result.data+'" alt=""/>' +
+                                        '<div class="remove-action">' +
+                                            '<label for="check-remove-'+idx+'"></label>' +
+                                            '<input class="check_remove" id="check-remove-'+idx+'" type="checkbox" name="remove[]" value="'+result.data+'"/>' +
+                                            '<input class="remove_img" type="hidden" name="setting[removeimg][]" value="">' +
+                                        '</div>' +
+                                    '</div>';
+							$('#list-images').append(html);
+							$('#slide_images').append(tbhtml);
+							$(".panel-image-list").animate({ scrollTop: $('#list-images').height()}, 300);
+						}else{
+							alert(result.data);
+						}
+						
+						$('#list-upload').html('');
+					}
+				});
+			})(jQuery);
+		});
+	}
+</script>

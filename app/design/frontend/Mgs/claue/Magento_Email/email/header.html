@@ -1,0 +1,70 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Header"}} @-->
+<!--@vars {
+"var logo_url":"Email Logo Image URL",
+"var logo_alt":"Email Logo Alt Text",
+"var logo_height":"Email Logo Image Height",
+"var logo_width":"Email Logo Image Width",
+"var template_styles|raw":"Template CSS"
+} @-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        {{var template_styles|raw}}
+
+        {{css file="css/email.css"}}
+    </style>
+</head>
+<body>
+{{inlinecss file="css/email-inline.css"}}
+
+<!-- Begin wrapper table -->
+<table class="wrapper" width="100%">
+    <tr>
+        <td class="wrapper-inner" align="center">
+            <table class="main" align="center">
+                <tr>
+                    <td class="header">
+                        <a class="logo" href="{{store url=""}}">
+                            <img
+                                {{if logo_width}}
+                                    width="{{var logo_width}}"
+                                {{else}}
+                                    width="180"
+                                {{/if}}
+
+                                {{if logo_height}}
+                                    height="{{var logo_height}}"
+                                {{/if}}
+
+                                src="{{var logo_url}}"
+                                alt="{{var logo_alt}}"
+                                border="0"
+                            />
+                        </a>
+						
+						<span style="float: right;">
+							<span style="display: block;line-height: 15px;font-size: 12px;color: #000;"> SARL ENCORE PRONTO </span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> 9 Place Saint Côme </span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> 34000 Montpellier </span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> Tél : 04.67.58.96.68 </span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> <a href="http://www.lilouplaisir.com" style="color: #1979c3; text-decoration: none;"> www.lilouplaisir.com  </a></span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> <a href="mailto:client@lilouplaisir.com" style="color: #1979c3; text-decoration: none;"> client@lilouplaisir.com  </a></span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> Siret : 45319445800023 </span>
+							<span style="display: block; line-height: 15px; font-size: 13px; color: #000;"> TVA : FR55453194458 </span>
+						</span>
+                    </td>	
+                </tr>
+                <tr>
+                    <td class="main-content">
+                    <!-- Begin Content -->

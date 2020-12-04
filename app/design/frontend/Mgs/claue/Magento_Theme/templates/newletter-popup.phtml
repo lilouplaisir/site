@@ -1,0 +1,109 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php if($themeHelper->getStoreConfig('mpanel/newsletter_popup/enable_newsletter')): ?>
+	<?php  ?>
+	<?php 
+		$ObjectManagerMap = \Magento\Framework\App\ObjectManager::getInstance();
+		$storeManager = $ObjectManagerMap->get('Magento\Store\Model\StoreManagerInterface');
+		$currentStore = $storeManager->getStore();
+		$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+		$html = $themeHelper->getStoreConfig('mpanel/newsletter_popup/html');
+		$title = $themeHelper->getStoreConfig('mpanel/newsletter_popup/title');
+		$delayTime = $themeHelper->getStoreConfig('mpanel/newsletter_popup/popup_delay');
+		
+		$image = "";
+		if($themeHelper->getStoreConfig('mpanel/newsletter_popup/background_title')) {
+			$image = $mediaUrl.'bg_newsletter/'.$themeHelper->getStoreConfig('mpanel/newsletter_popup/background_title');
+		}
+		if($themeHelper->getStoreConfig('mpanel/newsletter_popup/popup_width')) {
+			$width = $themeHelper->getStoreConfig('mpanel/newsletter_popup/popup_width') . 'px';
+		}else{
+			$width = '530px';
+		}
+	?>
+	<div style="display:none">
+		<div class="newsletter_popup" id="newsletter-popup" style="width: <?php echo $width; ?>;">
+			<button class="action-close" data-role="closeBtn" type="button">
+				<em class="pe-7s-close"></em>
+            </button>
+			<div class="block-popup-subscribe">
+				<div class="block-popup-top">
+					<div class="pop-sletter-title" <?php if($image): ?>style="background-image: url(<?php echo $image ?>);<?php endif ?>">
+						<h4>
+							<?php if($title): ?>
+								<?php echo $title; ?>
+							<?php else: ?>
+								<?php echo __('Sign up Newsletter'); ?>
+							<?php endif ?>
+						</h4>
+					</div>
+					<?php if($html): ?>
+						<div class="newsletter-popup-content">
+							<?php echo $html; ?>
+						</div>
+					<?php endif ?>
+					<div class="newsletter-popup-form">
+						<?php echo $this->getLayout()->createBlock("Magento\Newsletter\Block\Subscribe")->setTemplate("Magento_Newsletter::subscribe_popup.phtml")->toHtml(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+			require(
+			[
+				'jquery',
+				'Magento_Ui/js/modal/modal'
+			],
+			function( $, modal ) {
+				$(window).load(function () {
+					<?php if(!$themeHelper->getStoreConfig('mpanel/newsletter_popup/mobile')):?>if($(window).width() > 991) { <?php endif;?>
+						if(getCookie('newsletterpopup')!='nevershow'){
+							if ($('#newsletter-popup').length) {
+								var options = {
+									type: 'popup',
+									modalClass: 'modal_newsletter_popup',
+									responsive: true,
+									innerScroll: true,
+									title: '',
+									buttons: []
+								};
+                                var newsletterPopup = modal(options, $('#newsletter-popup'));
+                                <?php if($delayTime): ?>
+                                    setTimeout(function(){ $('#newsletter-popup').trigger('openModal'); }, <?php echo $delayTime ?>);
+                                <?php else: ?>
+                                    $('#newsletter-popup').trigger('openModal');
+                                <?php endif ?>
+							}
+						}
+					<?php if(!$themeHelper->getStoreConfig('mpanel/newsletter_popup/mobile')):?>}<?php endif;?>
+				});
+			});
+			function getCookie(cname) {
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i=0; i<ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1);
+					if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+				}
+				return "";
+			} 
+
+			function dontShowPopup(el){
+				require(
+				[
+					'jquery'
+				],
+				function( $ ) {
+					if($('#'+el).prop('checked')) {
+						var d = new Date();
+						d.setTime(d.getTime() + (24*60*60*1000*365));
+						var expires = "expires="+d.toUTCString();
+						document.cookie = 'newsletterpopup' + "=" + 'nevershow' + "; " + expires;
+					} else {
+						document.cookie = 'newsletterpopup' + "= ''; -1";
+					}
+				});
+			}
+	</script>
+<?php endif ?>

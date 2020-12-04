@@ -1,0 +1,175 @@
+/** Webservice **/
+.lpc_modal_relays_search_input, #lpc_layer_button_search{
+	margin-bottom: 1rem;
+}
+
+#lpc_layer_relays_loader{
+	height: 15px;
+}
+
+.lpc_layer_relay_name{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.lpc_layer_relay_address{
+	font-size: 12px;
+	color: grey;
+}
+
+.lpc_layer_relay_address_street{
+	display: block;
+}
+
+.lpc_layer_relay_distance{
+	font-size: 12px;
+}
+
+.lpc_layer_relay_button_choose{
+	margin: 1rem;
+	float: right;
+}
+
+#lpc_layer_error_message{
+	color: red;
+}
+
+.lpc_store_name{
+	font-weight: bold;
+	font-size: 14px;
+	display: block;
+}
+
+.lpc_store_address{
+	color: grey;
+	font-size: 12px;
+}
+
+.lpc_store_schedule table td{
+	padding: 0 2px 0 0;
+	font-size: 12px;
+}
+
+.lpc_layer_relay_id,
+.lpc_layer_relay_latitude,
+.lpc_layer_relay_longitude,
+.lpc_layer_relay_schedule,
+.lpc_layer_relay_type,
+.lpc_layer_relay_country_code{
+	display: none;
+}
+
+.lpc_show_relay_details, .lpc_relay_popup_choose{
+	color: #06187c;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#lpc_chosen_relay{
+	display: block;
+	margin: 15px 0 0 115px;
+	border-left: 3px solid #d4d4d4;
+	padding: 0 0 0 10px;
+	line-height: normal;
+	color: #777777;
+}
+
+#lpc_change_my_relay{
+	color: #06187c;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#lpc_map{
+	height: 100%;
+}
+
+#lpc_left{
+	width: 550px;
+	height: 400px;
+	float: left;
+}
+
+#lpc_right{
+	float: right;
+	height: 400px;
+	width: 190px;
+	overflow: hidden;
+	overflow-y: scroll;
+	padding-left: 10px;
+}
+
+.content{
+	margin: 10px -15px 0 -15px;
+}
+
+@media all and (max-width: 1023px){
+	#lpc_right{
+		float: left;
+		width: 100%;
+		height: auto;
+		overflow: visible;
+		padding-left: inherit;
+		padding-top: 10px;
+	}
+
+	#lpc_left{
+		width: 100%;
+		height: 400px;
+	}
+
+	.lpc_layer_relay_address{
+		float: left;
+	}
+
+	.lpc_relay_choose_btn{
+		float: right;
+	}
+}
+
+/** Widget **/
+#lpc_layer_widget div#colissimo-container .logo{
+	width: 100%;
+	max-width: 100%;
+	padding-top: 5px;
+}
+
+#lpc_layer_widget div#colissimo-container #colissimo_widget_Adresse1.colissimo_widget_w363{
+	width: 100%;
+}
+
+#lpc_layer_widget div#colissimo-container .row{
+	margin-left: 0px;
+}
+
+#lpc_error_message_pr{
+	color: red;
+	font-weight: bold;
+}
+
+#lpc_layer_widget #colissimo_widget_zoneTableauHoraires1 table{
+	width: 90%;
+	max-width: 90%;
+}
+
+#lpc_layer_widget div#colissimo-container .colissimo_widget_submit-valider-point-retrait-bulle-bouton{
+	margin: 15px 30px 15px 15px;
+}
+
+@media all and (min-width: 1200px){
+	.checkout-index-index .lpc_modals-wrapper ._show_lpc_relay .modal-inner-wrap{
+		width: 80%;
+		margin-left: 0;
+		left: 10%;
+		min-height: 600px;
+	}
+}
+
+@media all and (max-width: 1199px){
+	.checkout-index-index .lpc_modals-wrapper ._show_lpc_relay .modal-inner-wrap{
+		width: 100%;
+		margin-left: 0;
+		left: 0;
+		min-height: 600px;
+	}
+}

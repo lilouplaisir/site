@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MGS_StoreLocator::css/mgs_storelocator.css" media="all" />
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false" src_type="url"/>
+    </head>
+    <body>
+		<referenceBlock name="breadcrumbs">
+			<action method="addCrumb">
+				<argument name="crumbName" xsi:type="string" translate="true">Home</argument>
+				<argument name="crumbInfo" xsi:type="array">
+					<item name="title" xsi:type="string" translate="true">Home</item>
+					<item name="label" xsi:type="string" translate="true">Home</item>
+					<item name="link" xsi:type="string" translate="true">{{baseUrl}}</item>
+				</argument>
+			</action>
+			<action method="addCrumb">
+				<argument name="crumbName" xsi:type="string" translate="true">Store Locator</argument>
+				<argument name="crumbInfo" xsi:type="array">
+					<item name="title" xsi:type="string" translate="true">Store Locator</item>
+					<item name="label" xsi:type="string" translate="true">Store Locator</item>
+				</argument>
+			</action>
+		</referenceBlock>
+        <referenceContainer name="content">
+            <block class="MGS\StoreLocator\Block\View" name="store.view" template="MGS_StoreLocator::view.phtml"/>
+        </referenceContainer>
+		<referenceContainer name="page.bottom.container">
+			<block class="MGS\StoreLocator\Block\View" name="store.view.map" template="MGS_StoreLocator::view_map.phtml"/>
+		</referenceContainer>
+    </body>
+</page>

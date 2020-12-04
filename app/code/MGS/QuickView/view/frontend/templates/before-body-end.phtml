@@ -1,0 +1,10 @@
+<script type="text/javascript">
+    require(["jquery"], function ($) {
+        $(document).ready(function () {
+            var parentBody = window.parent.document.body;
+            $('.mfp-preloader', parentBody).css('display', 'none');
+            $('.reviews-actions a').attr('target', '_parent');
+            $('.product-social-links a').attr('target', '_parent');
+        });
+    });
+</script>

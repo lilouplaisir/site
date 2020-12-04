@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>        
+        <add id="MGS_Landing::Landing" title="Landing" module="MGS_Landing" sortOrder="80" parent="Magento_Backend::mgs" resource="MGS_Landing::Landing"/>
+        
+        <add id="MGS_Landing::configuration" title="Configuration" module="MGS_Landing" sortOrder="20" parent="MGS_Landing::Landing" action="adminhtml/system_config/edit/section/mgs_landing" resource="MGS_Landing::configuration"/>
+    </menu>
+</config>

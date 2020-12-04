@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\Dashboard\Info $block */
+?>
+<div class="block block-dashboard-info my-account-main">
+    <div class="block-content">
+		<div class="row">
+			<div class="box box-information col-sm-6 col-xs-12">
+				<div class="block-title--myac">
+					<h3>
+						<?php /* @escapeNotVerified */ echo __('Contact Information') ?>
+					</h3>
+				</div>
+				<div class="box-content">
+					<p>
+						<?php echo $block->escapeHtml($block->getName()) ?><br>
+						<?php echo $block->escapeHtml($block->getCustomer()->getEmail()) ?><br>
+					</p>
+				</div>
+				<div class="box-actions">
+					<a href="<?php /* @escapeNotVerified */ echo $block->getChangePasswordUrl() ?>" class="action btn btn-xs btn-default change-password">
+						<?php /* @escapeNotVerified */ echo __('Change Password') ?>
+					</a>
+					<a class="action btn btn-xs btn-secondary margin-left10 edit" href="<?php /* @escapeNotVerified */ echo $block->getUrl('customer/account/edit') ?>">
+						<span><?php /* @escapeNotVerified */ echo __('Edit') ?></span>
+					</a>
+				</div>
+			</div>
+			<?php if ($block->isNewsletterEnabled()): ?>
+				<div class="box box-newsletter col-sm-6 col-xs-12">
+					<div class="block-title--myac">
+						<h3>
+							<?php /* @escapeNotVerified */ echo __('Newsletters') ?>
+						</h3>
+					</div>
+					<div class="box-content">
+						<p>
+							<?php if ($block->getIsSubscribed()): ?>
+								<?php /* @escapeNotVerified */ echo __('You subscribe to "General Subscription".') ?>
+							<?php else: ?>
+								<?php /* @escapeNotVerified */ echo __('You don\'t subscribe to our newsletter.') ?>
+							<?php endif; ?>
+						</p>
+						<?php /* Extensions placeholder */ ?>
+						<?php echo $block->getChildHtml('customer.account.dashboard.info.extra')?>
+						<div class="margin-top15">
+							<a class="action btn btn-xs btn-secondary edit" href="<?php /* @escapeNotVerified */ echo $block->getUrl('newsletter/manage') ?>"><span><?php /* @escapeNotVerified */ echo __('Edit') ?></span></a>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+    </div>
+</div>

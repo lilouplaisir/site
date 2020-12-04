@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\AbstractProduct */ ?>
+
+<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php if($themeHelper->getStoreConfig('mpanel/product_details/show_product_name')): ?>
+	<h1 class="product-name"><?php echo $_helper->productAttribute($block->getProduct(), $block->getProduct()->getName(), 'name') ?></h1>
+<?php endif; ?>

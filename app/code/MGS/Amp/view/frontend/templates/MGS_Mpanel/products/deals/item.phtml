@@ -1,0 +1,28 @@
+<?php $_product = $this->getProduct() ?>
+<?php if($_product->getSpecialPrice() && $_product->getSpecialToDate() && $_product->getSpecialFromDate()): ?>
+	<?php $specialFromDate = date('m/d/y h:i:s A', strtotime($_product->getSpecialFromDate())); ?>
+	<?php $now = date('m/d/y h:i:s A',strtotime($this->getCurrentDate())) ?>
+	<?php $endTime = str_replace(' 00:00:00','',$_product->getSpecialToDate()) ?>
+	
+	<?php if($specialFromDate <= $now && $endTime > $now): ?>
+	
+		<amp-date-countdown end-date="<?php echo date("c", strtotime($_product->getSpecialToDate())) ?>" layout="responsive" height="100" width="768">
+		  <template type="amp-mustache">
+			<div class="deal-timer">
+				<div id="deal-timer-<?php echo $_product->getId(); ?>" class="countdown">
+					<span class="days">{{d}}</span>
+					<span class="hours">{{h}}</span>
+					<span class="mins">{{m}}</span>
+					<span class="secs">{{s}}</span>
+				</div>
+				<div class="time-note">
+					<span class="days"><?php echo __('days') ?></span>
+					<span class="hours"><?php echo __('hrs') ?></span>
+					<span class="mins"><?php echo __('mins') ?></span>
+					<span class='secs'><?php echo __('secs') ?></span>
+				</div>
+			</div>
+		  </template>
+		</amp-date-countdown>
+	<?php endif ?>
+<?php endif ?>

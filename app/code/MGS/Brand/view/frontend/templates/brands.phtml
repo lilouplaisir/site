@@ -1,0 +1,90 @@
+<?php
+$params = $this->getRequest()->getParams();
+$helper = $this->helper('MGS\Brand\Helper\Data');
+$collection = $block->getCollection();
+?>
+<div class="shop-by-brand">
+    <?php if ($helper->getConfig('list_page_settings/description') != ''): ?>
+        <div class="description">
+            <?php echo $helper->getConfig('list_page_settings/description'); ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($helper->getConfig('list_page_settings/show_featured_brands')): ?>
+        <?php echo $block->getChildHtml('brand_list_featured'); ?>
+    <?php endif; ?>
+	<div class="brand-search">
+		<?php echo $block->getChildHtml('brand_search'); ?>
+		<?php echo $block->getChildHtml('brand_filter_by_character'); ?>
+	</div>
+    <div class="all-brands widget mgs-brand">
+        <?php $flagDigit = false; ?>
+        <?php if ($collection->count()): ?>
+            <div class="content">
+                <ul class="brand-list row">
+                    <?php $i=0; foreach ($collection as $brand): $i++; ?>
+                        <?php if (isset($params['char']) && $params['char'] != '' && $params['char'] == '0-9') : ?>
+                            <?php $letter = strtoupper(substr($brand->getName(), 0, 1)); ?>
+                            <?php if (ctype_digit($letter)): ?>
+                                <?php $flagDigit = true; ?>
+								<li class="item col-md-custom-5 col-sm-4 col-xs-6<?php if($i % 5 == 1): ?> first-row-item<?php endif ?><?php if($i % 3 == 1): ?> first-sm-item<?php endif ?><?php if($i % 2 == 1): ?> first-xs-item<?php endif ?>">
+									<div class="image">
+										<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+											<img class="img-responsive" alt="<?php echo $brand->getName(); ?>" src="<?php echo $brand->getSmallImageUrl(); ?>">
+										</a>
+									</div>
+									<?php if ($this->getConfig('list_page_settings/show_brand_name')): ?>
+										<div class="brand-name">
+											<h4 class="brand-title">
+												<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+													<?php echo $brand->getName(); ?>
+													<?php if ($this->getConfig('list_page_settings/show_product_count')): ?>
+														<span><?php echo __('(%1)', $block->getProductCount($brand)); ?></span>
+													<?php endif; ?>
+												</a>
+											</h4>
+										</div>
+									<?php endif; ?>
+								</li>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <li class="item col-md-custom-5 col-sm-4 col-xs-6<?php if($i % 5 == 1): ?> first-row-item<?php endif ?><?php if($i % 3 == 1): ?> first-sm-item<?php endif ?><?php if($i % 2 == 1): ?> first-xs-item<?php endif ?>">
+								<div class="image">
+									<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+										<img class="img-responsive" alt="<?php echo $brand->getName(); ?>" src="<?php echo $brand->getSmallImageUrl(); ?>">
+									</a>
+								</div>
+								<?php if ($this->getConfig('list_page_settings/show_brand_name')): ?>
+									<div class="brand-name">
+										<h4 class="brand-title">
+											<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+												<?php echo $brand->getName(); ?>
+												<?php if ($this->getConfig('list_page_settings/show_product_count')): ?>
+													<span><?php echo __('(%1)', $block->getProductCount($brand)); ?></span>
+												<?php endif; ?>
+											</a>
+										</h4>
+									</div>
+								<?php endif; ?>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+					<li class="clear"></li>
+                </ul>
+            </div>
+            <?php if (isset($params['char']) && $params['char'] != '' && $params['char'] == '0-9' && $flagDigit == false): ?>
+                <script type="text/javascript">
+                    require(['jquery'], function ($) {
+                        $('ul.brand-list').hide();
+                    });
+                </script>
+                <div class="message">
+                    <div><?php echo __('Have no brands.') ?></div>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="message">
+                <div><?php echo __('Have no brands.') ?></div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

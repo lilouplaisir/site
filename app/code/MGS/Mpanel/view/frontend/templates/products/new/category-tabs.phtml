@@ -1,0 +1,139 @@
+<?php $categories = $this->getCategoryByIds() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<div class="content-block product-tab new-product-cat-block new-product-cat-tab-block">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+	<?php if(count($categories)>0): ?>
+		<?php $blockId = rand() . time(); ?>
+		<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+		<?php $useSlider = $this->getUseSlider(); ?>
+		<?php $perRow = $this->getPerrow(); ?>
+		<?php $themeSettings = $themeHelper->getThemeSettings(); ?>
+		<?php $col = $themeHelper->convertPerRowtoCol($perRow); ?>
+		<?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+		
+		<?php $ratio = $this->getRatio(); ?>
+		<?php $autoPlay = $this->getAutoplay() ? 'true' : 'false'; ?>
+		<?php $stopAuto = $this->getStopAuto() ? 'true' : 'false'; ?>
+		<?php $nav = $this->getNavigation() ? 'true' : 'false'; ?>
+		<?php $dot = $this->getPagination() ? 'true' : 'false'; ?>
+		
+		<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+			<?php $slideMultiRow = true; ?>
+			<?php $columnCount = $perRow * $this->getNumberRow(); ?>
+		<?php else: ?>
+			<?php $slideMultiRow = false; ?>
+		<?php endif ?>
+		
+		<div class="tabbable">
+			<ul class="nav nav-tabs menu-product-tabs">
+				<?php $i=0; foreach($categories as $category): $i++ ?>
+					<li<?php if($i==1): ?> class="active"<?php endif ?>>
+						<a data-toggle="tab" href="#category-tab-<?php echo $category->getId().$blockId ?>"><?php echo $category->getName(); ?></a>
+					</li>
+				<?php endforeach ?>
+			</ul>
+			<div class="tab-content">
+				<?php $i=0; foreach($categories as $category): $i++ ?>
+					<div id="category-tab-<?php echo $category->getId().$blockId ?>" class="tab-pane<?php if($i==1): ?>  active<?php endif ?>">
+						<div class="new-product-category-tab" id="category<?php echo $category->getId().$blockId; ?>-new-products">
+							<?php $_productCollection = $this->getProductCollection($category); ?>
+							<?php if (count($_productCollection)>0): ?>
+								<div class="block widget mgs-products new-products-grid products-grid <?php if($useSlider): ?> row<?php if(!$slideMultiRow): ?> slider-1-row<?php endif ?><?php endif ?>">
+									<!-- Don't Remove Id of this div element -->
+									<div id="new-products<?php echo $category->getId().$blockId; ?>" 
+										class="items<?php if($useSlider): ?> owl-carousel<?php else: ?> row <?php echo $themeHelper->convertColClass($col, 'row') ?><?php endif ?>">
+										
+										<?php $j=0; $k=0; foreach ($_productCollection as $_product): $j++; ?>
+										
+											<?php if($slideMultiRow): ?>
+												<?php if ($k++ % $columnCount == 0): ?>
+												<div class="item">
+												<?php endif ?>
+											<?php endif ?>
+											
+													<div class="product product-item <?php if($slideMultiRow || !$this->hasData('number_row')): ?><?php echo $themeHelper->getClearClass($perRow, $j) ?> <?php echo $themeHelper->convertColClass($col, 'col') ?><?php endif ?>">
+														<?php echo $this->getLayout()
+																		->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+																		->setProductId($_product->getId())
+																		->setThemeHelper($themeHelper)
+																		->setImageHelper($_imagehelper)
+																		->setCatalogHelperOutput($_helper)
+																		->setRatio($ratio)
+																		->setTemplate('MGS_Mpanel::products/grid_items.phtml')
+																		->toHtml(); ?>
+													</div>
+											
+											<?php if($slideMultiRow): ?>
+												<?php if ($k % $columnCount == 0 || $k == count($_productCollection)): ?>
+												</div>
+												<?php endif ?>
+											<?php endif ?>
+										<?php endforeach; ?>
+									</div>
+									
+									<?php if($useSlider): ?>
+										<script type="text/javascript">
+											require([
+												'jquery',
+												'mgs/owlcarousel'
+											], function ($) {
+												var owlnewcattab<?php echo $category->getId().$blockId ?> = $('#new-products<?php echo $category->getId().$blockId ?>').owlCarousel({
+													<?php if($slideMultiRow): ?>
+														items: 1,
+													<?php else: ?>
+														items: <?php echo $perRow; ?>,
+													<?php endif ?>
+													autoplay: <?php echo $autoPlay ?>,
+													autoplayHoverPause: <?php echo $stopAuto ?>,
+													nav: <?php echo $nav ?>,
+													dots: <?php echo $dot ?>,
+													navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+													<?php if(!$slideMultiRow):?>
+														responsive:{
+															0:{
+																items:1
+															},
+															480:{
+																items:2
+															},
+															768:{
+																items:<?php echo $perRow; ?>
+															}
+														}
+													<?php endif ?>
+												});
+											});
+										</script>
+									<?php endif ?>
+									
+								</div>
+							<?php else: ?>
+								<div role="alert" class="alert alert-warning"> <?php echo __('The category "%1" haven\'t top new product.', $category->getName()) ?> </div>
+							<?php endif ?>
+						</div>
+						
+						<?php if ((count($_productCollection)>0) && !$useSlider): ?>
+							<?php if(($this->hasData('loadmore') && $this->getData('loadmore')=='1') && ((!$this->getData('limit')) || (count($_productCollection) == $this->getData('limit')))): ?>
+								<div class="text-center">
+									<a class="btn-loadmore" href="<?php echo $this->getUrl('mpanel/index/loadmore', ['type'=>'new-products-category', 'category'=>$category->getId(), 'perrow'=>$perRow, 'limit'=>$this->getLimit(), 'ratio'=>$this->getRatio(), 'col'=>$col, 'block_id'=>$blockId, 'tabs'=>1, 'p'=>2]) ?>"><span><?php echo __('View More Products') ?></span></a>
+								</div>
+							<?php endif ?>
+						<?php endif ?>
+					</div>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no categories matching the selection.') ?></div>
+	<?php endif ?>
+</div>

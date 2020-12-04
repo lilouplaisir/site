@@ -1,0 +1,65 @@
+<?php
+$helper = $this->helper('MGS\Blog\Helper\Data');
+$post = $block->getCurrentPost();
+$showImage = $this->getConfig('general_settings/show_image');
+$showAction = $this->getConfig('general_settings/show_action');
+?>
+<div class="blog-post">
+    <div class="post-info">
+        <?php if ($showImage): ?>
+            <div class="post-image margin-bottom20">
+                <?php echo $helper->getImagePost($post); ?>
+            </div>
+        <?php endif; ?>
+		
+		<?php echo $block->getChildHtml('blog.detail.sharethis'); ?>
+		
+        <?php if ($post->getUpdatedByUser()): ?>
+            <p class="published-by"><?php echo __('Published By: %1', $post->getUpdatedByUser()); ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></p>
+        <?php else: ?>
+            <p class="published-by"><?php echo __('Published By: %1', $post->getUser()); ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></p>
+        <?php endif; ?>
+        <?php $categories = $post->getCatetories(); ?>
+        <?php if (count($categories)): ?>
+            <p class="posted-in">
+                <?php echo __('Posted In: ') ?>
+                <?php foreach ($categories as $category): ?>
+                    <a title="<?php echo $category->getTitle(); ?>" href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $category->getTitle(); ?></a>
+                <?php endforeach; ?>
+            </p>
+        <?php endif; ?>
+    </div>
+    <?php if ($post->getContent()): ?>
+        <div class="post-content">
+            <?php echo $post->getContent(); ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($post->getTags()): ?>
+        <?php $tags = explode(',', $post->getTags()); ?>
+        <div class="post-tags">
+            <?php echo __('Tags: '); ?>
+            <?php foreach ($tags as $tag): ?>
+                <a title="<?php echo trim($tag); ?>" href="<?php echo $helper->getTagUrl(trim($tag)); ?>"><?php echo trim($tag); ?></a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	<?php if($showAction): ?>
+		<div class="post-actions">
+			<?php $prevPost = $this->getPrevPost($post->getId()); ?>
+			<?php if($post->getId() != $prevPost['id']): ?>
+				<div class="prev-action action">
+					<h4><a href="<?php echo $prevPost['url']; ?>"><?php echo $prevPost['name']; ?></a></h4>
+				</div>
+			<?php endif ?>
+			<?php $nextPost = $this->getNextPost($post->getId()); ?>
+				<?php if($post->getId() != $nextPost['id']): ?>
+				<div class="next-action action">
+					<h4><a href="<?php echo $nextPost['url']; ?>"><?php echo $nextPost['name']; ?></a></h4>
+				</div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+    <?php echo $block->getChildHtml('post_view_comment'); ?>
+</div>

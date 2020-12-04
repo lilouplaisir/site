@@ -1,0 +1,46 @@
+<?php $themeHelper = $this->getThemeHelper(); ?>
+<?php $themeSettings = $themeHelper->getThemeSettings(); ?>
+<?php $_imagehelper = $this->getImageHelper(); ?>
+<?php $_helper = $this->getCatalogHelperOutput(); ?>
+<?php $image = 'category_page_grid'; ?>
+<?php $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW; ?>
+
+<?php $_product = $this->getLoadProduct($this->getProductId()); ?>
+
+<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+
+<div class="product-item-info" data-container="product-list">
+	
+	<?php // Product Left ?>
+	<div class="product-image">
+		<?php // Product Image ?>
+		<?php $size = $themeHelper->getImageSize($this->getRatio()); ?>
+		<?php $productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl(); ?>
+		<a href="<?php  echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+			<img src="<?php echo $productImage; ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail"/>
+		</a>
+		<?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?>
+	</div>
+	
+	<?php // Product Detail ?>
+	<div class="product details product-item-details">
+	
+		<?php // Product Name ?>
+		<h5 class="product name product-item-name">
+			<a class="product-item-link"
+			   href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+				<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+			</a>
+		</h5>
+		
+		<?php // Swatches Product ?>
+		<?php echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($_product)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml() ?>
+		
+		<?php // Price ?>
+		<?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
+		
+		<?php // Rating ?>
+		<?php echo $block->getReviewsSummaryHtml($_product, $templateType, true); ?>
+	</div>
+</div>

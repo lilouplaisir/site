@@ -1,0 +1,91 @@
+<?php
+$params = $this->getRequest()->getParams();
+$helper = $this->helper('MGS\Brand\Helper\Data');
+$collection = $block->getCollection();
+?>
+<?php if ($collection->count()): ?>
+    <div class="featured-brands mgs-brand margin-bottom50">
+		<div class="content-heading">
+			<h3 class="title text-uppercase"><?php echo __('Featured Brands'); ?></h3>
+		</div>
+        <div class="content row">
+            <ul class="featured-brand-list brand-page-list owl-carousel" id="featured-brand-list">
+                <?php foreach ($collection as $brand): ?>
+                    <?php if (isset($params['char']) && $params['char'] != '' && $params['char'] == '0-9') : ?>
+                        <?php $letter = strtoupper(substr($brand->getName(), 0, 1)); ?>
+                        <?php if (ctype_digit($letter)): ?>
+                            <li class="item">
+								<div class="image">
+									<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+										<img class="img-responsive" alt="<?php echo $brand->getName(); ?>" src="<?php echo $brand->getSmallImageUrl(); ?>">
+									</a>
+								</div>
+								<?php if ($this->getConfig('list_page_settings/show_brand_name')): ?>
+									<div class="brand-name">
+										<h4 class="brand-title">
+											<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+												<?php echo $brand->getName(); ?>
+											</a>
+										</h4>
+										<?php if ($this->getConfig('list_page_settings/show_product_count')): ?>
+											<div class="count"><?php echo __('%1 ', $block->getProductCount($brand)); ?><?php echo $block->getProductCount($brand) > 1 ? __('Product') : __('Products'); ?></div>
+										<?php endif; ?>
+									</div>
+								<?php endif; ?>
+                            </li>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <li class="item">
+							<div class="image">
+								<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+									<img class="img-responsive" alt="<?php echo $brand->getName(); ?>" src="<?php echo $brand->getSmallImageUrl(); ?>">
+								</a>
+							</div>
+							<?php if ($this->getConfig('list_page_settings/show_brand_name')): ?>
+								<div class="brand-name">
+									<h4 class="brand-title">
+										<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>">
+											<?php echo $brand->getName(); ?>
+										</a>
+									</h4>
+									<?php if ($this->getConfig('list_page_settings/show_product_count')): ?>
+										<div class="count"><?php echo __('%1 ', $block->getProductCount($brand)); ?><?php echo $block->getProductCount($brand) > 1 ? __('Products') : __('Product'); ?></div>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+			<script type="text/javascript">
+				require([
+					'jquery',
+					'mgs/owlcarousel'
+				], function ($) {
+					$('#featured-brand-list').owlCarousel({
+						items: 5,
+						autoplay: true,
+						autoplayHoverPause: true,
+						nav: true,
+						dots: false,
+						loop: true,
+						rtl: true,
+						navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+						responsive:{
+							0:{
+								items:2
+							},
+							768:{
+								items:4
+							},
+							992:{
+								items:5
+							}
+						}
+					});
+				});
+				
+			</script>
+        </div>
+    </div>
+<?php endif; ?>

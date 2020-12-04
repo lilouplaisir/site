@@ -1,0 +1,91 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php 
+	$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+	$themeSettings = $themeHelper->getThemeSettings();
+	$canUsePanel = $themeHelper->acceptToUsePanel();
+	$ObjectManagerMap = \Magento\Framework\App\ObjectManager::getInstance();
+	$storeManager = $ObjectManagerMap->get('Magento\Store\Model\StoreManagerInterface');
+	$currentStore = $storeManager->getStore();
+	$currentUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+?>
+<?php if($themeSettings['contact_google_map']['display_google_map'] && ($themeSettings['contact_google_map']['address_google_map'] !='')): ?>
+	<?php $image = $currentUrl.'map/'.$themeSettings['contact_google_map']['pin_google_map'] ?>
+	<div class="map-info">
+		<div class="map-container">
+			<div id="map-contact" style="height: 450px;"></div>
+		</div>
+		<?php if($this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ethan_contact_information')->setCanUsePanel($canUsePanel)->toHtml()): ?>
+			<div class="store-information">
+				<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ethan_contact_information')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+			</div>
+		<?php endif ?>
+	</div>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?php echo $themeSettings['contact_google_map']['api_key'] ?>&libraries=places&sensor=false"></script>
+	<script type="text/javascript">
+		require([
+		'jquery'
+	], function(jQuery){
+		(function($) {
+			var address = '<?php echo $themeSettings['contact_google_map']['address_google_map'] ?>';
+			var html = '<?php echo $themeSettings['contact_google_map']['html_google_map'] ?>';
+			var image = '<?php echo $image ?>';
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: "http://maps.googleapis.com/maps/api/geocode/json",
+				data: {'address': address,'sensor':false},
+				success: function(data){
+					if(data.results.length){
+						latitude = data.results[0].geometry.location.lat;
+						longitude = data.results[0].geometry.location.lng;
+						
+						var locations = [
+							[html, latitude, longitude, 2]
+						];
+				
+						var map = new google.maps.Map(document.getElementById('map-contact'), {
+							zoom: 14,
+							scrollwheel: false,
+							navigationControl: true,
+							mapTypeControl: false,
+							scaleControl: false,
+							draggable: true,
+							center: new google.maps.LatLng(latitude, longitude),
+							mapTypeId: google.maps.MapTypeId.ROADMAP
+						});
+				
+						var infowindow = new google.maps.InfoWindow();
+					
+						var marker, i;
+					
+						for (i = 0; i < locations.length; i++) {  
+					  
+							marker = new google.maps.Marker({ 
+								position: new google.maps.LatLng(locations[i][1], locations[i][2]), 
+								map: map ,
+								icon: image
+							});
+					
+					
+						  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+							return function() {
+							  infowindow.setContent(locations[i][0]);
+							  infowindow.open(map, marker);
+							}
+						  })(marker, i));
+						}
+					}
+				}
+			});
+		})(jQuery);
+	});
+	</script>
+<?php endif ?>

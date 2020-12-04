@@ -1,0 +1,42 @@
+<?php $_productCollection = $this->getCollection() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<div class="content-block sale-product-block">
+	<?php // Block Content  ?>
+	<?php if (count($_productCollection)): ?>
+		<?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+		<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+		
+		<?php $ratio = $this->getRatio(); ?>
+		<?php $useSlider = $this->getUseSlider(); ?>
+		<?php $columnCount = $perRow = $this->getProductPerrow(); ?>
+		<?php $col = $themeHelper->convertPerRowtoCol($perRow); ?>
+
+		<div class="block widget mgs-products sale-products-grid products-grid">
+			<div class="items row <?php echo $themeHelper->convertColClass($col, 'row') ?>">
+				<?php $i=0; $j=0; foreach ($_productCollection as $_product): $i++; ?>
+
+				<div class="product product-item <?php echo $themeHelper->convertColClass($col, 'col') ?>">
+					<?php echo $this->getLayout()
+							->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+							->setProductId($_product->getId())
+							->setThemeHelper($themeHelper)
+							->setImageHelper($_imagehelper)
+							->setCatalogHelperOutput($_helper)
+							->setRatio($ratio)
+							->setTemplate('MGS_Mpanel::products/grid_items.phtml')
+							->toHtml(); ?>
+									
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<div class="bottom-pagination">
+			<div class="toolbar toolbar-products">
+				<?php echo $this->getPagerHtml() ?>
+			</div>
+		</div>
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no products matching the selection.') ?></div>
+	<?php endif ?>
+</div>

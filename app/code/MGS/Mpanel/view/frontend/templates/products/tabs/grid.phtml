@@ -1,0 +1,96 @@
+<?php $tabs = $this->getTabs() ?>
+<?php $labels = $this->getLabels() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<div class="content-block product-tabs-block">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+	<?php if(count($tabs)>0): ?>
+		<?php 
+			$blockId = rand() . time();
+			$_helper = $this->helper('Magento\Catalog\Helper\Output');
+			$useSlider = $this->getUseSlider();
+			$perRow = $this->getPerrow();
+			$numberRow = 1;
+			if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1){
+				$numberRow = $this->getNumberRow();
+			}
+			$image = 'category_page_grid';
+			$themeSettings = $themeHelper->getThemeSettings();
+			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+			$col = $themeHelper->convertPerRowtoCol($perRow);
+			$autoPlay = $this->getAutoplay() ? 'true' : 'false';
+			$stopAuto = $this->getStopAuto() ? 'true' : 'false';
+			$nav = $this->getNavigation() ? 'true' : 'false';
+			$dot = $this->getPagination() ? 'true' : 'false';
+		?>
+		<div class="tabbable product-tab">
+			<ul class="nav nav-tabs menu-product-tabs">
+				<?php $i=0; foreach($tabs as $key=>$tab): ?>
+					<?php if(isset($labels[$key])): $i++; ?>
+						<li<?php if($i==1): ?> class="active"<?php endif ?>>
+							<a data-toggle="tab" href="#tab-<?php echo $tab.$blockId ?>"><?php echo $labels[$key]; ?></a>
+						</li>
+					<?php endif ?>
+				<?php endforeach ?>
+			</ul>
+			<div class="tab-content">
+				<?php $i=0; foreach($tabs as $tabKey=>$tab): ?>
+					<?php if(isset($labels[$tabKey])): $i++; ?>
+						<div id="tab-<?php echo $tab.$blockId ?>" class="tab-pane<?php if($i==1): ?>  active<?php endif ?><?php if($useSlider): ?> product-carousel<?php endif ?>">
+							<?php 
+								switch ($tab){
+									case "mgs_new_products_tabs":
+										$blockClass = 'MGS\Mpanel\Block\Products\NewProducts';
+										$type = 'new';
+										break;
+									case "mgs_sale_products_tabs":
+										$blockClass = 'MGS\Mpanel\Block\Products\Sale';
+										$type = 'sale';
+										break;
+									case "mgs_rate_products_tabs":
+										$blockClass = 'MGS\Mpanel\Block\Products\Rate';
+										$type = 'rate';
+										break;
+									default:
+										$blockClass = 'MGS\Mpanel\Block\Products\Attributes';
+										$type = $tab;
+										break;
+								}
+								
+								$html = $this->getLayout()
+									->createBlock($blockClass)
+									->setLimit($this->getLimit())
+									->setType($type)
+									->setCategoryIds($this->getCategoryIds())
+									->setRatio($this->getRatio())
+									->setPerrow($perRow)
+									->setCol($col)
+									->setLoadmore($this->getLoadmore())
+									->setUseSlider($useSlider)
+									->setNumberRow($numberRow)
+									->setAutoplay($autoPlay)
+									->setStopAuto($stopAuto)
+									->setNavigation($nav)
+									->setPagination($dot)
+									->setTemplate('products/tabs/items.phtml')
+									->toHtml();
+								echo $html;
+							?>
+						</div>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no tabs matching the selection.') ?></div>
+	<?php endif ?>
+</div>

@@ -1,0 +1,144 @@
+<?php 
+	$type = $this->getType();
+	$attr = '';
+	$blockId = rand() . time();
+	switch ($type){
+		case "new":
+			$_productCollection = $this->getNewProductByCategories($this->getCategoryIds());
+			$loadmoreType = 'new-products-category';
+			$containerId = 'new-products'.$blockId;
+			break;
+		case "sale":
+			$_productCollection = $this->getSaleProductByCategories($this->getCategoryIds());
+			$loadmoreType = 'sale-products-category';
+			$containerId = 'sale-products'.$blockId;
+			break;
+		case "rate":
+			$_productCollection = $this->getRateProductByCategories($this->getCategoryIds());
+			$loadmoreType = 'rate-products-category';
+			$containerId = 'rate-products'.$blockId;
+			break;
+		default:
+			$_productCollection = $this->getAttributeProductByCategories($this->getCategoryIds(), $type);
+			$loadmoreType = 'attribute-products-category';
+			$containerId = 'attribute-products'.$blockId;
+			$attr = $type;
+			break;
+	}
+?>
+<?php $valAttribute = true; ?>
+<?php if($loadmoreType == 'attribute-products-category'): ?>
+	<?php if(!$this->existAttribute($attr)): ?>
+		<?php $valAttribute = false; ?>
+	<?php endif ?>
+<?php endif ?>
+<?php if(!$valAttribute): ?>
+	<div role="alert" class="alert alert-warning"><?php echo __('Please create attribute "'.$type.'" or edit block to change attribute.') ?></div>
+<?php else: ?>
+	<?php if (count($_productCollection)>0): ?>
+		<?php
+			
+			$_helper = $this->helper('Magento\Catalog\Helper\Output');
+			$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+			$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+			$useSlider = $this->getUseSlider();
+			$perRow = $this->getPerrow();
+			if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1){
+				$columnCount = $perRow * $this->getNumberRow();
+			}
+			$image = 'category_page_grid';
+			$themeSettings = $themeHelper->getThemeSettings();
+			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+			$col = $this->getCol();
+			$autoPlay = $this->getAutoplay();
+			$stopAuto = $this->getStopAuto();
+			$nav = $this->getNavigation();
+			$dot = $this->getPagination();
+			$loadmoreParams = ['type'=>$loadmoreType, 'category'=>$this->getCategoryIds(), 'limit'=>$this->getLimit(), 'ratio'=>$this->getRatio(), 'col'=>$col, 'block_id'=>$blockId, 'tabs'=>0, 'p'=>2];
+			if($attr){
+				$loadmoreParams['attribute'] = $attr;
+			}
+			
+		?>
+		
+		<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+			<?php $slideMultiRow = true; ?>
+		<?php else: ?>
+			<?php $slideMultiRow = false; ?>
+		<?php endif ?>
+		<div class="block widget mgs-products <?php echo $type ?>-products-grid products-grid<?php if($useSlider): ?> row<?php if(!$slideMultiRow): ?> slider-1-row<?php endif ?><?php endif ?>">
+			<div class="items<?php if($useSlider): ?> owl-carousel<?php else: ?> row <?php echo $themeHelper->convertColClass($col, 'row') ?><?php endif ?>" id="<?php echo $containerId ?>">
+				<?php $i=0; $j=0; foreach ($_productCollection as $_product): $i++; ?>
+				
+					<?php if($useSlider && $this->getNumberRow()!='' && $this->getNumberRow()>1): ?>
+						<?php if ($j++ % $columnCount == 0): ?>
+							<div class="item">
+						<?php endif ?>
+					<?php endif ?>
+								<div class="product product-item <?php if($slideMultiRow || !$useSlider): ?><?php echo $themeHelper->getClearClass($perRow, $j) ?> <?php echo $themeHelper->convertColClass($col, 'col') ?><?php endif ?>">
+									<?php echo $this->getLayout()
+									->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+									->setProductId($_product->getId())
+									->setThemeHelper($themeHelper)
+									->setImageHelper($_imagehelper)
+									->setCatalogHelperOutput($_helper)
+									->setRatio($this->getRatio())
+									->setTemplate('MGS_Mpanel::products/grid_items.phtml')
+									->toHtml(); ?>
+								</div>
+					
+					<?php if($useSlider && $this->getNumberRow()!='' && $this->getNumberRow()>1): ?>
+						<?php if ($j % $columnCount == 0 || $j == count($_productCollection)): ?>
+							</div>
+						<?php endif ?>
+					<?php endif ?>
+				<?php endforeach; ?>
+			</div>
+			
+			<?php if($useSlider): ?>
+				<script type="text/javascript">
+					require([
+						'jquery',
+						'mgs/owlcarousel'
+					], function ($) {
+						$('#<?php echo $containerId ?>').owlCarousel({
+							<?php if($this->getNumberRow()!='' && $this->getNumberRow()>1):?>
+							items: 1,
+							<?php else: ?>
+							items: <?php echo $perRow; ?>,
+							<?php endif ?>
+							autoplay: <?php echo $autoPlay ?>,
+							autoplayHoverPause: <?php echo $stopAuto ?>,
+							nav: <?php echo $nav ?>,
+							dots: <?php echo $dot ?>,
+							navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+							<?php if(!$this->hasData('number_row') || $this->getNumberRow()==1):?>
+								responsive:{
+									0:{
+										items:2
+									},
+									992:{
+										items:3
+									},
+									1200:{
+										items:<?php echo $perRow; ?>
+									}
+								}
+							<?php endif ?>
+						});
+					});
+				</script>
+			<?php else: ?>
+				<?php if (count($_productCollection)>0): ?>
+					<?php if(($this->getLoadmore()=='1') && ((!$this->getLimit()) || (count($_productCollection) == $this->getLimit()))): ?>
+						<div class="text-center">
+							<a class="btn-loadmore" href="<?php echo $this->getUrl('mpanel/index/loadmore', $loadmoreParams) ?>"><span><?php echo __('View More Products') ?></span></a>
+						</div>
+					<?php endif ?>
+				<?php endif ?>
+			<?php endif ?>
+		</div>
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no products matching the selection.') ?></div>
+	<?php endif ?>
+<?php endif ?>

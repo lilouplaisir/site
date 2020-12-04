@@ -1,0 +1,271 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<div class="edit-static-form">
+	<div class="row">
+		<div class="col-md-12 builder-title">
+			<h2><?php echo __('Facebook Fanbox Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('mpanel/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="facebook">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Mpanel\Model\Childs')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		
+		<div class="form-horizontal">
+			<div id="form_tabs" class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a data-toggle="tab" href="#general"><?php echo __('General') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="additional-tab-nav" data-toggle="tab" href="#additional"><?php echo __('Facebook Config') ?></a>
+					</li>
+					
+					<?php if($exist): ?>
+						<li class="">
+							<a id="code-tab-nav" data-toggle="tab" href="#code"><?php echo __('Embed Code') ?></a>
+						</li>
+					<?php endif ?>
+				</ul>
+				<div class="tab-content">
+					<div id="general" class="tab-pane active">
+						<div class="form-group">
+							<label for="title" class="col-sm-4 control-label"><?php echo __('Title') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="title" class="input-text" name="setting[title]"<?php if($exist): ?> value="<?php echo htmlspecialchars($settings['title']) ?>"<?php endif ?> />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="col" class="col-sm-4 control-label"><?php echo __('Block col (12 to full)') ?></label>
+							<div class="col-sm-8">
+								<select id="col" class="required-entry input-text" name="col">
+									<?php for($i=12; $i>=1; $i--): ?>
+										<option value="<?php echo $i ?>"<?php if($exist && ($child->getCol()==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+									<?php endfor ?>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="class" class="col-sm-4 control-label"><?php echo __('Custom Class') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="class" class="input-text" name="class"<?php if($exist): ?> value="<?php echo $child->getClass() ?>"<?php endif ?> />
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="additional_content"><?php echo __('Additional content') ?></label>
+							<div class="col-sm-8">
+								<textarea name="setting[additional_content]" id="content" class="input-text"><?php if($exist): ?><?php echo $settings['additional_content'] ?><?php endif ?></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation" class="col-sm-4 control-label"><?php echo __('Block Animation') ?></label>
+							<div class="col-sm-4">
+								<select onchange="changeAnimationClass(this.value)" id="animation" class="input-text" name="setting[animation]">
+									<option value=""><?php echo __('Choose Animation Effect') ?></option>
+									<?php foreach($helper->getAnimationEffect() as $animation=>$label): ?>
+										<option value="<?php echo $animation ?>"<?php if($exist && ($settings['animation']==$animation)): ?> selected="selected"<?php endif ?>><?php echo $label ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+							
+							<div class="col-sm-4 text-center animated<?php if($exist && ($settings['animation']!='')): ?> <?php echo $settings['animation'] ?><?php endif ?>" id="animation-test">Animation Preview</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation_delay" class="col-sm-4 control-label"><?php echo __('Animation Delay') ?></label>
+							<div class="col-sm-8">
+								<input type="text" placeholder="ms" id="animation_delay" class="input-text validate-number" name="setting[animation_delay]" <?php if($exist): ?> value="<?php echo $settings['animation_delay'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div id="additional" class="tab-pane">
+						<?php if(($helper->getStoreConfig('social/facebook_settings/client_id')=='') || ($helper->getStoreConfig('social/facebook_settings/client_secret')=='')): ?>
+							<div role="alert" class="alert alert-danger"><?php echo __('Please go to admin panel > MGS > Social [Configuration] and configuration for <b>Facebook App Id</b> and <b>Facebook App Secret</b> first.') ?></div>
+						<?php endif ?>
+
+						<div class="form-group">
+							<label for="page_url" class="col-sm-4 control-label"><?php echo __('Facebook Page URL') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="page_url" class="input-text required-entry" name="setting[page_url]" <?php if($exist): ?> value="<?php echo $settings['page_url'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="width" class="col-sm-4 control-label"><?php echo __('Width') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="width" class="input-text required-entry validate-number" name="setting[width]" <?php if($exist): ?> value="<?php echo $settings['width'] ?>"<?php endif ?>>
+								<p class="note"><?php echo __('The pixel width of the plugin. Min. is 180 & Max. is 500.') ?></p>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="height" class="col-sm-4 control-label"><?php echo __('Height') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="height" class="input-text required-entry validate-number" name="setting[height]" <?php if($exist): ?> value="<?php echo $settings['height'] ?>"<?php endif ?>>
+								<p class="note"><?php echo __('The pixel height of the plugin. Min. is 70.') ?></p>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="facebook_tabs" class="col-sm-4 control-label"><?php echo __('Tabs') ?></label>
+							<div class="col-sm-8">
+								<?php 
+									$arrTabs = [];
+									if($exist){
+										$arrTabs = $settings['facebook_tabs'];
+									}
+								?>
+								<select multiple="multiple" name="setting[facebook_tabs][]" class="multiple input-text required-entry" size="3" id="facebook_tabs">
+									<option value="timeline"<?php if(in_array('timeline', $arrTabs)): ?> selected="selected"<?php endif ?>><?php echo __('Timeline') ?></option>
+									<option value="events" <?php if(in_array('events', $arrTabs)): ?> selected="selected"<?php endif ?>><?php echo __('Events') ?></option>
+									<option value="messages" <?php if(in_array('messages', $arrTabs)): ?> selected="selected"<?php endif ?>><?php echo __('Messages') ?></option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="hide_cover" class="col-sm-4 control-label"><?php echo __('Hide Cover') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['hide_cover']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_cover]" id="hide_cover" class="admin__actions-switch-checkbox">
+									<label for="hide_cover" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+									<span class="note"><?php echo __('Hide cover photo in the header.') ?></span>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="show_facepile" class="col-sm-4 control-label"><?php echo __('Show Facepile') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['show_facepile']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_facepile]" id="show_facepile" class="admin__actions-switch-checkbox">
+									<label for="show_facepile" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+									<span class="note"><?php echo __('Show profile photos when friends like this.') ?></span>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="show_posts" class="col-sm-4 control-label"><?php echo __('Show Posts') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['show_posts']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_posts]" id="show_posts" class="admin__actions-switch-checkbox">
+									<label for="show_posts" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+									<span class="note"><?php echo __('Hide the custom call to action button (if available).') ?></span>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="small_header" class="col-sm-4 control-label"><?php echo __('Small Header') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['small_header']): ?> checked="checked"<?php endif ?> value="1" name="setting[small_header]" id="small_header" class="admin__actions-switch-checkbox">
+									<label for="small_header" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+									<span class="note"><?php echo __('Use the small header instead.') ?></span>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="fit_inside" class="col-sm-4 control-label"><?php echo __('Fit Inside') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['fit_inside']): ?> checked="checked"<?php endif ?> value="1" name="setting[fit_inside]" id="fit_inside" class="admin__actions-switch-checkbox">
+									<label for="fit_inside" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+									<span class="note"><?php echo __('Try to fit inside the container width.') ?></span>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				
+					<?php if($exist): ?>
+						<div id="code" class="tab-pane">
+							<div class="form-group">
+								<h4 class="col-sm-12"><?php echo __('For CMS:') ?></h4>
+								<div class="col-sm-12">
+									<pre><?php echo htmlspecialchars($child->getBlockContent()) ?></pre>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<h4 class="col-sm-12"><?php echo __('For Layout Update XML:') ?></h4>
+								<div class="col-sm-12">
+									<pre><?php echo $helper->convertToLayoutUpdateXml($child) ?></pre>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12 builder-action">
+						<div class="buttons">
+							<?php if(!$exist): ?>
+								<button type="button" class="btn btn-back" onclick="history.go(-1)"><span><span><?php echo __('Back') ?></span></span></button>
+							<?php endif ?>
+							<input type="submit" value="<?php echo __('Submit') ?>" class="btn btn-primary"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+</script>

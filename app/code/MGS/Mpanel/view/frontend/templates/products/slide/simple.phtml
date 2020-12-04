@@ -1,0 +1,61 @@
+<?php $customClass = $this->getCustomClass() ?>
+<?php if($this->hasData('title')): ?>
+	<div class="block-title<?php if($customClass): ?> <?php echo $customClass ?>-title<?php endif ?>">
+		<h3><?php echo $this->getData('title') ?></h3>
+	</div>
+<?php endif ?>
+<?php if($this->hasData('note_text')): ?>
+	<div class="note-text">
+		<span><?php echo $this->getData('note_text') ?></span>
+	</div>
+<?php endif ?>
+<div class="product-carousel attribute-carousel<?php if($customClass): ?> <?php echo $customClass ?><?php endif ?>">
+	<?php if($this->hasData('attribute')): ?>
+		<?php $_productCollection = $this->getProductCollection($this->getData('attribute')); ?>
+		<?php if (!$_productCollection->count()): ?>
+			<div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+		<?php else: ?>
+			<div class="products wrapper grid products-grid">
+				<ol class="products list items product-items owl-carousel" id="<?php echo $this->getData('attribute') ?>-carousel-simple">
+					<?php 
+						$html = $this->getLayout()
+							->createBlock('MGS\Mpanel\Block\Products\Attributes')
+							->setAdditionalData($this->getData('attribute'))
+							->setItemType('slider')
+							->setProductsCount($this->getProductsCount())
+							->setPerRow($this->getProductsPerRow())
+							->setTemplate('products/items.phtml')
+							->toHtml();
+						echo $html;
+					?>
+				</ol>
+			</div>
+			<script type="text/javascript">
+				require([
+					'jquery',
+					'mgs/owlcarousel'
+				], function(jQuery){
+					(function($) {
+						$("#<?php echo $this->getData('attribute') ?>-carousel-simple").owlCarousel({
+							itemElement: 'li',
+							items: <?php echo $this->getProductsPerRow() ?>,
+							nav: <?php echo $this->getNav() ?>,
+							dots: <?php echo $this->getDots() ?>,
+							autoplay: <?php echo $this->getAutoplay() ?>,
+							margin: 30,
+							responsive:{
+								0 : {items: 1},
+								480 : {items: 1},
+								768 : {items: 2},
+								980 : {items: <?php echo $this->getProductsPerRow() ?>},
+								1200 : {items: <?php echo $this->getProductsPerRow() ?>}
+							}
+						});
+					})(jQuery);
+				});
+			</script>
+		<?php endif ?>
+	<?php else: ?>
+		<div class="message info empty"><div><?php echo __('We can\'t find products matching the selection.') ?></div></div>
+	<?php endif ?>
+</div>

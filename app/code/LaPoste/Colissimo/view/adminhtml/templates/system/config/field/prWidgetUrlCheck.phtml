@@ -1,0 +1,67 @@
+<?php
+
+/*******************************************************
+ * Copyright (C) 2019 La Poste.
+ *
+ * This file is part of La Poste - Colissimo module.
+ *
+ * La Poste - Colissimo module can not be copied and/or distributed without the express
+ * permission of La Poste.
+ *******************************************************/
+
+/* @var $block \LaPoste\Colissimo\Block\System\Config\Field\PrWidgetUrlCheck */ ?>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function (jQuery) {
+
+        var widgetUrlCheckSpan = jQuery('#widgetUrlCheck_span');
+
+        jQuery('#prWidgetUrlCheck_button').click(function () {
+            new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+                parameters: {},
+                loaderArea: false,
+                asynchronous: true,
+                onCreate: function () {
+                    widgetUrlCheckSpan.find('.widgetUrlChecked').hide();
+                    widgetUrlCheckSpan.find('.widgetUrlBad').hide();
+                    widgetUrlCheckSpan.find('.processing').show();
+                    jQuery('#widgetUrlCheck_message_span').text('');
+                },
+                onComplete: function (response) {
+                    widgetUrlCheckSpan.find('.processing').hide();
+
+                    var resultText = '';
+                    var json = response.responseJSON;
+                    if (response.status > 200) {
+                        resultText = json.error;
+                        widgetUrlCheckSpan.find('.widgetUrlBad').show();
+                    } else {
+                        resultText = json.success;
+                        if (json.isWidgetUrlOk) {
+                            widgetUrlCheckSpan.find('.widgetUrlChecked').show();
+                            widgetUrlCheckSpan.find('.widgetUrlBad').hide();
+                        } else {
+                            widgetUrlCheckSpan.find('.widgetUrlChecked').hide();
+                            widgetUrlCheckSpan.find('.widgetUrlBad').show();
+                        }
+                    }
+                    jQuery('#widgetUrlCheck_message_span').text(resultText);
+                }
+            });
+        });
+
+    });
+</script>
+
+<?php echo $block->getButtonHtml() ?>
+<span class="widgetUrlCheck-indicator" id="widgetUrlCheck_span">
+    <img class="processing" hidden="hidden" alt="widgetUrlChecking" style="margin:0 5px"
+         src="<?php echo $block->getViewFileUrl('images/process_spinner.gif') ?>"/>
+    <img class="widgetUrlChecked" hidden="hidden" alt="widgetUrlChecked" style="margin:-3px 5px"
+         src="<?php echo $block->getViewFileUrl('images/rule_component_apply.gif') ?>"/>
+    <img class="widgetUrlBad" hidden="hidden" alt="widgetUrlBad" style="margin:-3px 5px"
+         src="<?php echo $block->getViewFileUrl('images/rule_component_remove.gif') ?>"/>
+    <span id="widgetUrlCheck_message_span"></span>
+</span>

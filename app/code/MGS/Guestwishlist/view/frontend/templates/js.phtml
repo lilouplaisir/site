@@ -1,0 +1,16 @@
+<?php
+$helper = $this->helper('MGS\Guestwishlist\Helper\Data');
+?>
+<script>
+    window.guestWishlist = {
+        addUrl:'<?php echo $block->getUrl('guestwishlist/index/add') ?>',
+        isActive: <?php echo $helper->isModuleEnable() && !$helper->isLoggedIn() ? 'true' : 'false' ?>,
+        currentUrl: '<?php echo $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>'// use for add to cart form wishlist sidebar
+    };
+</script>
+<script type="text/x-magento-init">
+    {
+        "body": {
+            "addToWishlist": {"productType":["simple","configurable","virtual","grouped","bundle","downloadable"]}        }
+    }
+</script>

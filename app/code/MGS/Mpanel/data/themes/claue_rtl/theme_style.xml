@@ -1,0 +1,304 @@
+<class_setting>
+	<theme_color>
+		<color>
+			<![CDATA[.color-theme,a:hover, a:focus, a:active,.list-group .list-group-item.active,.extra-link a:hover, .message > * a,.search-autocomplete ul li .amount,.footer .middle-footer a:hover, .footer .middle-footer a:focus,.minicart-wrapper .action.showcart:hover:before, .minicart-wrapper .action.showcart:active:before,.minicart-wrapper .action.showcart.active,.minicart-wrapper .action.showcart.active:before,.minicart-items .product-item .product-item-details .product-item-name a:hover,.header .top-header-content a:hover, .header .top-header-content button:hover, .header .top-header-content a:focus, .header .top-header-content button:focus,.header .dropdown-switcher .dropdown-menu li > a:hover,.header .dropdown-toplinks .dropdown-toggle:hover,.header .header-wl a:hover,.header .search-form .actions-search .action-search:hover,.header .search-form.select-search .form-search .form.minisearch .search-select .dropdown-menu li a:hover,.products-grid .product-item-info .product-top .actions-link button:hover,.products-grid .product-item-info .product-item-details .product-item-name a:hover,.products-grid .product-item-info.metro_template .product-item-details .product-item-name a:hover,.list-products .product-item-info .product-item-details .product-item-name a:hover,.widget.mgs-blog-lastest-posts .post-item-content .post-item-detail .title a:hover,.breadcrumbs .items > li a:hover,.products-list .product-item-info .product-item-details .product-item-name a:hover, .products-list .product-item-info .product-item-details .product-item-name a:focus,.page-layout-1column .category-product-actions .block.filter .filter-title > .title:hover, .block.account-nav .account-nav .items .item strong, .block-order-details-comments .order-comments .comment .comment-date,.items.order-links li.current, .items.order-links li:hover,.order-details-items .table-wrapper tfoot tr.grand_total th strong, .order-details-items .table-wrapper tfoot tr.grand_total td strong,.customer-review.view .review-details .review-date,.products-grid.wishlist .product-item-info .product-item-name a:hover,.cms-noroute-index .page-main .column.main a:hover,.profile .profile-desc .profile-name:hover,.shipping-address-items .shipping-address-item.selected-item,.opc-block-summary .table-totals tr.totals.grand th, .opc-block-summary .table-totals tr.totals.grand td,.opc-block-summary .table-totals tr.totals.grand th strong, .opc-block-summary .table-totals tr.totals.grand td strong,.opc-block-shipping-information .shipping-information-title .action-edit:hover:before,#multiship-addresses-table tbody tr td.product .product-item-name a:hover,.multishipping-checkout-shipping table tbody tr td .product-item-name a:hover,.multishipping-checkout-overview table tfoot tr.grand.totals th, .multishipping-checkout-overview table tfoot tr.grand.totals td,.multicheckout.success a, .checkout-success a,.sidebar .block.block-reorder ol.product-items .product-item .product-item-name a:hover,.sidebar .block-blog-posts .post-list li a:hover,.sidebar .block-blog-categories li a:hover,.sidebar .brand-list li.active,.blog-list .post-item-info .post-info a:hover,.blog-post-view .post-item-info .post-info a:hover,.portfolio-grid .item .portfolio-top-content .portfolio-bottom-content .title:hover,.portfolio-grid .item .portfolio-top-content .portfolio-bottom-content .category-link a:hover,.checkout-cart-index .column.main .cart-empty a,.checkout-cart-index #shopping-cart-table tbody tr td.col.item .product-item-details .product-item-name a:hover, .checkout-cart-index #shopping-cart-table tbody tr td.col.item .product-item-details .product-item-name a:focus,.checkout-cart-index #shopping-cart-table .gift-options-cart-item .action-gift:hover,.full-review.product-reviews-summary .reviews-actions a:hover, .full-review.product-reviews-summary .reviews-actions a:focus,.box-tocart .field.qty > .control span.edit-qty:hover,.product-info-main .product-info-stock-sku .stock span,.product-info-main .product-sub-infomation .product.attribute.sku span.value,.product-info-main .product-sub-infomation .product-brand .brand-name a,.product-add-form .product-options-wrapper .swatch-opt .swatch-attribute-label + .swatch-attribute-selected-option,.block.review-list .review-items li.review-item .review-title,.block.review-add .review-form h4 span,.opc-estimated-wrapper .estimated-block .estimated-price,.header ul.social-link li a:hover,.header .nav.nav-main-menu > li > a:hover,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-sidebar .aw-onestep-sidebar-header::before,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-main .aw-onestep-groups .aw-onestep-groups_item .group-title .mark,.onestepcheckout-index-index .page-main .main .checkout-container input[type="radio"] + label::before, .onestepcheckout-index-index .page-main .main .checkout-container input[type="checkbox"]:checked + label::before,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-sidebar-wrapper .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-sidebar-wrapper .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle::after,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-sidebar-wrapper .aw-onestep-sidebar-content .aw-sidebar_order-note span,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-sidebar-wrapper .aw-onestep-sidebar-content .aw-sidebar_order-note span::after,.onestepcheckout-index-index .aw-onestep-main .authentication-link a,.block.aw-layered-nav .block-content.filter-content .filter-options .filter-options-item .filter-options-content .show-more span,.onestepcheckout-index-index .page-main .main .checkout-container input[type="radio"] + label::before, .onestepcheckout-index-index .page-main .main .checkout-container input[type="radio"]:checked + label::before,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-main .aw-onestep-groups .shipping-address-items ol .shipping-address-item.selected-item::after]]>
+		</color>
+		<border_color>
+			<![CDATA[.btn:hover, .btn:focus, .btn:active,.btn-default2:hover, .btn-default2:focus, .btn-default2:active,.btn-primary:hover, .btn-primary:focus, .btn-primary:active,.btn-secondary,.owl-carousel .owl-nav > div:not(.disabled):hover,.minicart-items .product-item .details-qty.qty .update-cart-item:hover, .minicart-items .product-item .details-qty.qty .update-cart-item:focus, .minicart-items .product-item .details-qty.qty .update-cart-item:active,.minicart-items .product-item .product.actions .action:hover,.list-products .product-item-info .product-image .action.mgs-quickview:hover,.btn.btn-promo-banner:hover, .btn.btn-promo-banner:focus,.tag-cloud a:hover,.product-items .ajax-loading .scroll-ajax-button,.products-list .action.mgs-quickview:hover,.products-list .product-item-info .product-item-details .actions-link .action.tocart:hover, .products-list .product-item-info .product-item-details .actions-link .action.tocart:focus,.shipping-address-items .action:hover,#shipping-method-buttons-container .action, .payment-method-content .actions-toolbar .action, #shipping-method-buttons-container button.action, .payment-method-content .actions-toolbar button.action,.authentication-wrapper .action-auth-toggle:hover,.payment-option.discount-code .form-discount .actions-toolbar .action.action-apply:hover,.checkout-cart-index .cart-summary .checkout-methods-items .item .action.checkout:hover,.product-info-main .product-add-form .actions button.tocart, .bundle-info .product-details .actions button.tocart,.product.media .product-video-button a:hover,.product.media .row.vertical-thumbnail .slick-slider .slick-arrow:hover,.items.order-links li.current, .items.order-links li:hover,.btn-print:hover,.shipping-address-items .shipping-address-item.selected-item,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-main .aw-onestep-groups .aw-onestep-groups_item .group-title .mark]]>
+		</border_color>
+		<background_color>
+			<![CDATA[.btn:hover, .btn:focus, .btn:active,.btn-default2:hover, .btn-default2:focus, .btn-default2:active,.btn-primary:hover, .btn-primary:focus, .btn-primary:active,.btn-secondary,.owl-carousel .owl-nav > div:not(.disabled):hover,.minicart-items .product-item .details-qty.qty .update-cart-item:hover, .minicart-items .product-item .details-qty.qty .update-cart-item:focus, .minicart-items .product-item .details-qty.qty .update-cart-item:active,.minicart-items .product-item .product.actions .action:hover,.list-products .product-item-info .product-image .action.mgs-quickview:hover,.btn.btn-promo-banner:hover, .btn.btn-promo-banner:focus,.tag-cloud a:hover,.product-items .ajax-loading .scroll-ajax-button,.products-list .action.mgs-quickview:hover,.products-list .product-item-info .product-item-details .actions-link .action.tocart:hover, .products-list .product-item-info .product-item-details .actions-link .action.tocart:focus,.shipping-address-items .action:hover,#shipping-method-buttons-container .action, .payment-method-content .actions-toolbar .action, #shipping-method-buttons-container button.action, .payment-method-content .actions-toolbar button.action,.authentication-wrapper .action-auth-toggle:hover,.payment-option.discount-code .form-discount .actions-toolbar .action.action-apply:hover,.checkout-cart-index .cart-summary .checkout-methods-items .item .action.checkout:hover,.product-info-main .product-add-form .actions button.tocart, .bundle-info .product-details .actions button.tocart,.product.media .product-video-button a:hover,.product.media .row.vertical-thumbnail .slick-slider .slick-arrow:hover, .product-label.new-label,.opc-estimated-wrapper .minicart-wrapper button.action.showcart > .counter.qty,.onestepcheckout-index-index .page-main .main .checkout-container .aw-onestep-main .payment-method._active::before,.block.aw-layered-nav .block-content.filter-content .filter-options .filter-options-item .filter-options-content .aw-layered-nav-priceslider .ui-slider-horizontal,.block.aw-layered-nav .block-content.filter-content .filter-options .filter-options-item .filter-options-content .aw-layered-nav-priceslider .ui-slider-handle, .irs-slider, .irs-bar]]>
+		</background_color>
+	</theme_color>
+	
+	<!-- HEADER -->
+	<header>
+		
+		<!-- Header border color -->
+		<header_border_color>
+			<border_color>
+				<![CDATA[.header]]>
+			</border_color>
+		</header_border_color>
+		
+		<!-- Header background color -->
+		<header_background_color>
+			<background_color>
+				<![CDATA[.header]]>
+			</background_color>
+		</header_background_color>
+		
+		
+		<!-- TOP LINKS SECTION -->
+		<!-- Background color -->
+		<background_color>
+			<background_color>
+				<![CDATA[.top-header-content]]>
+			</background_color>
+		</background_color>
+		
+		<!-- Text color -->
+		<text_color>
+			<color>
+				<![CDATA[.top-header-content]]>
+			</color>
+		</text_color>
+		
+		<!-- Link color -->
+		<link_color>
+			<color>
+				<![CDATA[.top-header-content a, .top-header-content .dropdown-switcher .switcher-toggle]]>
+			</color>
+		</link_color>
+		
+		<!-- Link hover color -->
+		<link_hover_color>
+			<color>
+				<![CDATA[.top-header-content a:hover, .top-header-content .dropdown-switcher .switcher-toggle:hover]]>
+			</color>
+		</link_hover_color>
+		
+		<!-- Dropdown link color -->
+		<drd_link_color>
+			<color>
+				<![CDATA[.header .dropdown-switcher .dropdown-menu li > a]]>
+			</color>
+		</drd_link_color>
+		
+		<!-- Dropdown link hover color -->
+		<drd_link_hover_color>
+			<color>
+				<![CDATA[.header .dropdown-switcher .dropdown-menu li > a:hover, .header .dropdown-switcher .dropdown-menu li > a:focus]]>
+			</color>
+		</drd_link_hover_color>
+		
+		
+		<!-- HEADER MIDDLE SECTION -->
+		<!-- Background color -->
+		<middle_background>
+			<background_color>
+				<![CDATA[.middle-header-content]]>
+			</background_color>
+		</middle_background>
+		
+		<!-- Middle link color -->
+		<middle_link>
+			<color>
+				<![CDATA[.middle-header-content a]]>
+			</color>
+		</middle_link>
+		
+		<!-- Middle link color -->
+		<middle_link_hover>
+			<color>
+				<![CDATA[.middle-header-content a:hover]]>
+			</color>
+		</middle_link_hover>
+		
+		<!-- Middle text color -->
+		<middle_text>
+			<color>
+				<![CDATA[.middle-header-content]]>
+			</color>
+		</middle_text>
+		
+		<!-- Icon color -->
+		<cart_icon>
+			<color>
+				<![CDATA[.header .search-form .actions-search .action-search,.header .dropdown-toplinks .dropdown-toggle,.header .header-wl a,.minicart-wrapper .action.showcart]]>
+			</color>
+		</cart_icon>
+		
+		<!-- Icon color (Hover) -->
+		<cart_icon_hover>
+			<color>
+				<![CDATA[.header .search-form .actions-search .action-search:hover,.header .dropdown-toplinks .dropdown-toggle:hover,.header .dropdown-toplinks:hover .dropdown-toggle,.header .header-wl a:hover,.header .dropdown-toplinks.open .dropdown-toggle,.minicart-wrapper .action.showcart:hover::before, .minicart-wrapper .action.showcart:active::before]]>
+			</color>
+		</cart_icon_hover>
+		
+		<!-- Number color -->
+		<cart_number>
+			<color>
+				<![CDATA[.minicart-wrapper .action.showcart > .counter.qty,.header .header-wl .count-wl]]>
+			</color>
+		</cart_number>
+		
+		<!-- Number color -->
+		<cart_number_background>
+			<background_color>
+				<![CDATA[.minicart-wrapper .action.showcart > .counter.qty,.header .header-wl .count-wl]]>
+			</background_color>
+		</cart_number_background>
+		
+		
+		<!-- MENU SECTION -->
+		<!-- Section background color -->
+		<menu_background>
+			<background_color>
+				<![CDATA[.bottom-header-content]]>
+			</background_color>
+		</menu_background>
+		
+		<!-- Level 1 link color -->
+		<lv1_color>
+			<color>
+				<![CDATA[#mainMenu .level0 a.level0]]>
+			</color>
+		</lv1_color>
+		
+		<!-- Level 1 link hover color -->
+		<lv1_color_hover>
+			<color>
+				<![CDATA[#mainMenu .level0:hover a.level0]]>
+			</color>
+		</lv1_color_hover>
+		
+		<!-- Level 1 background color -->
+		<lv1_background>
+			<background_color>
+				<![CDATA[#mainMenu .level0 a.level0]]>
+			</background_color>
+		</lv1_background>
+		
+		<!-- Level 1 hover background color -->
+		<lv1_background_hover>
+			<background_color>
+				<![CDATA[#mainMenu .level0:hover a.level0]]>
+			</background_color>
+		</lv1_background_hover>
+	</header>
+	
+	<!-- FOOTER -->
+	<footer>
+		<!-- TOP SECTION -->
+		<!-- Background color -->
+		<top_background_color>
+			<background_color>
+				<![CDATA[footer .top-footer]]>
+			</background_color>
+		</top_background_color>
+		
+		<!-- Text color -->
+		<top_text_color>
+			<color>
+				<![CDATA[footer .top-footer]]>
+			</color>
+		</top_text_color>
+		
+		<!-- Border top color -->
+		<top_border_color>
+			<border_color>
+				<![CDATA[footer .top-footer]]>
+			</border_color>
+		</top_border_color>
+		
+		<!-- Heading color -->
+		<top_heading_color>
+			<color>
+				<![CDATA[footer .top-footer h1,footer .top-footer h2,footer .top-footer h3,footer .top-footer h4,footer .top-footer h5,footer .top-footer h6,footer .top-footer .h1,footer .top-footer .h2,footer .top-footer .h3,footer .top-footer .h4,footer .top-footer .h5,footer .top-footer .h6]]>
+			</color>
+		</top_heading_color>
+		
+		<!-- Link color -->
+		<top_link_color>
+			<color>
+				<![CDATA[footer .top-footer a]]>
+			</color>
+		</top_link_color>
+		
+		<!-- Link hover color -->
+		<top_link_color_hover>
+			<color>
+				<![CDATA[footer .top-footer a:hover]]>
+			</color>
+		</top_link_color_hover>
+		
+		
+		<!-- MIDDLE SECTION -->
+		<!-- Background color -->
+		<middle_background_color>
+			<background_color>
+				<![CDATA[footer .middle-footer]]>
+			</background_color>
+		</middle_background_color>
+		
+		<!-- Text color -->
+		<middle_text_color>
+			<color>
+				<![CDATA[footer .middle-footer]]>
+			</color>
+		</middle_text_color>
+		
+		<!-- Border color -->
+		<middle_border_color>
+			<border_color>
+				<![CDATA[footer .middle-footer]]>
+			</border_color>
+		</middle_border_color>
+		
+		<!-- Heading color -->
+		<middle_heading_color>
+			<color>
+				<![CDATA[footer .middle-footer h1,footer .middle-footer h2,footer .middle-footer h3,footer .middle-footer h4,footer .middle-footer h5,footer .middle-footer h6,footer .middle-footer .h1,footer .middle-footer .h2,footer .middle-footer .h3,footer .middle-footer .h4,footer .middle-footer .h5,footer .middle-footer .h6]]>
+			</color>
+		</middle_heading_color>
+		
+		<!-- Link color -->
+		<middle_link_color>
+			<color>
+				<![CDATA[footer .middle-footer a]]>
+			</color>
+		</middle_link_color>
+		
+		<!-- Link hover color -->
+		<middle_link_color_hover>
+			<color>
+				<![CDATA[footer .middle-footer a:hover]]>
+			</color>
+		</middle_link_color_hover>
+		
+		
+		<!-- BOTTOM SECTION -->
+		<!-- Background color -->
+		<bottom_background_color>
+			<background_color>
+				<![CDATA[footer .bottom-footer]]>
+			</background_color>
+		</bottom_background_color>
+		
+		<!-- Text color -->
+		<bottom_text_color>
+			<color>
+				<![CDATA[footer .bottom-footer]]>
+			</color>
+		</bottom_text_color>
+		
+		<!-- Border color -->
+		<bottom_border_color>
+			<border_color>
+				<![CDATA[footer .bottom-footer]]>
+			</border_color>
+		</bottom_border_color>
+		
+		<!-- Heading color -->
+		<bottom_heading_color>
+			<color>
+				<![CDATA[footer .bottom-footer h1,footer .bottom-footer h2,footer .bottom-footer h3,footer .bottom-footer h4,footer .bottom-footer h5,footer .bottom-footer h6,footer .bottom-footer .h1,footer .bottom-footer .h2,footer .bottom-footer .h3,footer .bottom-footer .h4,footer .bottom-footer .h5,footer .bottom-footer .h6]]>
+			</color>
+		</bottom_heading_color>
+		
+		<!-- Link color -->
+		<bottom_link_color>
+			<color>
+				<![CDATA[footer .bottom-footer a]]>
+			</color>
+		</bottom_link_color>
+		
+		<!-- Link hover color -->
+		<bottom_link_color_hover>
+			<color>
+				<![CDATA[footer .bottom-footer a:hover]]>
+			</color>
+		</bottom_link_color_hover>
+	</footer>
+</class_setting>
