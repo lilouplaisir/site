@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="MGS_Social::social" title="Social" module="MGS_Social" sortOrder="80" parent="Magento_Backend::mgs" resource="MGS_Social::social"/>
+        <add id="MGS_Social::configuration" title="Configuration" module="MGS_Social" sortOrder="20" parent="MGS_Social::social" action="adminhtml/system_config/edit/section/social" resource="MGS_Social::configuration"/>
+    </menu>
+</config>

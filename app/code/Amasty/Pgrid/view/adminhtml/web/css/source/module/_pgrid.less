@@ -1,0 +1,359 @@
+//
+//  Amasty Pgrid
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@ampgrid-icon-product__background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iLjUiIHk9Ii41IiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHJ4PSIxLjUiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcikiIHN0cm9rZT0iIzRFNkU5MiIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNC43MjggMi43MTFsMS4yNCAxLjY1M3MtNC4yMTQgMy4xMTgtMS40MDkgNi45OTRDNC4wMzQgNi4yNCA3LjA4MyA1Ljg1MiA3LjA4MyA1Ljg1Mkw4LjMyIDcuNTA1bDEuNDc2LTQuODUtNS4wNjkuMDU2eiIgZmlsbD0iIzJCMkI1MSIvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9Ii40MDYiIHkxPSIwIiB4Mj0iMTMiIHkyPSIxMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBREM0RDMiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4=');
+@ampgrid-icon-edit__background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS44My4xNTFsMS4wMTQuOThhLjUyNy41MjcgMCAwMTAgLjc0OUwxMS42MjIgMy4wNiA5LjgzNCAxLjMzMmwxLjIyMi0xLjE4YS41NzIuNTcyIDAgMDEuNzc1IDB6bS0uNjI1IDMuMzEzbC01Ljc4MiA1LjU5LTEuNzg4LTEuNzMgNS43ODItNS41ODggMS43ODggMS43Mjh6TTQuOTQ3IDkuNGwtMi4wODYuNjM0Yy0uMTUuMDI5LS4yNjktLjA4Ni0uMjM5LS4yM2wuNjU2LTIuMDE3IDEuNjY5IDEuNjEzeiIgZmlsbD0iI0EwOTE4NiIvPjxwYXRoIGQ9Ik0xMC45MzcgNi4xMTRhLjM4OC4zODggMCAwMS43NzQgMHY0LjkyN2MwIDEuMDY2LS45MjMgMS45NTktMi4wMjYgMS45NTlIMi4wMjZDLjg5NCAxMyAwIDEyLjEwNyAwIDExLjA0VjMuNjM4YzAtMS4wOTUuODk0LTEuOTYgMi4wMjYtMS45Nmg0LjIzMmMuMjA5IDAgLjM1OC4xNzQuMzU4LjM3NSAwIC4yMDItLjE1LjM0Ni0uMzU4LjM0NkgyLjAyNmMtLjcxNSAwLTEuMjgxLjU0Ny0xLjI4MSAxLjIzOXY3LjQwNGMwIC42NjIuNTY2IDEuMjEgMS4yODEgMS4yMWg3LjY1OWMuNjg1IDAgMS4yNTItLjU0NyAxLjI1Mi0xLjIxVjYuMTE0eiIgZmlsbD0iI0EwOTE4NiIvPjwvc3ZnPg==');
+@ampgrid-icon-arrow-ascend__background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMyAxNWEuNjE3LjYxNyAwIDAxLS40OTUtLjIyNmwtMi4zMjMtMi40OGMtLjI2Ny0uMjY0LS4yMjktLjY3Ny4wMzgtLjk0LjI2Ny0uMjY0LjY4NS0uMjI2Ljk1Mi4wMzdMMyAxMy4zNDZsMS44MjgtMS45NTVjLjI2Ny0uMjYzLjY4NS0uMy45NTItLjAzOC4yNjcuMjY0LjMwNS42NzcuMDM4Ljk0bC0yLjMyMyAyLjQ4MkEuNjE3LjYxNyAwIDAxMyAxNXoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMyAxNC4wMjNjLS4zOCAwLS42ODYtLjMwMS0uNjg2LS42NzdWLjY3NkMyLjMxNC4zMDIgMi42MiAwIDMgMGMuMzggMCAuNjg1LjMuNjg1LjY3N3YxMi42NjlhLjY3OC42NzggMCAwMS0uNjg1LjY3N3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
+@ampgrid-icon-arrow-descend__background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMyAwYy4xOSAwIC4zOC4wNzUuNDk1LjIyNmwyLjMyMyAyLjQ4Yy4yNjcuMjY0LjIyOS42NzctLjAzOC45NC0uMjY3LjI2NC0uNjg1LjIyNi0uOTUyLS4wMzdMMyAxLjY1NCAxLjE3MiAzLjYxYy0uMjY3LjI2My0uNjg1LjMtLjk1Mi4wMzgtLjI2Ny0uMjY0LS4zMDUtLjY3Ny0uMDM4LS45NEwyLjUwNS4yMjZBLjYxNy42MTcgMCAwMTMgMHoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMyAuOTc3Yy4zOCAwIC42ODYuMzAxLjY4Ni42Nzd2MTIuNjdBLjY3OC42NzggMCAwMTMgMTVjLS4zOCAwLS42ODUtLjMtLjY4NS0uNjc3VjEuNjU0YzAtLjM3Ni4zMDQtLjY3Ny42ODUtLjY3N3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .ampgrid-tabs-container {
+        & {
+            margin: 0 auto;
+            padding: 0;
+            min-width: 320px;
+            max-width: 800px;
+        }
+
+        .ampgrid-label {
+            & {
+                display: inline-block;
+                float: right;
+                margin: -6px 0 -1px 0;
+                padding: 10px 25px;
+                border-radius: 3px 3px 0 0;
+            }
+
+            &:hover {
+                color: #888;
+                cursor: pointer;
+            }
+
+            &:before {
+                margin-right: 10px;
+            }
+        }
+
+        .ampgrid-tab + .ampgrid-label {
+            margin-left: 5px;
+            border: 1px solid #ddd;
+            border-bottom: 1px solid #fff;
+        }
+
+        .ampgrid-tab._selected + .ampgrid-label {
+            border: 1px solid #ddd;
+            border-bottom: 1px solid #fff;
+            background: #e3e3e3;
+            color: #555;
+            font-weight: 700;
+        }
+
+        .ampgrid-tab {
+            display: none;
+        }
+    }
+
+    .ampgrid-section-container {
+        display: none;
+    }
+
+    #tab0._selected ~ #amasty-pgrid-content #amasty-pgrid-content0,
+    #tab1._selected ~ #amasty-pgrid-content #amasty-pgrid-content1,
+    #tab2._selected ~ #amasty-pgrid-content #amasty-pgrid-content2 {
+        display: block;
+    }
+
+    .ampgrid-table-block {
+        & {
+            width: 100%;
+        }
+
+        .ampgrid-tbody {
+            display: block;
+            overflow: auto;
+            max-height: 23rem;
+        }
+
+        .ampgrid-tbody::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .ampgrid-tbody::-webkit-scrollbar-track {
+            width: 6px;
+            background: #fff;
+        }
+
+        .ampgrid-tbody::-webkit-scrollbar-thumb {
+            border-radius: 6px;
+            background: #c1c1c1;
+        }
+
+        .ampgrid-tr,
+        .ampgrid-thead {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .ampgrid-thead {
+            width: ~'calc(100% - 6px)';
+        }
+
+        .admin__field-label {
+            text-align: left;
+        }
+
+        .ampgrid-td {
+            padding: 3px 0;
+            width: 9%;
+        }
+
+        .ampgrid-td .admin__control-checkbox {
+            display: none;
+        }
+
+        .ampgrid-th.-wide,
+        .ampgrid-td.-wide {
+            width: 36%;
+        }
+    }
+
+    .catalog-product-index .ampgrid-link {
+        & {
+            position: relative;
+            display: block;
+            visibility: visible;
+            padding-left: 25px;
+            line-height: 13px;
+            cursor: pointer;
+        }
+
+        &:before {
+            position: absolute;
+            left: 0;
+            width: 13px;
+            height: 13px;
+            background: @ampgrid-icon-product__background no-repeat center;
+            content: '';
+        }
+    }
+
+    .catalog-product-index .ampgrid-grid-th {
+        &.-editable .ampgrid-content {
+            position: relative;
+            padding-right: 20px;
+        }
+
+        &.-editable .ampgrid-content:after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 13px;
+            height: 13px;
+            background: @ampgrid-icon-edit__background no-repeat center;
+            content: '';
+            transform: translateY(-50%);
+        }
+
+        .ampgrid-content {
+            float: left;
+            width: auto;
+        }
+    }
+
+    .catalog-product-index .ampgrid-panel-block {
+        & {
+            box-shadow: none;
+        }
+
+        .ampgrid-message.message {
+            margin: 10px 0;
+        }
+    }
+
+    .ampgrid-panel-block.-fixed {
+        position: fixed;
+        top: 5rem;
+        right: 0;
+        left: 8.8rem;
+        z-index: 400;
+        background-color: white;
+    }
+
+    // override magento styles
+
+    .catalog-product-index .admin__data-grid-action-columns-menu._overflow .admin__action-dropdown-menu-content {
+        width: 56.2rem;
+    }
+
+    .catalog-product-index .admin__data-grid-wrap .data-row {
+        .ampgrid-marker {
+            background: #f2fbfe;
+        }
+
+        &._odd-row .ampgrid-marker {
+            background: #e5f7fe;
+            opacity: .9;
+        }
+    }
+
+    .catalog-product-index .admin__data-grid-wrap .data-grid-th {
+        &._sortable:before {
+            margin-top: 0;
+            width: 7px;
+            height: 14px;
+            content: '';
+            transform: translateY(-50%);
+        }
+
+        &._sortable._descend:before {
+            background: @ampgrid-icon-arrow-descend__background no-repeat center;
+        }
+
+        &._sortable._ascend:before {
+            background: @ampgrid-icon-arrow-ascend__background no-repeat center;
+        }
+    }
+
+    .catalog-product-index .admin__data-grid-action-columns-menu .admin__action-dropdown-menu-content {
+        position: static;
+        overflow-y: visible;
+        max-height: none;
+    }
+
+    .catalog-product-index .admin__data-grid-action-columns-menu {
+        overflow: visible;
+    }
+
+    .catalog-product-index .admin__data-grid-filters-wrap .admin__fieldset .admin__form-field {
+        .admin__form-field-legend,
+        .admin__form-field-control,
+        .admin__action-multiselect-wrap,
+        .admin__form-field-label {
+            margin-left: 25%;
+        }
+
+        .admin__form-field .admin__form-field-label {
+            margin-left: 0;
+        }
+    }
+
+    .catalog-product-index .data-grid-cell-content {
+        font-size: 13px;
+    }
+
+    // END override magento styles
+
+    .catalog-product-index .amexportcore-filter {
+        margin-left: 25%;
+        width: 75%;
+    }
+
+    .catalog-product-index .admin__data-grid-header-row.row-gutter {
+        & {
+            display: flex;
+            margin-left: 0;
+        }
+
+        > .col-xs-2 {
+            flex-basis: 35%;
+            float: none;
+            padding: 0;
+            max-width: 45.5rem;
+        }
+
+        > .col-xs-10 {
+            flex-shrink: 10;
+            float: none;
+        }
+    }
+
+    .catalog-product-index ._has-datepicker + .ui-datepicker-trigger {
+        position: relative;
+    }
+
+    .admin__control-text.ampgrid-number {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            margin: 0;
+
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
+    }
+
+    .catalog-product-index .page-main-actions._hidden {
+        .page-actions._fixed {
+            padding: 15px 30px;
+        }
+    }
+
+    .catalog-product-index {
+        .sticky-header {
+            padding-top: 10px;
+        }
+
+        .sticky-header .admin__data-grid-filters-current {
+            padding: 10px 10px 0 0;
+        }
+    }
+}
+
+//
+//  Desktop +
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .catalog-product-index .admin__data-grid-filters-wrap .admin__fieldset .admin__form-field {
+        .admin__form-field-label,
+        .admin__form-field-control,
+        .admin__action-multiselect-wrap,
+        .admin__form-field .admin__form-field-control {
+            margin-left: 15%;
+        }
+
+        .admin__form-field-legend {
+            margin-left: 15%;
+        }
+
+        .admin__form-field .admin__form-field-label {
+            padding-right: 20px;
+            width: 15%;
+            text-align: right;
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .ampgrid-tabs-container {
+        .admin__field-label,
+        .ampgrid-label {
+            font-size: 0;
+        }
+
+        .admin__field-label:before,
+        .ampgrid-label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ampgrid-tabs-container {
+        .admin__field-label,
+        .ampgrid-label {
+            padding: 15px;
+        }
+    }
+}
+// END override magento styles

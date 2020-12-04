@@ -1,0 +1,84 @@
+<?php $block = $this->getBlock() ?>
+
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+<?php $customerSession = $objectManager->create('Magento\Customer\Model\Session'); ?>
+<?php $customerUrl = $objectManager->create('Magento\Customer\Model\Url'); ?>
+
+<?php $topLeftBlock = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_8_top_left_link')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+
+ <?php $infoBlock = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_11_info')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+
+    <div class="top-header-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-xs-12  parent__megameu">
+					<div class="megamenu-content">
+                        <?php echo $htmlTabMenu ?><?php echo $htmlTabContent ?>
+                    </div>
+                    <div class=" hidden-lg">
+                        <button class="action nav-toggle hidden-lg"><?php echo $imgToggleMenu ?></button>
+                    </div>
+                    
+                </div>
+                <div class="col-md-4 hidden-sm hidden-xs col-xs-12 right-content">
+					<div class="header-top-link">
+						<?php echo $storeLanguage ?>
+						<?php echo $currency ?>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-header-content">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-3 col-md-3 col-xs-6 logo-header"><?php echo $logo ?></div>
+                <div class="col-lg-9 col-md-9 col-xs-6 right-content">
+                    <!-- Static block: header_8_top_left_link -->
+                    <?php if($infoBlock): ?>
+                        <div class="info-block">
+                            <?php echo $infoBlock; ?>
+                        </div>
+                    <?php endif ?>
+					<?php echo $htmlTopLink ?>
+					<?php echo $htmlWishlist; ?>
+                    <?php echo $miniCart ?>
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-header-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-xs-6 left-content">
+                    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('claue_vertical_menu_header11')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-6 right-content">
+                    <div class="search">
+                        <?php echo $topSearch ?>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+	<div class="header11-sticky">
+		<div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-xs-7 left-content">
+                    <?php echo $logo ?>
+					<div class="megamenu-content">
+                        <?php echo $htmlTabMenu ?><?php echo $htmlTabContent ?>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5 right-content">
+					<?php echo $htmlTopLink ?>
+					<?php echo $htmlWishlist; ?>
+					<?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+	</div>

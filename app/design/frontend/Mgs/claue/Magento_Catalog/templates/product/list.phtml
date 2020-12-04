@@ -1,0 +1,558 @@
+<?php
+/**
+ * Copyright Â© 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$_aHelper = $this->helper('MGS\AjaxCart\Helper\Data');
+
+$colClassRow = $themeHelper->getColClass();
+$arrColClass = explode(' ', $colClassRow);
+$pageType = 'catalogsearch';
+$settings = $themeHelper->getThemeSettings();
+$lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load');
+$baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank.png');
+$baseImageHover = $this->getViewFileUrl('MGS_Mpanel::images/blank.png');
+$perrow = $settings['catalog']['per_row'];
+$animationType = $_aHelper->getConfig('ajaxcart/additional/animation_type');
+
+
+$changeProductPerRow = $themeHelper->getEnableChangeProductPerRow();
+
+if($this->hasData('page_type')){
+	$pageType = $this->getData('page_type');
+}
+if($pageType == 'catalog'){
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+	if($category->getPerRow()){
+		$perrow = $category->getPerRow();
+	}
+}elseif($pageType == 'catalogsearch') {
+	if($settings['catalogsearch']['per_row']){
+		$perrow = $settings['catalogsearch']['per_row'];
+	}
+}elseif($pageType == 'catalog_brand') {
+	if($settings['catalog_brand']['per_row']){
+		$perrow = $settings['catalog_brand']['per_row'];
+	}
+}
+
+$hover_effect = "";
+if ($themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect')== 1){
+	$hover_effect = "disable_hover_effect";
+}
+
+$colCheck = $themeHelper->convertPerRowtoCol($perrow);
+$colClass = $themeHelper->convertColClass($colCheck, 'col');
+
+$classNumber = '';
+$dataCol = '';
+?>
+<?php if (!$_productCollection->count()): ?>
+    <div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+<?php else: ?>
+	<div class="category-product-actions">
+		<?php if($changeProductPerRow): ?>
+		<div class="change-product-per-row button-group layout-mode-button-group">
+			<!-- <a href="#" class="pr two" data-col="6"></a>
+			<a href="#" class="pr three" data-col="4"></a>
+			<a href="#" class="pr four active is-checked" data-col="3"></a>
+			<a href="#" class="pr six" data-col="2"></a> -->
+			<?php $defaultValueProduct = $themeHelper->getDefaultValueNumberProductPerRow();
+			if($defaultValueProduct == null) {
+				$defaultValueProduct = '4';
+			}
+			?>
+			<?php $arrayValues = $themeHelper->getValuesNumberProductPerRow();?>
+			<?php foreach ($arrayValues as $number): ?>
+				<?php 
+				switch ($number) {
+					case '1':
+						$classNumber = 'one';
+						$dataCol = '12';
+						break;
+					case '2':
+						$classNumber = 'two';
+						$dataCol = '6';
+						break;
+					case '3':
+						$classNumber = 'three';
+						$dataCol = '4';
+						break;
+					case '4':
+						$classNumber = 'four';
+						$dataCol = '3';
+						break;
+					case '5':
+						$classNumber = 'five';
+						$dataCol = '5';
+						break;
+					case '6':
+						$classNumber = 'six';
+						$dataCol = '2';
+						break;
+					case '7':
+						$classNumber = 'seven';
+						$dataCol = '7';
+						break;
+					case '8':
+						$classNumber = 'eight';
+						$dataCol = '8';
+						break;
+					
+					default:
+						$classNumber = 'four';
+						$dataCol = '3';
+						break;
+				}
+				?>
+				<a href="#" class="pr <?php echo $classNumber; if($number == $defaultValueProduct) echo " active is-checked";?>" data-col="<?php echo $dataCol; ?>"></a>
+
+			<?php endforeach;?>
+
+		</div>
+		    <?php if(in_array($defaultValueProduct, $arrayValues)): ?>
+		    	<?php 
+		    	$colCheck = $themeHelper->convertPerRowtoCol($defaultValueProduct);
+				$colClass = $themeHelper->convertColClass($colCheck, 'col');
+		    	?>
+		    <?php endif ?>
+	    <?php endif ?>
+		<div class="filter-toggle">
+			<a href="javascript:void(0)" class="title">
+				<span class="icon pe-7s-edit"></span>
+			</a>
+		</div>
+		<?php echo $block->getAdditionalHtml() ?>
+		<?php echo $block->getToolbarHtml() ?>
+	</div>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'category_page_grid';
+		$image_hover = 'product_thumbnail_image';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $image = 'category_page_list';
+		$image_hover = 'product_thumbnail_image';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+    <div class="products wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?> products-<?php /* @escapeNotVerified */ echo $viewMode; ?>" id="product-wrapper">
+        <?php $iterator = 1; ?>
+        <ol class="products <?php if ($changeProductPerRow): ?>product-list-masonry-change-product<?php endif ?> list items product-items <?php if ($block->getMode() == 'grid'): ?>row<?php endif ?> <?php echo 'row-'.$arrColClass[0] ?>">
+		
+			<?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+			<?php $size = $themeHelper->getImageSize(); ?>
+			<?php $padding = $themeHelper->getImagePadding(); ?>
+			<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+			<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+			
+			<?php if ($block->getMode() == 'grid'): ?>
+				<?php $params = $block->getRequest()->getParams();  ?>
+				<?php if($settings['catalog']['ajaxscroll']): ?>
+				
+					<?php if(isset($params['product_list_limit'])): ?>
+						<?php $countAll = $params['product_list_limit']; ?>
+					<?php else: ?>
+						<?php $countAll = $themeHelper->getStoreConfig('catalog/frontend/grid_per_page'); ?>		
+					<?php endif ?>
+					
+					<?php if(isset($params['p'])): ?>
+						<?php $i = ($params['p'] - 1) * $countAll; ?>
+					<?php else: ?>
+						<?php $i = 0; ?>
+					<?php endif ?>
+					
+				<?php else: ?>
+					<?php $i = 0; ?>
+				<?php endif ?>
+				
+				<?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+				<?php foreach ($_productCollection as $_product): $i++; ?>
+					<li class="item product <?php if ($changeProductPerRow): ?>product-item-masonry<?php endif ?> product-item-info product-item <?php echo $colClass ?> <?php echo $themeHelper->getClearClass($perrow, $i) ?> <?php echo $hover_effect ?>">
+						<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+						<?php $productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl(); ?>
+						<?php $productImageHover = $_imagehelper->init($_product, $image_hover)->resize($size['width'], $size['height'])->getUrl(); ?>
+						<?php if(!$lazyLoad): ?>
+							<?php $baseImage = $productImage ?>
+							<?php $baseImageHover = $productImageHover ?>
+						<?php endif ?>
+						<div class="product-top">
+							<?php if($themeHelper->getStoreConfig('mpanel/catalog/images_slides')== 1): ?>
+							   <div class="owl-carousel list_gallery">
+									<a href="<?php  echo $_product->getProductUrl() ?>" class="product photo product-item-photo" style="padding-bottom: <?php echo $padding ?>;"  tabindex="-1">
+										<img src="<?php echo $productImageBase ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail"/>
+									</a>
+								   <?php if(basename($_product->getData('thumbnail')) != basename($_product->getData('image'))): ?>
+									   <a href="<?php  echo $_product->getProductUrl() ?>" class="product photo product-item-photo" style="padding-bottom: <?php echo $padding ?>;"  tabindex="-1">
+										<img src="<?php echo $productThumbnail ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail" data-src="<?php echo $productThumbnail ?>"/>
+									   </a>
+								   <?php endif;?>
+								   
+								  <?php if((basename($_product->getData('small_image')) != basename($_product->getData('image'))) && (basename($_product->getData('small_image')) != basename($_product->getData('thumbnail')))): ?>
+										<a href="<?php  echo $_product->getProductUrl() ?>" class="product photo product-item-photo" style="padding-bottom: <?php echo $padding ?>;"  tabindex="-1">
+											<img src="<?php echo $productImageSmall ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail" data-src="<?php echo $productImageSmall ?>"/>
+									   </a>
+								   <?php endif;?>
+								   
+								</div>
+								
+							<?php else:?>
+							 <a href="<?php echo $_product->getProductUrl() ?>" style="padding-bottom: <?php echo $padding; ?>;" class="product photo product-item-photo" tabindex="-1">
+								<img src="<?php echo $baseImage ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail<?php if($lazyLoad): ?> lazy<?php endif ?>" data-src="<?php echo $productImage ?>"/>
+								
+								<?php if(basename($_product->getData('thumbnail')) !=  'no_selection'): ?>
+									<?php if(basename($_product->getData('thumbnail')) != basename($_product->getData('small_image'))): ?>
+										<img src="<?php echo $baseImageHover ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive img-hover-show<?php if($lazyLoad): ?> lazy<?php endif ?>" data-src="<?php echo $productImageHover ?>" />
+									<?php endif ?>
+								<?php endif ?>
+								
+								<div class="product-image-photo"></div>
+							</a>
+							   
+							<?php endif;?>
+							<?php echo $themeHelper->getProductLabel($_product) ?>
+							<ul class="actions-link" data-role="add-to-links">
+							
+								<li class="hidden-sm hidden-xs"><?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?></li>
+								
+								<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$settings['catalog']['wishlist_button']): ?>
+									<li><button data-title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+									   class="action towishlist"
+									   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+									   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+									   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+									   data-action="add-to-wishlist"
+									   role="button">
+										<i class="pe-7s-like"></i>
+									</button></li>
+								<?php endif; ?>
+									
+								<?php if(!$settings['catalog']['compare_button']): ?>
+									<li><button data-title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+									   class="action tocompare"
+									   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+									   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+									   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+									   role="button">
+										<i class="pe-7s-graph3"></i>
+									</button></li>
+								<?php endif ?>
+							</ul>
+							<?php if ($themeHelper->getStoreConfig('mpanel/catalog/disable_add_to_cart') == 0 && $themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect') == 0): ?>
+								<?php if ($_product->isSaleable()): ?>
+									<div>
+										<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+										<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data']['uenc'], 'product'=>$postParams['data']['product']]); ?>" method="post">
+											<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+											<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+											<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+											<?php 
+												$has_option = 0;
+												if($_product->getTypeId() == 'simple'){
+													$data = $_product->getData();
+													$has_option = ( isset($data['has_options']) && $data['has_options'] == 1) ? 1 : 0;
+												}
+													
+
+											 ?>
+											<?php if($animationType == 'cartshow' && ($_product->getTypeId() == 'configurable' || $_product->getTypeId() == 'bundle' || $_product->getTypeId() == 'grouped' || ($_product->getTypeId() == 'simple' && $has_option == 1) )): ?>
+												<button class="action btn-cart tocart" type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>" onclick="window.location.href = '<?php echo $_product->getProductUrl() ?>'">
+													<span class="icon pe-7s-shopbag"></span>
+													<span class="product-item-link">
+														<?php echo __('Add to cart'); ?>
+													</span>
+												</button>	
+											<?php else: ?>
+												<button class="action tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+													<span class="icon pe-7s-shopbag"></span>
+													<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+												</button>
+											<?php endif ?>
+										</form>
+									</div>
+								<?php endif ?>
+							<?php endif ?>
+						</div>
+						<div class="product details product-item-details">
+							<h5 class="product name product-item-name">
+								<a class="product-item-link" href="<?php echo $_product->getProductUrl() ?>">
+									<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+								</a>
+							</h5>
+							
+							<?php if(!$themeHelper->getStoreConfig('mpanel/catalog/review')): ?>
+								<?php echo $block->getReviewsSummaryHtml($_product, $templateType,true); ?>
+							<?php endif ?>
+							<?php if($_product->getTierPrices()){ echo "<div class='hprice'>" ; } ?>
+							<?php echo $block->getProductPrice($_product) ?>
+							<?php if($_product->getTierPrices()){ echo "</div>"; } ?>
+							<span class="product sku product-item-sku">
+										<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getSku(), 'sku'); ?>
+							</span>
+							
+							<?php echo $block->getProductDetailsHtml($_product); ?>
+							<?php if ($themeHelper->getStoreConfig('mpanel/catalog/disable_add_to_cart') == 0 && $themeHelper->getStoreConfig('mpanel/catalog/disable_hover_effect') == 1): ?>
+								<?php if ($_product->isSaleable()): ?>
+									<div>
+										<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+										<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data']['uenc'], 'product'=>$postParams['data']['product']]); ?>" method="post">
+											<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+											<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+											<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+											<button class="action tocart btn-cart hover_effect" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+												<span class="icon pe-7s-shopbag"></span>
+												<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+											</button>
+										</form>
+									</div>
+								<?php endif ?>
+							<?php endif ?>
+						</div>
+					</li>
+				<?php endforeach ?>
+			<?php else: ?>
+				<?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+				<?php foreach ($_productCollection as $_product): ?>
+					<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+					<?php $productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl(); ?>
+					<?php $productImageHover = $_imagehelper->init($_product, $image_hover)->resize($size['width'], $size['height'])->getUrl(); ?>
+					<?php if(!$lazyLoad): ?>
+						<?php $baseImage = $productImage ?>
+						<?php $baseImageHover = $productImageHover ?>
+					<?php endif ?>
+					<li class="item product product-item-info product-item">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-12">
+								<div class="product-image-content">
+									<a href="<?php echo $_product->getProductUrl() ?>" style="padding-bottom: <?php echo $padding; ?>;" class="product photo product-item-photo" tabindex="-1">
+										<img src="<?php echo $baseImage ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail<?php if($lazyLoad): ?> lazy<?php endif ?>" data-src="<?php echo $productImage ?>"/>
+								
+										<?php if(basename($_product->getData('thumbnail')) !=  'no_selection'): ?>
+											<?php if(basename($_product->getData('thumbnail')) != basename($_product->getData('small_image'))): ?>
+												<img src="<?php echo $baseImageHover ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive img-hover-show<?php if($lazyLoad): ?> lazy<?php endif ?>" data-src="<?php echo $productImageHover ?>" />
+											<?php endif ?>
+										<?php endif ?>
+										<div class="product-image-photo"></div>
+									</a>
+									<?php echo $themeHelper->getProductLabel($_product) ?>
+									<?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?>
+								</div>
+							</div>
+							<div class="col-md-9 col-sm-8 col-xs-12">
+								<div class="visible-xs padding-top20"></div>
+								<div class="product details product-item-details">
+								
+									<h5 class="product name product-item-name">
+										<a class="product-item-link" href="<?php echo $_product->getProductUrl() ?>">
+											<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+										</a>
+									</h5>
+									
+									<?php if(!$themeHelper->getStoreConfig('mpanel/catalog/review')): ?>
+										<?php echo $block->getReviewsSummaryHtml($_product, $templateType,true); ?>
+									<?php endif ?>								
+									
+									<?php if($_product->getTierPrices()){ echo "<div class='hprice'>" ; } ?>
+									<?php echo $block->getProductPrice($_product) ?>
+									<?php if($_product->getTierPrices()){ echo "</div>"; } ?>
+									
+									<span class="product sku product-item-sku">
+										<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getSku(), 'sku'); ?>
+									</span>
+									
+									<?php echo $block->getProductDetailsHtml($_product); ?>
+									
+									<?php if($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')): ?>
+										<div class="product description product-item-description">
+											<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+										</div>
+									<?php endif ?>
+									
+									<ul class="actions-link" data-role="add-to-links">
+									
+										<?php if ($_product->isSaleable()): ?>
+											<li><?php $postParams = $block->getAddToCartPostParams($_product); ?>
+											<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data'][Action::PARAM_NAME_URL_ENCODED], 'product'=>$postParams['data']['product']]); ?>" method="post">
+												<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+												<input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+												<?php echo $block->getBlockHtml('formkey')?>
+												
+												<?php 
+												$has_option = 0;
+												if($_product->getTypeId() == 'simple'){
+													$data = $_product->getData();
+													$has_option = ( isset($data['has_options']) && $data['has_options'] == 1) ? 1 : 0;
+												}
+												
+													
+												
+
+											 ?>
+											<?php if($animationType == 'cartshow' && ($_product->getTypeId() == 'configurable' || $_product->getTypeId() == 'bundle' || $_product->getTypeId() == 'grouped' || ($_product->getTypeId() == 'simple' && $has_option == 1) )): ?>
+												<button class="action btn-cart tocart" type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>" onclick="window.location.href = '<?php echo $_product->getProductUrl() ?>'">
+													<span class="icon pe-7s-shopbag"></span>
+													<span class="product-item-link">
+														<?php echo __('Add to cart'); ?>
+													</span>
+												</button>	
+											<?php else: ?>
+												<button class="action tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+													<span class="icon pe-7s-shopbag"></span>
+													<span class="text"><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+												</button>
+											<?php endif ?>
+											</form></li>
+										<?php endif ?>
+										
+										<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$settings['catalog']['wishlist_button']): ?>
+											<li><button data-title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+											   class="action towishlist"
+											   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+											   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+											   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+											   data-action="add-to-wishlist"
+											   role="button">
+												<i class="pe-7s-like"></i>
+											</button></li>
+										<?php endif; ?>
+											
+										<?php if(!$settings['catalog']['compare_button']): ?>
+											<li><button data-title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+											   class="action tocompare"
+											   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+											   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+											   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+											   role="button">
+												<i class="pe-7s-graph3"></i>
+											</button></li>
+										<?php endif ?>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+				<?php endforeach ?>
+			<?php endif ?>
+        </ol>
+    </div>
+	<div class="bottom-pagination<?php if($themeHelper->getStoreConfig('mpanel/catalog/ajaxscroll')): ?> ajaxscroll-enable<?php endif ?>">
+		<?php echo $block->getToolbarHtml() ?>
+	</div>
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {}
+            }
+        }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+
+<script>
+	require([
+	'jquery',
+	'waypoints'
+], function(jQuery){
+	(function($) {
+		$('.filter-toggle .title').click(function(){
+			$('html').toggleClass('filter-open');
+		});
+	})(jQuery);
+});
+</script>
+
+<script type="text/javascript">
+	requirejs([ 
+		'require',
+		'jquery', 
+		'mgsmasonry',
+		'mgsvisible'
+	], function( require, $, Masonry) {
+		require( [ 'bridget' ], function( jQueryBridget ) {
+			jQueryBridget( 'masonry', Masonry, $ );
+			$(window).load(function() {
+				var $container = $('.product-list-masonry-change-product').masonry({
+					itemSelector: '.product-item-masonry',
+					columnWidth: '.product-item-masonry',
+					horizontalOrder: true
+				});
+				$('.layout-mode-button-group').on( 'click', 'a', function() {
+				  // change layout mode
+				  	$container.masonry({
+				  		columnWidth: '.product-item-masonry',
+				  		maxHeight: 0
+				  	});
+				});  
+
+				// change is-checked class on buttons
+				$('.button-group').each( function( i, buttonGroup ) {
+				  var $buttonGroup = $( buttonGroup );
+				  $buttonGroup.on( 'click', 'a', function() {
+				    $buttonGroup.find('.is-checked').removeClass('is-checked');
+				    $( this ).addClass('is-checked');
+				  });
+				});
+			});  
+			$(document).ajaxComplete(function() {
+				var $container = $('.product-list-masonry-change-product').masonry({
+					itemSelector: '.product-item-masonry',
+					columnWidth: '.product-item-masonry',
+					horizontalOrder: true
+				});
+				$('.layout-mode-button-group').on( 'click', 'a', function() {
+				  // change layout mode
+				  	$container.masonry({
+				  		columnWidth: '.product-item-masonry',
+				  		maxHeight: 0
+				  	});
+				});  
+
+				// change is-checked class on buttons
+				$('.button-group').each( function( i, buttonGroup ) {
+				  var $buttonGroup = $( buttonGroup );
+				  $buttonGroup.on( 'click', 'a', function() {
+				    $buttonGroup.find('.is-checked').removeClass('is-checked');
+				    $( this ).addClass('is-checked');
+				  });
+				});
+			});  
+		});
+		
+		$(window).scroll(function(){
+			$(".product-list-masonry-change-product > .product-item-masonry").each(function(){
+				if($(this).visible(true,true,'vertical')) {
+					$(this).addClass('enable');
+				}else {
+					$(this).removeClass('enable');
+				}
+			});
+		});
+	});
+</script>

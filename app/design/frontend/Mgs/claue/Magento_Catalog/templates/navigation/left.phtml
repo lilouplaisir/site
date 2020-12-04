@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Category left navigation
+ *
+ * @var $block \Magento\Catalog\Block\Navigation
+ */
+?>
+<?php if (!$block->getCategory()) {
+    return;
+} ?>
+<?php $_categories = $block->getCurrentChildCategories(); ?>
+<?php $_count = is_array($_categories) ? count($_categories) : $_categories->count(); ?>
+<?php if ($_count): ?>
+    <div class="block filter">
+		<div class="block-title filter-title">
+			<strong id="open-filter" class="title"><span class="icon pe-7s-edit"></span></strong>
+        </div>
+		<div class="block-content filter-content">
+			<h3 class="close-filter-fixed">
+				<?php echo __('Filter'); ?>				
+				<button id="close-filter"><i class="close-filter pe-7s-close pa"></i></button>
+			</h3>
+			<div class="block-filter-content content">
+				<div class="options filter-options-item" id="narrow-by-list2">
+					<div class="filter-options-title"><?php /* @escapeNotVerified */ echo __('Shop by Category') ?></div>
+					<div class="filter-options-content">
+						<ol class="items">
+							<?php foreach ($_categories as $_category): ?>
+								<?php if ($_category->getIsActive()): ?>
+									<li class="item">
+										<a href="<?php /* @escapeNotVerified */ echo $block->getCategoryUrl($_category) ?>"<?php if ($block->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $block->escapeHtml($_category->getName()) ?></a>
+										<span class="count"><?php /* @escapeNotVerified */ echo $_category->getProductCount() ?></span>
+									</li>
+								<?php endif; ?>
+							<?php endforeach ?>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+        <script type="text/javascript">
+            require([
+                'jquery'
+            ], function(jQuery){
+                (function($) {
+                    $(document).ready(function(){
+                        $('#open-filter').click(function(){
+                            $('.block.filter').toggleClass('active');
+                        });
+                    });
+                })(jQuery);
+            });
+        </script>
+    </div>
+<?php endif; ?>

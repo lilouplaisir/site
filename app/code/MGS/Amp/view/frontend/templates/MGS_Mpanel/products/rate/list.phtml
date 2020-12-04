@@ -1,0 +1,38 @@
+<?php $_productCollection = $this->getRateProductByCategories($this->getCategoryIds()) ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<div class="content-block rate-product-block products-list">
+	<?php // Block Title ?>
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+	<?php // Block Content  ?>
+	<?php if (count($_productCollection)): ?>
+			<div class="block widget mgs-products rate-products-list">
+				<div class="items">
+					<?php $i=0; $j=0; foreach ($_productCollection as $_product): $i++; ?>
+
+						
+						<div class="product product-item">
+							<?php echo $this->getLayout()
+									->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+									->setProductId($_product->getId())
+									->setTemplate('MGS_Amp::MGS_Mpanel/products/grid_items.phtml')
+									->toHtml(); ?>	
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no products matching the selection.') ?></div>
+	<?php endif ?>
+</div>

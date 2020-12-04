@@ -1,0 +1,36 @@
+<?php 
+	if($this->getTabs()){
+		$_productCollection = $this->getProductCollection($this->getAdditionalData());
+	}else{
+		$_productCollection = $this->getNewProductByCategories($this->getAdditionalData());
+	}
+	
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+	$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+	
+	$col = $this->getCol();
+	
+	$perRow = $this->getPerRow();
+	$limit = $this->getLimit();
+	$ratio = $this->getRatio();
+	$curPage = $this->getCurPage();
+	if($this->getPrevPage()){ $curPage = $curPage + 1; }
+	if($this->getNextPage()){ $curPage = $curPage - 1; }
+	$i = ($curPage - 1) * $limit;
+?>
+
+<?php foreach ($_productCollection as $_product): $i++; ?>
+	<div class="product product-item <?php echo $themeHelper->getClearClass($perRow, $i) ?> <?php echo $themeHelper->convertColClass($col, 'col') ?>">
+		<?php echo $this->getLayout()
+						->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+						->setProductId($_product->getId())
+						->setThemeHelper($themeHelper)
+						->setImageHelper($_imagehelper)
+						->setCatalogHelperOutput($_helper)
+						->setRatio($ratio)
+						->setUseSlider(false)
+						->setTemplate('MGS_Mpanel::products/grid_items.phtml')
+						->toHtml(); ?>
+	</div>
+<?php endforeach; ?>

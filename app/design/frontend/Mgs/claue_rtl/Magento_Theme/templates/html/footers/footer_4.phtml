@@ -1,0 +1,71 @@
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+<?php $block = $this->getBlock() ?>
+<div class="footer-container">
+	<div class="top-footer">
+		<div class="container">
+			<!-- Static block: footer_block_newsletter_top -->
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_block_newsletter_top')->setCanUsePanel($canUsePanel)->toHtml() ?>
+		</div>
+	</div>
+	<?php
+		// Background Image Left Footer
+		$backgroundImage = "";
+		$staticImage =  $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_background_image')->toHtml();
+		if($staticImage != null) {
+			preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $staticImage, $matches);
+			if(!empty($matches[1][0])){
+				$backgroundImage = $matches[1][0];
+			}
+		}
+	?>
+	<div class="middle-footer-container">
+		<div class="middle-col" <?php if($backgroundImage != ""): ?>style="background-image:url(<?php echo $backgroundImage ?>);"<?php endif ?>>
+			<div class="visible-builder text-center">
+				<a class="btn btn-default btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#change_bg_footer">Change Background</a>
+				<div id="change_bg_footer" class="modal fade" style="display: none;" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content"><button class="close" type="button" data-dismiss="modal">x</button>
+							<div class="modal-body">
+								To change background-image of this col, you can create a static block with identifier footer_background_image. Insert an image to content of this static block.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="middle-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 margin-bottom40">
+							<!-- Static block: footer4_contact_us -->
+							<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer4_contact_us')->setCanUsePanel($canUsePanel)->toHtml() ?>
+						</div>
+						<div class="col-lg-4 col-sm-4 col-xs-12 margin-bottom40">
+							<!-- Static block: footer_block_categories -->
+							<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_block_categories')->setCanUsePanel($canUsePanel)->toHtml() ?>
+						</div>
+						<div class="col-lg-4 col-sm-4 col-xs-12 margin-bottom40">
+							<!-- Static block: footer_block_infomation -->
+							<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_block_infomation')->setCanUsePanel($canUsePanel)->toHtml() ?>
+						</div>
+						<div class="col-lg-4 col-sm-4 col-xs-12 margin-bottom40">
+							<!-- Static block: footer_block_quick_link -->
+							<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_block_quick_link')->setCanUsePanel($canUsePanel)->toHtml() ?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-footer">
+				<div class="container">
+					<div class="copyright">
+						<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer-map" class="footer-map">
+			<!-- Static block: footer_block_image_map -->
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_block_image_map')->setCanUsePanel($canUsePanel)->toHtml() ?>
+		</div>
+	</div>
+</div>

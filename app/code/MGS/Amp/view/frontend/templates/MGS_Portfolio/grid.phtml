@@ -1,0 +1,57 @@
+<?php $portfolios = $this->getPortfolios() ?>
+<?php $helper = $this->helper('MGS\Portfolio\Helper\Data'); ?>
+<?php $themeHelper = $this->helper('MGS\Amp\Helper\Setting'); ?>
+<div class="portfolio-block">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	<?php if(count($portfolios)>0): ?>
+		<?php 
+			$useSlider = $this->getUseSlider();
+			$showThumbnail = $this->getShowThumbnail();
+			$showCategories = $this->getShowCategories();
+			$showShowContent = $this->getShowContent();
+		?>
+		<div class="block widget portfolio">
+			<?php if ($useSlider): ?>
+				<amp-carousel class="blog-carousel" height="600" width="600" layout="responsive" type="slides"<?php if($this->getAutoplay()): ?> autoplay delay="5000"<?php endif ?><?php if($this->getNavigation()):?> controls<?php endif ?>>
+			<?php endif ?>
+			<?php $width=$height=$i=$j=0; foreach ($portfolios as $portfolio): $i++; ?>
+				<div class="item">
+					<div class="portfolio-top-content">
+						<div class="image">
+							<?php $thumbnailUrl = $this->getThumbnailSrc($portfolio) ?>
+							<?php $portfolioUrl = $portfolio->getAddress() ?>
+							<?php if($thumbnailUrl): ?>
+								<?php 
+									try{
+										list($width, $height, $type, $attr) = getimagesize(str_replace('https://','http://',$thumbnailUrl));
+									}catch(Exception $e){}
+								?>
+								<div class="image-item">
+									<amp-img width="<?= $width ?>" height="<?= $height ?>" layout="responsive" alt="" src="<?= $thumbnailUrl ?>"></amp-img>
+								</div>
+							<?php endif ?>
+						</div>
+						<div class="portfolio-bottom-content">
+							<a class="title" href="<?php echo $portfolioUrl; ?>"><?php echo $portfolio->getName() ?></a>
+							<div class="category-link"><?php echo $this->getCategoriesLink($portfolio) ?></div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach ?>
+			<?php if ($useSlider): ?>
+				</amp-carousel>
+			<?php endif ?>
+		</div>
+	<?php else: ?>
+		<div class="alert alert-warning"> <?php echo __('There are no portfolios matching the selection.') ?> </div>
+	<?php endif ?>
+</div>

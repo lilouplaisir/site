@@ -1,0 +1,80 @@
+"You can't change qty for the composite products","You can't change qty for the composite products"
+"No Categories","No Categories"
+"Something went wrong with getting category tree. Error: %2","Something went wrong with getting category tree. Error: %2"
+"Single Cell","Single Cell"
+"Multi Cell","Multi Cell"
+Added,Added
+"Not Added","Not Added"
+Yes,Yes
+No,No
+"For Qty","For Qty"
+" Price"," Price"
+"No columns found","No columns found"
+"This item has weight","This item has weight"
+"This item has no weight","This item has no weight"
+"Manage Stock Disabled","Manage Stock Disabled"
+"In Stock","In Stock"
+"Out Of Stock","Out Of Stock"
+Columns,Columns
+Extra,Extra
+Attribute,Attribute
+Default,Default
+Close,Close
+Column,Column
+Title,Title
+Edit,Edit
+Filter,Filter
+Marker,Marker
+"Export Selected Products","Export Selected Products"
+"Export Whole Page","Export Whole Page"
+Dismiss,Dismiss
+"Please select product export option.","Please select product export option."
+"You can select specific products on grid to export, instead of all products on page.","You can select specific products on grid to export, instead of all products on page."
+Proceed,Proceed
+Save,Save
+"You have unsaved changes on this page.","You have unsaved changes on this page."
+"Do you want to save the changes or proceed without saving?","Do you want to save the changes or proceed without saving?"
+"You have successfully saved your edits.","You have successfully saved your edits."
+Attention,Attention
+"Unable to export product because of using IE browser.","Unable to export product because of using IE browser."
+"Product Grid","Product Grid"
+"Editing Settings","Editing Settings"
+"Editing Mode","Editing Mode"
+"Single Cell - data is being saved right after any cell is edited. Multi Cell - Save button should be clicked after data in multiple cells has been edited.","Single Cell - data is being saved right after any cell is edited. Multi Cell - Save button should be clicked after data in multiple cells has been edited."
+"Additional Grid Columns Settings","Additional Grid Columns Settings"
+"Related products, Up-sells, Cross-sells Columns","Related products, Up-sells, Cross-sells Columns"
+"Products Qty","Products Qty"
+"Specify the number of related, cross-sell, and up-sell products to display on the grid's cell","Specify the number of related, cross-sell, and up-sell products to display on the grid's cell"
+"'Qty Sold' Column","'Qty Sold' Column"
+"'Qty Sold' Date From","'Qty Sold' Date From"
+"Specify the time period to display the number of orders in the 'Qty Sold' field.","Specify the time period to display the number of orders in the 'Qty Sold' field."
+"'Qty Sold' Date To","'Qty Sold' Date To"
+"'Qty Sold' Order Statuses","'Qty Sold' Order Statuses"
+"Define order statuses that should be included in the 'Qty Sold' field.","Define order statuses that should be included in the 'Qty Sold' field."
+"Include Refunded Items","Include Refunded Items"
+"Quantity Based Availability","Quantity Based Availability"
+"When set to yes, availability will automatically change to 'In stock' when quantity is positive and to 'Out of stock"" when quantity is zero or negative. When set to 'No', availability status will not be updated automatically.","When set to yes, availability will automatically change to 'In stock' when quantity is positive and to 'Out of stock"" when quantity is zero or negative. When set to 'No', availability status will not be updated automatically."
+"Show Quantity as Integer","Show Quantity as Integer"
+"Amasty: Product Grid - Qty Sold","Amasty: Product Grid - Qty Sold"
+"Rebuild qty sold value","Rebuild qty sold value"
+Categories,Categories
+Select..,Select..
+Action,Action
+"Set Product as New from Date","Set Product as New from Date"
+"Set Product as New to Date","Set Product as New to Date"
+Cost,Cost
+"Special Price","Special Price"
+"Front-end Product Link","Front-end Product Link"
+Availability,Availability
+"Creation Date","Creation Date"
+"Special Price From Date","Special Price From Date"
+"Special Price To Date","Special Price To Date"
+"Last Modified Date","Last Modified Date"
+"Related Products","Related Products"
+"Up Sells","Up Sells"
+"Cross Sells","Cross Sells"
+"Low Stock","Low Stock"
+"Tier Price","Tier Price"
+Backorders,Backorders
+Weight,Weight
+"Qty Sold","Qty Sold"

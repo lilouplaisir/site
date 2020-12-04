@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php if (!$block->isContentMode() || $block->isMixedMode()): ?>
+    <?php $currentCate = $block->getCurrentCategory(); ?>
+    <?php if($currentCate->getIsLanding()): ?>
+        <div class="landing-categories">
+            <?php $ldTemplate = $currentCate->getCateLandingType(); ?>
+            <?php if($ldTemplate == 2): ?>
+                <?php //Masonry Template ?>
+                <?php echo $this->getLayout()->createBlock("MGS\Landing\Block\Landing")->setTemplate("MGS_Landing::category/landing/masonry.phtml")->toHtml();?>
+            <?php elseif($ldTemplate == 3): ?>
+                <?php //Parallax Template ?>
+                <?php echo $this->getLayout()->createBlock("MGS\Landing\Block\Landing")->setTemplate("MGS_Landing::category/landing/parallax.phtml")->toHtml();?>
+            <?php else: ?>
+                <?php //Grid Template ?>
+                <?php echo $this->getLayout()->createBlock("MGS\Landing\Block\Landing")->setTemplate("MGS_Landing::category/landing/grid.phtml")->toHtml();?>
+            <?php endif ?>
+        </div>
+    <?php else: ?>
+        <?php echo $block->getProductListHtml(); ?>
+    <?php endif ?>
+<?php endif; ?>

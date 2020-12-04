@@ -1,0 +1,50 @@
+<?php $attributes = $this->getAttributes() ?>
+<?php $titles = $this->getTitles() ?>
+<?php $customClass = $this->getCustomClass() ?>
+<?php if($this->hasData('title')): ?>
+	<div class="block-title<?php if($customClass): ?> <?php echo $customClass ?>-title<?php endif ?>">
+		<h3><?php echo $this->getData('title') ?></h3>
+	</div>
+<?php endif ?>
+<?php if(count($attributes)>0 && count($titles)>0): ?>
+	<div class="attribute-tabs data items<?php if($customClass): ?> <?php echo $customClass ?><?php endif ?>" data-mage-init='{"tabs":{"openedState":"active"}}'>
+		<?php foreach($titles as $key=>$title): ?>
+			<?php if(isset($attributes[$key])): ?>
+				<div class="data item title" aria-labeledby="tab-label-attribute-<?php echo $attributes[$key]; ?>-title" data-role="collapsible" id="tab-label-attribute-<?php echo $attributes[$key]; ?>">
+					<a class="data switch" tabindex="-1" data-toggle="switch" href="#attribute<?php echo $attributes[$key]; ?>" id="tab-label-attribute-<?php echo $attributes[$key]; ?>-title">
+						<?php echo $title; ?>
+					</a>
+				</div>
+				
+				<div class="data item content" id="attribute<?php echo $attributes[$key]; ?>" data-role="content">
+					<?php $_productCollection = $this->getProductCollection($attributes[$key]); ?>
+					<?php if (!$_productCollection->count()): ?>
+						<div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+					<?php else: ?>
+						<div class="products wrapper grid products-grid">
+							<ol class="products list items product-items row">
+								<?php 
+									$html = $this->getLayout()
+										->createBlock('MGS\Mpanel\Block\Products\Tabs')
+										->setAdditionalData($attributes[$key])
+										->setProductsCount($this->getProductsCount())
+										->setPerRow($this->getProductsPerRow())
+										->setTemplate('products/items.phtml')
+										->toHtml();
+									echo $html;
+								?>
+							</ol>
+						</div>
+						<?php if(($this->hasData('load_more') && $this->getData('load_more')=='1') && ((!$this->getData('products_count')) || ($_productCollection->count() == $this->getData('products_count')))): ?>
+							<a class="btn btn-default btn-loadmore" href="<?php echo $this->getUrl('mpanel/index/loadmore', ['type'=>'attribute-tabs', 'attribute'=>$attributes[$key], 'products_count'=>$this->getProductsCount(), 'perrow'=>$this->getProductsPerRow(), 'p'=>2]) ?>"><span></span><?php echo __('Load More') ?></a>
+						<?php endif ?>
+						
+					<?php endif ?>
+				</div>
+			<?php endif ?>
+		<?php endforeach ?>
+		
+	</div>
+<?php else: ?>
+	<div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+<?php endif ?>

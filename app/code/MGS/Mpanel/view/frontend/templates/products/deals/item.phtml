@@ -1,0 +1,30 @@
+<?php $_product = $this->getProduct() ?>
+<?php if($_product->getSpecialPrice() && $_product->getSpecialToDate() && $_product->getSpecialFromDate()): ?>
+
+	<?php $specialFromDate = date('m/d/y h:i:s A', strtotime($_product->getSpecialFromDate())); ?>
+	<?php $now = date('m/d/y h:i:s A',strtotime($this->getCurrentDate())) ?>
+	<?php $endTime = str_replace(' 00:00:00','',$_product->getSpecialToDate()) ?>
+	
+	<?php if($specialFromDate <= $now && $endTime > $now): ?>
+		<div class="deal-timer">
+			<div id="deal-timer-<?php echo $_product->getId(); ?>" class="countdown"></div>
+			<div class="time-note">
+				<span class="days"><?php echo __('Days') ?></span>
+				<span class="hours"><?php echo __('Hours') ?></span>
+				<span class="mins"><?php echo __('Mins') ?></span>
+				<span class='secs'><?php echo __('Secs') ?></span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var dthen<?php echo $_product->getId(); ?> = new Date("<?php echo Date("m/d/y", strtotime($endTime)).' 11:59:59 PM'; ?>");
+			start = "<?php echo $now; ?>";
+			start_date = Date.parse(start);
+			var dnow<?php echo $_product->getId(); ?> = new Date(start_date);
+			ddiff = new Date((dthen<?php echo $_product->getId(); ?>)-(dnow<?php echo $_product->getId(); ?>));
+			gsecs<?php echo $_product->getId(); ?> = Math.floor(ddiff.valueOf()/1000);
+
+			var iid<?php echo $_product->getId(); ?> = "deal-timer-<?php echo $_product->getId(); ?>";
+			CountBack(gsecs<?php echo $_product->getId(); ?>,"deal-timer-<?php echo $_product->getId(); ?>", <?php echo $_product->getId(); ?>);
+		</script>
+	<?php endif ?>
+<?php endif ?>

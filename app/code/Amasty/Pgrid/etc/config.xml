@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2020 Amasty (https://www.amasty.com)
+ * @package Amasty_Pgrid
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amasty_pgrid>
+            <editing>
+                <mode>multi</mode>
+            </editing>
+            <extra_columns>
+                <product_settings>
+                    <products_qty>3</products_qty>
+                </product_settings>
+                <qty_sold_settings>
+                    <include_refunded>0</include_refunded>
+                </qty_sold_settings>
+            </extra_columns>
+            <modification>
+                <availability>0</availability>
+            </modification>
+        </amasty_pgrid>
+    </default>
+</config>

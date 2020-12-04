@@ -1,0 +1,77 @@
+<?php
+$helper = $this->helper('MGS\Blog\Helper\Data');
+$themeHelper = $this->helper('MGS\Amp\Helper\Setting');
+$collection = $block->getPostCollection();
+$viewAs = $this->getConfig('view_as');
+$showThumbnail = $this->getConfig('show_thumbnail');
+$showShortContent = $this->getConfig('show_short_content');
+?>
+<div class="content-block blog-block blog-grid-block">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+</div>
+<?php if (count($collection)): ?>
+
+		<div class="blog-container">
+			<?php if ($viewAs == 'owl_carousel'): ?>
+			<amp-carousel class="blog-carousel" height="900" width="600" layout="responsive" type="slides"<?php if($this->getAutoplay()): ?> autoplay delay="5000"<?php endif ?><?php if($this->getNavigation()):?> controls<?php endif ?>>
+			<?php endif ?>
+				<?php $width=$height=$i=$j=0; foreach ($collection as $post): $i++ ?>
+					<?php  
+						if ($post->getUpdatedByUser()){ 
+							$author = $post->getUpdatedByUser();
+						}else { 
+							$author = $post->getUser(); 
+						} 
+					?>
+					<div class="post-item-content">
+						<?php if ($showThumbnail): ?>
+							<?php $imageUrl = $post->getThumbnailUrl() ?>
+							<?php 
+								try{
+									list($width, $height, $type, $attr) = getimagesize(str_replace('https://','http://',$imageUrl));
+								}catch(Exception $e){}
+							?>
+								
+							<div class="thumbnail-post">
+								<a class="post-title-link" title="<?php echo $post->getTitle(); ?>" href="<?php echo $helper->getPostUrl($post); ?>">
+									<amp-img width="<?= $width ?>" height="<?= $height ?>" layout="responsive" alt="<?php echo $post->getTitle() ?>" src="<?= $imageUrl ?>"></amp-img>
+								</a>
+							</div>
+						<?php endif ?>
+						<div class="post-item-detail">
+							<h6 class="title">
+								<a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?></a>
+							</h6>
+							<div class="post-info">
+								<span class="post-author margin-right5">
+									<?php echo __('By') ?> <span><?php echo $author ?></span>
+									<span class="post-time"><?php echo __('on') ?> 
+										<span><?php echo date('M d, Y', strtotime($post->getCreatedAt())) ?></span>
+									</span>
+								</span>
+							</div>
+							<?php if ($showShortContent): ?>
+								<div class="short-content">
+									<?php echo mb_substr($post->getShortContent(), 0, $this->getConfig('limit_characters_short_content')); ?>...
+								</div>
+							<?php endif ?>
+						</div>
+					</div>
+				<?php endforeach ?>
+			<?php if ($viewAs == 'owl_carousel'): ?>
+			</amp-carousel>
+			<?php endif ?>
+		</div>
+
+<?php else: ?>
+	<div class="alert alert-warning"> <?php echo __('There are no posts matching the selection.') ?> </div>
+<?php endif ?>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference
+        for="LaPoste\Colissimo\Api\PickUpPointApi"
+        type="LaPoste\Colissimo\Model\PickUpPointApi"/>
+    <preference
+        for="LaPoste\Colissimo\Api\Carrier\LabellingApi"
+        type="LaPoste\Colissimo\Model\Carrier\LabellingApi"/>
+    <preference
+        for="LaPoste\Colissimo\Api\Carrier\GenerateLabelPayload"
+        type="LaPoste\Colissimo\Model\Carrier\GenerateLabelPayload"/>
+    <preference
+        for="LaPoste\Colissimo\Api\TrackingApi"
+        type="LaPoste\Colissimo\Model\TrackingApi"/>
+    <preference
+        for="LaPoste\Colissimo\Api\UnifiedTrackingApi"
+        type="LaPoste\Colissimo\Model\UnifiedTrackingApi"/>
+    <preference
+        for="LaPoste\Colissimo\Api\ColissimoStatus"
+        type="LaPoste\Colissimo\Model\ColissimoStatus"/>
+    <preference
+        for="Magento\Shipping\Block\Items"
+        type="LaPoste\Colissimo\Block\BalReturnLink" />
+    <preference
+        for="LaPoste\Colissimo\Api\BordereauGeneratorApi"
+        type="LaPoste\Colissimo\Model\BordereauGeneratorApi"/>
+    <preference
+        for="LaPoste\Colissimo\Api\Carrier\OffersApi"
+        type="\LaPoste\Colissimo\Model\Carrier\OffersApi" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="laposte_colissimo_shipment_grid_data_source" xsi:type="string">LaPoste\Colissimo\Model\ResourceModel\Shipment\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="truncateLogs" xsi:type="object">LaPoste\Colissimo\Console\Command\TruncateLogs</item>
+                <item name="PurgeOldReturnLabels" xsi:type="object">LaPoste\Colissimo\Console\Command\PurgeOldReturnLabels</item>
+                <item name="PurgeLabelFolder" xsi:type="object">LaPoste\Colissimo\Console\Command\PurgeLabelFolder</item>
+			</argument>
+		</arguments>
+	</type>
+
+
+    <virtualType name="LaPosteBordereauGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">LaPoste\Colissimo\Model\ResourceModel\Bordereau\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">LaPosteBordereauGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="LaPosteBordereauGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="laposte_colissimo_bordereau_listing_data_source" xsi:type="string">LaPoste\Colissimo\Model\ResourceModel\Bordereau\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="LaPoste\Colissimo\Model\ResourceModel\Bordereau\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">laposte_colissimo_bordereau</argument>
+            <argument name="eventPrefix" xsi:type="string">laposte_colissimo_bordereau_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">laposte_colissimo_bordereau_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">LaPoste\Colissimo\Model\ResourceModel\Bordereau</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="laposte_colissimo_currentsituation_grid_data_source" xsi:type="string">LaPoste\Colissimo\Model\ResourceModel\CurrentSituation\ShipmentTrack\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

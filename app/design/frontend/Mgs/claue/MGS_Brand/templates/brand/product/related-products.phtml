@@ -1,0 +1,74 @@
+<?php if ($block->getConfig('general_settings/enabled') && $block->getConfig('product_page_settings/show_related_products_by_brand')): ?>
+
+	<?php $brand = $block->getBrand() ?>
+	
+	<?php if ($brand): ?>
+	
+		<?php if($block->getConfig('product_page_settings/title_related_products')): ?>
+			<?php $blockTitle = $block->getConfig('product_page_settings/title_related_products'); ?>
+		<?php else: ?>
+			<?php $blockTitle = __('Related Products By Brand') ?>
+		<?php endif ?>
+		
+		<?php $_productCollection = $block->getProductCollection(); ?>
+		
+		<?php if (count($_productCollection)): ?>
+			<?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+			<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+			<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+			<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+			<div class="brand-related-products">
+				<div class="content-heading">
+					<h3 class="title text-uppercase"><?php echo $blockTitle; ?></h3>
+				</div>
+				
+				<div class="block-content content" aria-labelledby="block-heading">
+					<div class="products wrapper grid products-grid slider-1-row products-related row">
+						<div id="brand-related-products" class="products list items product-items owl-carousel">
+							<?php foreach ($_productCollection as $_product): ?>
+								<div class="item product product-item">
+									<?php echo $this->getLayout()
+											->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+											->setProductId($_product->getId())
+											->setThemeHelper($themeHelper)
+											->setImageHelper($_imagehelper)
+											->setCatalogHelperOutput($_helper)
+											->setUseSlider(true)
+											->setTemplate('MGS_Mpanel::products/grid_items_remove_swatch.phtml')
+											->toHtml(); ?>
+								</div>
+							<?php endforeach ?>
+						</div>
+						<?php $perRow = $block->getConfig('product_page_settings/perrow_related_products'); ?>
+						<script type="text/javascript">
+							require([
+								'jquery',
+								'mgs/owlcarousel'
+							], function ($) {
+								var brandrelatedproducts = $('#brand-related-products').owlCarousel({
+									items: <?php echo $perRow; ?>,
+									autoplay: false,
+									autoplayHoverPause: false,
+									<?php if($lazyLoad): ?>lazyLoad: true,<?php endif ?>
+									nav: true,
+									dots: false,
+									navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+									responsive:{
+										0:{
+											items:2
+										},
+										992:{
+											items:<?php echo $perRow; ?>
+										}
+									}
+								});
+							});
+						</script>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+		
+	<?php endif; ?>
+	
+<?php endif; ?>

@@ -1,0 +1,5 @@
+﻿html, body{overflow-x: hidden !important;}
+.cms-index-index #maincontent, .cms-page-view #maincontent{padding:0; width:100%}
+.cms-index-index .page-title-wrapper{display:none}
+.cms-index-index #maincontent > .row, .cms-page-view #maincontent > .row{margin:0}
+.cms-index-index #maincontent > .row > .main{padding:0}

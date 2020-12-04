@@ -1,0 +1,61 @@
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+<?php $sections = $this->getSections() ?>
+<?php if($canUsePanel): ?>
+	<div class="sort-block" id="sortable_home">
+	<?php endif ?>
+<?php if(count($sections)>0): ?>
+		<?php foreach($sections as $section): ?>
+			<section<?php echo $this->getSectionSetting($section, $canUsePanel) ?>>
+				<?php if($section->getFullwidth()): ?>
+					<div class="container-fluid<?php if($canUsePanel): ?> container-panel<?php endif ?>">
+				<?php else: ?>
+					<div class="container<?php if($canUsePanel): ?> container-panel<?php endif ?>">
+				<?php endif ?>
+					<?php if($canUsePanel): ?>
+						<?php echo $this->getEditPanel() ?>
+					<?php endif ?>
+					<?php 
+						$cols = $this->getBlockCols();
+						$class = $section->getBlockClass();
+						if($class!=''){
+							$class = json_decode($class, true);
+						}
+					?>
+					
+					<?php if(count($cols)>1): ?>
+						<div class="row">
+							<?php foreach($cols as $key=>$col): ?>
+								<?php $blockClass = $this->getBlockClass($section, $col, $class, $key, $canUsePanel) ?>
+								<div class="<?php echo $blockClass ?>">
+									<div class="row">
+										<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Panel\Block')->setBlockName($section->getName().'-'.$key)->setCanUsePanel($canUsePanel)->setTemplate('panel/block.phtml')->toHtml() ?>
+									</div>
+								</div>
+							<?php endforeach ?>
+						</div>
+					<?php else: ?>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 <?php if($canUsePanel): ?> col-builder<?php endif ?>">
+								<div class="row">
+									<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Panel\Block')->setBlockName($section->getName().'-0')->setCanUsePanel($canUsePanel)->setTemplate('panel/block.phtml')->toHtml() ?>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
+				</div>
+			</section>
+		<?php endforeach ?>
+<?php endif ?>
+<?php if($canUsePanel): ?>
+	</div>
+	<?php endif ?>
+<?php if($canUsePanel): ?>
+	<section>
+		<div class="container-fluid">
+			<div class="add-new-section col-md-12">
+				<button class="btn btn-primary btn-lg" type="button" onclick="addNewSection(<?php echo $this->getPageId() ?>)"><span id="new-section-load"><em class="fa fa-plus-circle"></span></em>&nbsp;<?php echo __('Add New Section') ?></button>
+			</div>
+		</div>
+	</section>
+<?php endif ?>

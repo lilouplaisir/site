@@ -1,0 +1,28 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $enabled = $themeHelper->getStoreConfig('social/facebook_settings/active'); ?>
+<?php $appId = $themeHelper->getStoreConfig('social/facebook_settings/client_id'); ?>
+<?php $appSecret = $themeHelper->getStoreConfig('social/facebook_settings/client_secret'); ?>
+<?php if($enabled && $appId != "" && $appSecret != ""): ?>
+	<div class="content-block facebook-fanbox-block">
+		<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+			<div class="content-heading">
+				<?php if($this->getData('mgs_panel_title') != ""): ?>
+					<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+				<?php endif ?>
+				<?php if($this->getData('mgs_panel_note') != ""): ?>
+					<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+		
+		<?php if($this->getFacebookFanBox()): ?>
+			<div class="block-content">
+				<?php echo $this->getFacebookFanBox(); ?>
+			</div>
+		<?php else: ?>
+			<div role="alert" class="alert alert-warning"><?php echo __('Can not get Facebook Fanbox data.') ?></div>
+		<?php endif ?>
+	</div>
+<?php else: ?>
+	<div role="alert" class="alert alert-warning"><?php echo __('Please config you facebook API.') ?></div>
+<?php endif ?>

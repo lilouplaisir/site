@@ -1,0 +1,8 @@
+#mColorPicker{overflow:hidden}
+#mgstheme_background_background_color, 
+#color_header_background_color, 
+#color_general .input-text, 
+#color_header .input-text,
+#color_main .input-text,
+#color_footer .input-text{width:93% !important}
+#mColorPickerFooter a{display:none !important}

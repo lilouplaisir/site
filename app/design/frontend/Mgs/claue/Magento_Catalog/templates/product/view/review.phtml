@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\AbstractProduct */ ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$settings = $themeHelper->getThemeSettings(); ?>
+
+<?php if ($settings['product_details']['reviews_summary']) : ?>
+	<?= $block->getReviewsSummaryHtml($block->getProduct(), false, true) ?>
+<?php endif; ?>

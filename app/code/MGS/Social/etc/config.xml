@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <social>
+            <facebook_settings>
+                <active>0</active>
+            </facebook_settings>
+            <twitter_settings>
+                <active>0</active>
+            </twitter_settings>
+            <instagram_setting>
+                <enable_instagram>1</enable_instagram>
+                <access_token><![CDATA[5499474686.1677ed0.a0d23e0894624158b0e90ad80dcd7988]]></access_token>
+            </instagram_setting>
+            <snapppt_setting>
+                <enable_snapppt>1</enable_snapppt>
+				<snapppt_script><![CDATA[<script src='https://snapppt.com/widgets/widget_loader/7174b835-5508-49cd-96a3-a2cc282e9190/grid.js' class='snapppt-widget'></script>]]></snapppt_script>
+            </snapppt_setting>
+        </social>
+    </default>
+</config>

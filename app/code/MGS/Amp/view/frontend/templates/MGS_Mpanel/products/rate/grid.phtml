@@ -1,0 +1,62 @@
+<?php $_productCollection = $this->getRateProductByCategories($this->getCategoryIds()) ?>
+<?php $themeHelper = $this->helper('MGS\Amp\Helper\Setting'); ?>
+
+<div class="content-block new-product-block">
+	<?php // Block Title ?>
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+	<?php // Block Content  ?>
+	<?php if (count($_productCollection)): ?>
+		<?php $useSlider = $this->getUseSlider(); ?>
+		
+		<?php if($useSlider): ?>
+			<div class="clear-owl-carousel">
+				<amp-carousel class="product-carousel" <?php echo $themeHelper->getAmpCarouselSetting($this->getData()) ?>>
+					<?php $i=0; foreach ($_productCollection as $_product): $i++ ?>
+						<?php if($i % 2 == 1): ?>
+						<div class="products list product-items">
+						<?php endif ?>
+						<div class="product-item">
+							<?php echo $this->getLayout()
+									->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+									->setProductId($_product->getId())
+									->setTemplate('MGS_Amp::MGS_Mpanel/products/grid_items.phtml')
+									->toHtml(); ?>	
+						</div>
+						<?php if($i % 2 == 0 || $i == count($_productCollection)): ?>
+						</div>
+						<?php endif ?>
+					<?php endforeach; ?>
+				</amp-carousel>
+			</div>
+		<?php else: ?>
+		
+			<div class="block widget products list product-items">
+				<div class="items">
+					<?php $i=0; $j=0; foreach ($_productCollection as $_product): $i++; ?>
+
+						
+						<div class="product product-item">
+							<?php echo $this->getLayout()
+									->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+									->setProductId($_product->getId())
+									->setTemplate('MGS_Amp::MGS_Mpanel/products/grid_items.phtml')
+									->toHtml(); ?>	
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		<?php endif ?>
+	<?php else: ?>
+		<div role="alert" class="alert alert-warning"><?php echo __('There are no products matching the selection.') ?></div>
+	<?php endif ?>
+</div>

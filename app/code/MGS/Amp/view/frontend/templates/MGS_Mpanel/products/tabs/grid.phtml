@@ -1,0 +1,61 @@
+<?php $tabs = $this->getTabs() ?>
+<?php $labels = $this->getLabels() ?>
+<?php $themeHelper = $this->helper('MGS\Amp\Helper\Setting'); ?>
+<?php $useSlider = $this->getUseSlider(); ?>
+<div class="content-block product-tabs-block">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+	<?php if(count($tabs)>0): ?>
+		<amp-accordion disable-session-states animate class="product-accordion">
+		<?php $i=0; foreach($tabs as $key=>$tab): ?>
+			<?php if(isset($labels[$key])): $i++; ?>
+				<section<?php if($i==1): ?> expanded<?php endif ?>>
+					<h3<?php if($i==1): ?> aria-expanded="true"<?php endif ?>><?php echo $labels[$key]; ?></h3>
+					<?php 
+						switch ($tab){
+							case "mgs_new_products_tabs":
+								$blockClass = 'MGS\Mpanel\Block\Products\NewProducts';
+								$type = 'new';
+								break;
+							case "mgs_sale_products_tabs":
+								$blockClass = 'MGS\Mpanel\Block\Products\Sale';
+								$type = 'sale';
+								break;
+							case "mgs_rate_products_tabs":
+								$blockClass = 'MGS\Mpanel\Block\Products\Rate';
+								$type = 'rate';
+								break;
+							default:
+								$blockClass = 'MGS\Mpanel\Block\Products\Attributes';
+								$type = $tab;
+								break;
+						}
+						echo $this->getLayout()
+							->createBlock($blockClass)
+							->setLimit($this->getLimit())
+							->setType($type)
+							->setCategoryIds($this->getCategoryIds())
+							->setThemeHelper($themeHelper)
+							->setUseSlider($useSlider)
+							->setAutoplay($this->getAutoplay())
+							->setNavigation($this->getNavigation())
+							->setTemplate('MGS_Amp::MGS_Mpanel/products/tabs/items.phtml')
+							->toHtml();
+					?>
+				</section>
+			<?php endif ?>
+		<?php endforeach ?>
+		</amp-accordion>
+	<?php else: ?>
+		<div class="alert alert-warning"><?php echo __('There are no tabs matching the selection.') ?></div>
+	<?php endif ?>
+</div>

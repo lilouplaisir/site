@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="customer.login.container">
+			<container name="customer.login.container.before" htmlTag="div" htmlClass="col-sm-6 col-xs-12 margin-bottom50" before="-"/>
+			<container name="customer.login.container.after" htmlTag="div" htmlClass="col-sm-6 col-xs-12 pull-right" after="customer.login.container.before"/>
+		</referenceContainer>
+		
+		<move element="customer_form_login" destination="customer.login.container.before"/>
+		<move element="customer.new" destination="customer.login.container.after"/>
+    </body>
+</page>

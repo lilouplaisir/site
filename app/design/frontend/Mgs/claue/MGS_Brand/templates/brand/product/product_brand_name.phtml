@@ -1,0 +1,15 @@
+<?php if ($block->getConfig('general_settings/enabled')): ?>
+    <?php if ($block->getConfig('product_page_settings/show_brand')): ?>
+        <?php if ($block->getConfig('product_page_settings/show_brand_img')): ?>
+			<?php $brand = $block->getBrand() ?>
+            <?php if($brand): ?>
+				<div class="product-brand">
+					<div class="brand-name">
+						<strong class="type"><?php echo __('Brand'); ?></strong>
+						<a title="<?php echo $brand->getName(); ?>" href="<?php echo $brand->getUrl(); ?>"><?php echo $block->getBrand()->getName(); ?></a>
+					</div>
+				</div>
+			<?php endif ?>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

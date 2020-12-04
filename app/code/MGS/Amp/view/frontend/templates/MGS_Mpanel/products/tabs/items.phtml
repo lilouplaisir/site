@@ -1,0 +1,61 @@
+<?php 
+	$type = $this->getType();
+	$attr = '';
+	$useSlider = $this->getUseSlider();
+	switch ($type){
+		case "new":
+			$_productCollection = $this->getNewProductByCategories($this->getCategoryIds());
+			break;
+		case "sale":
+			$_productCollection = $this->getSaleProductByCategories($this->getCategoryIds());
+			break;
+		case "rate":
+			$_productCollection = $this->getRateProductByCategories($this->getCategoryIds());
+			break;
+		default:
+			$_productCollection = $this->getAttributeProductByCategories($this->getCategoryIds(), $type);
+			$attr = $type;
+			break;
+	}
+?>
+<?php $themeHelper = $this->getThemeHelper(); ?>
+<?php if (count($_productCollection)>0): ?>
+	<?php if($useSlider): ?>
+		<div class="clear-owl-carousel">
+			<amp-carousel class="product-carousel" <?php echo $themeHelper->getAmpCarouselSetting($this->getData()) ?>>
+				<?php $i=0; foreach ($_productCollection as $_product): $i++ ?>
+					<?php if($i % 2 == 1): ?>
+					<div class="products list product-items">
+					<?php endif ?>
+					<div class="product-item">
+						<?php echo $this->getLayout()
+								->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+								->setProductId($_product->getId())
+								->setTemplate('MGS_Amp::MGS_Mpanel/products/grid_items.phtml')
+								->toHtml(); ?>	
+					</div>
+					<?php if($i % 2 == 0 || $i == count($_productCollection)): ?>
+					</div>
+					<?php endif ?>
+				<?php endforeach; ?>
+			</amp-carousel>
+		</div>
+	<?php else: ?>
+		<div class="block widget products list product-items">
+			<div class="items">
+				<?php $i=0; $j=0; foreach ($_productCollection as $_product): $i++; ?>
+
+					<div class="product product-item">
+						<?php echo $this->getLayout()
+								->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+								->setProductId($_product->getId())
+								->setTemplate('MGS_Amp::MGS_Mpanel/products/grid_items.phtml')
+								->toHtml(); ?>	
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	<?php endif ?>
+<?php else: ?>
+	<div class="alert alert-warning"><?php echo __('There are no products matching the selection.') ?></div>
+<?php endif ?>

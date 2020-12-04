@@ -1,0 +1,55 @@
+.box-more-details #product-more-details-button {width: 100%; padding: 14px 17px; font-size: 1.8rem; text-align: center}
+.mgs-quickview-catalog-product-view .box-tocart .action.tocart {width: 100%;}
+.mgs-quickview-catalog-product-view .page-wrapper .page-main {margin: 20px 0;}
+.page-products .product-item .mgs-quickview {display: none;}
+.mgs-quickview-catalog-product-view .reviews-actions .add {display: none;}
+.mfp-iframe-scaler iframe {
+    background: url('../images/loader.gif') no-repeat scroll center center #fff !important;
+}
+/* overlay at start */
+.mfp-fade.mfp-bg {
+    opacity: 0;
+
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+}
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+    opacity: 0.8;
+}
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+    opacity: 0;
+}
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+    opacity: 0;
+
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+}
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+    opacity: 1;
+}
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+    opacity: 0;
+}
+button.mfp-close {
+    color: #222 !important;
+    right: 20px !important;
+    top: 0px !important;
+    width: 44px !important;
+    z-index: 999;
+}
+@media (min-width: 640px) {
+    .page-products .products-grid .product-item {position: relative}
+    .page-products .products-grid .product-item  .product-item-inner {margin: 9px -9px 0 -10px}
+    .page-products .products-grid .product-item  .product-item-details {position: relative;}
+    .page-products .products-grid .product-item .product-item-info:hover .mgs-quickview.mgs_quickview_button_v1 {display: block;position: absolute;top: -66px;z-index: 9;width: 100%;text-align: center;color: #fff;background: rgba(200,200,200,0.7);font-size: 14px;text-decoration: none;}
+    .page-products .products-grid .product-item .product-item-info .mgs-quickview.mgs_quickview_button_v1 span {padding: 18px; display: block;}
+    .page-products .products-grid .product-item .product-item-info:hover .mgs-quickview.mgs_quickview_button_v2 {display: block; z-index: 9; position: absolute; text-indent: -10000px; width: 104px; height: 35px; background-image: url('../images/quickview.png'); background-repeat: no-repeat; top: -46px; right: 50%; transform: translateX(50%);}
+}

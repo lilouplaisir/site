@@ -1,0 +1,57 @@
+<?php $helper = $this->getHelper() ?>
+<?php $type = $this->getRequest()->getParam('type') ?>
+<?php $themeId = $helper->getStoreConfig('design/theme/theme_id'); ?>
+<?php $current = $helper->getStoreConfig('mgstheme/general/'.$type); ?>
+<div class="edit-static-form">
+	
+	<div class="row">
+		<div class="col-md-12 builder-title">
+			<h2><?php echo __('Edit %1', $type) ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('mpanel/post/content') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<div class="row">
+			<?php if($type=='header'): ?>
+				<?php $contentVersion = $helper->getContentVersion('headers', $themeId); ?>
+				
+			<?php else: ?>
+				<?php $contentVersion = $helper->getContentVersion('footers', $themeId); ?>
+			<?php endif ?>
+
+			<?php if(count($contentVersion)>0): ?>
+				<?php foreach($contentVersion as $version): ?>
+					<div class="col-sm-12 version">
+						<?php if($src = $helper->isFile($version['path'], $type, $version['value'])): ?>
+							<a class="img<?php if($current==$version['value']): ?> active<?php endif?>" onclick="setActiveVersion(this, '<?php echo $version['value'] ?>')"><img src="<?php echo $src ?>" class="img-responsive"/></a>
+						<?php else: ?>
+							<a class="text<?php if($current==$version['value']): ?> active<?php endif?>" onclick="setActiveVersion(this, '<?php echo $version['value'] ?>')"><span><?php echo $version['label'] ?></span></a>
+						<?php endif ?>
+					</div>
+				<?php endforeach ?>
+			<?php endif ?>
+			<input type="hidden" value="<?php echo $current ?>" name="value" id="version"/>
+			<input type="hidden" value="<?php echo $type ?>" name="type"/>
+			<div class="form-group">
+				<div class="col-md-12 builder-action">
+					<div class="buttons">
+						<input type="submit" value="<?php echo __('Submit') ?>" class="btn btn-primary"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	function setActiveVersion(el, version){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				$('#version').val(version);
+				$('.version a').removeClass('active');
+				$(el).addClass('active');
+			})(jQuery);
+		});
+	}
+	
+</script>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+		<ninththeme>
+			<ninth_detail_products>
+				<glr_type>4</glr_type>
+				<zoom_image>1</zoom_image>
+				<zoom_magnify><![CDATA[1.5]]></zoom_magnify>
+				<zoom_mobile>1</zoom_mobile>
+                <light_box>1</light_box>
+			</ninth_detail_products>
+		</ninththeme>
+    </default>
+</config>

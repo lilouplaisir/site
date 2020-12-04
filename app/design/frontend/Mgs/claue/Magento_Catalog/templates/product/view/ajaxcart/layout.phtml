@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
+
+<?php $_product = $block->getProduct(); ?>
+
+<input id="mgs_template_layout" type="hidden" name="mgs_template_layout" value="0">
+<div class="product-detail-infomation">
+	<div class="product-detail-infomation-content">
+		<?php echo $block->getChildHtml('product.info.name') ?>
+		<?php echo $block->getChildHtml('alert_urls') ?>
+		<div class="product-info-main">
+			<?php echo $block->getChildHtml('product.info.price') ?>
+			<?php echo $block->getChildHtml('product.price.tier') ?>
+			
+			<?php echo $block->getChildHtml('bundle.options.container') ?>
+			<?php echo $block->getChildHtml('product.info') ?>
+		
+			<div class="product-sub-infomation">
+				<div class="product-info-stock-sku">
+					<?php echo $block->getChildHtml('product.info.type') ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+<?php
+$helper = $this->helper('MGS\Blog\Helper\Data');
+$collection = $block->getCollection();
+$showThumbnail = $this->getConfig('general_settings/show_thumbnail');
+if ($this->getConfig('general_settings/thumbnail_width') != '') {
+    $width = $this->getConfig('general_settings/thumbnail_width');
+} else {
+    $width = 240;
+}
+if ($this->getConfig('general_settings/thumbnail_height') != '') {
+    $height = $this->getConfig('general_settings/thumbnail_height');
+} else {
+    $height = 180;
+}
+$categoryId = (int)$this->getRequest()->getParam('category_id', false);
+?>
+<?php if (!count($collection)): ?>
+    <div class="message info empty">
+        <div><?php echo __('Have no posts.') ?></div>
+    </div>
+<?php else: ?>
+    <div class="blog-list">
+        <?php foreach ($collection as $post): ?>
+            <div class="blog-post">
+                <?php if ($showThumbnail): ?>
+                    <div class="post-thumbnail">
+                        <?php echo $helper->getThumbnailPost($post); ?>
+                    </div>
+                <?php endif; ?>
+                <h2 class="post-title">
+                    <a class="post-title-link" title="<?php echo $post->getTitle(); ?>" href="<?php echo $post->getPostUrlWithNoCategory(); ?>"><?php echo $post->getTitle(); ?></a>
+                </h2>
+                <div class="post-info">
+                    <?php if ($post->getUpdatedByUser()): ?>
+                        <div class="published-by"><?php echo __('Published By: %1', $post->getUpdatedByUser()); ?>&nbsp;&nbsp;&nbsp;<?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></div>
+                    <?php else: ?>
+                        <div class="published-by"><?php echo __('Published By: %1', $post->getUser()); ?>&nbsp;&nbsp;&nbsp;<?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></div>
+                    <?php endif; ?>
+					<?php $categories = $post->getCatetories(); ?>
+					<?php if (count($categories)): ?>
+						<div class="posted-in">
+							<?php echo __('Posted In: ') ?>
+							<?php foreach ($categories as $category): ?>
+								<a title="<?php echo $category->getTitle(); ?>" href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $category->getTitle(); ?></a>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+					
+					<?php if ($this->getConfig('comment_settings/enabled')): ?>
+						<div class="comment-link">
+							<a href="<?php echo $post->getPostUrlWithNoCategory(); ?>#comment-box"><?php echo __('%1 Comment(s)', $post->getCommentCount()) ?></a>
+						</div>
+					<?php endif; ?>
+                </div>
+                <?php if ($post->getShortContent()): ?>
+                    <div class="post-content">
+                        <?php echo $post->getShortContent(); ?>
+						<div class="post-link">
+							<a class="btn btn-primary" title="<?php echo __('Read More'); ?>" href="<?php echo $post->getPostUrlWithNoCategory(); ?>"><?php echo __('Read More'); ?></a>
+						</div>
+                    </div>
+                <?php endif; ?>
+            </div>
+			<hr>
+        <?php endforeach; ?>
+    </div>
+    <div class="blog-post-list-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif; ?>

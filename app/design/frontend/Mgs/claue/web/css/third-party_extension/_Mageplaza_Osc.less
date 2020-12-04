@@ -1,0 +1,322 @@
+.page-title-wrapper .checkout-description {
+    color: #fff;
+    position: relative;
+}
+.checkout-agreement .action.action-show {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.one-step-checkout-wrapper #co-place-order-area {
+    padding: 20px !important;
+}
+.checkout-container {
+    z-index: 1 !important;
+}
+.one-step-checkout-container {
+    .gift-options-content .fieldset {
+        .field .control {
+            position: static;
+        }
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+    .table-checkout-shipping-method tbody tr td {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .gift-message-item > i {
+        position: absolute;
+        margin-left: 15px;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+    .osc-place-order-block {
+        margin-top: 0 !important;
+    }
+	.checkout-shipping-address {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		border: 1px solid #eee;
+		margin-top: 0 !important;
+        margin-bottom: 30px;
+	}
+	.checkout-billing-address {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		border: 1px solid #eee;
+		margin-top: 0 !important;
+        margin-bottom: 30px;
+	}
+	.checkout-shipping-method {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		border: 1px solid #eee;
+		margin-top: 0 !important;
+        margin-bottom: 30px;
+	}
+	.checkout-payment-method {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		border: 1px solid #eee;
+		margin-top: 0 !important;
+        margin-bottom: 30px;
+	}
+	#opc-sidebar {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		border: 1px solid #eee;
+		margin-top: 0 !important;
+        margin-bottom: 30px;
+	}
+	.step-title {
+		margin-bottom: 0 !important;
+	}
+	.minicart-items {
+		.product {
+			>.product-item-photo {
+				height: auto !important;
+			}
+			>.product-image-container {
+				height: auto !important;
+			}
+		}
+	}
+	.qty-wrapper {
+		height: 40px;
+		border: 1px solid #ddd;
+		border-radius: 40px;
+		padding: 0 15px !important;
+		overflow: hidden;
+		min-width: 105px;
+		.item_qty {
+			height: 40px;
+			border: none;
+			line-height: 40px;
+			top: 0 !important;
+		}
+		.button-action {
+			margin-top: 10px;
+		}
+	}
+	.osc-place-order-block {
+		margin-top: 15px;
+		padding-top: 20px !important;
+		padding-bottom: 5px !important;
+	}
+}
+.ui-datepicker-trigger {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    margin-left: 5px;
+    border-radius: 2px;
+    background-color: #fff;
+    &:after {
+        content: "\f073";
+        font-family: FontAwesome;
+        font-size: 14px;
+    }
+    &:hover {
+        color: #fff;
+        background-color: #000;
+        border-color: #000;
+    }
+}
+.osc-authentication-wrapper {
+	padding-top: 25px;
+}
+.checkout-index-index {
+	.modal-popup {
+		.modal-content {
+			box-shadow: none;
+			.block-customer-login {
+				margin: 0 !important;
+			}
+		}
+		.modal-header {
+			.modal-title {
+				font-size: 28px;
+			}
+		}
+		.action.action-login {
+			border-radius: 40px;
+			height: 40px;
+			font-weight: 600;
+			padding: 0 35px;
+			line-height: 36px;
+			background-color: transparent;
+			border: 2px solid #222;
+			&:hover {
+				border: 2px solid #56cfe1;
+			}
+		}
+	}
+	.form.form-login {
+		#customer-email-fieldset {
+			margin-bottom: 15px;
+		}
+	}
+}
+.onestepcheckout-index-index {
+	.field.choice.col-mp {
+		margin: 0 10px;
+	}
+}
+.payment-option.discount-code {
+	padding-bottom: 20px;
+	.payment-option-title {
+		cursor: pointer;
+	}
+}
+#checkout-review-table {
+	thead {
+		th {
+			vertical-align: middle;
+		}
+	}
+	tbody {
+		tr {
+			td {
+				vertical-align: middle;
+			}
+		}
+	}
+	tfoot {
+		tr {
+			td {
+				vertical-align: middle;
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	.one-step-checkout-container {
+		#co-place-order-area {
+			padding: 0 !important;
+		}
+		#checkout-review-table {
+			thead {
+				display: none;
+			}
+			tbody {
+				tr {
+					&:after {
+						content: "";
+						display: table;
+						clear: both;
+					}
+					display: block;
+					border-bottom: 1px solid #ddd;
+					td {
+						display: block;
+						border: none !important;
+					}
+					td.product {
+						border-bottom: none;
+						padding: 15px;
+					}
+					td.details-qty {
+						float: left;
+						padding: 0 10px !important;
+						border: none;
+						vertical-align: top;
+					}
+					td.subtotal {
+						float: left;
+						padding: 0 10px !important;
+						border: none;
+						vertical-align: top;
+					}
+					td.button-remove {
+						float: left;
+						padding: 0 10px !important;
+						border: none;
+						vertical-align: top;
+					}
+				}
+			}
+		}
+		.qty-wrapper {
+			.button-action {
+				vertical-align: top !important;
+				margin-top: 10px !important;
+			}
+			min-width: 102px !important;
+		}
+	}
+	table#checkout-review-table {
+		.product-item {
+			.price {
+				line-height: 40px !important;
+			}
+		}
+		.remove-wrapper {
+			line-height: 40px !important;
+		}
+	}
+}
+@media (min-width: 768px){
+    #co-place-order-area {
+        display: table;
+        width: 100%;
+        border-top: 1px solid #ddd;
+        > .col-mp {
+            float: none;
+            display: table-cell;
+            vertical-align: top;
+        }
+    }
+}
+#co-place-order-area .checkout-addition-block {
+    margin: 0;
+}
+.checkout-index-index .modal-popup.agreements-modal {
+    .modal-footer {
+        display: none;
+    }
+    .modal-header {
+        border: none;
+        padding: 0;
+    }
+    .modal-content {
+        box-shadow: none;
+        border: none;
+        padding: 25px 45px;
+    }
+}
+.one-step-checkout-wrapper {
+    .opc-block-shipping-information {
+        padding: 0;
+        background-color: transparent;
+    }
+    .minicart-items-wrapper .product-item-detail {
+        display: inline-block;
+        padding-left: 10px;
+        float: left;
+        width: calc(~'100% - 90px');
+    }
+}
+#checkout-review-table tbody tr td.product {
+    position: relative;
+    padding-right: 30px;
+}

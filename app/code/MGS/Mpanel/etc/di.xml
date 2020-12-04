@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="MGS\Mpanel\Model\Mpanel">
+        <arguments>
+            <argument name="resource" xsi:type="object">MGS\Mpanel\Model\ResourceModel\Mpanel</argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Swatches\Helper\Data" type="MGS\Mpanel\Helper\Swatches\Data" />
+    <!--preference for="Magento\Checkout\CustomerData\DefaultItem" type="MGS\Mpanel\CustomerData\DefaultItem" /-->
+    <preference for="Magento\ConfigurableProduct\CustomerData\ConfigurableItem" type="MGS\Mpanel\CustomerData\DefaultItem" />
+    <preference for="Magento\GroupedProduct\CustomerData\GroupedItem" type="MGS\Mpanel\CustomerData\DefaultItem" />
+    <!--preference for="Magento\Wishlist\CustomerData\Wishlist" type="MGS\Mpanel\CustomerData\Wishlist" /-->
+    <preference for="Magento\Framework\View\Result\Page" type="MGS\Mpanel\Block\Framework\Page" />
+	<preference for="Magento\Cms\Block\Block" type="MGS\Mpanel\Block\Cms\Block" />
+	<preference for="Magento\Cms\Block\Page" type="MGS\Mpanel\Block\Cms\Page" />
+	<preference for="Magento\Catalog\Controller\Category\View" type="MGS\Mpanel\Controller\Category\View" />
+	<preference for="Magento\CatalogSearch\Controller\Result\Index" type="MGS\Mpanel\Controller\CatalogSearch\Result\Index" />
+	<preference for="Magento\Catalog\Helper\Product\View" type="MGS\Mpanel\Helper\Product\View" />
+	<preference for="Magento\Catalog\Model\Category" type="MGS\Mpanel\Model\Category" />
+	<preference for="Magento\User\Block\User\Edit" type="MGS\Mpanel\Block\Adminhtml\User\Edit" />
+	<preference for="Magento\Catalog\Block\Product\View\Gallery" type="MGS\Mpanel\Block\Catalog\Product\View\Gallery" />
+	<preference for="Magento\Catalog\Block\Product\ProductList\Related" type="MGS\Mpanel\Block\Catalog\Product\ProductList\Related" />
+</config>

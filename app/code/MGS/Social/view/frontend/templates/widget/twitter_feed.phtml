@@ -1,0 +1,86 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<div class="content-block twitter-feed-block">
+	<?php 
+		$blockId = rand() . time();
+		$useSlider = $this->getUseSlider();
+		$autoPlay = $this->getAutoplay() ? 'true' : 'false';
+		$stopAuto = $this->getStopAuto() ? 'true' : 'false';
+		$nav = $this->getNavigation() ? 'true' : 'false';
+		$dot = $this->getPagination() ? 'true' : 'false';
+		$twitter_data = $this->getLastTwitter($this->getFeedCount());
+	?>
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title') != ""): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note') != ""): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+
+	<div class="block-content">
+		<?php if($twitter_data != null && count($twitter_data) > 0): ?>
+			<?php if($useSlider): ?>
+				<div class="twitter-slider owl-carousel" id="twitter-slider<?php echo $blockId ?>">
+					<?php foreach ($twitter_data as $key => $value): ?>
+						<div class="twitter-item">
+							<div class="twitter-content">
+								<div class="twitter-user">
+									<a href="https://twitter.com/<?php echo $twitter_data[$key]['user']['screen_name'] ?>/status/<?php echo $twitter_data[$key]['id_str']?>">
+										<img src="<?php echo $twitter_data[$key]['user']['profile_image_url'] ?>" alt="<?php echo $twitter_data[$key]['user']['screen_name'] ?>">
+									</a>
+								</div>
+								<div class="content">
+									<?php echo $this->formatTwitString($twitter_data[$key]['text']); ?>
+								</div>
+								<div class="time">
+									@ <a href="https://twitter.com/<?php echo $twitter_data[$key]['user']['screen_name'] ?>/status/<?php echo $twitter_data[$key]['id_str']?>"><?php echo $twitter_data[$key]['user']['screen_name'] ?></a>
+									<?php echo __('about ') ?><?php echo $this->relativeTime($twitter_data[$key]['created_at']) ?>
+								</div>
+							</div>
+						</div>
+					<?php endforeach ?>
+				</div>
+				<script type="text/javascript">
+					require([
+						'jquery',
+						'mgs/owlcarousel'
+					], function ($) {
+						var owltwitter<?php echo $blockId ?> = $('#twitter-slider<?php echo $blockId ?>').owlCarousel({
+							items: 1,
+							autoplay: <?php echo $autoPlay ?>,
+							autoplayHoverPause: <?php echo $stopAuto ?>,
+							nav: <?php echo $nav ?>,
+							dots: <?php echo $dot ?>,
+							navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"]
+						});
+					});
+				</script>
+			<?php else: ?>
+				<?php foreach ($twitter_data as $key => $value): ?>
+					<div class="twitter-item">
+						<div class="twitter-content">
+							<div class="twitter-user">
+								<a href="https://twitter.com/<?php echo $twitter_data[$key]['user']['screen_name'] ?>/status/<?php echo $twitter_data[$key]['id_str']?>">
+									<img src="<?php echo $twitter_data[$key]['user']['profile_image_url'] ?>" alt="<?php echo $twitter_data[$key]['user']['screen_name'] ?>">
+								</a>
+							</div>
+							<div class="content">
+								<?php echo $this->formatTwitString($twitter_data[$key]['text']); ?>
+							</div>
+							<div class="time">
+								@ <a href="https://twitter.com/<?php echo $twitter_data[$key]['user']['screen_name'] ?>/status/<?php echo $twitter_data[$key]['id_str']?>"><?php echo $twitter_data[$key]['user']['screen_name'] ?></a>
+								<?php echo __('about ') ?><?php echo $this->relativeTime($twitter_data[$key]['created_at']) ?>
+							</div>
+						</div>
+					</div>
+				<?php endforeach ?>
+			<?php endif ?>
+		<?php else: ?>
+			<div role="alert" class="alert alert-warning"><?php echo __('Can not get Twitter data or twitter account have not any feed.') ?></div>
+		<?php endif ?>
+		
+	</div>
+</div>

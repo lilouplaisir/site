@@ -1,0 +1,16 @@
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+<?php $block = $this->getBlock() ?>
+<div class="footer-container">
+	<div class="bottom-footer">
+		<div class="container">
+			<!-- Static block: footer_logo_and_social -->
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_logo_and_social')->setCanUsePanel($canUsePanel)->toHtml() ?>
+			<!-- Static block: claue_footer3_custom_menu -->
+			<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('claue_footer3_custom_menu')->setCanUsePanel($canUsePanel)->toHtml() ?>
+			<div class="copyright">
+				<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
+			</div>
+		</div>
+	</div>
+</div>

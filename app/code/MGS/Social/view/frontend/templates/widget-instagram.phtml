@@ -1,0 +1,58 @@
+<?php $helper = $this->helper('MGS\Social\Helper\Data'); ?>
+<?php
+	$user_name = $helper->getConfig('instagram_setting/user_name');
+	$client_id = $helper->getConfig('instagram_setting/client_id');
+	$number = $helper->getConfig('instagram_setting/number');
+	if($helper->getConfig('instagram_setting/width')){
+		$width = $helper->getConfig('instagram_setting/width');
+	}else {
+		$width = 100;
+	}
+	if($helper->getConfig('instagram_setting/height')){
+		$height = $helper->getConfig('instagram_setting/height');
+	}else {
+		$height = 100;
+	}
+	$access_token = $helper->getConfig('instagram_setting/access_token');
+?>
+<?php if($helper->getConfig('instagram_setting/enable_instagram'): ?>
+<div class="instagram">
+	<?php $images = $block->getWidgetInstagramData($access_token,$user_name, $client_id, $number, $width, $height); ?>
+	<div class="block-title">
+		<p><?php echo $this->getTitle(); ?></p>
+	</div>
+	<div class="note-text">
+		<span><?php echo $this->getNoteText(); ?></span>
+	</div>
+	<div class="owl-carousel instagram-carousel">
+	<?php foreach($images as $image): ?>
+		<a class="item" href="<?php echo $image ?>" target="_blank"><img src="<?php echo $image ?>" alt="image" /></a>
+	<?php endforeach; ?>
+	</div>
+	<script type="text/javascript">
+		require([
+			'jquery',
+			'MGS_Mpanel/js/owl.carousel.min'
+		], function(jQuery){
+			(function($) {
+				$(".instagram-carousel").owlCarousel({
+					items: 6,
+					nav: <?php echo $this->getNav() ?>,
+					navText: ["<i class='pe-7s-left-arrow'></i>","<i class='pe-7s-right-arrow'></i>"],
+					dots: <?php echo $this->getDots() ?>,
+					autoplay: <?php echo $this->getAutoplay() ?>,
+					responsive:{
+						0 : {items: 2},
+						480 : {items: 2},
+						768 : {items: 6},
+						980 : {items: 6},
+						1200 : {items: 6}
+					}
+				});
+			})(jQuery);
+		});
+	</script>
+</div>
+<?php else: ?>
+	<p><?php echo __('The instagram extension disabled') ?></p>
+<?php endif; ?>

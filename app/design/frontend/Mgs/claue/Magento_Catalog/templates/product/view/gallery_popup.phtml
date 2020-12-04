@@ -1,0 +1,71 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $galleryImages = $block->getGalleryImages() ?>
+<?php $galleryPopup = $themeHelper->getStoreConfig('mpanel/product_details/popup_gallery'); ?>
+
+<?php if($galleryPopup): ?>
+    <div id="popup-gallery" class="no-display">
+        <?php foreach($galleryImages as $image): ?>
+            <?php if($image->getLabel()): ?>
+                <?php $title_image = $image->getLabel(); ?>
+            <?php else: ?>
+                <?php $title_image = $_product->getName(); ?>
+            <?php endif ?>
+            
+            <?php if($image->getMediaType() == 'external-video'): ?>
+                <a href="<?php echo $image->getVideoUrl(); ?>" title="<?php echo $title_image ?>"><i class="pe-7s-play pr"></i><?php echo $title_image ?></a>
+            <?php else: ?>
+                 <a href="<?php echo $image->getLargeImageUrl(); ?>" title="<?php echo $title_image ?>"><?php echo $title_image ?></a>
+            <?php endif ?>
+        <?php endforeach ?>
+    </div>
+
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'magnificPopup'
+        ], function(jQuery){
+            (function($) {
+                $(document).ready(function() {
+                    
+                    $(document).on("click",".product-gallery-popup img:not(.img-thumbs)",function(e){
+                        $('#popup-gallery').magnificPopup('open');
+                    });
+                    
+                    $('#popup-gallery').magnificPopup({
+                        delegate: 'a',
+                        type: 'image',
+                        tLoading: 'Loading image #%curr%...',
+                        mainClass: 'mfp-img-gallery',
+                        fixedContentPos: true,
+                        gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [0,1]
+                        },
+                        image: {
+                            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                            titleSrc: function(item) {
+                            return item.el.attr('title');
+                            }
+                        }
+                    });
+                });
+            })(jQuery);
+        });
+    </script>
+<?php endif ?>

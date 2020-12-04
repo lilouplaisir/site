@@ -1,0 +1,52 @@
+<?php $_testimonialCollection = $this->getCollection(); ?>
+<?php $_collectionSize = count($_testimonialCollection) ?>
+<?php $helper = $this->helper('MGS\Testimonial\Helper\Data'); ?>
+<?php $themeHelper = $this->helper('MGS\Amp\Helper\Setting'); ?>
+
+<div class="testimonial-block center_content">
+	<?php if($this->getData('mgs_panel_title') != "" || $this->getData('mgs_panel_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('mgs_panel_title')): ?>
+				<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+			<?php endif ?>
+			<?php if($this->getData('mgs_panel_note')): ?>
+				<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	<?php if (count($_testimonialCollection) >0): ?>
+		<?php $showAvatar = $this->getShowAvatar(); ?>
+		<?php $useSlider = $this->getUseSlider(); ?>
+		<div class="block widget mgs-testimonial">
+			<?php if ($useSlider): ?>
+				<amp-carousel class="blog-carousel" height="600" width="320" layout="responsive" type="slides"<?php if($this->getAutoplay()): ?> autoplay delay="5000"<?php endif ?><?php if($this->getNavigation()):?> controls<?php endif ?>>
+			<?php endif ?>
+				<?php $i=$j=0; foreach ($_testimonialCollection as $testimonial): $i++; ?>
+				
+					<div class="item testimonial-item">
+						<div class="author-thumbnail">
+							<?php if($showAvatar && $this->getAvatarUrl($testimonial->getAvatar())): ?>
+								<?php $imageUrl = $this->getAvatarUrl($testimonial->getAvatar()) ?>
+															
+									<amp-img width="100" height="100" layout="responsive" alt="" src="<?= $imageUrl ?>"></amp-img>
+								
+							<?php endif;?>
+						</div>
+						<div class="content">
+							<div class="testimonial-text"><?php echo $testimonial->getContent() ?></div>
+							<div class="author-info">
+								<div class="name"><?php echo $testimonial->getName() ?></div>
+								<div class="infomation"><?php echo $testimonial->getInformation() ?></div>
+							</div>
+						</div>
+					</div>
+
+				<?php endforeach ?>
+			<?php if ($useSlider): ?>
+				</amp-carousel>
+			<?php endif ?>
+		</div>
+	<?php else: ?>
+		<div class="alert alert-warning"> <?php echo __('There are no testimonials matching the selection.') ?> </div>
+	<?php endif ?>
+</div>

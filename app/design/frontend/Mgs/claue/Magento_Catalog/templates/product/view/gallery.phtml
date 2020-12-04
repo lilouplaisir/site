@@ -1,0 +1,243 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ * @overwrite $block \MGS\NinthTheme\Block\Product\View\Gallery
+ */
+?>
+
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $galleryImages = $block->getGalleryImages(); ?>
+
+<?php // Get Config Gallery Template ?>
+<?php if($_product->getMgsDetailTemplate() == ""): ?>
+	<?php $glrTemplate = $themeHelper->getStoreConfig('mpanel/product_details/product_ct_template'); ?>
+<?php else: ?>
+	<?php $glrTemplate = $_product->getMgsDetailTemplate(); ?>
+<?php endif ?>
+<?php if($glrTemplate == 3): ?><?php $glrTemplate = 2; ?><?php endif ?>
+<?php if($glrTemplate == 5): ?><?php $glrTemplate = 6; ?><?php endif ?>
+
+<?php $lbox_image = $themeHelper->getStoreConfig('mpanel/product_details/popup_gallery'); ?>
+<?php $zoom_image = $lbox_image == 0 ? 1 : 0; ?>
+<?php $zoom_mobile = $themeHelper->getStoreConfig('mpanel/product_details/disable_zoom_detail'); ?>
+
+<?php // Image 360 ?>
+<?php $rotateImage = $_product->getData('mgs_j360') ?>
+<?php $rotateImages = [] ?>
+<?php if($rotateImage): ?>
+	<?php $rotateImages = $themeHelper->getRotateImages($_product->getId()) ?>
+<?php endif ?>
+
+<?php if($block->getViewType() == 'quickview'): ?>
+    <?php
+        $glrTemplate = 5;
+        $lbox_image = 0;
+        $zoom_mobile = 0;
+    ?>
+<?php endif ?>
+<input id="glr_layout" type="hidden" name="glr_layout" value="<?php echo $glrTemplate; ?>">
+<input id="zoom_image" type="hidden" name="zoom_image" value="<?php echo $zoom_image; ?>">
+<input id="lbox_image" type="hidden" name="lbox_image" value="<?php echo $lbox_image; ?>">
+<input id="zoom_mobile" type="hidden" name="zoom_mobile" value="<?php echo $zoom_mobile; ?>">
+<input id="view_type" type="hidden" name="view_type" value="<?php echo $block->getViewType(); ?>">
+
+<div class="xxx product media<?php if($glrTemplate == 1): ?> product-gallery-grid<?php endif ?>">
+    <?php if((count($galleryImages) > 1) || ($glrTemplate == 6)): ?>
+        <?php echo $this->getLayout()
+                        ->createBlock('Magento\Framework\View\Element\Template')
+                        ->setProduct($_product)
+                        ->setThemeHelper($themeHelper)
+                        ->setProduct($_product)
+                        ->setGalleryImages($galleryImages)
+                        ->setEnableZoom($zoom_image)
+                        ->setLbox($lbox_image)
+                        ->setZoomMobile($zoom_mobile)
+                        ->setViewType($block->getViewType())
+                        ->setTemplate('Magento_Catalog::product/view/gallery/gallery_'.$glrTemplate.'.phtml')
+                        ->toHtml(); ?>
+    <?php elseif(count($galleryImages) == 1): ?>
+        <?php foreach($galleryImages as $image): ?>
+        <?php $dataArrayImg =  $image->toArray();
+        ?>
+            <?php 
+                $lbImage = (isset($dataArrayImg['label']) &&  $dataArrayImg['label'] != null) ? $dataArrayImg['label'] : $_product->getName();
+             ?>
+            <div class="product single-image item-image base-image imgzoom" data-zoom="<?php echo $image->getImageZoom(); ?>">
+                <?php if($lbox_image): ?>
+                    <?php if($image->getMediaType() != 'external-video'): ?>
+                        <a class="lb" href="<?php echo $image->getImageZoom(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                    <?php else: ?>
+                        <a class="lb video-link" href="<?php echo $image->getVideoUrl(); ?>"><img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/></a>
+                    <?php endif ?>
+                <?php else: ?>
+                    <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage; ?>" />
+                    <?php if($image->getMediaType() == 'external-video'): ?>
+                        <a href="<?php echo $image->getVideoUrl(); ?>"></a>
+                    <?php endif ?>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+        <?php if($zoom_image): ?>
+        <script type="text/javascript">
+            require([ 'jquery', 'zoom-images' ],function($) { zoomElement('.imgzoom'); });
+        </script>
+        <?php endif ?>
+    <?php else: ?>
+        <?php // Product no image ?>
+        <?php $lbImage = $_product->getName(); ?>
+        <?php $_imagehelper = $this->helper('Magento\Catalog\Helper\Image'); ?>
+        <?php $noImage = $_imagehelper->init($_product, 'product_page_image_large')->getUrl() ?>
+        <div class="product item-image base-image">
+            <img class="img-responsive" src="<?php echo $noImage; ?>" alt="<?php echo $lbImage ?>"/>
+        </div>
+    <?php endif ?>
+</div>
+
+<?php // Image 360 ?>
+<?php if($rotateImage && (count($rotateImages)>0)): ?>
+    <a class="rotate-image" href="#" onclick="rotate360(); return false"></a>
+    <script type="text/javascript">
+        function rotate360(){
+            require([
+                'jquery',
+                "mage/translate",
+                'rotateImage'
+            ], function ($) {
+                $.ajax({
+                    url: '<?php echo $this->getUrl('mpanel/index/rotate') ?>',
+                    data: ('&product=<?php echo $_product->getId() ?>'),
+                    type: 'get',
+                    dataType: 'json',
+                    cache: true,
+                    showLoader: true
+                }).done(function (response) {
+                    $('.loading-mask').append(response.html);
+                    $('.loading-mask').addClass('j360-container');
+                    setTimeout(initImageRotate, 1);
+
+                }).fail(function (error) {
+                    alert($.mage.__('Sorry, something went wrong. Please try again later.'));
+                });
+            });
+        }
+
+        function initImageRotate(){
+            require([
+                'jquery',
+                "mage/translate",
+                'rotateImage'
+            ], function ($) {
+                $('.loading-mask').show();
+                $('#mgs_j360').j360();
+            });
+        }
+
+        function closeRotateContainer(){
+            require([
+                'jquery',
+                "mage/translate",
+                'rotateImage'
+            ], function ($) {
+                $('.rotate-image-container').remove();
+                $('.loading-mask').removeClass('j360-container');
+                $('.loading-mask').hide();
+                $('.preload_img').parent().remove();
+            });
+        }
+    </script>
+<?php endif ?>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'magnificPopup'
+    ], function($){
+        <?php if($lbox_image): ?>
+            $(document).ready(function() {
+                $('.product.media').magnificPopup({
+                    delegate: '.imgzoom .lb',
+                    type: 'image',
+                    tLoading: 'Loading image #%curr%...',
+                    mainClass: 'mfp-img-gallery',
+                    fixedContentPos: true,
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0,1]
+                    },
+                    iframe: {
+                        markup: '<div class="mfp-iframe-scaler">'+
+                                '<div class="mfp-close"></div>'+
+                                '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+                                '<div class="mfp-bottom-bar">'+
+                                  '<div class="mfp-title"></div>'+
+                                  '<div class="mfp-counter"></div>'+
+                                '</div>'+
+                                '</div>'
+                    },
+                    image: {
+                        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                    },
+                    callbacks: {
+                        elementParse: function(item) {
+                            if(item.el.context.className == 'lb video-link') {
+                                item.type = 'iframe';
+                            } else {
+                                item.type = 'image';
+                            }
+                        }
+                    }
+                });
+            });
+        <?php endif ?>
+        $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+            type: "iframe",
+            mainClass: "mfp-img-gallery",
+            preloader: true,
+            fixedContentPos: true,
+        });
+    });
+
+    <?php if($zoom_image): ?>
+        function zoomElement(el){
+            require([ 'jquery', 'zoom-images' ],function($) {
+                var dataZ = $(el).attr('data-zoom');
+                <?php if($zoom_mobile): ?>
+                    if($(window).width() > 767){
+                        $(el).zoom({
+                            magnify: 1,
+                            url: dataZ
+                        });
+                    }else {
+                        $(el).trigger('zoom.destroy');
+                    }
+                <?php else: ?>
+                    $(el).zoom({
+                        magnify: 1,
+                        url: dataZ
+                    });
+                <?php endif ?>
+            });
+        }
+        <?php if($zoom_mobile): ?>
+            require([ 'jquery', 'zoom-images' ],function($) {
+                $(window).resize(function(){
+                    if($(window).width() < 766){
+                        $('.imgzoom').trigger('zoom.destroy');
+                    }
+                });
+            });
+        <?php endif ?>
+    <?php endif ?>
+</script>
+

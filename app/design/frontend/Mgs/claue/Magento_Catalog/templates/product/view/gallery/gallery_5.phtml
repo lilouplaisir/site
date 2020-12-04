@@ -1,0 +1,51 @@
+<?php $galleryImages = $this->getGalleryImages(); ?>
+<?php $zoom_image = $this->getEnableZoom(); ?>
+<?php $lbox_image = $this->getLbox(); ?>
+<div id="owl-carousel-gallery" class="owl-carousel gallery-5">
+    <?php foreach($galleryImages as $image): ?>
+        <?php $lbImage = $block->getProduct()->getName(); ?>
+         <?php 
+            $dataArrayImg =  $image->toArray();
+            $productName = $this->getProduct()->getName();
+
+            $lbImage = (isset($dataArrayImg['label']) &&  $dataArrayImg['label'] != null) ? $dataArrayImg['label'] : $productName;
+        ?>
+        <div class="product item-image imgzoom" data-zoom="<?php echo $image->getImageZoom(); ?>">
+            <img class="img-responsive" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+        </div>
+    <?php endforeach ?>
+</div>
+<script type="text/javascript">
+    require([ 'jquery', 'mgs/owlcarousel' ], function ($) {
+        <?php if($this->getViewType() == 'quickview'): ?>
+        $('#owl-carousel-gallery').on(' initialized.owl.carousel', function(event) {
+            var hs = $('#owl-carousel-gallery').height();
+            $('.product-detail-infomation').height(hs);
+        });
+        <?php endif ?>
+        
+        $('#owl-carousel-gallery').owlCarousel({
+            items: 1,
+            autoplay: false,
+            lazyLoad: false,
+            nav: true,
+            dots: false,
+            rtl: RTL,
+            navText: ["<span class='fa fa-angle-left'></span>","<span class='fa fa-angle-right'></span>"],
+        });
+        
+        <?php if($this->getViewType() == 'quickview'): ?>
+        $('#owl-carousel-gallery').on('resized.owl.carousel', function(event) {
+            var hs = $('#owl-carousel-gallery').height();
+            $('.product-detail-infomation').height(hs);
+        });
+        <?php endif ?>
+    });
+    <?php if($zoom_image): ?>
+        require([ 'jquery', 'zoom-images' ],function($) { 
+            $(".imgzoom").each(function( index ) {
+                zoomElement(this);
+            });
+        });
+    <?php endif ?>
+</script>

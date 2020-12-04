@@ -1,0 +1,13 @@
+<?php $language = $block->getChildHtml('amp_store_language') ?>
+<?php $menu = $block->getChildHtml('amp.catalog.topnav') ?>
+<amp-sidebar id="site_menu" class="site_menu" layout="nodisplay" side="left">
+	<amp-selector class="tabs-with-flex" role="tablist">
+		<div id="left_menu_title" role="tab" aria-controls="menu_content" option selected>Menu</div>
+		<div id="menu_content" role="tabpanel" aria-labelledby="left_menu_title"><?php echo $menu ?></div>
+		<div id="left_setting_title" role="tab" aria-controls="setting_content" option>Setting</div>
+		<div id="setting_content" role="tabpanel" aria-labelledby="left_setting_title"><?php echo $language ?></div>
+	</amp-selector>
+    
+    
+</amp-sidebar>
+<button on='tap:site_menu.close,catalog_filter.close,minicart_sidebar.close,AMP.setState({activeSidebar: false})' class="close-menu-site close-sidebar"><span class="icon-cross2"></span></button>

@@ -1,0 +1,79 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product view template
+ *
+ * @see \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
+$_call = $block->getAtCall();
+$_code = $block->getAtCode();
+$_className = $block->getCssClass();
+$_attributeLabel = $block->getAtLabel();
+$_attributeType = $block->getAtType();
+$_attributeAddAttribute = $block->getAddAttribute();
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+if ($_attributeLabel && $_attributeLabel == 'default') {
+    $_attributeLabel = $_product->getResource()->getAttribute($_code)->getFrontendLabel();
+}
+if ($_attributeType && $_attributeType == 'text') {
+    $_attributeValue = ($_helper->productAttribute($_product, $_product->$_call(), $_code)) ? $_product->getAttributeText($_code) : '';
+} else {
+    $_attributeValue = $_helper->productAttribute($_product, $_product->$_call(), $_code);
+}
+?>
+<?php if($_attributeValue): ?>
+	<?php if($_className == 'overview'): ?>
+		<?php if($themeHelper->getStoreConfig('mpanel/product_details/short_description')): ?>
+			<div class="product attribute <?php /* @escapeNotVerified */ echo $_className?>">
+				 <?php //if ($_attributeLabel != 'none'): ?>
+				<!-- <strong class="type"><?php /* @escapeNotVerified */ //echo $_attributeLabel?></strong> -->
+				 <?php //endif; ?> 
+				<div class="value std" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
+			</div>
+		<?php endif; ?>
+		<?php elseif($_className == 'sku'): ?>
+		<?php if($_product->getAttributeText('manufacturer')){ ?>
+			   <div class="product attribute brand"> 
+					<strong class="type"> Marque : </strong>			
+					<span class="value"> <a href="<?php echo  $this->getUrl('')."catalogsearch/advanced/result/?manufacturer=".$_product->getResource()->getAttribute('manufacturer')->getSource()->getOptionId($_product->getAttributeText('manufacturer')); ?>"><?php echo $_product->getAttributeText('manufacturer') ?></a></span>	
+			   </div>
+		<?php } ?>
+		<?php
+		$categories = $_product->getCategoryIds(); /*will return category ids array*/		
+		$count = count($categories);
+		?>		
+			   <div class="product attribute category">
+					<strong class="type">Catégorie :</strong>
+					<?php $i = 1; foreach($categories as $category){ 					   
+					if($i == $count){ $cat = $objectManager->create('Magento\Catalog\Model\Category')->load($category); ?>						
+					<span class="value"><a href="<?php echo $cat->getUrl(); ?>"><?php echo $cat->getName(); ?></a></span>						
+					<?php }	$i++; }		?>
+			   </div>
+	
+		<?php if($themeHelper->getStoreConfig('mpanel/product_details/sku')): ?>
+			<div class="product attribute <?php /* @escapeNotVerified */ echo $_className?>">
+				<?php if ($_attributeLabel != 'none'): ?><strong class="type">Référence<?php /* @escapeNotVerified */ //echo $_attributeLabel?></strong><?php endif; ?>
+				<span class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></span>
+			</div>
+		<?php endif; ?>
+	<?php else: ?>
+		<div class="product attribute <?php /* @escapeNotVerified */ echo $_className?>">
+			<?php if ($_attributeLabel != 'none' || $_attributeLabel != __('none')): ?><strong class="type"><?php /* @escapeNotVerified */ echo $_attributeLabel?></strong><?php endif; ?>
+			<span class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></span>
+		</div>
+	<?php endif ?>
+<?php endif ?>
+
+

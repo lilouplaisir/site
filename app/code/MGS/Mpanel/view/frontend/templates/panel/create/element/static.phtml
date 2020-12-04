@@ -1,0 +1,247 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $content = '' ?>
+<div class="edit-static-form">
+	
+	<div class="row">
+		<div class="col-md-12 builder-title">
+			<h2><?php echo __('Text & Image Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('mpanel/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="static">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Mpanel\Model\Childs')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+				$content = $child->getBlockContent();
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		
+		<div class="form-horizontal">
+			<div id="form_tabs" class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a data-toggle="tab" href="#general"><?php echo __('General') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="additional-tab-nav" data-toggle="tab" href="#additional"><?php echo __('Content') ?></a>
+					</li>
+					
+					<li class="">
+						<a data-toggle="tab" href="#images"><?php echo __('Images') ?></a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="general" class="tab-pane active">
+						<div class="form-group">
+							<label for="col" class="col-sm-4 control-label"><?php echo __('Block col (12 to full)') ?></label>
+							<div class="col-sm-8">
+								<select id="col" class="required-entry input-text" name="col">
+									<?php for($i=12; $i>=1; $i--): ?>
+										<option value="<?php echo $i ?>"<?php if($exist && ($child->getCol()==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+									<?php endfor ?>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="class" class="col-sm-4 control-label"><?php echo __('Custom Class') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="class" class="input-text" name="class"<?php if($exist): ?> value="<?php echo $child->getClass() ?>"<?php endif ?> />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="animation" class="col-sm-4 control-label"><?php echo __('Block Animation') ?></label>
+							<div class="col-sm-4">
+								<select onchange="changeAnimationClass(this.value)" id="animation" class="input-text" name="setting[animation]">
+									<option value=""><?php echo __('Choose Animation Effect') ?></option>
+									<?php foreach($helper->getAnimationEffect() as $animation=>$label): ?>
+										<option value="<?php echo $animation ?>"<?php if($exist && ($settings['animation']==$animation)): ?> selected="selected"<?php endif ?>><?php echo $label ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+							
+							<div class="col-sm-4 text-center animated<?php if($exist && ($settings['animation']!='')): ?> <?php echo $settings['animation'] ?><?php endif ?>" id="animation-test">Animation Preview</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation_delay" class="col-sm-4 control-label"><?php echo __('Animation Delay') ?></label>
+							<div class="col-sm-8">
+								<input type="text" placeholder="ms" id="animation_delay" class="input-text validate-number" name="setting[animation_delay]" <?php if($exist): ?> value="<?php echo $settings['animation_delay'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div id="additional" class="tab-pane">
+						<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Panel\Create\StaticContent')->setContent($content)->setThemeHelper($helper)->setTemplate('panel/create/element/static/content.phtml')->toHtml() ?>
+					</div>
+					
+					<div id="images" class="tab-pane">
+						<?php $images = $helper->getPanelUploadImages('panel') ?>
+						
+							<table class="table table-bordered images-table">
+								<thead>
+									<tr>
+										<th class="td-image"><?php echo __('Image') ?></th>
+										<th class="td-code"><?php echo __('Code') ?></th>
+										<th class="td-remove"><?php echo __('Remove') ?></th>
+									</tr>
+								</thead>
+							</table>
+							<div class="panel-image-list">
+								<table class="table table-bordered" id="panel-images">
+									<tbody id="list-images">
+									<?php if(count($images)>0): ?>
+										<?php foreach($images as $_image): ?>
+											<tr>
+												<td class="a-center td-image">
+													<img src="<?php echo $this->getPanelUploadSrc('panel',$_image) ?>" alt=""/>
+												</td>
+												<td class="td-code">
+													<pre><?php echo $helper->convertImageWidgetCode('panel',$_image) ?></pre>
+												</td>
+												<td>
+													<input type="checkbox" name="remove[]" value="<?php echo $_image ?>"/>
+												</td>
+											</tr>
+										<?php endforeach ?>
+									<?php endif ?>
+									</tbody>
+								</table>
+							</div>
+							
+							<table class="table table-bordered" id="image-foot"<?php if(count($images)==0): ?> style="display:none"<?php endif ?>>
+								<tfoot>
+									<tr><td colspan="3"><?php echo __('If you want to insert image to content, please copy code and paste to content in HTML mode.') ?></td></tr>
+								</tfoot>
+							</table>
+								
+						
+						
+						<div id="upload-container">
+							<div id="list-upload"></div>
+							<button class="btn btn-default" onclick="newImageUpload()" type="button"><span class="fa fa-plus"></span> <?php echo __('Upload new Image') ?></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12 builder-action">
+						<div class="buttons">
+							<?php if(!$exist): ?>
+								<button type="button" class="btn btn-back" onclick="history.go(-1)"><span><span><?php echo __('Back') ?></span></span></button>
+							<?php endif ?>
+							<input type="submit" value="<?php echo __('Submit') ?>" class="btn btn-primary"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+	function newImageUpload(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#file_upload').length){
+					if($('#upload_button').length){
+						alert('<?php echo __('Please upload selected image first.') ?>');
+					}else{
+						alert('<?php echo __('Please choose file to upload.') ?>');
+					}
+				}else{
+					html = '<div class="form-group"><div class="col-sm-4 choose-file-upload"><input id="file_upload" name="file_upload" type="file" onchange="chooseFileAction(this.id)"><span class="choose-label"><span class="fa fa-folder-o"> </span> &nbsp;<?php echo __('Choose File to Upload') ?></span></div><div class="col-sm-4" id="upload_action"></div></div>';
+					$('#list-upload').html(html);
+				}
+				
+			})(jQuery);
+		});
+	}
+	
+	function chooseFileAction(elId){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				fileName = $('#'+elId).val();
+				arrName = fileName.split(".");
+				extensionName = arrName[arrName.length - 1];
+				extensionName = extensionName.toLowerCase();
+				if((extensionName=='jpg') || (extensionName=='jpeg') || (extensionName=='png') || (extensionName=='gif')){
+					html = fileName + ' <button type="button" class="btn btn-default" id="upload_button" onclick="uploadImage()"><img src="<?php echo $this->getViewFileUrl('MGS_Mpanel::images/small-ajax-loader.gif') ?>" id="upload-loading" style="display:none"/> <span class="fa fa-upload" id="upload-icon"></span> <?php echo __('Upload') ?></button>';
+					$('#upload_action').html(html);
+				}
+			})(jQuery);
+		});
+	}
+	
+	function uploadImage(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('.alert-image-success').length){
+					$('.alert-image-success').remove();
+				}
+				$('#upload-loading').show();
+				$('#upload-icon').hide();
+				var formData = new FormData();
+				formData.append('file', $('#file_upload')[0].files[0]);
+				$.ajax({
+					url: "<?php echo $this->getUrl('mpanel/post/upload', ['type'=>'panel']) ?>",
+					type: "POST",
+					data: formData,
+					contentType: false,
+					cache: false,
+					processData:false,
+					success: function(data){
+						var result = jQuery.parseJSON(data);
+						if(result.result=='success'){
+							html = '<tr ><td class="a-center td-image"><img src="<?php echo $this->getPanelUploadFolder('panel') ?>'+result.data+'" alt=""></td><td class="td-code"><pre>&lt;img src="{{media url="wysiwyg/panel/'+result.data+'"}}" alt=""/&gt;</pre><div class="alert alert-success alert-image-success"><?php echo __('The image was successfully uploaded.') ?></div></td><td><input name="remove[]" value="'+result.data+'" type="checkbox"></td></tr>';
+							$('#list-images').append(html);
+							$(".panel-image-list").animate({ scrollTop: $('#list-images').height()}, 300);
+							$('#image-foot').show();
+						}else{
+							alert(result.data);
+						}
+						
+						$('#list-upload').html('');
+					}
+				});
+			})(jQuery);
+		});
+	}
+</script>

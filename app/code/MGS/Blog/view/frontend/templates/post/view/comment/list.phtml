@@ -1,0 +1,49 @@
+<?php
+$helper = $this->helper('MGS\Blog\Helper\Data');
+$post = $block->getCurrentPost();
+$collection = $block->getCollection();
+?>
+<?php if (count($collection)): ?>
+    <div class="comment-list margin-bottom30">
+        <div class="comment-list-container">
+            <?php foreach ($collection as $comment): ?>
+                <div class="item">
+                    <h4 class="name"><?php echo $comment->getName(); ?></h4>
+                    <div class="content"><?php echo $comment->getContent(); ?></div>
+                    <div class="posted-on"><?php echo __('Posted On: %1', $block->formatDate($comment->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></div>
+					<hr>
+                </div>
+            <?php endforeach; ?>
+        </div>
+		<div class="blog-load-more-comment">
+			<a href="javascript:void(0);" onclick="loadmoreComment()"><?php echo __('Load More Comment') ?></a>
+		</div>
+        <div class="blog-post-comment-list-toolbar toolbar"><?php echo $block->getPagerHtml(); ?></div>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+	function loadmoreComment(){
+		require([
+			'jquery',
+			'jquery/ui'
+		], function(jQuery){
+			(function($) {
+				var url = $(".blog-post-comment-list-toolbar .pagination .pages-item-next a").attr('href');
+				if(url){
+					$.ajax(url, {
+						success: function(data) {
+							$('.comment-list-container').append($(data).find('.comment-list-container > *'));
+							$('.blog-post-comment-list-toolbar').replaceWith($(data).find('.blog-post-comment-list-toolbar'));
+							var url = $(data).find(".blog-post-comment-list-toolbar .pagination .pages-item-next a").attr('href');
+							if(!url) {
+								$('.blog-load-more-comment').hide();
+							}
+						}
+					});
+				}else {
+					$('.blog-load-more-comment').hide();
+				}
+			})(jQuery);
+		});		
+	}
+</script>

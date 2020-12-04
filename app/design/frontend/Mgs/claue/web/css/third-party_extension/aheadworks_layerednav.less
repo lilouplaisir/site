@@ -1,0 +1,123 @@
+.btn[disabled]{color:#aaa}
+.block.aw-layered-nav{
+	.block-content.filter-content{
+		margin-bottom:50px;
+		.filter-options{
+			.filter-options-item{
+				margin-bottom:0;
+				padding-bottom:20px;
+				.filter-options-title{
+					text-transform:uppercase;
+					cursor:pointer;
+					.label{color:#333}
+					&:after{color:#c8c8c8; font-size:15px}
+				}
+				.filter-options-content{
+					ol.items{
+						.item{padding: 5px 50px 5px 0;}
+						label{cursor:pointer; position:relative; top:-2px}
+						span.count{margin-top:-5px; font-size:13px}
+					}
+					.show-more{
+						span{cursor:pointer; color:#56cfe1}
+					}
+					.aw-layered-nav-priceslider{
+						padding-top:10px;
+						.ui-slider-horizontal{height:5px; background:#56cfe1}
+						.ui-slider-handle{width:15px; height:15px; background:#56cfe1; margin-top:-5px; cursor: move !important; margin-left:0}
+						.ui-slider-handle:last-child{margin-left:-15px}
+						.price-filter-info{
+							margin-bottom:8px;
+							span{color:#696969}
+						}
+					}
+				}
+			}
+			.aw-layered-nav-popover__action{padding-top:20px; border-top:1px solid #f0f0f0}
+		}
+		
+	}
+}
+.price-filter-button{margin-top:20px}
+#slider-range{margin-bottom:10px}
+.price-inputs-wrapper {
+	.price-from{margin-bottom:10px}
+	label{margin-bottom:0}
+	input[type="text"]{height:30px; line-height:30px}
+}
+
+#layered-selected-filters-block{
+	margin-bottom:20px;
+	.selected-items-list{
+		.selected-item{
+			border: 1px solid #aaa;
+			color:#aaa;
+			font-size:12px;
+			border-radius: 3px;
+			display: inline-block;
+			line-height: 1.5rem;
+			padding: .5rem .5rem .5rem 1rem;
+			&:last-child{padding:.5rem 1rem;}
+			a{color:#aaa}
+			&:hover{
+				border-color:#222;
+				span{
+					color:#222; 
+					text-decoration: line-through;
+					cursor:pointer;
+				}
+				a span{text-decoration: unset;}
+				
+				.action-close::before{color:#222}
+			}
+			
+			.action-close {
+				display: inline-block;
+				background-image: none;
+				background: none;
+				-moz-box-sizing: content-box;
+				border: 0;
+				box-shadow: none;
+				line-height: inherit;
+				margin: 0;
+				padding: 0;
+				text-decoration: none;
+				font-weight: 400;
+				
+				&:before {
+					font-size: 20px;
+					line-height: inherit;
+					color: #aaa;
+					content: "\e680";
+					font-family: 'Pe-icon-7-stroke';
+					margin: 0;
+					vertical-align: top;
+					display: inline-block;
+					font-weight: normal;
+					overflow: hidden;
+					speak: none;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+.page-layout-1column{
+	.block.aw-layered-nav{
+		.block-content.filter-content{
+			margin:0;
+		}
+		.filter-options{margin-bottom:30px}
+	}
+}
+
+@media (min-width: 992px) {
+	.block.filter.aw-layered-nav {
+		.block-content.filter-content {
+			.filter-options-item{ 
+				.filter-options-content{}
+			}
+		}
+	}
+}

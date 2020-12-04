@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php $_product = $block->getProduct() ?>
+<?php if ($_product->isSaleable() && $block->hasOptions()):?>
+    <div class="bundle-actions margin-top20 margin-bottom20">
+        <button id="bundle-slide"
+                class="action  btn btn-primary btn-lg customize"
+                type="button">
+            <span><?php /* @escapeNotVerified */ echo __('Customize and Add to Cart'); ?></span>
+        </button>
+    </div>
+<?php endif;?>

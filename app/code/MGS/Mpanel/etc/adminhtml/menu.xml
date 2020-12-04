@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Magento_Backend::mgs" title="MGS" module="Magento_Backend" sortOrder="70" resource="Magento_Backend::mgs"/>
+		
+		<add id="MGS_Mpanel::mgs_elements" title="MGS Theme" module="MGS_Mpanel" sortOrder="10" parent="Magento_Backend::mgs" resource="MGS_Mpanel::mgs_elements"/>
+		<add id="MGS_Mpanel::general_setting" title="General Setting" module="MGS_Mpanel" sortOrder="10" parent="MGS_Mpanel::mgs_elements" action="adminhtml/system_config/edit/section/mpanel" resource="MGS_Mpanel::general_setting"/>
+		<add id="MGS_Mpanel::theme_setting" title="Theme Setting V1.8.6" module="MGS_Mpanel" sortOrder="20" parent="MGS_Mpanel::mgs_elements" action="adminhtml/system_config/edit/section/mgstheme" resource="MGS_Mpanel::theme_setting"/>
+		<add id="MGS_Mpanel::color_setting" title="Color Setting" module="MGS_Mpanel" sortOrder="30" parent="MGS_Mpanel::mgs_elements" action="adminhtml/system_config/edit/section/color" resource="MGS_Mpanel::color_setting"/>
+    </menu>
+</config>

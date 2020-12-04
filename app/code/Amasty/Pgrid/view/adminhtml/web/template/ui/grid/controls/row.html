@@ -1,0 +1,47 @@
+<td class="ampgrid-td -wide">
+    <input class="admin__control-checkbox"
+           type="checkbox"
+           ko-checked="$col().visible"
+           data-bind="attr: {id: ++ko.bindingHandlers['uniqueName'].currentIndex + '_uid'},
+                      checked: $col().ampgrid.visible,
+                      event: {change: reloadGridData.bind($data, {'index': $col().index, 'visible': $col().visible})}"/>
+    <label class="admin__field-label"
+           data-bind="text: $col().ampgrid_def_label,
+                      attr: {for: ko.bindingHandlers['uniqueName'].currentIndex + '_uid'}"></label>
+</td>
+<td class="ampgrid-td -wide">
+    <input class="admin__control-text"
+           type="text"
+           data-bind="event: {blur: saveBookmark},
+                      attr: {id: ++ko.bindingHandlers['uniqueName'].currentIndex + '_utitle'},
+                      value: $col().ampgrid.title"/>
+</td>
+<td class="ampgrid-td">
+    <input class="admin__control-checkbox"
+           type="checkbox"
+           data-bind="attr: {id: ++ko.bindingHandlers['uniqueName'].currentIndex + '_ueditable'},
+                      disable: !$col().ampgrid.has_editor,
+                      checked: $col().ampgrid.editable,
+                      event: { change: saveBookmark }"/>
+    <label class="admin__field-label"
+           data-bind="attr: {for: ko.bindingHandlers['uniqueName'].currentIndex + '_ueditable'}"></label>
+</td>
+<td class="ampgrid-td">
+    <input class="admin__control-checkbox"
+           type="checkbox"
+           data-bind="attr: {id: ++ko.bindingHandlers['uniqueName'].currentIndex + '_ufilterable'},
+                      disable: !$col().ampgrid.has_filter,
+                      checked: $col().ampgrid.filterable,
+                      event: {change: saveBookmark}"/>
+    <label class="admin__field-label"
+           data-bind="attr: {for: ko.bindingHandlers['uniqueName'].currentIndex + '_ufilterable'}"></label>
+</td>
+<td class="ampgrid-td">
+    <input class="admin__control-checkbox"
+           type="checkbox"
+           data-bind="attr: {id: ++ko.bindingHandlers['uniqueName'].currentIndex + '_umarker'},
+                      checked: $col().ampgrid.marker,
+                      event: {change: saveBookmark}"/>
+    <label class="admin__field-label"
+           data-bind="attr: {for: ko.bindingHandlers['uniqueName'].currentIndex + '_umarker'}"></label>
+</td>

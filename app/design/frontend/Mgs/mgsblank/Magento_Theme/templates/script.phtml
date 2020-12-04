@@ -1,0 +1,65 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php if($themeHelper->getStoreConfig('mgstheme/general/sticky_menu')): ?>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				var height_header = $('.header').height() + $('.megamenu-content').height();
+				var check_height = $(window).height();
+				var body_height = $('body').height() - 250 -  height_header;
+				if(body_height > check_height){
+					$(window).scroll(function(){
+						if($(this).scrollTop() > 200 & $(this).width() > 991){
+							$('#placeholder-header').height(height_header);
+							$('#placeholder-header').show();
+							$('.header').addClass('active-sticky');
+						}else {
+							$('.header').removeClass('active-sticky');
+							$('#placeholder-header').hide();
+						}
+					});
+					$(window).resize(function() {
+						if($(this).width() < 992){
+							$('.header').removeClass('active-sticky');
+							$('#placeholder-header').hide();
+						}
+					});
+				}
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>
+<?php if($themeHelper->getStoreConfig('mgstheme/general/back_to_top')): ?>
+	<a href="" class="scroll-to-top"><i class="fa fa-arrow-up"></i></a>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 1) {
+						$('.scroll-to-top').css({bottom:"25px"});
+					} else {
+						$('.scroll-to-top').css({bottom:"-100px"});
+					}
+				});
+
+				$('.scroll-to-top').click(function(){
+					$('html, body').animate({scrollTop: '0px'}, 800);
+					return false;
+				});
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>
+
+<?php if (!$themeHelper->getStoreConfig('checkout/cart/redirect_to_cart')) : ?>
+	<script type="text/x-magento-init">
+	{
+		"[data-role=tocart-form], .form.map.checkout": {
+			"catalogAddToCart": {}
+		}
+	}
+	</script>
+<?php endif; ?>	

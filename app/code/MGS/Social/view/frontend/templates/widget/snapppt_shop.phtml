@@ -1,0 +1,9 @@
+<?php $helper = $this->helper('MGS\Social\Helper\Data'); ?>
+<?php $enable_snapppt = $helper->getConfig('snapppt_setting/enable_snapppt'); ?>
+<?php $snapppt_code = $helper->getConfig('snapppt_setting/snapppt_script'); ?>
+
+<?php if($enable_snapppt && $snapppt_code != ""): ?>
+	<?php echo $snapppt_code; ?>
+<?php else: ?>
+	<div class="message error"><div><?php echo __('Please config your Snapppt settings'); ?></div></div>
+<?php endif ?>

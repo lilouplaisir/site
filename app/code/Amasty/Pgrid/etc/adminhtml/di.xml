@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2020 Amasty (https://www.amasty.com)
+ * @package Amasty_Pgrid
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="am_date_config" type="Amasty\Pgrid\Model\Config\Date"/>
+    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
+        <plugin name="Amasty_Pgrid::ProductDataProvider" type="Amasty\Pgrid\Plugin\Catalog\Ui\DataProvider\Product\ProductDataProvider"/>
+        <arguments>
+            <argument name="addFilterStrategies" xsi:type="array">
+                <item name="amasty_categories" xsi:type="object">Amasty\Pgrid\Ui\DataProvider\Product\AddCategoryFilterToCollection</item>
+                <item name="amasty_qty_sold" xsi:type="object">Amasty\Pgrid\Ui\DataProvider\Product\AddQtySoldFilterToCollection</item>
+                <item name="amasty_availability" xsi:type="object">Amasty\Pgrid\Ui\DataProvider\Product\AddAvailabilityFilterToCollection</item>
+                <item name="thumbnail" xsi:type="object">Amasty\Pgrid\Ui\DataProvider\Product\AddThumbnailFilterToCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Ui\Config\Reader">
+        <plugin name="Amasty_Pgrid::addColumns" type="Amasty\Pgrid\Plugin\Ui\Model\Reader"/>
+    </type>
+    <type name="Magento\Ui\Model\Manager">
+        <plugin name="Amasty_Pgrid" type="Amasty\Pgrid\Plugin\Ui\Model\Manager" />
+    </type>
+    <type name="Magento\Ui\Model\Export\ConvertToCsv">
+        <plugin name="amasty_product_listing_csv_export" type="Amasty\Pgrid\Plugin\Ui\Model\Export\CsvExport"/>
+    </type>
+    <type name="Magento\Ui\Model\Export\ConvertToXml">
+        <plugin name="amasty_product_listing_xml_export" type="Amasty\Pgrid\Plugin\Ui\Model\Export\XmlExport"/>
+    </type>
+    <type name="Magento\CatalogInventory\Ui\DataProvider\Product\AddQuantityFieldToCollection">
+        <plugin name="AmastyPgridAddField" type="Amasty\Pgrid\Plugin\Ui\CatalogInventory\DataProvider\Product\AddQuantityFieldToCollection" />
+    </type>
+    <type name="Amasty\Pgrid\Observer\ProductSaveAfter">
+        <arguments>
+            <argument name="indexBuilder" xsi:type="object">Amasty\Pgrid\Model\Indexer\QtySold\Proxy</argument>
+        </arguments>
+    </type>
+</config>

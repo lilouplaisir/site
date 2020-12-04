@@ -1,0 +1,24 @@
+<?php 
+$_product = $this->getLoadProduct($this->getProductId());
+$_productImage = $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setProduct($_product)->setTemplate('MGS_Amp::Magento_Catalog/product/image_custom.phtml')->toHtml();
+$_productName = $block->escapeHtml($_product->getName());
+$_productUrl = $block->getProductUrl($_product);
+?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<div class="product-item-info">
+	<a class="product photo product-item-photo" href="<?= $_productUrl ?>" title="<?= $_productName ?>">
+		<?= $_productImage ?>
+		<?php echo $themeHelper->getProductLabel($_product) ?>
+	</a>
+	<div class="product details product-item-details">
+		<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Products\Deals')->setProduct($_product)->setTemplate('MGS_Amp::MGS_Mpanel/products/deals/item.phtml')->toHtml() ?>
+		<h5 class="product name product-item-name">
+			<a class="product-item-link" href="<?= $_productUrl ?>"><?= $_productName ?></a>
+		</h5>
+		
+		<?= $block->getProductPrice($_product); ?>
+		
+		
+
+	</div>
+</div>

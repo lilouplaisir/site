@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Magento_Backend::mgs" title="MGS" sortOrder="1000">
+					<resource id="MGS_Mpanel::mgs_elements" title="MGS Theme" sortOrder="10">
+						<resource id="MGS_Mpanel::general_setting" title="General Setting" sortOrder="10"/>
+						<resource id="MGS_Mpanel::theme_setting" title="Theme Setting" sortOrder="20"/>
+						<resource id="MGS_Mpanel::color_setting" title="Color Setting" sortOrder="30"/>
+					</resource>
+				</resource>
+			
+				<resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+							<resource id="MGS_Mpanel::mpanel" title="MGS" sortOrder="1000">
+								<resource id="MGS_Mpanel::config_mpanel" title="Panel General Settings" sortOrder="1"/>
+								<resource id="MGS_Mpanel::config_mgstheme" title="Theme Settings" sortOrder="2"/>
+								<resource id="MGS_Mpanel::config_color" title="Theme Color" sortOrder="3"/>
+							</resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

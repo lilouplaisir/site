@@ -1,0 +1,123 @@
+<?php $themeHelper = $this->getThemeHelper(); ?>
+<?php $themeSettings = $themeHelper->getThemeSettings(); ?>
+<?php $_imagehelper = $this->getImageHelper(); ?>
+<?php $_helper = $this->getCatalogHelperOutput(); ?>
+<?php $image = 'category_page_grid'; ?>
+<?php $image_hover = 'product_base_image'; ?>
+
+<?php $_product = $this->getLoadProduct($this->getProductId()); ?>
+
+<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+
+<div class="product-item-info <?php if ($this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mpanel/catalog/disable_hover_effect')== 1): ?> <?php echo "disable_hover_effect" ?>
+						<?php endif ?>" data-container="product-grid">
+	
+	<?php // Product Top ?>
+	<div class="product-top">
+	
+		<?php // Product Image ?>
+		<?php $size = $themeHelper->getImageSize($this->getRatio()); ?>
+		<?php $productImage = $_imagehelper->init($_product, $image)->resize($size['width'], $size['height'])->getUrl(); ?>
+		<?php //$productImageHover = $_imagehelper->init($_product, $image_hover)->resize($size['width'], $size['height'])->getUrl(); ?>
+		
+		<a href="<?php  echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+			<img src="<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($_product, $image)->resize($size['width'], $size['height'])->getUrl();; ?>" alt="<?php echo $_productNameStripped ?>" class="img-responsive product-image-photo img-thumbnail" />
+		</a>
+		
+		<?php // Product Label ?>
+		<?php echo $themeHelper->getProductLabel($_product) ?>
+		
+		<?php // Product Action ?>
+		<ul class="actions-link">
+		
+			<?php // QuickView  ?>
+			<li class="hidden-sm hidden-xs">
+				<?php $quickViewHelper = $this->helper('MGS\QuickView\Helper\Data'); ?>
+				<?php echo $quickViewHelper->aroundQuickViewHtml($_product); ?>
+			</li>
+			
+			<?php // Wishlist  ?>
+			<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && !$themeSettings['catalog']['wishlist_button']): ?>
+				<li>
+					<button class="action towishlist"
+					   title="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+					   data-title="<?php echo __('Add to Wish List') ?>"
+					   aria-label="<?php echo $block->escapeHtml(__('Add to Wish List')); ?>"
+					   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_product); ?>'
+					   data-action="add-to-wishlist"
+					   role="button">
+						<i class="fa fa-heart"></i>
+					</button>
+				</li>
+			<?php endif; ?>
+			
+			<?php // Compare  ?>
+			<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+			<?php if(!$themeSettings['catalog']['compare_button']): ?>
+				<li>
+					<button class="action tocompare"
+					   title="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+					   data-title="<?php echo __('Add to Compare') ?>"
+					   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+					   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+					   role="button">
+						<i class="fa fa-retweet"></i>
+					</button>
+				</li>
+			<?php endif ?>
+			
+			<?php // Add to cart  ?>
+			<?php if ($this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mgstheme/general/disable_add_to_cart')== 0): ?>
+				<?php if ($_product->isSaleable()): ?>
+					<li>
+						<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+						<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+							<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+							<input type="hidden" name="uenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+							<input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+							<button class="action tocart btn-cart" type="submit" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+								<span class="fa fa-shopping-cart"></span>
+							</button>
+						</form>
+					</li>
+				<?php endif ?>
+			<?php endif ?>
+		</ul>
+	</div>
+	
+	<?php // Product Detail ?>
+	<div class="product details product-item-details">
+	
+		<?php // Product Name ?>
+		<h5 class="product name product-item-name">
+			<a class="product-item-link"
+			   href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
+				<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+			</a>
+		</h5>
+		<?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+		<?php // Swatches Product ?>
+		<?php echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($_product)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml() ?>
+		
+		<?php // Price ?>
+		<?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
+		<?php if ($this->helper('MGS\Mpanel\Helper\Data')->getStoreConfig('mgstheme/general/disable_add_to_cart')== 0): ?>
+			<?php if ($_product->isSaleable()): ?>
+				<div>
+					<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+					<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $this->getUrl('checkout/cart/add', ['uenc'=>$postParams['data'][Action::PARAM_NAME_URL_ENCODED], 'product'=>$postParams['data']['product']]); ?>" method="post">
+						<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+						<input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+						<?php echo $block->getBlockHtml('formkey')?>
+						<button type="submit"
+													title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+													class="action tocart btn-cart hover_effect">
+							<span class="icon pe-7s-shopbag"></span>
+							<span class="text"><?php echo __('Add to Cart') ?></span>
+						</button>
+					</form>
+				</div>
+			<?php endif ?>
+		<?php endif ?>
+	</div>
+</div>

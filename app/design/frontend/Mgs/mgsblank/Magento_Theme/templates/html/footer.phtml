@@ -1,0 +1,17 @@
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $footer = $helper->getStoreConfig('mgstheme/general/footer') ?>
+<?php if($footer!=''): ?>
+	<?php echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Footer')->setBlock($block)->setTemplate('Magento_Theme::html/footers/'.$footer.'.phtml')->toHtml() ?>
+<?php else: ?>
+	<div class="footer-container">
+		<section class="bottom-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+<?php endif ?>

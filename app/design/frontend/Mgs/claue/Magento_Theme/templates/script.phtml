@@ -1,0 +1,177 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $cr_Header = $themeHelper->getStoreConfig('mgstheme/general/header'); ?>
+<?php $stickyLogo = $themeHelper->getStoreConfig('mgstheme/general/sticky_logo'); ?>
+
+<?php if($stickyLogo): ?>
+    <?php 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $stickyLogo = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'stickylogo/' . $stickyLogo; 
+    ?>
+<?php endif ?>
+
+<?php if($themeHelper->getStoreConfig('mgstheme/general/sticky_menu') && $cr_Header != 'header_5'): ?>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+
+				var height_header = $('.header').height();
+				var height_middle_header = $('.middle-header-content').height();
+				var height_bottom_header = $('.bottom-header-content').height();
+				
+				if(height_bottom_header){
+					sticky_header = height_header - height_bottom_header;
+				}else{
+					sticky_header = height_header - height_middle_header;
+				}
+				$(document).ready(function(){
+					$('#placeholder-header').height(height_header);
+				});
+				
+                var logoDf = $('.header .logo img').attr('src');
+				if($('body').height() > $(window).height()){
+					$(window).scroll(function(){
+						<?php if($cr_Header != 'header_8' && $cr_Header != 'header_9'): ?>
+							if($(this).scrollTop() > sticky_header){
+                                <?php if($stickyLogo): ?>
+                                    $('.header .logo img').attr("src","<?php echo $stickyLogo ?>");
+                                <?php endif ?>
+								if($(this).width() > 1199){
+									$('.header').addClass('active-sticky');
+								}else{
+									<?php if($themeHelper->getStoreConfig('mgstheme/general/sticky_menu_mobile')): ?>
+										$('.header').addClass('active-sticky');
+									<?php endif ?>
+								}
+							}else {
+                                <?php if($stickyLogo): ?>
+                                    $('.header .logo img').attr("src",logoDf);
+                                <?php endif ?>
+								$('.header').removeClass('active-sticky');
+							}
+						<?php else: ?>
+							var height_middle = $('.header .middle-header-content').height();
+							if($(this).width() > 1199){
+								if($(this).scrollTop() > height_header){
+									<?php if($stickyLogo): ?>
+										$('.header .logo img').attr("src","<?php echo $stickyLogo ?>");
+									<?php endif ?>
+									$('.header').addClass('active-sticky');
+									<?php if($cr_Header == 'header_8'): ?>
+										$("#main-Menucontent > .navigation").detach().prependTo('.parent__search');
+									<?php endif ?>
+								}else {
+									<?php if($stickyLogo): ?>
+										$('.header .logo img').attr("src",logoDf);
+									<?php endif ?>
+									$('.header').removeClass('active-sticky');
+									<?php if($cr_Header == 'header_8'): ?>
+										$(".parent__search > .navigation").detach().prependTo('#main-Menucontent');
+									<?php endif ?>
+								}
+							}
+						<?php endif ?>
+					});
+				}
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>
+<?php if($themeHelper->getStoreConfig('mgstheme/general/back_to_top')): ?>
+	<a href="" class="scroll-to-top"><i class="fa fa-arrow-up"></i></a>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 1) {
+						$('.scroll-to-top').css({bottom:"25px"});
+					} else {
+						$('.scroll-to-top').css({bottom:"-45px"});
+					}
+				});
+
+				$('.scroll-to-top').click(function(){
+					$('html, body').animate({scrollTop: '0px'}, 800);
+					return false;
+				});
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>
+
+<?php if (!$themeHelper->getStoreConfig('checkout/cart/redirect_to_cart')) : ?>
+	<script type="text/x-magento-init">
+	{
+		"[data-role=tocart-form], .form.map.checkout": {
+			"catalogAddToCart": {}
+		}
+	}
+	</script>
+<?php endif; ?>	
+
+<div class="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-ready" id="mgs-ajax-loading">
+	<div class="mfp-bg mfp-ready"></div>
+	<div class="preloader"></div>
+</div>
+
+<script type="text/javascript">
+    require([ 'jquery', 'mgs/owlcarousel' ], function ($) {
+        $('.list_gallery').owlCarousel({
+            items: 1,
+            autoplay: false,
+            nav: false,
+            dots: true,
+            rtl: RTL,
+            touchDrag: false,
+            mouseDrag: false,
+            loop:false,
+            navText: ["<span></span>","<span></span>"],
+        });
+    });
+	
+</script>
+
+<!-- Add Template Hover Products  -->
+<?php $hover_template = $themeHelper->getStoreConfig('mpanel/catalog/hover'); ?>
+<script type="text/javascript">
+	require([
+		'jquery'
+	], function($){
+		$(document).ready(function(){
+			$('.products-grid .product.product-item .product-item-info').addClass('<?php echo $hover_template ?>');
+			$('.products-grid .products.product-items .product-item-info').addClass('<?php echo $hover_template ?>');
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	require([
+		'jquery'
+	], function(jQuery){
+		(function($) {
+			if($(window).width() > 1199) {
+				$(window).scroll(function() {
+					if($('.active-sticky').length){         
+						$('.header12 .megamenu-content .tab-content ').appendTo('.header12 .middle-header-content .logo-header');
+					} else {
+						$('.header12 .middle-header-content .logo-header .tab-content').appendTo('.header12 .megamenu-content ');
+					}
+				});
+			}
+			$(window).resize(function(){
+				if($(window).width() > 1199) {
+					$(window).scroll(function() {
+						if($('.active-sticky').length){         
+							$('.header12 .megamenu-content .tab-content ').appendTo('.header12 .middle-header-content .logo-header');
+						} else {
+							$('.header12 .middle-header-content .logo-header .tab-content').appendTo('.header12 .megamenu-content ');
+						}
+					});
+				}
+			});
+		})(jQuery);
+	});
+</script>

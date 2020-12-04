@@ -1,0 +1,246 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
+
+<?php $_product = $block->getProduct(); ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<?php if($_product->getMgsDetailTemplate() == ""): ?>
+	<?php $templateLayout = $themeHelper->getStoreConfig('mpanel/product_details/product_ct_template'); ?>
+<?php else: ?>
+	<?php $templateLayout = $_product->getMgsDetailTemplate(); ?>
+<?php endif ?>
+
+<?php $galleryPopup = $themeHelper->getStoreConfig('mpanel/product_details/popup_gallery'); ?>
+<?php $stickyMenu = $themeHelper->getStoreConfig('mgstheme/general/sticky_menu'); ?>
+<?php $cr_header = $themeHelper->getStoreConfig('mgstheme/general/header'); ?>
+<?php $class = "product-detail-media"; ?>
+
+<?php if(!$templateLayout): ?><?php $templateLayout = 0; ?><?php endif ?>
+<input id="mgs_template_layout" type="hidden" name="mgs_template_layout" value="<?php echo $templateLayout; ?>">
+<input id="galleryPopup" type="hidden" name="galleryPopup" value="<?php echo $galleryPopup; ?>">
+<?php echo $block->getChildHtml('product.info.popup.gallery') ?>
+
+<?php if ($priceAmount = $_product->getFinalPrice()):?>
+	<div class="no-display price product-price"><?php echo $priceAmount; ?></div>
+<?php endif;?>
+
+<?php if($templateLayout != 5): ?>
+	<?php if($templateLayout == 3): ?>
+		<?php //Product with sticky info 2  ?>
+		<div class="row sticky-info-multiple-col">
+			<div class="col-lg-3 hidden-md hidden-sm hidden-xs product-detail-infomation  product-detail-infomation-sticky">
+				<div class="product-detail-infomation-content <?php if($stickyMenu && $cr_header): ?> has-sticky-menu<?php endif ?>">
+					<?php echo $block->getChildHtml('alert_urls') ?>
+					<div class="product-info-main 1">
+						<?php echo $block->getChildHtml('product.info.name') ?>
+						<?php echo $block->getChildHtml('product.info.review') ?>
+						<?php echo $block->getChildHtml('product.info.price') ?>
+						<?php echo $block->getChildHtml('product.price.tier') ?>
+						<?php echo $block->getChildHtml('product.info.overview') ?>
+						<?php echo $block->getChildHtml('product.info.main') ?>
+						<div class="product-sub-infomation">
+							<div class="product-info-stock-sku">
+								<?php echo $block->getChildHtml('product.info.type') ?>
+							</div>
+							<?php echo $block->getChildHtml('product.info.sku') ?>
+							<?php echo $block->getChildHtml('product.brand.name') ?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-sm-6 col-xs-12<?php if($galleryPopup): ?> product-gallery-popup<?php endif ?>">
+				<div class="<?php echo $class; ?>">
+					<?php echo $block->getChildHtml('product.info.media.image') ?>
+				</div>		
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12 product-detail-infomation  product-detail-infomation-sticky">
+				<div class="product-info-main 2 <?php if($stickyMenu && $cr_header != 'header_5'): ?> has-sticky-menu<?php endif ?>">
+					<div class="hidden-lg">
+						<?php echo $block->getChildHtml('alert_urls') ?>
+						<?php echo $block->getChildHtml('product.info.name') ?>
+						<?php echo $block->getChildHtml('product.info.review') ?>
+						<?php echo $block->getChildHtml('product.info.price') ?>
+						<?php echo $block->getChildHtml('product.price.tier') ?>
+						<?php echo $block->getChildHtml('product.info.overview') ?>
+					</div>
+					<?php echo $block->getChildHtml('product.info.main') ?>
+					<?php echo $block->getChildHtml('bundle.options.container') ?>
+					<?php echo $block->getChildHtml('product.info') ?>
+					<?php echo $block->getChildHtml('custom.product.detail.top.static.block') ?>
+
+					<div class="product-sub-infomation hidden-lg">
+						<div class="product-info-stock-sku">
+							<?php echo $block->getChildHtml('product.info.type') ?>
+						</div>
+						<?php echo $block->getChildHtml('product.info.sku') ?>
+						<?php echo $block->getChildHtml('product.brand.name') ?>
+					</div>
+					<?php if($themeHelper->getStoreConfig('mpanel/share_config/share_product_detail')): ?>
+						<div class="text-center margin-top20">
+							<?php echo $block->getChildHtml('product.detail.sharethis') ?>
+						</div>
+					<?php endif ?>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		require([
+			'jquery',
+			'sticky-content'
+			], function($){
+				$(window).scroll(function(){
+					$(".product-detail-infomation-sticky").stick_in_parent({
+						parent: $('.sticky-info-multiple-col')
+					});
+				});
+			});
+		</script>
+	<?php else: ?>
+		<div class="row product-detail-infomation-sticky-parent">
+			<div class="col-sm-6 col-xs-12<?php if($galleryPopup): ?> product-gallery-popup<?php endif ?>">
+				<div class="<?php echo $class; ?>">
+					<?php echo $block->getChildHtml('product.info.media.image') ?>
+				</div>
+			</div>
+			<div class="col-sm-6 col-xs-12 product-detail-infomation product-detail-infomation-sticky">
+				<div class="product-detail-infomation-content<?php if($themeHelper->getStoreConfig('mgstheme/general/sticky_menu') && $themeHelper->getStoreConfig('mgstheme/general/header') != 'header_5'): ?> has-sticky-menu<?php endif ?>">
+					<?php echo $block->getChildHtml('alert_urls') ?>
+					<div class="product-info-main 3">
+
+						<?php echo $block->getChildHtml('product.info.name') ?>
+						<?php echo $block->getChildHtml('product.info.review') ?>
+						<?php echo $block->getChildHtml('product.info.price') ?>
+						<div class="product-sub-infomation" style="padding: 0px;">
+							<div class="product-info-stock-sku">
+								<?php echo $block->getChildHtml('product.info.type') ?>
+							</div>
+							<?php echo $block->getChildHtml('product.info.sku') ?>							
+						</div>
+						<?php echo $block->getChildHtml('product.price.tier') ?>
+						<?php echo $block->getChildHtml('product.info.overview') ?>
+
+						<?php echo $block->getChildHtml('product.info.main') ?>
+						<?php echo $block->getChildHtml('bundle.options.container') ?>
+						<?php echo $block->getChildHtml('product.info') ?>
+						<?php echo $block->getChildHtml('custom.product.detail.top.static.block') ?>
+
+						<div class="product-sub-infomation">
+							<?php echo $block->getChildHtml('product.brand.name') ?>
+
+							<?php if($themeHelper->getStoreConfig('mpanel/share_config/share_product_detail')): ?>
+								<?php echo $block->getChildHtml('product.detail.sharethis') ?>
+							<?php endif ?>
+						</div>
+
+						<?php if($themeHelper->getStoreConfig('protabs/general/position')): ?>
+							<?php echo $block->getChildHtml('product.info.details') ?>
+						<?php endif ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endif ?>
+	<?php if(!$themeHelper->getStoreConfig('protabs/general/position') || $templateLayout== 3): ?>
+		<?php echo $block->getChildHtml('product.info.details') ?>
+	<?php endif ?>
+	<?php if($templateLayout == 2): ?>
+		<script type="text/javascript">
+		require([
+			'jquery',
+			'sticky-content'
+			], function(jQuery){
+				(function($) {
+					$(window).scroll(function(){
+						$(".product-detail-infomation-sticky").stick_in_parent({
+							parent: $('.product-detail-infomation-sticky-parent')
+						});
+					});
+				})(jQuery);
+			});
+		</script>
+	<?php endif ?>
+<?php else:?>
+	<div class="row product-detail-infomation-slide-gallery">
+		<div id="slide-gallery" class="<?php echo $class; ?>">
+			<?php echo $block->getChildHtml('product.info.media.image') ?>
+		</div>
+		<div class="product-detail-infomation-content<?php if($themeHelper->getStoreConfig('mgstheme/general/sticky_menu') && $themeHelper->getStoreConfig('mgstheme/general/header') != 'header_5'): ?> has-sticky-menu<?php endif ?>">
+			<?php echo $block->getChildHtml('alert_urls') ?>
+			<div class="product-info-main 4">
+				<?php echo $block->getChildHtml('product.info.name') ?>
+				<?php echo $block->getChildHtml('product.info.review') ?>
+				<?php echo $block->getChildHtml('product.info.price') ?>
+				<?php echo $block->getChildHtml('product.price.tier') ?>
+
+				<?php echo $block->getChildHtml('product.info.main') ?>
+				<?php echo $block->getChildHtml('bundle.options.container') ?>
+				<?php echo $block->getChildHtml('product.info') ?>
+				<?php if($themeHelper->getStoreConfig('mpanel/share_config/share_product_detail')): ?>
+					<?php echo $block->getChildHtml('product.detail.sharethis') ?>
+				<?php endif ?>
+				<?php echo $block->getChildHtml('custom.product.detail.top.static.block') ?>
+				<div class="product-sub-infomation">
+					<div class="product-info-stock-sku">
+						<?php echo $block->getChildHtml('product.info.type') ?>
+					</div>
+					<?php echo $block->getChildHtml('product.info.sku') ?>
+					<?php echo $block->getChildHtml('product.brand.name') ?>
+				</div>
+				<?php echo $block->getChildHtml('product.info.overview') ?>
+
+				<?php if($themeHelper->getStoreConfig('protabs/general/position')): ?>
+					<?php echo $block->getChildHtml('product.info.details') ?>
+				<?php endif ?>
+
+			</div>
+		</div>
+		<?php echo $block->getChildHtml('product.info.details') ?>
+		<script type="text/javascript">
+			require([
+			'jquery'
+			], function(jQuery){
+				(function($) {
+					$(document).ready(function(){
+						$('#slide-gallery').insertAfter('.breadcrumbs');
+					});
+				})(jQuery);
+			});
+		</script>
+	</div>
+<?php endif ?>
+<script type="text/javascript">
+	require([
+	'jquery'
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				$('.product-info-main .product-reviews-summary a').click(function(event){
+					event.returnValue = false;
+					event.preventDefault();
+					$('html, body').animate({
+						scrollTop: $(".product.info.detailed").offset().top - 150
+					}, 300);
+					<?php if(!$themeHelper->getStoreConfig('protabs/general/type')): ?>
+					if($(window).width() > 767){
+						$('#tab-label-reviews-title').click();
+					}else {
+						$('.title-accordion.accordion-reviews').click();
+					}
+					<?php else: ?>
+					if(!$('.title-accordion.accordion-reviews').hasClass('active')){
+						$('.title-accordion.accordion-reviews').click();
+					}
+					<?php endif ?>
+				});
+			});
+		})(jQuery);
+	});
+</script>

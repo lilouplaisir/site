@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+	<widget id="mgs_sliderwidget" class="MGS\Mpanel\Block\Widget\Slider">
+		<label translate="true">MGS Owl Slider</label>
+		<description>Create Owl Slider with static block</description>
+		<parameters>
+			<parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="10">
+				<label translate="true">Block</label>
+				<block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+					<data>
+						<item name="button" xsi:type="array">
+							<item name="open" xsi:type="string" translate="true">Select Block...</item>
+						</item>
+					</data>
+				</block>
+			</parameter>
+			<parameter name="banner_class" xsi:type="text" visible="true" sort_order="11">
+				<label translate="true">Custom Class</label>
+			</parameter>
+			<parameter name="banner_full" xsi:type="select" visible="true" sort_order="12" source_model="Magento\Config\Model\Config\Source\Yesno">
+				<label translate="true">Full Screen</label>
+			</parameter>
+			<parameter name="banner_height" xsi:type="text" visible="true" sort_order="13">
+				<label translate="true">Height Loading (px)</label>
+			</parameter>
+			<parameter name="banner_item" xsi:type="text" visible="true" sort_order="14">
+				<label translate="true">Responsive</label>
+				<description><![CDATA[eg: <code>{ 0 : {items: 1}, 480 : {items: 1}, 768 : {items: 1}, 980 : {items: 1}, 1200 : {items: 1} }</code>]]></description>
+			</parameter>
+			<parameter name="animate" xsi:type="select" visible="true" sort_order="20" source_model="MGS\Mpanel\Model\Config\Source\AnimateSlider">
+				<label translate="true">Animate</label>
+			</parameter>
+			<parameter name="banner_owl_auto" xsi:type="select" visible="true" sort_order="30" source_model="Magento\Config\Model\Config\Source\Yesno">
+				<label translate="true">Auto Play</label>
+			</parameter>
+			<parameter name="banner_owl_speed" xsi:type="text" visible="true" sort_order="45">
+				<label translate="true">Auto Play Speed</label>
+                <description translate="true">ms</description>
+				<depends>
+					<parameter name="banner_owl_auto"  value="1" />
+				</depends>
+			</parameter>
+			<parameter name="banner_owl_nav" xsi:type="select" visible="true" sort_order="50" source_model="Magento\Config\Model\Config\Source\Yesno">
+				<label translate="true">Navigation</label>
+			</parameter>
+			<parameter name="banner_owl_dot" xsi:type="select" visible="true" sort_order="60" source_model="Magento\Config\Model\Config\Source\Yesno">
+				<label translate="true">Pagination</label>
+			</parameter>
+			<parameter name="banner_owl_loop" xsi:type="select" visible="true" sort_order="70" source_model="Magento\Config\Model\Config\Source\Yesno">
+				<label translate="true">Loop</label>
+			</parameter>
+			<parameter name="banner_owl_rtl" xsi:type="select" visible="true" sort_order="80" source_model="Magento\Config\Model\Config\Source\Yesno">
+				<label translate="true">Right to left</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>
+ 

@@ -1,0 +1,15 @@
+<?php $helper = $this->helper('MGS\Social\Helper\Data'); ?>
+<?php if ($helper->getConfig('facebook_settings/active')): ?>
+	<?php $showTitle = $helper->getConfig('facebook_page_plugin_settings/show_title'); ?>
+	<?php $title = $helper->getConfig('facebook_page_plugin_settings/title'); ?>
+	<div class="block block-facebook-page-plugin">
+		<?php if ($showTitle && $title != ''): ?>
+			<div class="block-title">
+				<h4 class="title" id="block-facebook-page-plugin-heading"><span><?php echo $title; ?></span></h4>
+			</div>
+		<?php endif; ?>
+		<div class="block-content">
+			<?php echo $this->getFacebookLikeBox(); ?>
+		</div>
+	</div>
+<?php endif; ?>

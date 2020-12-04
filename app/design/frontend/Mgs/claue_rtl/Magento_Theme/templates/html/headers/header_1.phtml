@@ -1,0 +1,106 @@
+<?php $block = $this->getBlock() ?>
+
+<?php $helper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+<?php $customerSession = $objectManager->create('Magento\Customer\Model\Session'); ?>
+<?php $customerUrl = $objectManager->create('Magento\Customer\Model\Url'); ?>
+
+<?php $topLeftBlock = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_1_top_left_link')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+
+<?php $topMiddleBlock = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_1_top_middle_block')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+<div class="top-header-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<!-- Static block: header_1_top_left_link -->
+				<?php if($topLeftBlock): ?>
+					<div class="top-custom-link">
+						<?php echo $topLeftBlock; ?>
+					</div>
+				<?php endif ?>
+			</div>
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<!-- Static block: header_1_top_middle_block -->
+				<?php if($topMiddleBlock): ?>
+					<div class="top-middle-header">
+						<?php echo $topMiddleBlock; ?>
+					</div>
+				<?php endif ?>
+			</div>
+			<div class="col-md-4 hidden-sm hidden-xs col-sm-12 col-xs-12">
+				<?php echo $block->getChildHtml('store_language') ?>
+				<?php echo $block->getChildHtml('currency') ?>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="middle-header-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-2 col-md-4 col-sm-4 mobile-item-col">
+				<button class="action nav-toggle hidden-lg">
+					<img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt="<?php echo __('Toogle Menu') ?>">
+				</button>
+				<div class="visible-lg">
+					<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_1_social_block')->setCanUsePanel($canUsePanel)->toHtml(); ?>
+				</div>
+			</div>
+			<div class="hidden-lg col-md-4 col-sm-4 logo-header mobile-item-col">
+				<?php echo $block->getChildHtml('logo') ?>
+			</div>
+			<div class="col-lg-8 col-xs-12 megamenu-content<?php if($block->getChildHtml('store.settings') == ""): ?> no-menu-settings<?php endif ?>">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#main-Menucontent"><?php echo __('Menu'); ?></a></li>
+					<li><a data-toggle="tab" href="#main-Accountcontent"><?php echo __('Account'); ?></a></li>
+					<li class="settings-menu-tab"><a data-toggle="tab" href="#main-Settingcontent"><?php echo __('Setting'); ?></a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="main-Menucontent" class="tab-pane active">
+						<?php if($block->getChildHtml('megamenu')!=''): ?>
+							<?php echo $block->getChildHtml('megamenu') ?>
+						<?php else: ?>
+							<?php echo $block->getChildHtml('catalog.topnav') ?>
+						<?php endif ?>
+					</div>
+					<div id="main-Accountcontent" class="tab-pane">
+						<div class="top-links">
+							<?php echo $block->getChildHtml('top.links') ?>
+						</div>
+					</div>
+					<div id="main-Settingcontent" class="tab-pane">
+						<?php echo $block->getChildHtml('store.settings') ?>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-4 col-sm-4 col-xs-auto mobile-item-col">
+				<div class="table-icon-menu pull-right">
+					<?php echo $block->getChildHtml('top.search') ?>
+					
+					<div class="dropdown dropdown-toplinks">
+						<button class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="pe-7s-user"></i></button>
+						<div class="dropdown-menu">
+							<?php echo $block->getChildHtml('top.links') ?>
+						</div>
+					</div>
+					
+					<?php if($this->helper('Magento\Wishlist\Helper\Data')->isAllow()): ?>
+						<div class="header-wl" data-bind="scope: 'wishlist'">
+							<a href="<?php /* @escapeNotVerified */ echo $this->helper('Magento\Wishlist\Helper\Data')->getListUrl() ?>">
+								<i class="pe-7s-like"></i>
+								<?php if($this->helper('Magento\Wishlist\Helper\Data')->getItemCount() > 0): ?>
+									<span class="count-wl"><?php echo $this->helper('Magento\Wishlist\Helper\Data')->getItemCount(); ?></span>
+								<?php endif ?>
+							</a>
+						</div>
+					<?php endif ?>
+					
+					<?php echo $block->getChildHtml('minicart') ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<button class="action close-nav-button"><span class="pe-7s-close" aria-hidden="true"></span></button>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mgs_quickview>
+            <general>
+                <enabled>1</enabled>
+                <hide_short_description>0</hide_short_description>
+                <hide_qty>0</hide_qty>                
+                <hide_availability>0</hide_availability>
+                <hide_sku>0</hide_sku>
+            </general>            
+        </mgs_quickview>      
+    </default>
+</config>

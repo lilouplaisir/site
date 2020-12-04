@@ -1,0 +1,58 @@
+<?php $helper = $this->getHelper() ?>
+<div class="top-panel hidden-xs hidden-sm" style="display:none">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+				<?php if($helper->acceptToUsePanel()): ?>
+					<?php if($helper->isHomepage() || $helper->isCmsPage()): ?>
+						<div class="btn-group">
+							<button class="btn btn-default btn-panel-confirm" type="button" onclick="setLocation('<?php echo $helper->getUrlBuilder()->getUrl('mpanel/index/confirm',['store_id'=>$this->getStoreId(),'page_id'=>$this->getCmsPageId(), 'page'=>$this->getRequest()->getFullActionName(),'referrer'=>$helper->getCurrentBase64Url()]) ?>')"><i class="fa fa-check"></i> <span><?php echo __('Confirm') ?></span></button>
+						</div>
+					<?php endif ?>
+					<div class="row">
+						<?php if($helper->isCategoryPage()): ?>
+							<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Panel\Toppanel')->setTemplate('panel/toppanel/category.phtml')->setHelper($helper)->toHtml() ?>
+						<?php elseif($helper->isSearchPage()): ?>
+							<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Panel\Toppanel')->setTemplate('panel/toppanel/catalogsearch.phtml')->setHelper($helper)->toHtml() ?>
+						<?php elseif($helper->isProductPage()): ?>
+							<?php echo $this->getLayout()->createBlock('MGS\Mpanel\Block\Panel\Toppanel')->setTemplate('panel/toppanel/product_details.phtml')->setHelper($helper)->toHtml() ?>
+						<?php endif ?>
+					</div>
+				<?php endif ?>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<div class="btn-group pull-right">
+					<div data-role="switcher" class="admin__actions-switch pull-right">
+						<?php if($helper->acceptToUsePanel()): ?>
+							<input type="checkbox" class="admin__actions-switch-checkbox" value="1" id="active-builder" checked="checked" onclick="setLocation('<?php echo $helper->getUrlBuilder()->getUrl('mpanel/index/disable',['referrer'=>$helper->getCurrentBase64Url()]) ?>')"/>
+						<?php else: ?>
+							<input type="checkbox" class="admin__actions-switch-checkbox" value="0" id="active-builder" onclick="setLocation('<?php echo $helper->getUrlBuilder()->getUrl('mpanel/index/active',['referrer'=>$helper->getCurrentBase64Url()]) ?>')"/>
+						<?php endif; ?>
+						<label class="admin__actions-switch-label" for="active-builder">
+							<span class="admin__actions-switch-text" data-text-on="<?php echo __('Yes') ?>" data-text-off="<?php echo __('No') ?>"></span>
+						</label>
+					</div>
+					<span class="builder-switcher-label pull-right"><?php echo __('Active Builder') ?></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function setLocation(url){
+		require([
+			"jquery",
+			"mage/mage"
+		], function($){
+			$($.mage.redirect(url, "assign", 0));
+		});
+	}
+</script>
+
+<script>
+	require([
+		"jquery",
+		], function($){
+	        $("main").css({"position": "relative"});
+	});
+</script>

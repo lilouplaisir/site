@@ -1,0 +1,474 @@
+<home>
+	<section>
+		<name><![CDATA[block156]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[outside]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[0]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block157]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[4,4,4]]></block_cols>
+		<tablet_cols><![CDATA[["4","4","4"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["6","6","12"]]]></mobile_cols>
+		<block_class><![CDATA[["col-xxs-12 margin-bottom30 pull-left","col-xxs-12 margin-bottom30 pull-right","sm-ceter"]]]></block_class>
+		<class><![CDATA[padding-left30 padding-right30]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[30]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block158]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[]]></background_repeat>
+		<background_cover><![CDATA[]]></background_cover>
+		<parallax><![CDATA[]]></parallax>
+		<fullwidth><![CDATA[]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block159]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[4,4,4]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30","margin-bottom30"]]]></block_class>
+		<class><![CDATA[padding-left60 padding-right60 simple-product sm-padding15]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block160]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[50]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block161]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[68]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block162]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[#f6f6f8]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[35]]></padding_top>
+		<padding_bottom><![CDATA[2]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block163]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[]]></background_repeat>
+		<background_cover><![CDATA[]]></background_cover>
+		<parallax><![CDATA[]]></parallax>
+		<fullwidth><![CDATA[]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block156-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="row">
+<div id="slider_comestics" class="slider_comestics owl-carousel text-colour-white">
+<div class="slider-item text-center"><img src="{{media url="wysiwyg/panel/claue_comestics_slider_1.jpg"}}" alt="" />
+<div class="text-slider">
+<h2><span class="text-colour-white">NEW SKINCARE</span></h2>
+<p class="text-colour-white hidden-sm hidden-xs">Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident</p>
+<a class="btn btn-default2" href="#">Shop Now</a></div>
+<div class="bottom">
+<h2><span class="text-colour-white">SKINCARE</span></h2>
+</div>
+</div>
+<div class="slider-item text-center"><img src="{{media url="wysiwyg/panel/claue_comestics_slider_2.jpg"}}" alt="" />
+<div class="text-slider">
+<h2><span class="text-colour-white">MAKE UP TOOL</span></h2>
+<p class="text-colour-white hidden-sm hidden-xs">Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident</p>
+<a class="btn btn-default2" href="#">Shop Now</a></div>
+<div class="bottom">
+<h2><span class="text-colour-white">MAKE UP</span></h2>
+</div>
+</div>
+<div class="slider-item text-center"><img src="{{media url="wysiwyg/panel/claue_comestics_slider_3.jpg"}}" alt="" />
+<div class="text-slider">
+<h2><span class="text-colour-white">PERFUME</span></h2>
+<p class="text-colour-white hidden-sm hidden-xs">Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident</p>
+<a class="btn btn-default2" href="#">Shop Now</a></div>
+<div class="bottom">
+<h2><span class="text-colour-white">PERFUME</span></h2>
+</div>
+</div>
+<div class="slider-item text-center"><img src="{{media url="wysiwyg/panel/claue_comestics_slider_4.jpg"}}" alt="" />
+<div class="text-slider">
+<h2><span class="text-colour-white">LIP ON LIP</span></h2>
+<p class="text-colour-white hidden-sm hidden-xs">Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident</p>
+<a class="btn btn-default2" href="#">Shop Now</a></div>
+<div class="bottom">
+<h2><span class="text-colour-white">LIPS</span></h2>
+</div>
+</div>
+<div class="slider-item text-center"><img src="{{media url="wysiwyg/panel/claue_comestics_slider_5.jpg"}}" alt="" />
+<div class="text-slider">
+<h2><span class="text-colour-white">MAKE UP TOOL</span></h2>
+<p class="text-colour-white hidden-sm hidden-xs">Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident</p>
+<a class="btn btn-default2" href="#">Shop Now</a></div>
+<div class="bottom">
+<h2><span class="text-colour-white">SKIN CARE</span></h2>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" xml="space">
+	require([
+	'jquery',
+	'mgs/owlcarousel'
+	], function ($) {
+        $('#slider_comestics').owlCarousel({
+            items: 3,
+            autoplay: false,
+            autoplayHoverPause: false,
+            loop: true,
+            nav: true,
+            rtl: RTL,
+            dots: false,
+            navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+            responsive:{
+                0:{ 
+                    items:1
+                },
+                480:{ 
+                    items:2               
+				},
+				768:{ 
+                    items:3               
+				},
+                1200: { 
+                    items: 3
+                }
+            }
+        });
+	});
+</script>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block157-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_cosmetics_banner_1"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_cosmetics_banner_1" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block157-2]]></block_name>
+		<type><![CDATA[deals]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"1","perrow":"1","template":"grid.phtml","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-bottom30]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Deals" mgs_panel_title="" mgs_panel_note="" limit="1" perrow="1" ratio="4" category_ids="" use_slider="0" loadmore="0" template="products/deals/grid.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block157-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_cosmetics_banner_2"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[rorate]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_cosmetics_banner_2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block158-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="content-heading">
+							<h3 class="title">HOT PRODUCTS</h3>
+										<div class="block-note">Top view in the week</div>
+					</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-0]]></block_name>
+		<type><![CDATA[attribute_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","attribute":"best_seller","limit":"4","perrow":"2","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Attributes" mgs_panel_title="" mgs_panel_note="" limit="4" ratio="4" category_ids="" attribute="best_seller" use_slider="0" loadmore="0" template="products/attribute/grid.phtml" perrow="2"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-0]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"ASOS Ridley High Waist","product_id":"10","ratio":"0","prd_template":"0","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="10" ratio="0" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="0" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-1]]></block_name>
+		<type><![CDATA[special_product]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","product_name_temp":"Jean Lion king black","product_id":"27","ratio":"0","prd_template":"0","product_name":"1","product_price":"1","product_addcart":"1","characters_count":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","product_rating":0,"product_description":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\SpecialProduct" mgs_panel_title="" mgs_panel_note="" product_id="27" ratio="0" product_name="1" product_price="1" product_rating="0" product_description="0"  prd_template="0" product_addcart="1" template="products/single/default.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-1]]></block_name>
+		<type><![CDATA[attribute_products]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","attribute":"trending","limit":"4","perrow":"2","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Attributes" mgs_panel_title="" mgs_panel_note="" limit="4" ratio="4" category_ids="" attribute="trending" use_slider="0" loadmore="0" template="products/attribute/grid.phtml" perrow="2"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block160-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"LATEST FROM BLOG","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","post_category":["1","2","3","4","5"],"number_of_posts":"3","items":"3","template":"default.phtml","show_thumbnail":"1","show_short_content":"1","limit_characters_short_content":"115","view_as":"1","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="LATEST FROM BLOG" post_category="1,2,3,4,5" number_of_posts="3" items="3" show_thumbnail="1" mgs_panel_note="The freshest and most exciting news" template="widget/default.phtml" show_short_content="1" limit_characters_short_content="115" view_as="owl_carousel" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block161-0]]></block_name>
+		<type><![CDATA[instagram]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"Find us on Instagram","animation":"","animation_delay":"","limit":"12","perrow":"6","resolution":"low_resolution","link":"1","like":"1","comment":"1","use_slider":"1","number_row":"1","navigation":"1","autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[title-instagram]]></class>
+		<block_content><![CDATA[{{block class="MGS\Social\Block\Panel\Widget" mgs_panel_title="" mgs_panel_note="Find us on Instagram" limit="12" resolution="low_resolution" link="1" perrow="6" use_slider="1" like="1" comment="1" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1" template="widget/instagram.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-2]]></block_name>
+		<type><![CDATA[new_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"4","perrow":"2","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\NewProducts" mgs_panel_title="" mgs_panel_note="" limit="4" ratio="4" category_ids="" use_slider="0" loadmore="0" template="products/new/grid.phtml" perrow="2"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-2]]></block_name>
+		<type><![CDATA[sale]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"4","perrow":"2","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Sale" mgs_panel_title="" mgs_panel_note="" limit="4" ratio="4" category_ids="" use_slider="0" loadmore="0" template="products/sale/grid.phtml" perrow="2"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block162-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="row">
+																							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+									<div class="row">
+																	<div class="panel-block-row col-md-12 col-xs-12">
+								<div class="icon-service">
+<div class="icon"><i class="pe-7s-car">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">FREE SHIPPING</h6>
+<p class="no-margin">Free shipping on all US order or order above $200</p>
+</div>
+</div>			</div>
+											</div>
+								</div>
+																							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+									<div class="row">
+																	<div class="panel-block-row col-md-12 col-xs-12">
+								<div class="icon-service">
+<div class="icon"><i class="pe-7s-help2">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">SUPPORT 24/7</h6>
+<p class="no-margin">Contact us 24 hours a day, 7 days a week</p>
+</div>
+</div>			</div>
+											</div>
+								</div>
+																							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30 first-sm-item">
+									<div class="row">
+																	<div class="panel-block-row col-md-12 col-xs-12">
+								<div class="icon-service">
+<div class="icon"><i class="pe-7s-refresh">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">30 DAYS RETURN</h6>
+<p class="no-margin">Simply return it within 30 days for an exchange.</p>
+</div>
+</div>			</div>
+											</div>
+								</div>
+																							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 margin-bottom30">
+									<div class="row">
+																	<div class="panel-block-row col-md-12 col-xs-12">
+								<div class="icon-service">
+<div class="icon"><i class="pe-7s-door-lock">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">100% PAYMENT SECURE</h6>
+<p class="no-margin">We ensure secure payment with PEV</p>
+</div>
+</div>			</div>
+											</div>
+								</div>
+													</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block163-0]]></block_name>
+		<type><![CDATA[brands]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"OUR BRANDS","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","limit":"10","perrow":"5","brand_by":"all","use_slider":"1","number_row":"1","navigation":"1","autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Brand\Block\Widget\Home" mgs_panel_title="OUR BRANDS" mgs_panel_note="The freshest and most exciting news" limit="10" perrow="5" use_slider="1" brand_by="all" template="widget/home.phtml" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Claue Cosmetics Banner 1]]></title>
+			<filename><![CDATA[/c/o/cosmetics_banner1.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="cosmestics-banner padding-bottom50 padding-left30"><h3 style="font-size:18px; line-height:24px">VIEW COLLECTION</h3>
+<h4 style="font-size:50px; line-height:50px;">LOOKBOOK 2016</h4>
+<p style="color:#878787">your world of fashion in numbers</p></div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_cosmetics_banner_1]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Cosmetics Banner 2]]></title>
+			<filename><![CDATA[/c/o/cosmetics_banner2.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="cosmestics-banner">
+	<h3 class="fwm margin-bottom10 ls__1 lh__1" style="font-size:18px; color:#222222;">MAKEUP BRUSH</h3>
+	<h4 class="margin-bottom10 nowrap" style="font-size:50px; line-height:50px; color:#222222;">UP TO 70%</h4>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_cosmetics_banner_2]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+		<general>
+			<back_to_top>1</back_to_top>
+			<footer>footer_1</footer>
+			<header>header_2</header>
+			<layout>wide</layout>
+			<sticky_menu>1</sticky_menu>
+			<width>width1200</width>
+		</general>
+		<fonts>
+			<btn>Poppins</btn>
+			<custom_fonts_element>blockquote,.sub-title, .content-heading .block-note</custom_fonts_element>
+			<custom_font_fml>Libre+Baskerville</custom_font_fml>
+			<default_font>Poppins</default_font>
+			<h1>Poppins</h1>
+			<h2>Poppins</h2>
+			<h3>Poppins</h3>
+			<h4>Poppins</h4>
+			<h5>Poppins</h5>
+			<h6>Poppins</h6>
+			<menu>Poppins</menu>
+			<price>Poppins</price>
+		</fonts>
+		<custom_style>
+			<style>.big-item .products-grid .product-item-info.metro_template .product-top a.photo,.products-grid .big-item .product-item-info.metro_template .product-top a.photo { padding-top: calc(133.3333% - 10px) !important; }.products-grid .product-item-info .product-top:after{content: none !important;}
+.footer .middle-footer{background-color: #fff}
+.footer .bottom-footer{background-color: #f6f6f8}
+</style>
+		</custom_style>
+	</theme_setting>
+
+</home>

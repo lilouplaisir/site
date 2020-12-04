@@ -1,0 +1,119 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Framework\View\Element\Template */
+/** @var $helper \Magento\Search\Helper\Data */
+?>
+
+
+<?php $helper = $this->helper('Magento\Search\Helper\Data'); ?>
+
+<?php $mpanelHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<?php $enable = $mpanelHelper->getStoreConfig('mpanel/catalogsearch/show_categories'); ?>
+
+<?php if($enable){ $categories = $mpanelHelper->getCategories(); } ?>
+
+<div class="search-form <?php if($enable): ?>select-search<?php endif;?>">
+	<form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>" method="get">
+		<div class="form-search">
+			<?php if($enable): ?>
+				<?php $currentCategory = ""; ?>
+				<?php $currentCategoryId = ""; ?>
+				<?php foreach ($categories as $category) {
+						foreach ($category as $key => $value) {
+							if ($key == 'label') { $categoryName = $value; }
+							if ($key == 'value') { $categoryId = $value; }
+						}
+						if ($mpanelHelper->getCurrentlySelectedCategoryId() == $categoryId){
+							$currentCategory = $categoryName;
+							$currentCategoryId = $categoryId;
+							break;
+						}
+					} ?>
+				<input type="hidden" name="cat" id="cat" value="<?php echo $currentCategoryId; ?>"/>
+				<div class="search-select">
+					<div class="dropdown">
+						<button id="toggleCatSearch" class="search-toggle dropdown-toggle" type="button" data-toggle="dropdown">
+							<span id="cat-active-name" class="search-cat-active">
+								<?php if($currentCategory != ""): ?>
+									<?php echo $currentCategory ?>
+								<?php else: ?>
+									<?php echo __('All Categories'); ?>
+								<?php endif ?>
+							</span>
+							<i class="fa fa-angle-down" aria-hidden="true"></i>
+						</button>
+						<ul id="select-cat-dropdown" class="dropdown-menu">
+							<li class="parent">
+								<a href="javascript:void(0);" onclick="setSearchCatValue('', '<?php echo __('All Categories') ?>');"><?php echo __('All Categories') ?></a>
+							</li>
+							<?php
+								foreach ($categories as $category) {
+									foreach ($category as $key => $value) {
+										if ($key == 'label') {
+											$categoryName = $value;
+										}
+										if ($key == 'value') {
+											$categoryId = $value;
+										}
+										if ($key == 'level') {
+											$categoryLevel = $value;
+										}
+									}
+									?>
+									<li class="<?php if($categoryLevel < 3): ?>parent<?php endif ?> level<?php echo $categoryLevel ?> <?php if ($mpanelHelper->getCurrentlySelectedCategoryId() == $categoryId): ?>active<?php endif; ?>">
+										<a href="javascript:void(0);" onclick="setSearchCatValue('<?php echo $categoryId; ?>', '<?php echo $categoryName; ?>');"><?php echo $categoryName; ?></a>
+									</li>
+									<?php
+								}
+							?>
+						</ul>
+					</div>
+				</div>
+			<?php endif; ?>
+			<input id="search"
+			   data-mage-init='{"quickSearch":{
+					"formSelector":"#search_mini_form",
+					"url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest'); ?>",
+					"destinationSelector":"#search_autocomplete"}
+			   }'
+			   type="text"
+			   name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
+			   value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
+			   class="input-text form-control"
+			   maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
+			   placeholder="<?php echo __('Search entire store here...') ?>"
+			   role="combobox"
+			   aria-expanded="true"
+			   aria-haspopup="false"
+			   aria-autocomplete="both"
+			   autocomplete="off"/>
+				
+			<button type="submit" title="<?php echo $block->escapeHtml(__('Search')) ?>" class="button">
+				<i class="fa fa-search"></i>
+			</button>	   
+			<div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+			<?php echo $block->getChildHtml() ?>
+		</div>
+	</form>
+</div>
+<?php if($enable): ?>
+	<script type="text/javascript">
+		function setSearchCatValue(id,name){
+			require([
+			'jquery'
+			], function(jQuery){
+				(function($) {
+					$('#cat').val(id);
+					$('#cat-active-name').html(name);
+				})(jQuery);
+			});
+		}
+	</script>
+<?php endif ?>

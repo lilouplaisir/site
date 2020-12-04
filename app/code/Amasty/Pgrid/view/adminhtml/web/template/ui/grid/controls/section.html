@@ -1,0 +1,18 @@
+<section class="ampgrid-section-container" data-bind="attr:{id: 'amasty-pgrid-content' + $index}">
+    <table class="ampgrid-table-block">
+        <thead class="ampgrid-thead">
+            <tr class="ampgrid-tr">
+                <th class="ampgrid-th -wide" data-bind="i18n: 'Column'"></th>
+                <th class="ampgrid-th -wide" data-bind="i18n: 'Title'"></th>
+                <th class="ampgrid-th" data-bind="i18n: 'Edit'"></th>
+                <th class="ampgrid-th" data-bind="i18n: 'Filter'"></th>
+                <th class="ampgrid-th" data-bind="i18n: 'Marker'"></th>
+            </tr>
+        </thead>
+        <tbody class="ampgrid-tbody">
+            <tr class="ampgrid-tr" data-bind="repeat: {foreach: $column, item: '$col'}">
+                <!-- ko template: rowTmpl --><!-- /ko -->
+            </tr>
+        </tbody>
+    </table>
+</section>

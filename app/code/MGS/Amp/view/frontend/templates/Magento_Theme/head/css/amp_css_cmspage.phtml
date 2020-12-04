@@ -1,0 +1,486 @@
+<?php
+$_cssWidget = '
+.cms-index-index .amp-page-main {
+	padding: 0;
+}
+.container, .container.no-padding {
+    padding: 0 15px;
+}
+.no-padding-col .container, 
+.no-padding-col .line div[class*=col-md], 
+.no-padding-col .line div[class*=col-sm], 
+.no-padding-col .line div[class*=col-xs] {
+    padding-left: 0;
+    padding-right: 0;
+}
+.no-padding-col .line {
+    margin-left: 0;
+    margin-right: 0;
+}
+';
+?>
+<?php
+// *
+// Grid Layout 
+// *****
+$_cssWidget .= '
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: calc(-15px/2);
+    margin-left: calc(-15px/2);
+}
+*:not(td):not(th).col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: calc(15px/2);
+    padding-left: calc(15px/2);
+}
+.row-1 .col, .col-12, .col-md-12{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    max-width: 100%;
+}
+.col-7, .col-md-7, .col-xs-7, .col-sm-7 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 58.333333%;
+    flex: 0 1 58.333333%;
+    max-width: 58.333333%;
+}
+.row-2 .col, .col-6, .col-md-6, .col-xs-6, .col-sm-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    max-width: 50%;
+}
+.col-xs-12, .col-sm-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    max-width: 100%;
+}
+.col-xxs-12,.col-8, .col-md-8, .col-xs-8, .col-sm-8,.col-9, .col-md-9, .col-xs-9, .col-sm-9,.col-10, .col-md-10, .col-xs-10, .col-sm-10,.col-11, .col-md-11, .col-xs-11, .col-sm-11  {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    max-width: 100%;
+}
+.row .row .col-xxs-12{padding-left:22px; padding-right:22px}
+';
+?>
+<?php
+// *
+// PromoBanner
+// *****
+$_cssWidget .= '
+.mgs-promobanner {
+    display: block;
+	position: relative;
+}
+.mgs-promobanner > .text {
+    position: absolute;
+    padding: 20px;
+    z-index: 1;
+    color: #1a1a1a;
+    font-size: 15px
+}
+.mgs-promobanner .text-center {
+    text-align: center;
+}
+.mgs-promobanner > .text.top-left,
+.mgs-promobanner > .text.top-middle,
+.mgs-promobanner > .text.top-right {
+    top: 0
+}
+.mgs-promobanner > .text.top-left {
+    left: 0
+}
+.mgs-promobanner > .text.top-middle {
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%)
+}
+.mgs-promobanner > .text.top-right {
+    right: 0
+}
+.mgs-promobanner > .text.middle-left,
+.mgs-promobanner > .text.middle-center,
+.mgs-promobanner > .text.middle-right {
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%)
+}
+.mgs-promobanner > .text.middle-left {
+    left: 0
+}
+.mgs-promobanner > .text.middle-center {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%)
+}
+.mgs-promobanner > .text.middle-right {
+    right: 0
+}
+.mgs-promobanner > .text.bottom-left,
+.mgs-promobanner > .text.bottom-center,
+.mgs-promobanner > .text.bottom-right {
+    bottom: 0
+}
+.mgs-promobanner > .text.bottom-left {
+    left: 0
+}
+.mgs-promobanner > .text.bottom-center {
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%)
+}
+.mgs-promobanner > .text.bottom-right {
+    right: 0
+}
+.mgs-promobanner .banner-text .sub-title {
+    font-size: .75rem;
+    letter-spacing: .01em;
+    display: block;
+    margin-bottom: 2px;
+}
+.mgs-promobanner .banner-text .title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.section-title .title {
+    font-weight: 600;
+    margin: 0;
+}
+';
+?>
+<?php
+// *
+// OWL SLIDER
+// *****
+$_cssWidget .= '
+.item-image {
+	position: relative;
+}
+.slider_mgs_carousel{margin-bottom:30px}
+.slider_mgs_carousel .slide-text {
+    opacity: 1;
+    visibility: visible;
+    padding: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.slider_mgs_carousel .slide-text.middle_left {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.slider_mgs_carousel .slide-text.middle {
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.slider_mgs_carousel .slide-text.middle_right {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+	text-align:right;
+}
+.slider_mgs_carousel .slide-text.top_right {
+    top: 0;
+    bottom: auto;
+}
+.slider_mgs_carousel .slide-text.top_center {
+    top: 0;
+    bottom: auto;
+}
+.slider_mgs_carousel .slide-text.top_left {
+    top: 0;
+    bottom: auto;
+}
+.slider_mgs_carousel .inner-text .sub-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #222;
+	margin-bottom:5px;
+}
+.slider_mgs_carousel .inner-text h2{font-size:16px; margin-bottom:10px}
+.slider_mgs_carousel .inner-text p{display:none}
+.promobanner .text {
+    position: absolute;
+    padding: 20px;
+    z-index: 1;
+    color: #1a1a1a;
+    font-size: 15px;
+}
+.promobanner .text.bottom-left, .promobanner .text.bottom-center, .promobanner .text.bottom-right {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.promobanner .text.bottom-center {
+    text-align: center;
+}
+.ls__1 {
+    letter-spacing: 1px;
+	line-height: 1
+}
+.margin-bottom10 {
+    margin-bottom: 10px;
+}
+.promobanner .banner-text h3{font-size:14px}
+.promobanner .text.middle-left, .promobanner .text.middle-center, .promobanner .text.middle-right {
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.promobanner .text.middle-center {
+    text-align: center;
+}
+.promobanner .btn-default {
+    color: #222;
+	border: 2px solid #222;
+    background: none;
+	height: 40px;
+	font-weight: 600;
+	padding: 0 35px;
+	line-height: 36px;
+	border-radius:40px;
+}
+.btn.btn-promo-banner {
+padding: 0 20px;
+height: auto;
+min-width: 150px;
+border-color:  #fff;
+border-radius: 0;
+box-shadow: 1px 1px 0 0 rgba(0,0,0,0.1);
+line-height:36px;
+text-transform:none;
+background:#fff;
+font-size:14px
+}
+.margin-bottom30 {
+    margin-bottom: 30px;
+}
+.content-block{margin-bottom:30px}
+.content-heading{margin-top:20px; text-align:center; margin-bottom:30px}
+.content-heading h3{font-size:24px; line-height:24px; margin-bottom:0}
+.content-heading .block-note {
+    font-style: italic;
+    font-size: 13px;
+    color: #878787;
+    margin-top: 5px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+}
+.deal-product-cat-block .products.list.product-items .product-item{width:100%;}
+.deal-product-cat-block .product-item-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.deal-product-cat-block .price-box{display:inline-block}
+.price-final_price .old-price{
+    display: inline-block;
+	margin-right:8px;
+	float:left
+}
+.deal-product-cat-block .product-item-name{margin-bottom:6px; font-size:16px}
+.old-price .price{text-decoration: line-through;}
+.price-box .special-price .price {
+    color: #ec0101;
+}
+.product-tabs-block amp-accordion section{margin-bottom:10px}
+.product-tabs-block amp-accordion section h3{text-align: center;
+font-size: 14px;
+font-weight: 400;
+background: none;
+border-radius: 40px;
+padding: 8px 0 7px 0}
+.product-tabs-block amp-accordion section h3[aria-expanded="true"]{
+    border-color:#222
+}
+.product-tabs-block amp-accordion section .products.list.product-items,.product-tabs-block amp-accordion section .alert-warning{margin-top:30px}
+.post-item-content .thumbnail-post{margin-bottom: 15px}
+.post-item-detail .title{margin-bottom:5px}
+.post-item-detail .short-content{margin-top:10px}
+.post-item-detail .post-info .post-author span:not(.post-time) {
+    color: #222;
+}
+.text-colour-white, .text-colour-white .promobanner .text,.slider_mgs_carousel .inner-text .sub-title.text-colour-white, .text-colour-white .btn.btn-default{
+    color: #fff;
+	border-color:#fff
+}
+.text-center {
+    text-align: center;
+}
+.big-text{
+	font-size: 35px;
+	line-height: 35px;
+	color:#222222;
+	font-weight: 600;
+}
+.text-colour-white .big-text{color:#fff}
+.promobanner .text.top-left {
+    text-align: left;
+}
+.promobanner{position:relative; overflow:hidden}
+.promobanner .text.top-left, .promobanner .text.top-middle, .promobanner .text.top-right {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.margin-bottom20{margin-bottom:20px}
+.margin-bottom25{margin-bottom:25px}
+.content-block.products-list .product-item{margin-bottom: 30px;}
+.content-block.products-list .product-item-info{display:flex}
+.content-block.products-list .product-item-photo{
+	width: 123px;
+    float: left;
+    position: relative;
+	display:block;
+}
+.content-block.products-list .product-item-details{
+	float: left;
+    width: calc(100% - 123px);
+    padding-left: 30px;
+	padding-top:15px;
+}
+.content-block.products-list .product-item-name{font-weight:500}
+.content-block.products-list .price-box{margin-top:6px; margin-bottom:7px}
+.content-block.products-list .btn-cart,.single-product button.btn-cart{
+    border: 1px solid #e0e0e0;
+	background: none;
+	height: 35px;
+	line-height: 35px;
+	font-size: 12px;
+	font-weight: 400;
+	padding: 0 35px;
+	color:#222;
+	border-radius:40px;
+}
+.single-product button.btn-cart{margin-top:5px}
+.price-box .price-label {
+    display: none;
+}
+.deal-timer {
+    margin: 0 auto 15px;
+	max-width: 270px;
+}
+.deal-timer .countdown,.deal-timer .time-note {
+    display: flex;
+    margin-left: -4px;
+    margin-right: -4px;
+}
+.deal-timer span {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    margin: 0 4px;
+    text-align: center;
+    color: #999;
+	background-color:#2a2a2a;
+    border-radius: 0 0 4px 4px;
+    padding-bottom: 6px;
+}
+.deal-timer .countdown span{border-radius: 4px 4px 0 0;
+font-weight: 400;
+color:#ffffff;
+font-size: 16px;
+padding-top: 14px;
+padding-bottom:0
+}
+.padding-left30{padding-left:30px}
+.padding-right30{padding-right:30px}
+.testimonial-block{padding: 30px 40px;background-color: #f6f6f8; text-align:center; margin-bottom:30px}
+.portfolio-block{margin-bottom:30px}
+.testimonial-block .testimonial-text{
+    font-size: 16px;
+    color: #282828;
+    margin-bottom: 12px;
+	font-style: italic;
+}
+.testimonial-block .author-thumbnail {
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+	margin: 0 auto 40px;
+}
+.testimonial-block .name{font-size: 16px;
+font-weight: 600;
+line-height: 1.2;
+color:#2a2a2a;}
+.testimonial-block .infomation{font-size: 12px;
+color:#a6a6a6;}
+.single-product .product-item-details{margin-top:8px}
+.single-product .price-box{margin-top:5px; margin-bottom:10px}
+.instagram-block h3{font-size:20px; text-align:center}
+.instagram-block .social-count{display:none}
+.instagram-block .instagram-item{padding:0}
+.promobanner-hup,.promobanner-hup2{margin-bottom:15px}
+.promobanner-hup2 .banner-text h3.title {
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.promobanner-hup2 .banner-text {
+    margin: 0 5px 20px;
+    background-color: rgba(255,255,255,0.7);
+	padding: 15px;
+	color:#000;
+    border-radius: 10px;
+}
+.cate-banner {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+.cate-banner .cate-item{flex: 0 1 50%;
+max-width: 50%;padding: 0 10px;margin-bottom:20px; position:relative}
+.cate-banner .cate-item h3{position: absolute;top: 50%;left: 50%;font-size: 16px;color:#fff;transform: translate(-50%, -50%);}
+';
+?>
+
+<?php /* Custom Style from backend for cms pages */ ?>
+<?php $helper = $this->helper('MGS\Amp\Helper\Config') ?>
+<?php if($customStyle = $helper->getStoreConfig('mgs_amp/custom_style/cms_style')): ?>
+	<?php $_cssWidget .= $customStyle; ?>
+<?php endif ?>
+
+<?= $_cssWidget ?>

@@ -1,0 +1,603 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<div class="edit-static-form">
+	
+	<div class="row">
+		<div class="col-md-12 builder-title">
+			<h2><?php echo __('New Products Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('mpanel/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="new_products">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Mpanel\Model\Childs')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		
+		<div class="form-horizontal">
+			<div id="form_tabs" class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a data-toggle="tab" href="#general"><?php echo __('General') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="additional-tab-nav" data-toggle="tab" href="#additional"><?php echo __('Product Config') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="category-tab-nav" data-toggle="tab" href="#category"><?php echo __('Category Config') ?></a>
+					</li>
+					
+					<li class="">
+						<a id="color-tab-nav" data-toggle="tab" href="#color"><?php echo __('Color Config') ?></a>
+					</li>
+					
+					<?php if($exist): ?>
+						<li class="">
+							<a id="code-tab-nav" data-toggle="tab" href="#code"><?php echo __('Embed Code') ?></a>
+						</li>
+					<?php endif ?>
+				</ul>
+				<div class="tab-content">
+					<div id="general" class="tab-pane active">
+						<div class="form-group">
+							<label for="title" class="col-sm-4 control-label"><?php echo __('Title') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="title" class="input-text" name="setting[title]"<?php if($exist): ?> value="<?php echo htmlspecialchars($settings['title']) ?>"<?php endif ?> />
+							</div>
+						</div>
+					
+						<div class="form-group">
+							<label for="col" class="col-sm-4 control-label"><?php echo __('Block col (12 to full)') ?></label>
+							<div class="col-sm-8">
+								<select id="col" class="required-entry input-text" name="col">
+									<?php for($i=12; $i>=1; $i--): ?>
+										<option value="<?php echo $i ?>"<?php if($exist && ($child->getCol()==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+									<?php endfor ?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="class" class="col-sm-4 control-label"><?php echo __('Custom Class') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="class" class="input-text" name="class"<?php if($exist): ?> value="<?php echo $child->getClass() ?>"<?php endif ?> />
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group">
+							<label class="col-sm-4 control-label" for="additional_content"><?php echo __('Additional content') ?></label>
+							<div class="col-sm-8">
+								<textarea name="setting[additional_content]" id="content" class="input-text"><?php if($exist): ?><?php echo $settings['additional_content'] ?><?php endif ?></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation" class="col-sm-4 control-label"><?php echo __('Block Animation') ?></label>
+							<div class="col-sm-4">
+								<select onchange="changeAnimationClass(this.value)" id="animation" class="input-text" name="setting[animation]">
+									<option value=""><?php echo __('Choose Animation Effect') ?></option>
+									<?php foreach($helper->getAnimationEffect() as $animation=>$label): ?>
+										<option value="<?php echo $animation ?>"<?php if($exist && ($settings['animation']==$animation)): ?> selected="selected"<?php endif ?>><?php echo $label ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+							
+							<div class="col-sm-4 text-center animated<?php if($exist && ($settings['animation']!='')): ?> <?php echo $settings['animation'] ?><?php endif ?>" id="animation-test">Animation Preview</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="animation_delay" class="col-sm-4 control-label"><?php echo __('Animation Delay') ?></label>
+							<div class="col-sm-8">
+								<input type="text" placeholder="ms" id="animation_delay" class="input-text validate-number" name="setting[animation_delay]" <?php if($exist): ?> value="<?php echo $settings['animation_delay'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div id="additional" class="tab-pane">
+						<div class="form-group">
+							<label for="number_of_posts" class="col-sm-4 control-label"><?php echo __('Number of product to display') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="limit" class="input-text required-entry validate-number" name="setting[limit]"<?php if($exist): ?> value="<?php echo $settings['limit'] ?>"<?php endif ?> />
+							</div>
+						</div>
+						
+						<div class="form-group" id="grid_perrow">
+							<label for="perrow" class="col-sm-4 control-label"><?php echo __('Items per row') ?></label>
+							<div class="col-sm-8">
+								<select id="perrow" class="input-text" name="setting[perrow]">
+									<option value="1"<?php if($exist && ($settings['perrow']==1)): ?> selected="selected"<?php endif ?>>1</option>
+									<option value="2"<?php if($exist && ($settings['perrow']==2)): ?> selected="selected"<?php endif ?>>2</option>
+									<option value="3"<?php if($exist && ($settings['perrow']==3)): ?> selected="selected"<?php endif ?>>3</option>
+									<option value="4"<?php if($exist && ($settings['perrow']==4)): ?> selected="selected"<?php endif ?>>4</option>
+									<option value="5"<?php if($exist && ($settings['perrow']==5)): ?> selected="selected"<?php endif ?>>5</option>
+									<option value="6"<?php if($exist && ($settings['perrow']==6)): ?> selected="selected"<?php endif ?>>6</option>
+									<option value="7"<?php if($exist && ($settings['perrow']==7)): ?> selected="selected"<?php endif ?>>7</option>
+									<option value="8"<?php if($exist && ($settings['perrow']==8)): ?> selected="selected"<?php endif ?>>8</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" id="list_number_col">
+							<label for="numbercol" class="col-sm-4 control-label"><?php echo __('Number col') ?></label>
+							<div class="col-sm-8">
+								<select id="numbercol" class="input-text" name="setting[numbercol]">
+									<option value="1"<?php if($exist && ($settings['numbercol']==1)): ?> selected="selected"<?php endif ?>>1</option>
+									<option value="2"<?php if($exist && ($settings['numbercol']==2)): ?> selected="selected"<?php endif ?>>2</option>
+									<option value="3"<?php if($exist && ($settings['numbercol']==3)): ?> selected="selected"<?php endif ?>>3</option>
+									<option value="4"<?php if($exist && ($settings['numbercol']==4)): ?> selected="selected"<?php endif ?>>4</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" id="item_per_col">
+							<label for="percol" class="col-sm-4 control-label"><?php echo __('Item per col') ?></label>
+							<div class="col-sm-8">
+								<input type="text" id="percol" class="input-text required-entry validate-number" name="setting[percol]"<?php if($exist): ?> value="<?php echo $settings['percol'] ?>"<?php endif ?> />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="template" class="col-sm-4 control-label"><?php echo __('View mode') ?></label>
+							<div class="col-sm-8">
+								<select id="template" class="input-text" name="setting[template]" onchange="setTemplate()">
+									<option value="grid.phtml"<?php if($exist && ($settings['template']=='grid.phtml')): ?> selected="selected"<?php endif ?>><?php echo __('Grid') ?></option>
+									<option value="list.phtml"<?php if($exist && ($settings['template']=='list.phtml')): ?> selected="selected"<?php endif ?>><?php echo __('List') ?></option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="ratio" class="col-sm-4 control-label"><?php echo __('Product image ratio') ?></label>
+							<div class="col-sm-8">
+								<select id="ratio" class="input-text" name="setting[ratio]">
+									<option value="1"<?php if($exist && ($settings['ratio']==1)): ?> selected="selected"<?php endif ?>><?php echo __('1/1 Square') ?></option>
+									<option value="2"<?php if($exist && ($settings['ratio']==2)): ?> selected="selected"<?php endif ?>><?php echo __('1/2 Portrait') ?></option>
+									<option value="3"<?php if($exist && ($settings['ratio']==3)): ?> selected="selected"<?php endif ?>><?php echo __('2/3 Portrait') ?></option>
+									<option value="4"<?php if($exist && ($settings['ratio']==4)): ?> selected="selected"<?php endif ?>><?php echo __('3/4 Portrait') ?></option>
+									<option value="5"<?php if($exist && ($settings['ratio']==5)): ?> selected="selected"<?php endif ?>><?php echo __('2/1 Landscape') ?></option>
+									<option value="6"<?php if($exist && ($settings['ratio']==6)): ?> selected="selected"<?php endif ?>><?php echo __('3/2 Landscape') ?></option>
+									<option value="7"<?php if($exist && ($settings['ratio']==7)): ?> selected="selected"<?php endif ?>><?php echo __('4/3 Landscape') ?></option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group" id="use-slider">
+							<label for="use_slider" class="col-sm-4 control-label"><?php echo __('Use slider') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['use_slider']): ?> checked="checked"<?php endif ?> value="1" name="setting[use_slider]" id="use_slider" class="admin__actions-switch-checkbox" onclick="useSlider()">
+									<label for="use_slider" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group" id="load-more">
+							<label for="loadmore" class="col-sm-4 control-label"><?php echo __('Show load more') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['loadmore']): ?> checked="checked"<?php endif ?> value="1" name="setting[loadmore]" id="loadmore" class="admin__actions-switch-checkbox">
+									<label for="loadmore" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div id="slider-setting">
+							<hr/>
+							
+							<div class="form-group" id="number-row-container">
+								<label for="number_row" class="col-sm-4 control-label"><?php echo __('Number of row') ?></label>
+								<div class="col-sm-8">
+									<select id="number_row" class="required-entry input-text" name="setting[number_row]">
+										<?php for($i=1; $i<=4; $i++): ?>
+											<option value="<?php echo $i ?>"<?php if($exist && ($settings['number_row']==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+										<?php endfor ?>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="autoplay" class="col-sm-4 control-label"><?php echo __('Auto play') ?></label>
+								<div class="col-sm-8">
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['autoplay']): ?> checked="checked"<?php endif ?> value="1" name="setting[autoplay]" id="autoplay" class="admin__actions-switch-checkbox">
+										<label for="autoplay" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="stop_auto" class="col-sm-4 control-label"><?php echo __('Stop autoplay on mouse hover') ?></label>
+								<div class="col-sm-8">
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['stop_auto']): ?> checked="checked"<?php endif ?> value="1" name="setting[stop_auto]" id="stop_auto" class="admin__actions-switch-checkbox">
+										<label for="stop_auto" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="navigation" class="col-sm-4 control-label"><?php echo __('Display navigation') ?></label>
+								<div class="col-sm-8">
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['navigation']): ?> checked="checked"<?php endif ?> value="1" name="setting[navigation]" id="navigation" class="admin__actions-switch-checkbox">
+										<label for="navigation" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="pagination" class="col-sm-4 control-label"><?php echo __('Display pagination') ?></label>
+								<div class="col-sm-8">
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['pagination']): ?> checked="checked"<?php endif ?> value="1" name="setting[pagination]" id="pagination" class="admin__actions-switch-checkbox">
+										<label for="pagination" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="category" class="tab-pane">
+						<label for="categories" class="col-sm-4 control-label"><?php echo __('Choose Categories') ?></label>
+						<div class="col-sm-8">
+							<div id="product-categories" class="tree x-tree">
+								<ul id="dhtmlgoodies_tree">
+									<?php if($exist && isset($settings['category_id']) && ($settings['category_id']!='')): ?>
+										<?php echo $helper->getTreeCategory($helper->getRootCategory(), 0, [], $settings['category_id']) ?>
+									<?php else: ?>
+										<?php echo $helper->getTreeCategory($helper->getRootCategory(), 0, [], []) ?>
+									<?php endif ?>
+								</ul>
+								<div id="expandCollapse">
+									<a href="#" id="expand-all"><?php echo __('Expand all') ?></a>
+									<a href="#" id="collapse-all"><?php echo __('Collapse all') ?></a>
+								</div>
+								<div id="ajaxMessage"></div>
+							</div>
+						</div>
+						
+						<div id="category-tab-config">
+							<label for="use_tabs" class="col-sm-4 control-label"><?php echo __('Use Category Tabs') ?></label>
+							<div class="col-sm-8">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['use_tabs']): ?> checked="checked"<?php endif ?> value="1" name="setting[use_tabs]" id="use_tabs" class="admin__actions-switch-checkbox">
+									<label for="use_tabs" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="color" class="tab-pane">
+						<div class="form-group">
+
+							<div class="form-group text-color">
+								<label class="col-sm-4 control-label" for="text_colour"><?php echo __('Text colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[text_colour]" class="input-text" id="text_colour"<?php if($exist): ?> value="<?php echo $settings['text_colour'] ?>"<?php endif ?> readonly="true"/>
+									
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('text_colour', this)"<?php if(isset($settings['text_colour']) && $settings['text_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#text-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="text-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['text_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('text_colour', $settings['text_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('text_colour'); ?>
+									<?php endif ?>
+									
+									<a href="#" onclick="closeColorTable('#text-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group link-color">
+								<label class="col-sm-4 control-label" for="link_colour"><?php echo __('Link colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[link_colour]" class="input-text" id="link_colour"<?php if($exist): ?> value="<?php echo $settings['link_colour'] ?>"<?php endif ?> readonly="true"/>
+									
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('link_colour', this)"<?php if(isset($settings['link_colour']) && $settings['link_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#link-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="link-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['link_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('link_colour', $settings['link_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('link_colour'); ?>
+									<?php endif ?>
+									
+									<a href="#" onclick="closeColorTable('#link-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group link-hover-color">
+								<label class="col-sm-4 control-label" for="link_hover_colour"><?php echo __('Link hover colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[link_hover_colour]" class="input-text" id="link_hover_colour"<?php if($exist): ?> value="<?php echo $settings['link_hover_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('link_hover_colour', this)"<?php if(isset($settings['link_hover_colour']) && $settings['link_hover_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#link-hover-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="link-hover-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['link_hover_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('link_hover_colour', $settings['link_hover_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('link_hover_colour'); ?>
+									<?php endif ?>
+									
+									<a href="#" onclick="closeColorTable('#link-hover-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group button-color">
+								<label class="col-sm-4 control-label" for="button_colour"><?php echo __('Button colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[button_colour]" class="input-text" id="button_colour"<?php if($exist): ?> value="<?php echo $settings['button_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('button_colour', this)"<?php if(isset($settings['button_colour']) && $settings['button_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#button-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="button-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['button_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('button_colour', $settings['button_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('button_colour'); ?>
+									<?php endif ?>
+									<a href="#" onclick="closeColorTable('#button-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group button-hover-color">
+								<label class="col-sm-4 control-label" for="button_hover_colour"><?php echo __('Button hover colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[button_hover_colour]" class="input-text" id="button_hover_colour"<?php if($exist): ?> value="<?php echo $settings['button_hover_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('button_hover_colour', this)"<?php if(isset($settings['button_hover_colour']) && $settings['button_hover_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#button-hover-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="button-hover-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['button_hover_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('button_hover_colour', $settings['button_hover_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('button_hover_colour'); ?>
+									<?php endif ?>
+									<a href="#" onclick="closeColorTable('#button-hover-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group button-text-color">
+								<label class="col-sm-4 control-label" for="button_text_colour"><?php echo __('Button text colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[button_text_colour]" class="input-text" id="button_text_colour"<?php if($exist): ?> value="<?php echo $settings['button_text_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('button_text_colour', this)"<?php if(isset($settings['button_text_colour']) && $settings['button_text_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#button-text-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="button-text-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['button_text_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('button_text_colour', $settings['button_text_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('button_text_colour'); ?>
+									<?php endif ?>
+									<a href="#" onclick="closeColorTable('#button-text-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group button-text-hover-color">
+								<label class="col-sm-4 control-label" for="button_text_hover_colour"><?php echo __('Button text hover colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[button_text_hover_colour]" class="input-text" id="button_text_hover_colour"<?php if($exist): ?> value="<?php echo $settings['button_text_hover_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('button_text_hover_colour', this)"<?php if(isset($settings['button_text_hover_colour']) && $settings['button_text_hover_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#button-text-hover-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="button-text-hover-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['button_text_hover_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('button_text_hover_colour', $settings['button_text_hover_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('button_text_hover_colour'); ?>
+									<?php endif ?>
+									<a href="#" onclick="closeColorTable('#button-text-hover-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group button-border-color">
+								<label class="col-sm-4 control-label" for="button_border_colour"><?php echo __('Button border colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[button_border_colour]" class="input-text" id="button_border_colour"<?php if($exist): ?> value="<?php echo $settings['button_border_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('button_border_colour', this)"<?php if(isset($settings['button_border_colour']) && $settings['button_border_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#button-border-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="button-border-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['button_border_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('button_border_colour', $settings['button_border_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('button_border_colour'); ?>
+									<?php endif ?>
+									<a href="#" onclick="closeColorTable('#button-border-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+							
+							<div class="form-group button-border-hover-color">
+								<label class="col-sm-4 control-label" for="button_border_hover_colour"><?php echo __('Button border hover colour') ?></label>
+								<div class="col-sm-6 color-input">
+									<input type="text" name="setting[button_border_hover_colour]" class="input-text" id="button_border_hover_colour"<?php if($exist): ?> value="<?php echo $settings['button_border_hover_colour'] ?>"<?php endif ?> readonly="true"/>
+									<a class="remove-color" title="<?php echo __('Remove Colour') ?>" onclick="removeColor('button_border_hover_colour', this)"<?php if(isset($settings['button_border_hover_colour']) && $settings['button_border_hover_colour'] !=''):?> style="display:block"<?php endif ?>><em class="fa fa-close"></em></a>
+								</div>
+								<div class="col-sm-2">
+									<label class="control-label"><a href="#" onclick="openColorTable('#button-border-hover-colour-content'); return false"><?php echo __('Change colour') ?></a></label>
+								</div>
+								<div id="button-border-hover-colour-content" class="color-content" style="display:none">
+									<?php if($exist && $settings['button_border_hover_colour']!=''): ?>
+										<?php echo $helper->getColorAccept('button_border_hover_colour', $settings['button_border_hover_colour']); ?>
+									<?php else: ?>
+										<?php echo $helper->getColorAccept('button_border_hover_colour'); ?>
+									<?php endif ?>
+									<a href="#" onclick="closeColorTable('#button-border-hover-colour-content'); return false" class="close-color"><span class="fa fa-close"></span></a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				
+					<?php if($exist): ?>
+						<div id="code" class="tab-pane">
+							<div class="form-group">
+								<h4 class="col-sm-12"><?php echo __('For CMS:') ?></h4>
+								<div class="col-sm-12">
+									<pre><?php echo htmlspecialchars($child->getBlockContent()) ?></pre>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<h4 class="col-sm-12"><?php echo __('For Layout Update XML:') ?></h4>
+								<div class="col-sm-12">
+									<pre><?php echo $helper->convertToLayoutUpdateXml($child) ?></pre>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12 builder-action">
+						<div class="buttons">
+							<?php if(!$exist): ?>
+								<button type="button" class="btn btn-back" onclick="history.go(-1)"><span><span><?php echo __('Back') ?></span></span></button>
+							<?php endif ?>
+							<input type="submit" value="<?php echo __('Submit') ?>" class="btn btn-primary"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	var imageFolder = '<?php echo $this->getViewFileUrl('MGS_Mpanel::images') ?>/';	// Path to images
+	var categoryIds = '';
+	<?php if($exist && isset($settings['category_id']) && ($settings['category_id']!='')): ?>
+		categoryIds = '<?php echo implode(',',$settings['category_id']) ?>';
+	<?php endif ?>
+</script>
+<script  type="text/javascript" src="<?php echo $this->getViewFileUrl('MGS_Mpanel::js/sack_js.js') ?>"></script>
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				useSlider();
+				setTemplate();
+			});
+		})(jQuery);
+	});
+	
+	function useSlider(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#use_slider').prop("checked") == true){
+					$('#slider-setting').show();
+					$('#load-more').hide();
+				}else{
+					$('#slider-setting').hide();
+					if($('#template').val() == 'grid.phtml'){
+						$('#load-more').show();
+					}else{
+						$('#load-more').hide();
+					}
+					
+				}
+			})(jQuery);
+		});
+	}
+	
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+	function setTemplate(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#template').val() == 'grid.phtml'){
+					$('#category-tab-config').show();
+					$('#number-row-container').show();
+					
+					$('#grid_perrow').show();
+					$('#list_number_col').hide();
+					$('#item_per_col').hide();
+					
+					if($('#use_slider').prop("checked") == true){
+						$('#load-more').hide();
+					}else{
+						$('#load-more').show();
+					}
+					
+				}else{
+					$('#grid_perrow').hide();
+					$('#list_number_col').show();
+					$('#item_per_col').show();
+					
+					$('#category-tab-config').hide();
+					$('#number-row-container').hide();
+					$('#load-more').hide();
+				}
+			})(jQuery);
+		});
+	}
+</script>

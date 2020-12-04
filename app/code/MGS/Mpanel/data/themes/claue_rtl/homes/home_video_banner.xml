@@ -1,0 +1,398 @@
+<home>
+	<section>
+		<name><![CDATA[block17]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block18]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[3,3,3,3]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30","margin-bottom30","margin-bottom30"]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[37]]></padding_top>
+		<padding_bottom><![CDATA[2]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block19]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["12","12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["",""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block20]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[80]]></padding_top>
+		<padding_bottom><![CDATA[70]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block21]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[4,4,4]]></block_cols>
+		<tablet_cols><![CDATA[["6","6","12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30 pull-right","margin-bottom30"]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block22]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[20]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block23]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[52]]></padding_top>
+		<padding_bottom><![CDATA[34]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block24]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[8]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block18-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-car">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">FREE SHIPPING</h6>
+<p class="no-margin">Free shipping on all US order or order above $200</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block18-1]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-help2">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">SUPPORT 24/7</h6>
+<p class="no-margin">Contact us 24 hours a day, 7 days a week</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block18-2]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-refresh">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">30 DAYS RETURN</h6>
+<p class="no-margin">Simply return it within 30 days for an exchange.</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block18-3]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="icon-service">
+<div class="icon"><i class="pe-7s-door-lock">&nbsp;</i></div>
+<div class="text">
+<h6 class="margin-bottom5">100% PAYMENT SECURE</h6>
+<p class="no-margin">We ensure secure payment with PEV</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block19-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_home_2_banner_men"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-bottom30 col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_home_2_banner_men" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block19-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_home_3_banner_sunglasses"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-bottom30 col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_home_3_banner_sunglasses" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block19-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[0]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_home_3_banner_accessories"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-bottom30 col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_home_3_banner_accessories" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block20-0]]></block_name>
+		<type><![CDATA[attribute_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"TRENDING","additional_content":"Top view in this week","animation":"","animation_delay":"","attribute":"trending","limit":"8","perrow":"4","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","use_slider":"1","number_row":"1","navigation":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Attributes" mgs_panel_title="TRENDING" mgs_panel_note="Top view in this week" limit="8" ratio="4" category_ids="" attribute="trending" use_slider="1" loadmore="0" template="products/attribute/grid.phtml" perrow="4" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block22-0]]></block_name>
+		<type><![CDATA[category_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"OUR PRODUCTS","additional_content":"Top sale in this week","animation":"","animation_delay":"","limit":"8","perrow":"4","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","number_row":"1","category_id":["28","29","30","31"],"use_tabs":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Category" mgs_panel_title="OUR PRODUCTS" mgs_panel_note="Top sale in this week" limit="8" ratio="4" category_ids="28,29,30,31" use_slider="0" loadmore="0" template="products/category_products/category-tabs.phtml" perrow="4"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block23-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"LATEST FROM BLOG","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","post_category":["1","2","3","4","5"],"number_of_posts":"3","items":"3","template":"default.phtml","show_thumbnail":"1","show_short_content":"1","limit_characters_short_content":"120","view_as":"1","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="LATEST FROM BLOG" post_category="1,2,3,4,5" number_of_posts="3" items="3" show_thumbnail="1" mgs_panel_note="The freshest and most exciting news" template="widget/default.phtml" show_short_content="1" limit_characters_short_content="120" view_as="owl_carousel" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block24-0]]></block_name>
+		<type><![CDATA[instagram]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"@ FOLLOW US ON INSTAGRAM","additional_content":"","animation":"","animation_delay":"","limit":"12","perrow":"6","resolution":"low_resolution","link":"1","like":"1","comment":"1","use_slider":"1","number_row":"1","navigation":"1","autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Social\Block\Panel\Widget" mgs_panel_title="@ FOLLOW US ON INSTAGRAM" mgs_panel_note="" limit="12" resolution="low_resolution" link="1" perrow="6" use_slider="1" like="1" comment="1" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1" template="widget/instagram.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block21-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_home_2_banner_lookbook"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_home_2_banner_lookbook" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block21-2]]></block_name>
+		<type><![CDATA[deals]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"1","perrow":"1","template":"grid.phtml","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Deals" mgs_panel_title="" mgs_panel_note="" limit="1" perrow="1" ratio="4" category_ids="" use_slider="0" loadmore="0" template="products/deals/grid.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block21-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"button-colour-transparent","button_hover_colour":"button-hover-colour-black","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_home_3_banner_men_collections"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_home_3_banner_men_collections" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block17-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="video-banner">
+<div id="video-background"></div>
+<div class="text">
+<h5 class="lh__1 sub-title"><em class="text-colour-white">Spring &ndash; Summer 2016</em></h5>
+<h2 class="margin-top20 margin-bottom20 lh__1" style="font-size: 60px;"><span class="text-colour-white">FLASH SALE OFF 70%</span></h2>
+<p class="text-center"><a class="btn btn-default2" href="#">Shop Now</a></p>
+</div>
+</div>
+<script type="text/javascript" xml="space">
+	require([
+		'jquery',
+		'mgs/bgvideo'
+	], function ($) {
+		$(document).ready(function () {
+$('#video-background').YTPlayer({
+        fitToBackground: true,
+        videoId: 'JAQR4R77ODM',
+        pauseOnScroll: false
+      });
+		});
+	});</script>]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Claue Home e Banner Men]]></title>
+			<filename><![CDATA[/m/e/men-collection.jpg]]></filename>
+			<url><![CDATA[http://m3.magesolution.com/claue/men.html]]></url>
+			<button><![CDATA[Men]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_home_2_banner_men]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Home 3 Banner Sunglasses]]></title>
+			<filename><![CDATA[/s/u/sunglass-big.jpg]]></filename>
+			<url><![CDATA[http://m3.magesolution.com/claue/women/sunglasses.html]]></url>
+			<button><![CDATA[Sunglasses]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_home_3_banner_sunglasses]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Home 3 Banner Accessories]]></title>
+			<filename><![CDATA[/a/c/acessories_1.jpg]]></filename>
+			<url><![CDATA[http://m3.magesolution.com/claue/accessories.html]]></url>
+			<button><![CDATA[Accessories]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_home_3_banner_accessories]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Home 3 Banner Men Collections]]></title>
+			<filename><![CDATA[/m/e/men-sale.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[middle-center]]></text_align>
+			<content><![CDATA[<div class="text-center"><h3 class="fwm margin-bottom10 ls__1 lh__1" style="font-size:18px; color:#222222;">MEN COLLECTIONS</h3>
+<h4 class="margin-bottom10 nowrap" style="font-size:50px; line-height:50px; color:#222222;">UP TO 70%</h4>
+<div><button class="btn btn-default" onclick="setLocation('http://m3.magesolution.com/claue/men.html')" style="font-size:14px;">Shop Now</button></div></div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_home_3_banner_men_collections]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Home 2 Banner Lookbook]]></title>
+			<filename><![CDATA[/l/o/lookbook-collection.jpg]]></filename>
+			<url><![CDATA[http://m3.magesolution.com/claue/women/dresses.html]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<h3 class="fwm margin-bottom10 ls__1 lh__1" style="font-size:14px; color:#222222;">VIEW COLLECTIONS</h3>
+<h4 class="margin-bottom10" style="font-size:35px; line-height:36px; color:#222222;">LOOKBOOK</h4>
+<p class="no-margin" style="font-size:14px; color: #878787;">your world of fashion in numbers</p>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_home_2_banner_lookbook]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+		<general>
+			<header>header_2</header>
+			<layout>wide</layout>
+		</general>
+	</theme_setting>
+
+</home>

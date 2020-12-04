@@ -1,0 +1,25 @@
+<?php $_product = $this->getProduct() ?>
+<div class="content-block single-product">
+	<?php if($this->hasData('mgs_panel_title') || $this->hasData('mgs_panel_note')): ?>
+		<?php if($this->getData('mgs_panel_title') != null || $this->getData('mgs_panel_note') != null): ?>
+			<div class="content-heading">
+				<?php if($this->hasData('mgs_panel_title') && $this->getData('mgs_panel_title') != null): ?>
+					<h3 class="title"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_title')) ?></h3>
+				<?php endif ?>
+				<?php if($this->hasData('mgs_panel_note') && $this->getData('mgs_panel_note') != null): ?>
+					<div class="block-note"><?php echo $themeHelper->decodeHtmlTag($this->getData('mgs_panel_note')) ?></div>
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+	<?php endif ?>
+	
+	<?php if ($_product && $_product->getId()): ?>
+		<div class="product-item">
+			<?php echo $this->getLayout()
+					->createBlock('MGS\Mpanel\Block\Products\ProductItem')
+					->setProductId($_product->getId())
+					->setTemplate('MGS_Amp::MGS_Mpanel/products/grid_items.phtml')
+					->toHtml(); ?>	
+		</div>
+	<?php endif ?>
+</div>

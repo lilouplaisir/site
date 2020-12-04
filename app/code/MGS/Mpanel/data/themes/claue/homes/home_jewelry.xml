@@ -1,0 +1,382 @@
+<home>
+	<section>
+		<name><![CDATA[block129]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[48]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block130]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[bg-center]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[1]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block131]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["6","6"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["",""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block132]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[78]]></padding_top>
+		<padding_bottom><![CDATA[42]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block133]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[/b/g/bg_testimo.jpg]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[1]]></background_cover>
+		<parallax><![CDATA[1]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[98]]></padding_top>
+		<padding_bottom><![CDATA[100]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block134]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[78]]></padding_top>
+		<padding_bottom><![CDATA[33]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block138]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[]]></background_repeat>
+		<background_cover><![CDATA[]]></background_cover>
+		<parallax><![CDATA[]]></parallax>
+		<fullwidth><![CDATA[]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block139]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[0]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block129-0]]></block_name>
+		<type><![CDATA[attribute_products]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"HOT PRODUCTS","additional_content":"Top seller in the week","animation":"","animation_delay":"","attribute":"trending","limit":"8","perrow":"4","numbercol":"1","percol":"","template":"grid.phtml","ratio":"4","use_slider":"1","number_row":"1","navigation":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Attributes" mgs_panel_title="HOT PRODUCTS" mgs_panel_note="Top seller in the week" limit="8" ratio="4" category_ids="" attribute="trending" use_slider="1" loadmore="0" template="products/attribute/grid.phtml" perrow="4" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block130-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="text-center" style="background-image: url('pub/media/wysiwyg/bg_wedding.jpg'); background-repeat: no-repeat; background-size: cover; padding-top: 80px; padding-bottom: 80px;">
+<h2 style="font-size: 50px;"><em class="sub-title lh__1 ls__1 text-colour-white">Wedding Rings</em></h2>
+<h5 class="margin-bottom30"><em class="sub-title text-colour-white fwm">A beautiful selection of exquisite rings</em></h5>
+<a class="btn btn-default2" href="#">Shop Now</a></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block132-0]]></block_name>
+		<type><![CDATA[tabs]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"OUR PRODUCTS","additional_content":"Top seller in the week","animation":"","animation_delay":"","tabs":{"mgs_new_products_tabs":{"value":"mgs_new_products_tabs","label":"New Arrivals","position":"1"},"mgs_sale_products_tabs":{"value":"mgs_sale_products_tabs","label":"Hot Sale","position":"2"},"9350":{"value":"best_seller","label":"Best Seller","position":"3"}},"tab_template":"1","limit":"8","perrow":"4","ratio":"4","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","use_slider":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Tabs" mgs_panel_title="OUR PRODUCTS" mgs_panel_note="Top seller in the week" limit="8" perrow="4" category_ids="" use_slider="0" loadmore="0" ratio="4" tabs="mgs_new_products_tabs,mgs_sale_products_tabs,best_seller" template="products/tabs/grid.phtml" tab_template="1"labels="New Arrivals,Hot Sale,Best Seller"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block133-0]]></block_name>
+		<type><![CDATA[testimonial]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"TESTIMONIALS","additional_content":"More than 40000 of happy customers","animation":"","animation_delay":"","limit":"3","perrow":"1","template":"grid.phtml","show_avatar":"1","use_slider":"1","number_row":"1","pagination":"1","autoplay":0,"stop_auto":0,"navigation":0}]]></setting>
+		<col><![CDATA[8]]></col>
+		<class><![CDATA[col-md-push-2 white-text col-xs-12]]></class>
+		<block_content><![CDATA[{{block class="MGS\Testimonial\Block\Testimonial" mgs_panel_title="TESTIMONIALS" mgs_panel_note="More than 40000 of happy customers" testimonials_count="3" perrow="1" show_avatar="1" use_slider="1" template_mode="grid.phtml" template="grid.phtml" autoplay="0" stop_auto="0" navigation="0" pagination="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block134-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"LATEST FROM BLOG","additional_content":"The freshest and most exciting news","animation":"","animation_delay":"","post_category":["1","2","3","4","5"],"number_of_posts":"3","items":"3","template":"default.phtml","show_thumbnail":"1","show_short_content":"1","limit_characters_short_content":"123","view_as":"1","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="LATEST FROM BLOG" post_category="1,2,3,4,5" number_of_posts="3" items="3" show_thumbnail="1" mgs_panel_note="The freshest and most exciting news" template="widget/default.phtml" show_short_content="1" limit_characters_short_content="123" view_as="owl_carousel" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block131-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_jewelry_banner_1"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_jewelry_banner_1" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block131-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_jewelry_banner_2"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_jewelry_banner_2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block131-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_shoes_banner_3"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-sm-6 col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_shoes_banner_3" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block131-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"claue_jewelry_banner_4"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12 margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="claue_jewelry_banner_4" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block138-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[col-xs-12]]></class>
+		<block_content><![CDATA[<div class="service-boxed">
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-help2">&nbsp;</i></div>
+<div class="text">
+<h6><span class="text-colour-white">SUPPORT 24/7</span></h6>
+<p class="no-margin text-colour-white">We support 24 hours a day </p>
+</div>
+</div>
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-car">&nbsp;</i></div>
+<div class="text">
+<h6><span class="text-colour-white">FREE SHIPPING</span></h6>
+<p class="no-margin text-colour-white">Free shipping for all US order </p>
+</div>
+</div>
+<div class="icon-service first-sm-item">
+<div class="icon"><i class="pe-7s-refresh">&nbsp;</i></div>
+<div class="text">
+<h6><span class="text-colour-white">30 DAYS RETURN</span></h6>
+<p class="no-margin text-colour-white">You have 30 days to return </p>
+</div>
+</div>
+<div class="icon-service">
+<div class="icon"><i class="pe-7s-door-lock">&nbsp;</i></div>
+<div class="text">
+<h6><span class="text-colour-white">100% PAYMENT SECURE</span></h6>
+<p class="no-margin text-colour-white">Payment 100% secure</p>
+</div>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block139-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div id="slider_jewelry" class="owl-carousel">
+	<div class="slider_item">
+		<img src="{{media url="wysiwyg/panel/claue_jewelry_slider_1.jpg"}}" alt=""/>
+		<div class="text-slider text-center">
+			<h5 class="sub-title"><em class="text-colour-white">Spring - Summer 2016</em></h5>
+			<h2><span class="text-colour-white">BEST OF COLLECTION</span></h2>
+			<a class="btn btn-default2" href="#">Shop Now</a>
+		</div>
+	</div>
+	<div class="slider_item">
+		<img src="{{media url="wysiwyg/panel/claue_jewelry_slider_2.jpg"}}" alt=""/>
+		<div class="text-slider text-center">
+			<h5 class="sub-title"><em class="text-colour-white">Spring - Summer 2016</em></h5>
+			<h2><span class="text-colour-white">FLASH SALE OF 70%</span></h2>
+			<p class="text-colour-white hidden-sm hidden-xs">Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident</p>
+			<a class="btn btn-default2" href="#">Shop Now</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	require([
+		'jquery',
+		'mgs/owlcarousel'
+	], function ($) {
+		$('#slider_jewelry').owlCarousel({
+			items: 2,
+			autoplay: false,
+			autoplayHoverPause: false,
+			nav: false,
+			dots: true,
+			navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"],
+			responsive:{
+				0:{ items:1 },
+				1200: { items: 2 }
+			}
+		});
+								
+	});
+</script>]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Claue Jewelry Banner 1]]></title>
+			<filename><![CDATA[/b/a/banner_ring_1_1.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Necklace</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_jewelry_banner_1]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Jewelry Banner 2]]></title>
+			<filename><![CDATA[/b/a/banner_ring_2.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Earrings</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_jewelry_banner_2]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Jewelry Banner 3]]></title>
+			<filename><![CDATA[/b/a/banner_ring_4.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Bracelet</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_shoes_banner_3]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Claue Jewelry Banner 4]]></title>
+			<filename><![CDATA[/b/a/banner_ring_3.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-center]]></text_align>
+			<content><![CDATA[<div class="text-center padding-bottom10">
+<button onclick="setLocation('#');" class="btn btn-default btn-promo-banner">Ring</button>
+</div>]]></content>
+			<effect><![CDATA[zoom]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[claue_jewelry_banner_4]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+		<general>
+			<footer>footer_2</footer>
+			<header>header_10</header>
+			<layout>wide</layout>
+		</general>
+		<custom_style><style></style></custom_style>
+	</theme_setting>
+
+</home>

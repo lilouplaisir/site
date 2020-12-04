@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php if (!$block->isContentMode() || $block->isMixedMode()): ?>
+	<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+    <?php echo $block->getProductListHtml() ?>
+<?php endif; ?>

@@ -1,0 +1,12 @@
+<th class="data-grid-th ampgrid-grid-th"
+    data-bind="
+        css: {
+            '-editable': $data.ampgrid_editable,
+            '_sortable': sortable,
+            '_draggable': draggable,
+            '_ascend': sorting === 'asc',
+            '_descend': sorting === 'desc'
+        },
+        click: sort">
+    <span class="data-grid-cell-content ampgrid-content" data-bind="text: $data.label"></span>
+</th>

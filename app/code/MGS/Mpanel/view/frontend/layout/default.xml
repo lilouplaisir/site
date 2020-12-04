@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="MGS_Mpanel::css/owl.carousel.css"/>
+		<!-- <css src="MGS_Mpanel::css/owl.carousel.min.css"/> -->
+		<css src="MGS_Mpanel::css/owl.theme.min.css"/>
+		<css src="MGS_Mpanel::css/animate.css"/>
+		<css src="MGS_Mpanel::css/magnific-popup.css"/>
+		<css src="Magento_Swatches::css/swatches.css"/>
+		<script src="MGS_Mpanel::js/timer.js"/>
+	</head>
+	
+	<body>
+        <referenceContainer name="sidebar.additional">
+			<block class="Magento\Sales\Block\Reorder\Sidebar" name="sale.reorder.sidebar" as="reorder" template="reorder/sidebar.phtml" ifconfig="mpanel/sidebar_config/reorder_sidebar"/>
+			
+			<block class="Magento\Framework\View\Element\Template" name="catalog.compare.sidebar"
+                   template="Magento_Catalog::product/compare/sidebar.phtml" ifconfig="mpanel/sidebar_config/compare_sidebar">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="compareProducts" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+			
+            <block class="Magento\Wishlist\Block\Customer\Sidebar" name="wishlist_sidebar" as="wishlist" template="Magento_Wishlist::sidebar.phtml" ifconfig="mpanel/sidebar_config/wishlist_sidebar"/>
+			
+			<container name="custom.sidebar.content" htmlTag="div" htmlClass="block custom-static-block" after="-">
+				<block class="Magento\Cms\Block\Block" name="custom.sidebar.static.block" ifconfig="mpanel/sidebar_config/custom_block_sidebar" before="-">
+					<arguments>
+						<argument name="block_id" xsi:type="string">mpanel_default_sidebar_block</argument>
+						<argument name="enabled_builder" xsi:type="string">1</argument>
+					</arguments>
+				</block>
+			</container>
+        </referenceContainer>
+		
+		<referenceContainer name="page.bottom">
+            <block class="Magento\Framework\View\Element\Template" name="mgs.lazy.load" template="MGS_Mpanel::script.phtml" />
+        </referenceContainer>
+        
+        <move element="social-login-popup" destination="before.body.end"/>
+    </body>
+</page>

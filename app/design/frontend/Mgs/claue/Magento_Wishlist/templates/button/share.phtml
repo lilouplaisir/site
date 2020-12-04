@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Wishlist\Block\Customer\Wishlist\Button */
+?>
+<?php if ($block->getWishlist()->getItemsCount() && $block->getWishlist()->getShared() < $block->getConfig()->getSharingEmailLimit()): ?>
+    <div class="col-sm-4 col-xs-12 margin-top15">
+		<button type="submit" name="save_and_share" title="<?php /* @escapeNotVerified */ echo __('Share Wish List') ?>" class="action share btn btn-secondary  btn-full">
+			<span><?php /* @escapeNotVerified */ echo __('Share Wish List') ?></span>
+		</button>
+	</div>
+<?php endif;?>

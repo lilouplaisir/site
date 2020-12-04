@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <section id="social" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="60">
+            <class>separator-top</class>
+            <label>Social</label>
+            <tab>mgs</tab>
+            <resource>MGS_Social::config_social</resource>
+            <group id="facebook_settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                <label>Facebook Settings</label>
+                <field id="active" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="client_id" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <label>App ID</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <comment><![CDATA[<a href="https://developers.facebook.com/" target="_bank">Get App ID</a>]]></comment>
+                </field>
+                <field id="client_secret" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                    <label>App Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="twitter_settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                <label>Twitter Settings</label>
+                <field id="active" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="client_id" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <label>Consumer Key (API Key)</label>
+                    <validate>required-entry</validate>
+                    <comment><![CDATA[<a href="https://apps.twitter.com/" target="_bank">Get Consumer Key</a>]]></comment>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="client_secret" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                    <label>Consumer Secret (API Secret)</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+				<field id="client_token" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="40">
+					<label>Access Token</label>					
+					<depends>
+                        <field id="active">1</field>
+                    </depends>
+				</field>
+				<field id="client_tokenSecret" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="50">
+					<label>Access Token Secret</label>
+					<depends>
+                        <field id="active">1</field>
+                    </depends>
+				</field>
+				<field id="client_twitteruser" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="60">
+					<label>Twitter User</label>
+					<depends>
+                        <field id="active">1</field>
+                    </depends>
+				</field>
+            </group>
+			<group id="instagram_setting" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Instagram Settings</label>
+                <field id="enable_instagram" translate="label" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+				<field id="access_token" translate="label" type="text" sortOrder="2"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Access Token</label>
+					<depends>
+                        <field id="enable_instagram">1</field>
+                    </depends>
+					<comment><![CDATA[<a target="_blank" href="http://instagram.pixelunion.net/">Generate Access Token</a>]]></comment>
+                </field>
+            </group>
+			<group id="snapppt_setting" translate="label" type="text" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Snapppt Settings</label>
+                <field id="enable_snapppt" translate="label" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+				<field id="snapppt_script" translate="label" type="textarea" sortOrder="2"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shoppable embed code</label>
+					<depends>
+                        <field id="enable_snapppt">1</field>
+                    </depends>
+					<comment><![CDATA[Login with your Snapppt account. Go to <a target="_blank" href="https://snapppt.com/embeds">https://snapppt.com/embeds</a> to get code]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,12 @@
+<script type="text/javascript">
+	function toggleEl(el, elId){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				$('#'+elId).toggleClass('active').slideToggle();
+				$(el).toggleClass('active');
+			})(jQuery);
+		});
+	}
+</script>

@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Currency switcher
+ *
+ * @see \Magento\Directory\Block\Currency
+ */
+?>
+<?php if ($block->getCurrencyCount() > 1): ?>
+<?php $currencies = $block->getCurrencies(); ?>
+<?php $currentCurrencyCode = $block->getCurrentCurrencyCode(); ?>
+<?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : ''?>
+<?php $_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+
+<div class="dropdown dropdown-switcher currency switcher-currency" id="switcher-currency<?php /* @escapeNotVerified */ echo $id?>">
+	<?php foreach ($currencies as $_code => $_name): ?>
+		<?php if ($_code == $currentCurrencyCode): ?>
+		<?php $_Symbol = $_objectManager->create('Magento\Directory\Model\CurrencyFactory')->create()->load($_code); ?>
+			<button class="switcher-toggle dropdown-toggle" type="button" data-toggle="dropdown"><?php /* @escapeNotVerified */ echo $_code ?> <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+		<?php endif; ?>
+	<?php endforeach; ?>
+	<ul class="dropdown-menu">
+		<?php foreach ($currencies as $_code => $_name): ?>
+			<?php if ($_code != $currentCurrencyCode): ?>
+				<li class="currency-<?php /* @escapeNotVerified */ echo $_code ?> switcher-option">
+					<a href="#" data-post='<?php /* @escapeNotVerified */ echo $block->getSwitchCurrencyPostData($_code); ?>'><?php /* @escapeNotVerified */ echo $_code ?> - <?php /* @escapeNotVerified */ echo $_name ?></a>
+				</li>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
