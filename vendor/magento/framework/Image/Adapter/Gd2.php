@@ -97,7 +97,7 @@ class Gd2 extends \Magento\Framework\Image\Adapter\AbstractAdapter
     {
         $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
         $url = parse_url($filename);
-        # 2020-12-05 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+        # 2020-12-05 Dmitry Fedyuk https://github.com/dmitrii-fediuk
 		# "How to fix product images in Magento 2.3.5 in Windows?": https://mage2.pro/t/6210
         if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes) && !file_exists($filename)) {
             return false;
